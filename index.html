@@ -378,17 +378,18 @@
                     </p>
                 </div>
 
-                <div class="grid grid-cols-2 gap-2xl">
-                    <!-- Contact Info -->
-                    <div class="glass-card animate-on-scroll">
-                        <h3 class="mb-xl text-secondary-glow">Get In Touch</h3>
+                <div class="grid contact-grid gap-2xl">
+                    <!-- Left Side - Social Media & Contact Info -->
+                    <div class="glass-card animate-on-scroll contact-info">
+                        <h3 class="mb-xl text-secondary-glow">Connect With Me</h3>
                         <p class="text-secondary mb-2xl">
                             I'm always interested in hearing about new projects and opportunities. 
                             Whether you need a website, application, or creative design work, 
                             I'd love to help bring your vision to life.
                         </p>
                         
-                        <div class="flex flex-col gap-lg">
+                        <!-- Contact Details -->
+                        <div class="flex flex-col gap-lg mb-2xl">
                             <div class="flex items-center gap-md">
                                 <div class="glow-border" style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                                     <i data-feather="mail" style="color: var(--primary-glow);"></i>
@@ -420,25 +421,29 @@
                             </div>
                         </div>
                         
-                        <!-- Social Links -->
-                        <div class="flex gap-md mt-2xl">
-                            <a href="https://github.com/trijbs" target="_blank" class="btn-modern" style="width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                <i data-feather="github"></i>
-                            </a>
-                            <a href="https://linkedin.com/in/trijbs" target="_blank" class="btn-modern" style="width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                <i data-feather="linkedin"></i>
-                            </a>
-                            <a href="https://twitter.com/trijbs" target="_blank" class="btn-modern" style="width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                <i data-feather="twitter"></i>
-                            </a>
-                            <a href="https://instagram.com/trijbs.xyz" target="_blank" class="btn-modern" style="width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                <i data-feather="instagram"></i>
-                            </a>
+                        <!-- Social Media Links -->
+                        <div>
+                            <h4 class="mb-lg text-accent-glow">Follow Me</h4>
+                            <div class="flex gap-md">
+                                <a href="https://github.com/trijbs" target="_blank" class="btn-modern social-btn" style="width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;" title="GitHub">
+                                    <i data-feather="github"></i>
+                                </a>
+                                <a href="https://linkedin.com/in/trijbs" target="_blank" class="btn-modern social-btn" style="width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;" title="LinkedIn">
+                                    <i data-feather="linkedin"></i>
+                                </a>
+                                <a href="https://twitter.com/trijbs" target="_blank" class="btn-modern social-btn" style="width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;" title="Twitter">
+                                    <i data-feather="twitter"></i>
+                                </a>
+                                <a href="https://instagram.com/trijbs.xyz" target="_blank" class="btn-modern social-btn" style="width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;" title="Instagram">
+                                    <i data-feather="instagram"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Contact Form -->
-                    <div class="glass-card animate-on-scroll">
+                    <!-- Right Side - Contact Form -->
+                    <div class="glass-card animate-on-scroll contact-form-container">
+                        <h3 class="mb-xl text-glow">Send a Message</h3>
                         <form class="contact-form">
                             <div class="form-group mb-lg">
                                 <input type="text" id="name" name="name" required class="form-input">

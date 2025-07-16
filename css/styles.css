@@ -503,6 +503,35 @@ p {
   animation: slideInUp 0.8s ease-out forwards;
 }
 
+/* ===== Contact Section Layout ===== */
+.contact-grid {
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+}
+
+.contact-info {
+  height: fit-content;
+}
+
+.contact-form-container {
+  height: fit-content;
+}
+
+.social-btn {
+  transition: all var(--transition-normal);
+}
+
+.social-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--glow-md);
+}
+
+.contact-info h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+}
+
 /* ===== Responsive Design ===== */
 @media (max-width: 768px) {
   .modern-section {
@@ -519,6 +548,11 @@ p {
   
   .nav-menu {
     gap: var(--space-md);
+  }
+  
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
   }
 }
 
