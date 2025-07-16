@@ -8,7 +8,7 @@
     <!-- Preload critical resources -->
     <link rel="preload" href="css/styles.css" as="style">
     <link rel="preload" href="js/main.js" as="script">
-    <link rel="preload" href="img/optimized/profile.webp" as="image">
+    <link rel="preload" href="img/profile.webp" as="image">
     
     <!-- Font optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -72,8 +72,8 @@
                     <!-- Profile Image with Glassmorphism -->
                     <div class="glass-card hover-float" style="border-radius: 50%; padding: 2rem; margin-bottom: 2rem;">
                         <picture>
-                            <source srcset="img/optimized/profile.webp" type="image/webp">
-                            <img src="img/optimized/profile.webp" 
+                            <source srcset="img/profile.webp" type="image/webp">
+                            <img src="img/profile.webp" 
                                  alt="Ruben Trijbs - Web Developer & Designer" 
                                  style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover;"
                                  loading="eager">
@@ -235,8 +235,8 @@
                     <div class="interactive-card hover-scale animate-on-scroll project-card" data-category="web">
                         <div class="project-image mb-lg" style="position: relative; overflow: hidden; border-radius: var(--radius-lg);">
                             <picture>
-                                <source data-srcset="img/optimized/Webshop.webp" type="image/webp">
-                                <img data-src="img/optimized/Webshop.webp" 
+                                <source data-srcset="img/Webshop.webp" type="image/webp">
+                                <img data-src="img/Webshop.webp" 
                                      alt="E-commerce Platform" 
                                      loading="lazy"
                                      style="width: 100%; height: 250px; object-fit: cover;">
@@ -268,8 +268,8 @@
                     <div class="interactive-card hover-scale animate-on-scroll project-card" data-category="design">
                         <div class="project-image mb-lg" style="position: relative; overflow: hidden; border-radius: var(--radius-lg);">
                             <picture>
-                                <source data-srcset="img/optimized/trib_design.webp" type="image/webp">
-                                <img data-src="img/optimized/trib_design.webp" 
+                                <source data-srcset="img/trib_design.webp" type="image/webp">
+                                <img data-src="img/trib_design.webp" 
                                      alt="Brand Design Project" 
                                      loading="lazy"
                                      style="width: 100%; height: 250px; object-fit: cover;">
@@ -301,8 +301,10 @@
                     <div class="interactive-card hover-scale animate-on-scroll project-card" data-category="creative">
                         <div class="project-image mb-lg" style="position: relative; overflow: hidden; border-radius: var(--radius-lg);">
                             <picture>
-                                <source data-srcset="img/optimized/popfusion_medium.webp" type="image/webp">
-                                <img data-src="img/optimized/popfusion_medium.webp" 
+                                <source data-srcset="img/popfusion_small.webp 400w, img/popfusion_medium.webp 800w, img/popfusion_large.webp 1200w" 
+                                        sizes="(max-width: 768px) 400px, (max-width: 1200px) 800px, 1200px"
+                                        type="image/webp">
+                                <img data-src="img/popfusion_medium.webp" 
                                      alt="PopFusion Creative Project" 
                                      loading="lazy"
                                      style="width: 100%; height: 250px; object-fit: cover;">
@@ -334,8 +336,8 @@
                     <div class="interactive-card hover-scale animate-on-scroll project-card" data-category="web">
                         <div class="project-image mb-lg" style="position: relative; overflow: hidden; border-radius: var(--radius-lg);">
                             <picture>
-                                <source data-srcset="img/optimized/motivational.webp" type="image/webp">
-                                <img data-src="img/optimized/motivational.webp" 
+                                <source data-srcset="img/motivational.webp" type="image/webp">
+                                <img data-src="img/motivational.webp" 
                                      alt="Motivational Platform" 
                                      loading="lazy"
                                      style="width: 100%; height: 250px; object-fit: cover;">
@@ -478,6 +480,7 @@
 
     <!-- Modern JavaScript -->
     <script src="js/main.js"></script>
+    <script src="js/lazy-loading.js"></script>
     
     <!-- Additional Styles -->
     <style>
