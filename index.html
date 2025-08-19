@@ -3,452 +3,289 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trijbs</title>
-    
-    <!-- Preload critical resources -->
-    <link rel="preload" href="css/styles.css" as="style">
-    <link rel="preload" href="js/main.js" as="script">
-    <link rel="preload" href="img/profile.webp" as="image">
-    
-    <!-- Font optimization -->
+    <title>Ruben's Portfolio | Web Developer & Designer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Stylesheets -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/logo-footer.css">
-    
-    <!-- Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
-    
-    <!-- SEO Meta -->
-    <meta name="description" content="Ruben Trijbs - Modern Web Developer & Designer. Crafting immersive digital experiences with cutting-edge technology and innovative design.">
-    <meta name="keywords" content="web developer, designer, portfolio, modern, glassmorphism, ui/ux">
-    <meta name="author" content="Ruben Trijbs">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="Ruben Trijbs | Modern Portfolio 2024">
-    <meta property="og:description" content="Crafting immersive digital experiences with cutting-edge technology and innovative design.">
-    <meta property="og:type" content="website">
 </head>
-<body class="dark-theme">
-    <!-- Modern Header -->
-    <header class="modern-header">
-        <div class="modern-container">
-            <nav class="flex items-center justify-between w-full">
-                <div class="logo">
-                    <a href="#hero" class="flex items-center gap-md">
-                        <div class="logo-symbol text-glow">R</div>
-                        <span class="logo-text">trijbs</span>
-                    </a>
-                </div>
-                
-                <ul class="nav-menu">
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#skills" class="nav-link">Skills</a></li>
-                    <li><a href="#projects" class="nav-link">Projects</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
+<body class="theme-poster">
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="#hero" class="logo-container">
+                    <span class="logo-text">trijbs</span>
+                </a>
+            </div>
+            <nav class="main-nav" id="primary-nav">
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
-                
-                <div class="flex items-center gap-md">
-                    <button class="theme-toggle btn-modern" aria-label="Toggle theme">
-                        <i data-feather="sun" class="light-icon"></i>
-                        <i data-feather="moon" class="dark-icon"></i>
-                    </button>
-                    <button class="mobile-menu-toggle btn-modern" aria-label="Toggle menu">
-                        <i data-feather="menu"></i>
-                    </button>
-                </div>
             </nav>
+            <button class="mobile-menu-toggle" aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
+                <i data-feather="menu" class="icon-menu"></i>
+                <i data-feather="x" class="icon-close" style="display:none"></i>
+            </button>
         </div>
     </header>
 
     <main>
         <!-- Hero Section -->
-        <section id="hero" class="modern-section" style="min-height: 100vh;">
-            <div class="modern-container">
-                <div class="flex flex-col items-center text-center gap-2xl animate-on-scroll">
-                    <!-- Profile Image with Glassmorphism -->
-                    <div class="glass-card hover-float" style="border-radius: 50%; padding: 2rem; margin-bottom: 2rem;">
-                        <picture>
-                            <source srcset="img/profile.webp" type="image/webp">
-                            <img src="img/profile.webp" 
-                                 alt="Ruben Trijbs - Web Developer & Designer" 
-                                 style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover;"
-                                 loading="eager">
-                        </picture>
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-image">
+                        <div class="profile-image" style="background-image: url('img/profile.jpeg')"></div>
                     </div>
-
-                    <!-- Hero Text -->
-                    <div class="max-w-4xl mx-auto">
-                        <h1 class="typing-animation mb-xl" data-speed="100">
-                            Hi, I'm <span class="text-glow">Ruben</span>
-                        </h1>
-                        <p class="text-center mb-2xl" style="font-size: 1.5rem; line-height: 1.6;">
-                            A <span class="text-secondary-glow">modern web developer</span> and <span class="text-accent-glow">creative designer</span> 
-                            crafting immersive digital experiences with cutting-edge technology and innovative design.
-                        </p>
-                        
-                        <!-- CTA Buttons -->
-                        <div class="flex gap-lg justify-center">
-                            <a href="#projects" class="btn-glow">
-                                <i data-feather="zap"></i>
-                                Explore My Work
-                            </a>
-                            <a href="#contact" class="btn-modern">
-                                <i data-feather="message-circle"></i>
-                                Get In Touch
-                            </a>
-                        </div>
+                    <div class="hero-text">
+                        <h1 class="outline-title">Welcome</h1>
+                        <p class="hero-subtitle">Hi, I'm <span class="highlight">Ruben</span>, a web developer and designer crafting immersive visual experiences and creative projects.</p>
+                        <p>Discover my innovative journey as I push the boundaries of technology to deliver optimized solutions for any space or scale.</p>
+                        <a href="#projects" class="btn btn-primary">Explore My Work</a>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="modern-section">
-            <div class="modern-container">
-                <div class="text-center mb-3xl animate-on-scroll">
-                    <h2 class="mb-xl">About <span class="text-glow">Me</span></h2>
-                    <p class="max-w-4xl mx-auto" style="font-size: 1.25rem;">
-                        I'm passionate about creating digital experiences that not only look stunning but also perform exceptionally. 
-                        My journey spans across multiple domains, from cutting-edge web development to innovative design solutions.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-3 gap-xl mb-3xl">
-                    <div class="glass-card interactive-card text-center animate-on-scroll stagger-animation">
-                        <div class="text-4xl mb-lg text-glow">5+</div>
-                        <p class="text-secondary">Years Experience</p>
-                    </div>
-                    <div class="glass-card interactive-card text-center animate-on-scroll stagger-animation">
-                        <div class="text-4xl mb-lg text-secondary-glow">50+</div>
-                        <p class="text-secondary">Projects Completed</p>
-                    </div>
-                    <div class="glass-card interactive-card text-center animate-on-scroll stagger-animation">
-                        <div class="text-4xl mb-lg text-accent-glow">100%</div>
-                        <p class="text-secondary">Client Satisfaction</p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-xl">
-                    <div class="glass-card animate-on-scroll">
-                        <h3 class="mb-lg text-glow">Philosophy</h3>
-                        <p class="text-secondary">
-                            I believe in the power of design to transform ideas into reality. Every pixel, every interaction, 
-                            and every line of code is crafted with intention to create experiences that resonate with users 
-                            and drive business success.
-                        </p>
-                    </div>
-                    <div class="glass-card animate-on-scroll">
-                        <h3 class="mb-lg text-secondary-glow">Approach</h3>
-                        <p class="text-secondary">
-                            My approach combines technical expertise with creative vision, ensuring that every project 
-                            not only meets but exceeds expectations. I stay at the forefront of technology to deliver 
-                            innovative solutions that stand the test of time.
-                        </p>
-                    </div>
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2 class="outline-title">About Me</h2>
+                <div class="about-content">
+                    <p class="about-highlight">Transforming ideas into digital experiences that captivate, inspire, and perform.</p>
+                    <p>I blend technical expertise with creative vision to craft solutions that stand out in today's digital landscape. My approach combines clean code with bold design, delivering projects that not only look exceptional but function flawlessly.</p>
                 </div>
             </div>
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="modern-section">
-            <div class="modern-container">
-                <div class="text-center mb-3xl animate-on-scroll">
-                    <h2 class="mb-xl">Skills & <span class="text-secondary-glow">Expertise</span></h2>
-                    <p class="max-w-4xl mx-auto" style="font-size: 1.25rem;">
-                        Mastering the latest technologies and design principles to create exceptional digital experiences
-                    </p>
+        <section id="skills" class="skills-section">
+            <div class="container">
+                <h2 class="outline-title">Skills & Capabilities</h2>
+                
+                <div class="skills-container">
+                    <div class="technical-skills">
+                        <h3>Technical Skills</h3>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>HTML</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>CSS</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>JavaScript</span>
+                                <span>60%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>React</span>
+                                <span>55%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 55%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Node.js</span>
+                                <span>50%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 50%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="creative-capabilities">
+                        <h3>Creative Capabilities</h3>
+                        <div class="capabilities-grid">
+                            <div class="capability-item">
+                                <i data-feather="smartphone"></i>
+                                <span>Apps</span>
+                            </div>
+                            <div class="capability-item">
+                                <i data-feather="layers"></i>
+                                <span>Digital Content</span>
+                            </div>
+                            <div class="capability-item">
+                                <i data-feather="shopping-bag"></i>
+                                <span>Webshops</span>
+                            </div>
+                            <div class="capability-item">
+                                <i data-feather="globe"></i>
+                                <span>Websites</span>
+                            </div>
+                            <div class="capability-item">
+                                <i data-feather="scissors"></i>
+                                <span>Clothing Design</span>
+                            </div>
+                            <div class="capability-item">
+                                <i data-feather="pen-tool"></i>
+                                <span>Logo Design</span>
+                            </div>
+                            <div class="capability-item">
+                                <i data-feather="bar-chart-2"></i>
+                                <span>Infographic</span>
+                            </div>
+                            <div class="capability-item">
+                                <i data-feather="file-text"></i>
+                                <span>Flyers</span>
+                            </div>
+                            <div class="capability-item">
+                                <i data-feather="image"></i>
+                                <span>Posters</span>
+                            </div>
+                            <div class="capability-item">
+                                <i data-feather="mail"></i>
+                                <span>Direct Mail</span>
+                            </div>
+                            <div class="capability-item">
+                                <i data-feather="camera"></i>
+                                <span>Photography</span>
+                            </div>
+                            <div class="capability-item">
+                                <i data-feather="trending-up"></i>
+                                <span>Advertising</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="grid grid-cols-3 gap-xl">
-                    <!-- Frontend -->
-                    <div class="glass-card hover-tilt animate-on-scroll">
-                        <div class="glow-border" style="width: 60px; height: 60px; border-radius: 50%; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center;">
-                            <i data-feather="code" style="color: var(--primary-glow);"></i>
+                
+                <div class="github-contributions">
+                    <h3>GitHub Contributions</h3>
+                    <div class="contribution-graph">
+                        <div class="contribution-info">
+                            <p>Contributions in the last year: <span class="highlight">8</span></p>
                         </div>
-                        <h3 class="mb-lg text-glow">Frontend Development</h3>
-                        <ul class="text-secondary" style="list-style: none; padding: 0;">
-                            <li class="mb-sm">• HTML5 & CSS3</li>
-                            <li class="mb-sm">• JavaScript (ES6+)</li>
-                            <li class="mb-sm">• React & Vue.js</li>
-                            <li class="mb-sm">• GSAP & Animations</li>
-                            <li class="mb-sm">• WebGL & Three.js</li>
-                        </ul>
-                    </div>
-
-                    <!-- Backend -->
-                    <div class="glass-card hover-tilt animate-on-scroll">
-                        <div class="glow-border" style="width: 60px; height: 60px; border-radius: 50%; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center;">
-                            <i data-feather="server" style="color: var(--secondary-glow);"></i>
+                        <div class="contribution-calendar">
+                            <img src="http://ghchart.rshah.org/trijbs" alt="trijbs Github chart" />
                         </div>
-                        <h3 class="mb-lg text-secondary-glow">Backend Development</h3>
-                        <ul class="text-secondary" style="list-style: none; padding: 0;">
-                            <li class="mb-sm">• Node.js & Python</li>
-                            <li class="mb-sm">• RESTful APIs</li>
-                            <li class="mb-sm">• Database Design</li>
-                            <li class="mb-sm">• Cloud Services</li>
-                            <li class="mb-sm">• DevOps & CI/CD</li>
-                        </ul>
-                    </div>
-
-                    <!-- Design -->
-                    <div class="glass-card hover-tilt animate-on-scroll">
-                        <div class="glow-border" style="width: 60px; height: 60px; border-radius: 50%; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center;">
-                            <i data-feather="palette" style="color: var(--accent-glow);"></i>
-                        </div>
-                        <h3 class="mb-lg text-accent-glow">Design & UX</h3>
-                        <ul class="text-secondary" style="list-style: none; padding: 0;">
-                            <li class="mb-sm">• UI/UX Design</li>
-                            <li class="mb-sm">• Figma & Adobe Suite</li>
-                            <li class="mb-sm">• User Research</li>
-                            <li class="mb-sm">• Prototyping</li>
-                            <li class="mb-sm">• Brand Identity</li>
-                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="modern-section">
-            <div class="modern-container">
-                <div class="text-center mb-3xl animate-on-scroll">
-                    <h2 class="mb-xl">Featured <span class="text-accent-glow">Projects</span></h2>
-                    <p class="max-w-4xl mx-auto" style="font-size: 1.25rem;">
-                        Showcasing innovative solutions and creative implementations using the latest technologies
-                    </p>
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <h2 class="outline-title">Projects</h2>
+                
+                <div class="project-filters">
+                    <button class="filter-btn" data-filter="web">Web</button>
+                    <button class="filter-btn" data-filter="apps">Apps</button>
+                    <button class="filter-btn active" data-filter="all">All</button>
                 </div>
-
-                <!-- Project Filter -->
-                <div class="flex justify-center gap-md mb-3xl">
-                    <button class="btn-modern filter-btn active" data-filter="all">All Projects</button>
-                    <button class="btn-modern filter-btn" data-filter="web">Web Development</button>
-                    <button class="btn-modern filter-btn" data-filter="design">Design</button>
-                    <button class="btn-modern filter-btn" data-filter="creative">Creative</button>
-                </div>
-
-                <div class="grid grid-cols-2 gap-xl">
-                    <!-- Project 1 -->
-                    <div class="interactive-card hover-scale animate-on-scroll project-card" data-category="web">
-                        <div class="project-image mb-lg" style="position: relative; overflow: hidden; border-radius: var(--radius-lg);">
-                            <picture>
-                                <source data-srcset="img/Webshop.webp" type="image/webp">
-                                <img data-src="img/Webshop.webp" 
-                                     alt="E-commerce Platform" 
-                                     loading="lazy"
-                                     style="width: 100%; height: 250px; object-fit: cover;">
-                            </picture>
-                            <div class="project-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, var(--primary-glow), var(--secondary-glow)); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: center; justify-content: center;">
-                                <div class="flex gap-md">
-                                    <a href="https://trijbs.eu/Webshop/" target="_blank" class="btn-modern" style="background: rgba(255,255,255,0.2);">
-                                        <i data-feather="external-link"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                
+                <div class="projects-grid">
+                    <!-- Web Projects -->
+                    <div class="project-card" data-category="web">
+                        <div class="project-image" style="background-image: url('img/urban_unleashed.png')"></div>
                         <div class="project-content">
-                            <h3 class="mb-md text-glow">E-commerce Platform</h3>
-                            <p class="text-secondary mb-lg">
-                                A modern e-commerce solution with advanced features, real-time inventory management, 
-                                and optimized performance for high-traffic scenarios.
-                            </p>
-                            <div class="flex gap-sm">
-                                <span class="tech-tag">React</span>
-                                <span class="tech-tag">Node.js</span>
-                                <span class="tech-tag">API</span>
-                                <span class="tech-tag">E-commerce</span>
+                            <h3>Urban Unleashed</h3>
+                            <p>A 3D generative art exploration.</p>
+                            <div class="project-tags">
+                                <span class="tag">Next.js</span>
+                                <span class="tag">Three.js</span>
+                                <span class="tag">Web Design</span>
                             </div>
+                            <a href="https://urban-unleashed.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Visit Site</a>
                         </div>
                     </div>
-
-                    <!-- Project 2 -->
-                    <div class="interactive-card hover-scale animate-on-scroll project-card" data-category="design">
-                        <div class="project-image mb-lg" style="position: relative; overflow: hidden; border-radius: var(--radius-lg);">
-                            <picture>
-                                <source data-srcset="img/trib_design.webp" type="image/webp">
-                                <img data-src="img/trib_design.webp" 
-                                     alt="Brand Design Project" 
-                                     loading="lazy"
-                                     style="width: 100%; height: 250px; object-fit: cover;">
-                            </picture>
-                            <div class="project-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, var(--secondary-glow), var(--accent-glow)); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: center; justify-content: center;">
-                                <div class="flex gap-md">
-                                    <button class="btn-modern" style="background: rgba(255,255,255,0.2);">
-                                        <i data-feather="eye"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                    
+                    <div class="project-card" data-category="web apps">
+                        <div class="project-image" style="background-image: url('img/popfusion.png')"></div>
                         <div class="project-content">
-                            <h3 class="mb-md text-secondary-glow">Brand Design System</h3>
-                            <p class="text-secondary mb-lg">
-                                Complete brand identity design including logo, color system, typography, 
-                                and comprehensive brand guidelines for a tech startup.
-                            </p>
-                            <div class="flex gap-sm">
-                                <span class="tech-tag">Illustrator</span>
-                                <span class="tech-tag">Photoshop</span>
-                                <span class="tech-tag">Branding</span>
-                                <span class="tech-tag">Typography</span>
+                            <h3>PopFusion</h3>
+                            <p>A dynamic music visualizer.</p>
+                            <div class="project-tags">
+                                <span class="tag">React</span>
+                                <span class="tag">API</span>
+                                <span class="tag">Music</span>
                             </div>
+                            <a href="https://trijbs.eu/PopFusion2/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Visit Site</a>
                         </div>
                     </div>
-
-                    <!-- Project 3 -->
-                    <div class="interactive-card hover-scale animate-on-scroll project-card" data-category="creative">
-                        <div class="project-image mb-lg" style="position: relative; overflow: hidden; border-radius: var(--radius-lg);">
-                            <picture>
-                                <source data-srcset="img/popfusion_small.webp 400w, img/popfusion_medium.webp 800w, img/popfusion_large.webp 1200w" 
-                                        sizes="(max-width: 768px) 400px, (max-width: 1200px) 800px, 1200px"
-                                        type="image/webp">
-                                <img data-src="img/popfusion_medium.webp" 
-                                     alt="PopFusion Creative Project" 
-                                     loading="lazy"
-                                     style="width: 100%; height: 250px; object-fit: cover;">
-                            </picture>
-                            <div class="project-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, var(--accent-glow), var(--primary-glow)); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: center; justify-content: center;">
-                                <div class="flex gap-md">
-                                    <a href="https://trijbs.eu/PopFusion2/" target="_blank" class="btn-modern" style="background: rgba(255,255,255,0.2);">
-                                        <i data-feather="external-link"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                    
+                    <div class="project-card" data-category="web">
+                        <div class="project-image" style="background-image: url('img/webshop.png')"></div>
                         <div class="project-content">
-                            <h3 class="mb-md text-accent-glow">PopFusion Experience</h3>
-                            <p class="text-secondary mb-lg">
-                                A dynamic music visualizer combining modern design with interactive elements, 
-                                3D animations, and immersive user experiences.
-                            </p>
-                            <div class="flex gap-sm">
-                                <span class="tech-tag">React</span>
-                                <span class="tech-tag">API</span>
-                                <span class="tech-tag">Music</span>
-                                <span class="tech-tag">Interactive</span>
+                            <h3>Webshop</h3>
+                            <p>A simple webshop with a shopping cart.</p>
+                            <div class="project-tags">
+                                <span class="tag">React</span>
+                                <span class="tag">API</span>
+                                <span class="tag">E-commerce</span>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 4 -->
-                    <div class="interactive-card hover-scale animate-on-scroll project-card" data-category="web">
-                        <div class="project-image mb-lg" style="position: relative; overflow: hidden; border-radius: var(--radius-lg);">
-                            <picture>
-                                <source data-srcset="img/motivational.webp" type="image/webp">
-                                <img data-src="img/motivational.webp" 
-                                     alt="Motivational Platform" 
-                                     loading="lazy"
-                                     style="width: 100%; height: 250px; object-fit: cover;">
-                            </picture>
-                            <div class="project-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, var(--warning-glow), var(--success-glow)); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: center; justify-content: center;">
-                                <div class="flex gap-md">
-                                    <button class="btn-modern" style="background: rgba(255,255,255,0.2);">
-                                        <i data-feather="eye"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3 class="mb-md" style="color: var(--warning-glow);">Motivational Series</h3>
-                            <p class="text-secondary mb-lg">
-                                A creative project combining typography and photography to create inspirational messages 
-                                that motivate and inspire personal growth.
-                            </p>
-                            <div class="flex gap-sm">
-                                <span class="tech-tag">Photography</span>
-                                <span class="tech-tag">Typography</span>
-                                <span class="tech-tag">Photoshop</span>
-                                <span class="tech-tag">Creative</span>
-                            </div>
+                            <a href="https://trijbs.eu/Webshop/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Visit Site</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Testimonials Section -->
+
+
         <!-- Contact Section -->
-        <section id="contact" class="modern-section">
-            <div class="modern-container">
-                <div class="text-center mb-3xl animate-on-scroll">
-                    <h2 class="mb-xl">Let's <span class="text-glow">Connect</span></h2>
-                    <p class="max-w-4xl mx-auto" style="font-size: 1.25rem;">
-                        Ready to bring your vision to life? Let's discuss how we can create something amazing together.
-                    </p>
-                </div>
-
-                <div class="grid contact-grid gap-2xl">
-                    <!-- Left Side - Social Media & Contact Info -->
-                    <div class="glass-card animate-on-scroll contact-info">
-                        <h3 class="mb-xl text-secondary-glow">Connect With Me</h3>
-                        <p class="text-secondary mb-2xl">
-                            I'm always interested in hearing about new projects and opportunities. 
-                            Whether you need a website, application, or creative design work, 
-                            I'd love to help bring your vision to life.
-                        </p>
-                        
-                        <!-- Contact Details -->
-                        <div class="flex flex-col gap-lg mb-2xl">
-                            <div class="flex items-center gap-md">
-                                <div class="glow-border" style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <i data-feather="mail" style="color: var(--primary-glow);"></i>
-                                </div>
-                                <div>
-                                    <p class="text-secondary">Email</p>
-                                    <a href="mailto:trjbs@icloud.com" class="text-glow hover:text-secondary-glow">trjbs@icloud.com</a>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-center gap-md">
-                                <div class="glow-border" style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <i data-feather="github" style="color: var(--secondary-glow);"></i>
-                                </div>
-                                <div>
-                                    <p class="text-secondary">GitHub</p>
-                                    <a href="https://github.com/trijbs" target="_blank" class="text-secondary-glow hover:text-accent-glow">trijbs</a>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-center gap-md">
-                                <div class="glow-border" style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <i data-feather="instagram" style="color: var(--accent-glow);"></i>
-                                </div>
-                                <div>
-                                    <p class="text-secondary">Instagram</p>
-                                    <a href="https://instagram.com/trijbs.xyz" target="_blank" class="text-accent-glow hover:text-primary-glow">trijbs</a>
-                                </div>
-                            </div>
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="outline-title">Contact</h2>
+                
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Get In Touch</h3>
+                        <div class="info-item">
+                            <i data-feather="mail"></i>
+                            <a href="mailto:trjbs@icloud.com">trjbs@icloud.com</a>
                         </div>
-
-                    <!-- Right Side - Contact Form -->
-                    <div class="glass-card animate-on-scroll contact-form-container">
-                        <h3 class="mb-xl text-glow">Send a Message</h3>
-                        <form class="contact-form">
-                            <div class="form-group mb-lg">
-                                <input type="text" id="name" name="name" required class="form-input">
-                                <label for="name" class="form-label">Your Name</label>
+                        <div class="info-item">
+                            <i data-feather="github"></i>
+                            <a href="https://github.com/trijbs" target="_blank" rel="noopener noreferrer">trijbs</a>
+                        </div>
+                        <div class="info-item">
+                            <i data-feather="instagram"></i>
+                            <a href="https://instagram.com/trijbs.xyz" target="_blank" rel="noopener noreferrer">trijbs</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <h3>Send Me a Message</h3>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
                             </div>
-                            
-                            <div class="form-group mb-lg">
-                                <input type="email" id="email" name="email" required class="form-input">
-                                <label for="email" class="form-label">Your Email</label>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
                             </div>
-                            
-                            <div class="form-group mb-lg">
-                                <input type="text" id="subject" name="subject" required class="form-input">
-                                <label for="subject" class="form-label">Subject</label>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
                             </div>
-                            
-                            <div class="form-group mb-2xl">
-                                <textarea id="message" name="message" rows="5" required class="form-input"></textarea>
-                                <label for="message" class="form-label">Your Message</label>
-                            </div>
-                            
-                            <button type="submit" class="btn-glow w-full">
-                                <i data-feather="send"></i>
-                                Send Message
-                            </button>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
                         </form>
                     </div>
                 </div>
@@ -456,131 +293,162 @@
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="modern-section" style="padding-top: 4rem; padding-bottom: 2rem;">
-        <div class="modern-container">
-            <div class="glass-card text-center">
-                <div class="flex items-center justify-center gap-md mb-lg">
-                    <div class="logo-symbol text-glow">R</div>
-                    <span class="logo-text">trijbs</span>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-top">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <div class="footer-links">
+                            <a href="#about">About</a>
+                            <a href="#skills">Skills</a>
+                            <a href="#projects">Projects</a>
+                            <a href="#contact">Contact</a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Projects</h4>
+                        <div class="footer-links">
+                            <a href="#projects">Web Development</a>
+                            <a href="#projects">Editorial Design</a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <div class="footer-links">
+                            <a href="mailto:trjbs@icloud.com">Email</a>
+                            <a href="https://github.com/trijbs" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            <a href="https://instagram.com/trijbs.xyz" target="_blank" rel="noopener noreferrer">Instagram</a>
+                            <a href="#contact">Contact Form</a>
+                        </div>
+                    </div>
+                    <div class="footer-column footer-newsletter">
+                        <h4>Stay Updated</h4>
+                        <p>Subscribe to my newsletter for the latest projects and updates.</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your email address" required>
+                            <button type="submit">
+                                <i data-feather="send"></i>
+                            </button>
+                        </form>
+                    </div>
                 </div>
-                <p class="text-secondary mb-lg">
-                    Creating innovative digital experiences through modern technology and creative design.
-                </p>
-                <div class="flex justify-center gap-lg">
-                    <a href="#about" class="nav-link">About</a>
-                    <a href="#skills" class="nav-link">Skills</a>
-                    <a href="#projects" class="nav-link">Projects</a>
-                    <a href="#contact" class="nav-link">Contact</a>
-                </div>
-                <div class="text-center mt-lg" style="border-top: 1px solid var(--glass-border); padding-top: 1rem;">
-                    <p class="text-tertiary">&copy; 2025 Trijbs. All rights reserved.</p>
+                <div class="footer-bottom">
+                    <div class="copyright">
+                        <p>&copy; 2025 Ruben | All Rights Reserved</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="mailto:trjbs@icloud.com" aria-label="Email">
+                            <i data-feather="mail"></i>
+                        </a>
+                        <a href="https://github.com/trijbs" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                            <i data-feather="github"></i>
+                        </a>
+                        <a href="https://instagram.com/trijbs.xyz" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <i data-feather="instagram"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Modern JavaScript -->
+    <!-- Project Modal -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Close modal">
+                <i data-feather="x"></i>
+            </button>
+            <div class="modal-body">
+                <!-- Content will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
     <script src="js/main.js"></script>
-    <script src="js/lazy-loading.js"></script>
-    
-    <!-- Additional Styles -->
-    <style>
-        .tech-tag {
-            background: var(--bg-glass);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-full);
-            padding: 0.25rem 0.75rem;
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            transition: all var(--transition-normal);
+    <script>
+      // Initialize Feather icons and wire up modal behavior
+      document.addEventListener('DOMContentLoaded', () => {
+        feather.replace();
+        // Mobile menu toggle
+        const bodyEl = document.body;
+        const nav = document.getElementById('primary-nav');
+        const menuBtn = document.querySelector('.mobile-menu-toggle');
+        function setMenuState(open) {
+          bodyEl.classList.toggle('nav-open', open);
+          document.body.classList.toggle('nav-open', open);
+          document.body.style.overflow = open ? 'hidden' : '';
+          menuBtn.setAttribute('aria-expanded', String(open));
+          menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+          const iconMenu = menuBtn.querySelector('.icon-menu');
+          const iconClose = menuBtn.querySelector('.icon-close');
+          if (iconMenu && iconClose) {
+            iconMenu.style.display = open ? 'none' : '';
+            iconClose.style.display = open ? '' : 'none';
+          }
         }
-        
-        .tech-tag:hover {
-            background: var(--bg-glass-hover);
-            color: var(--primary-glow);
+        menuBtn.addEventListener('click', () => {
+          setMenuState(!bodyEl.classList.contains('nav-open'));
+        });
+        // Close when clicking a nav link
+        nav.querySelectorAll('a[href^="#"]').forEach(a => {
+          a.addEventListener('click', () => setMenuState(false));
+        });
+        // Reset on resize to desktop
+        window.addEventListener('resize', () => {
+          if (window.innerWidth >= 1024 && bodyEl.classList.contains('nav-open')) {
+            setMenuState(false);
+          }
+        });
+
+        const modal = document.getElementById('projectModal');
+        const modalBody = modal.querySelector('.modal-body');
+        const closeBtn = modal.querySelector('.close-modal');
+
+        function openModalWithContent(html) {
+          modalBody.innerHTML = html;
+          modal.classList.add('open');
+          document.body.style.overflow = 'hidden';
         }
-        
-        .project-card:hover .project-overlay {
-            opacity: 1;
+
+        function closeModal() {
+          modal.classList.remove('open');
+          modalBody.innerHTML = '';
+          document.body.style.overflow = '';
         }
-        
-        .form-group {
-            position: relative;
-        }
-        
-        .form-input {
-            width: 100%;
-            padding: 1rem;
-            background: var(--bg-glass);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-md);
-            color: var(--text-primary);
-            font-family: var(--font-body);
-            transition: all var(--transition-normal);
-        }
-        
-        .form-input:focus {
-            outline: none;
-            border-color: var(--primary-glow);
-            box-shadow: 0 0 0 2px rgba(0, 245, 255, 0.1);
-        }
-        
-        .form-label {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            color: var(--text-secondary);
-            transition: all var(--transition-normal);
-            pointer-events: none;
-        }
-        
-        .form-input:focus + .form-label,
-        .form-input:valid + .form-label {
-            transform: translateY(-150%) scale(0.8);
-            color: var(--primary-glow);
-        }
-        
-        .logo-symbol {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1.25rem;
-            color: var(--bg-primary);
-        }
-        
-        .logo-text {
-            font-family: var(--font-heading);
-            font-weight: 600;
-            font-size: 1.5rem;
-            color: var(--text-primary);
-        }
-        
-        /* Dark/Light theme toggle icons */
-        .theme-toggle i {
-            transition: all var(--transition-normal);
-        }
-        
-        .dark-theme .light-icon {
-            transform: rotate(0deg) scale(1);
-        }
-        
-        .dark-theme .dark-icon {
-            transform: rotate(180deg) scale(0);
-        }
-        
-        .light-theme .light-icon {
-            transform: rotate(180deg) scale(0);
-        }
-        
-        .light-theme .dark-icon {
-            transform: rotate(0deg) scale(1);
-        }
-    </style>
+
+        // Open overlay with SVG from template
+        document.querySelectorAll('.view-project').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const templateId = btn.getAttribute('data-template');
+            if (templateId) {
+              const tpl = document.getElementById(templateId);
+              if (tpl) {
+                openModalWithContent(tpl.innerHTML);
+                return;
+              }
+            }
+            // Fallback: if data-svg is provided to load external SVG
+            const svgUrl = btn.getAttribute('data-svg');
+            if (svgUrl) {
+              fetch(svgUrl)
+                .then(r => r.text())
+                .then(svg => openModalWithContent(svg))
+                .catch(() => openModalWithContent('<p style="padding:2rem">Could not load SVG.</p>'));
+            }
+          });
+        });
+
+        // Close interactions
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+        });
+      });
+    </script>
 </body>
 </html>
