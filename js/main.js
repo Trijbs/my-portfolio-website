@@ -1,5 +1,19 @@
 // Main JavaScript for Ruben's Portfolio Website
 
+// Escape HTML special characters in a string
+function escapeHTML(str) {
+    return str.replace(/[&<>"']/g, function (m) {
+        switch (m) {
+            case '&': return '&amp;';
+            case '<': return '&lt;';
+            case '>': return '&gt;';
+           case '"': return '&quot;';
+           case "'": return '&#39;';
+           default: return m;
+       }
+   });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize Feather icons
     feather.replace();
@@ -121,11 +135,11 @@ document.addEventListener('DOMContentLoaded', function() {
             
             modalBody.innerHTML = `
                 <div class="modal-project-image" style="${projectImage}"></div>
-                <h2>${projectTitle}</h2>
-                <p class="modal-project-desc">${projectDesc}</p>
+                <h2>${escapeHTML(projectTitle)}</h2>
+                <p class="modal-project-desc">${escapeHTML(projectDesc)}</p>
                 <div class="modal-project-tags">${projectTags}</div>
                 <div class="modal-project-content">
-                    <p>This is a detailed description of the ${projectTitle} project. In a real implementation, this would contain comprehensive information about the project, including the challenges faced, solutions implemented, technologies used, and outcomes achieved.</p>
+                    <p>This is a detailed description of the ${escapeHTML(projectTitle)} project. In a real implementation, this would contain comprehensive information about the project, including the challenges faced, solutions implemented, technologies used, and outcomes achieved.</p>
                     <p>The project showcases my skills in design, development, and problem-solving, demonstrating my ability to create effective and visually appealing solutions.</p>
                 </div>
             `;
