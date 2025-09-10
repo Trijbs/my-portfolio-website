@@ -85,7 +85,6 @@
 .theme-poster .btn-secondary:hover { background-color: #111; color: #fff; }
 
 .theme-poster .project-card,
-.theme-poster .testimonial-card,
 .theme-poster .contact-info,
 .theme-poster .contact-form,
 .theme-poster .technical-skills,
@@ -101,7 +100,6 @@
 
 .theme-poster .projects-section,
 .theme-poster .contact-section,
-.theme-poster .testimonials-section,
 .theme-poster .skills-section,
 .theme-poster .about-section { background-color: var(--bg-primary); }
 
@@ -140,7 +138,6 @@
 
 /* Cards: thin radius and subtle border emphasis */
 .theme-poster .project-card,
-.theme-poster .testimonial-card,
 .theme-poster .contact-info,
 .theme-poster .contact-form,
 .theme-poster .technical-skills,
@@ -706,95 +703,6 @@ section {
   border-radius: var(--radius-full);
   font-size: 0.8rem;
   font-weight: 500;
-}
-
-/* ===== Testimonials Section ===== */
-.testimonials-section {
-  background-color: var(--bg-primary);
-}
-
-.testimonials-slider {
-  position: relative;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.testimonial-card {
-  background-color: var(--bg-secondary);
-  border-radius: var(--radius-md);
-  padding: var(--spacing-lg);
-  box-shadow: 0 5px 15px var(--shadow-color);
-  margin-bottom: var(--spacing-lg);
-}
-
-.quote-icon {
-  color: var(--accent-secondary);
-  font-size: 1.5rem;
-  margin-bottom: var(--spacing-md);
-}
-
-blockquote {
-  font-size: 1.2rem;
-  font-style: italic;
-  margin-bottom: var(--spacing-md);
-}
-
-.testimonial-author {
-  text-align: right;
-}
-
-.author-name {
-  font-weight: 600;
-  color: var(--accent-primary);
-}
-
-.author-title {
-  font-size: 0.9rem;
-  color: var(--text-tertiary);
-}
-
-.slider-controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: var(--spacing-md);
-}
-
-.prev-btn,
-.next-btn {
-  background-color: var(--bg-tertiary);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color var(--transition-fast);
-}
-
-.prev-btn:hover,
-.next-btn:hover {
-  background-color: var(--accent-primary);
-  color: white;
-}
-
-.slider-dots {
-  display: flex;
-  gap: var(--spacing-xs);
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: var(--bg-tertiary);
-  cursor: pointer;
-  transition: background-color var(--transition-fast);
-}
-
-.dot.active,
-.dot:hover {
-  background-color: var(--accent-primary);
 }
 
 /* ===== Contact Section ===== */
@@ -1622,88 +1530,6 @@ textarea:focus {
   color: var(--accent-primary);
 }
 
-/* ===== Testimonials Section ===== */
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-xl);
-}
-
-.testimonial-card {
-  background-color: var(--bg-secondary);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-xl);
-  box-shadow: 0 5px 20px var(--shadow-color);
-  position: relative;
-  transition: transform var(--transition-normal);
-}
-
-.testimonial-card:hover {
-  transform: translateY(-5px);
-}
-
-.testimonial-content {
-  margin-bottom: var(--spacing-lg);
-}
-
-.quote-icon {
-  color: var(--accent-primary);
-  font-size: 2rem;
-  margin-bottom: var(--spacing-md);
-}
-
-.testimonial-content p {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: var(--text-primary);
-  font-style: italic;
-}
-
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-md);
-}
-
-.author-avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.author-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.author-info h4 {
-  margin-bottom: var(--spacing-xs);
-  color: var(--text-primary);
-}
-
-.author-info span {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-}
-
-.rating {
-  display: flex;
-  gap: 2px;
-  margin-top: var(--spacing-xs);
-}
-
-.star {
-  width: 16px;
-  height: 16px;
-  color: var(--text-tertiary);
-}
-
-.star.filled {
-  color: #ffd700;
-}
-
 /* ===== Enhanced Contact Section ===== */
 .contact-card,
 .form-card {
@@ -1921,37 +1747,7 @@ textarea:focus {
   gap: var(--spacing-xs);
 }
 
-/* ===== Info Page Styles ===== */
-.info-hero-section {
-  padding-top: 120px;
-  padding-bottom: var(--spacing-xl);
-  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-  position: relative;
-}
-
-.info-hero-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at top right, rgba(0, 200, 255, 0.1), transparent 70%);
-  z-index: var(--z-back);
-}
-
-.info-hero-content {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-/* Social Links Section */
-.social-links-section {
-  padding: var(--spacing-xxl) 0;
-  background-color: var(--bg-primary);
-}
-
+/* ===== Info Page Styles (Using Consistent Design) ===== */
 .social-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -2016,6 +1812,7 @@ textarea:focus {
   font-size: 1.4rem;
   margin-bottom: var(--spacing-xs);
   font-weight: 600;
+  color: var(--text-primary);
 }
 
 .social-content p {
@@ -2036,6 +1833,7 @@ textarea:focus {
   flex-shrink: 0;
   opacity: 0.6;
   transition: all var(--transition-normal);
+  color: var(--text-secondary);
 }
 
 .social-card:hover .social-arrow {
@@ -2089,12 +1887,7 @@ textarea:focus {
   color: white;
 }
 
-/* Quick Actions Section */
-.quick-actions-section {
-  padding: var(--spacing-xxl) 0;
-  background-color: var(--bg-secondary);
-}
-
+/* Quick Actions Grid */
 .quick-actions-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -2117,6 +1910,7 @@ textarea:focus {
   border: none;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 5px 20px var(--shadow-color);
 }
 
 .action-btn i {
@@ -2126,25 +1920,21 @@ textarea:focus {
 .action-btn.primary {
   background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   color: white;
-  box-shadow: 0 8px 25px rgba(0, 200, 255, 0.3);
 }
 
 .action-btn.secondary {
   background: linear-gradient(135deg, var(--accent-tertiary), #2dd4bf);
   color: white;
-  box-shadow: 0 8px 25px rgba(74, 237, 139, 0.3);
 }
 
 .action-btn.tertiary {
   background: linear-gradient(135deg, var(--accent-secondary), #f472b6);
   color: white;
-  box-shadow: 0 8px 25px rgba(210, 142, 250, 0.3);
 }
 
 .action-btn.quaternary {
   background: linear-gradient(135deg, #f59e0b, #f97316);
   color: white;
-  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
 }
 
 .action-btn:hover {
@@ -2167,12 +1957,7 @@ textarea:focus {
   left: 100%;
 }
 
-/* Availability Section */
-.availability-section {
-  padding: var(--spacing-xxl) 0;
-  background-color: var(--bg-primary);
-}
-
+/* Availability Card */
 .availability-card {
   max-width: 800px;
   margin: 0 auto;

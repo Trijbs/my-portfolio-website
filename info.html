@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact & Social - Ruben's Portfolio</title>
+    <title>Connect & Social - Ruben's Portfolio</title>
     <meta name="description" content="Connect with Ruben - Find all my social media profiles, contact information, and ways to get in touch.">
     
     <!-- Fonts -->
@@ -25,9 +25,11 @@
     <header class="header">
         <div class="container">
             <div class="logo">
-                <span class="logo-text">Ruben</span>
+                <a href="index.html">
+                    <span class="logo-text">trijbs</span>
+                </a>
             </div>
-            <nav class="main-nav">
+            <nav class="main-nav" id="primary-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="index.html#about">About</a></li>
@@ -37,37 +39,52 @@
                     <li><a href="info.html" class="active">Info</a></li>
                 </ul>
             </nav>
-            <button class="theme-toggle" aria-label="Toggle theme">
-                <i data-feather="sun" class="light-icon"></i>
-                <i data-feather="moon" class="dark-icon"></i>
-            </button>
-            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
-                <i data-feather="menu"></i>
+            <button class="mobile-menu-toggle" aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
+                <i data-feather="menu" class="icon-menu"></i>
+                <i data-feather="x" class="icon-close" style="display:none"></i>
             </button>
         </div>
     </header>
 
     <!-- Main Content -->
     <main>
-        <!-- Info Hero Section -->
-        <section class="info-hero-section">
+        <!-- Hero Section -->
+        <section class="hero-section">
             <div class="container">
-                <div class="info-hero-content">
-                    <div class="section-header">
-                        <span class="section-tag">Connect With Me</span>
-                        <h1 class="section-title">Let's Stay Connected</h1>
-                        <p class="section-description">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="section-tag">Connect With Me</div>
+                        <h1 class="hero-title">Let's Stay <span class="gradient-text">Connected</span></h1>
+                        <p class="hero-subtitle">
                             Find me across the web and discover more about my work, thoughts, and creative journey. 
                             Choose your preferred platform to connect and stay updated with my latest projects.
                         </p>
+                        <div class="hero-cta">
+                            <a href="#social-links" class="btn btn-primary">
+                                <i data-feather="users"></i>
+                                Explore Platforms
+                            </a>
+                            <a href="index.html#contact" class="btn btn-secondary">
+                                <i data-feather="mail"></i>
+                                Send Message
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Social Links Section -->
-        <section class="social-links-section">
+        <section class="section" id="social-links">
             <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Social Platforms</span>
+                    <h2 class="section-title">Find Me Online</h2>
+                    <p class="section-description">
+                        Connect with me on your favorite platform and stay updated with my latest work and insights.
+                    </p>
+                </div>
+                
                 <div class="social-grid">
                     <!-- GitHub -->
                     <a href="https://github.com/trijbs" target="_blank" class="social-card github" rel="noopener noreferrer">
@@ -85,7 +102,7 @@
                     </a>
 
                     <!-- Instagram -->
-                    <a href="https://instagram.com/trijbs.xyz" target="_blank" class="social-card instagram" rel="noopener noreferrer">
+                    <a href="https://instagram.com/trijbs" target="_blank" class="social-card instagram" rel="noopener noreferrer">
                         <div class="social-icon">
                             <i data-feather="instagram"></i>
                         </div>
@@ -99,15 +116,30 @@
                         </div>
                     </a>
 
+                    <!-- LinkedIn -->
+                    <a href="https://linkedin.com/in/trijbs" target="_blank" class="social-card linkedin" rel="noopener noreferrer">
+                        <div class="social-icon">
+                            <i data-feather="linkedin"></i>
+                        </div>
+                        <div class="social-content">
+                            <h3>LinkedIn</h3>
+                            <p>Professional network, career updates, and industry insights in web development.</p>
+                            <span class="social-handle">Ruben Trijbels</span>
+                        </div>
+                        <div class="social-arrow">
+                            <i data-feather="external-link"></i>
+                        </div>
+                    </a>
+
                     <!-- Email -->
-                    <a href="mailto:rbdegroot@gmail.com" class="social-card email">
+                    <a href="mailto:ruben@trijbs.eu" class="social-card email">
                         <div class="social-icon">
                             <i data-feather="mail"></i>
                         </div>
                         <div class="social-content">
                             <h3>Email</h3>
                             <p>Direct communication for business inquiries, collaborations, and project discussions.</p>
-                            <span class="social-handle">rbdegroot@gmail.com</span>
+                            <span class="social-handle">ruben@trijbs.eu</span>
                         </div>
                         <div class="social-arrow">
                             <i data-feather="copy"></i>
@@ -115,7 +147,7 @@
                     </a>
 
                     <!-- Portfolio Website -->
-                    <a href="https://trijbsworld.nl" target="_blank" class="social-card website" rel="noopener noreferrer">
+                    <a href="https://trijbs.eu" target="_blank" class="social-card website" rel="noopener noreferrer">
                         <div class="social-icon">
                             <i data-feather="globe"></i>
                         </div>
@@ -123,6 +155,21 @@
                             <h3>Portfolio Website</h3>
                             <p>My main portfolio showcasing all projects, skills, and professional experience.</p>
                             <span class="social-handle">trijbs.eu</span>
+                        </div>
+                        <div class="social-arrow">
+                            <i data-feather="external-link"></i>
+                        </div>
+                    </a>
+
+                    <!-- Twitter/X -->
+                    <a href="https://twitter.com/trijbs" target="_blank" class="social-card twitter" rel="noopener noreferrer">
+                        <div class="social-icon">
+                            <i data-feather="twitter"></i>
+                        </div>
+                        <div class="social-content">
+                            <h3>Twitter / X</h3>
+                            <p>Quick updates, tech thoughts, and engaging with the developer community.</p>
+                            <span class="social-handle">@trijbs</span>
                         </div>
                         <div class="social-arrow">
                             <i data-feather="external-link"></i>
@@ -137,10 +184,40 @@
                         <div class="social-content">
                             <h3>Discord</h3>
                             <p>Real-time chat for quick questions, collaboration, and community discussions.</p>
-                            <span class="social-handle">_tribs_</span>
+                            <span class="social-handle">trijbs#1234</span>
                         </div>
                         <div class="social-arrow">
                             <i data-feather="copy"></i>
+                        </div>
+                    </a>
+
+                    <!-- YouTube -->
+                    <a href="https://youtube.com/@trijbs" target="_blank" class="social-card youtube" rel="noopener noreferrer">
+                        <div class="social-icon">
+                            <i data-feather="play"></i>
+                        </div>
+                        <div class="social-content">
+                            <h3>YouTube</h3>
+                            <p>Coding tutorials, project walkthroughs, and creative development processes.</p>
+                            <span class="social-handle">@trijbs</span>
+                        </div>
+                        <div class="social-arrow">
+                            <i data-feather="external-link"></i>
+                        </div>
+                    </a>
+
+                    <!-- Behance -->
+                    <a href="https://behance.net/trijbs" target="_blank" class="social-card behance" rel="noopener noreferrer">
+                        <div class="social-icon">
+                            <i data-feather="layers"></i>
+                        </div>
+                        <div class="social-content">
+                            <h3>Behance</h3>
+                            <p>Creative portfolio showcasing design work, UI/UX projects, and visual concepts.</p>
+                            <span class="social-handle">trijbs</span>
+                        </div>
+                        <div class="social-arrow">
+                            <i data-feather="external-link"></i>
                         </div>
                     </a>
                 </div>
@@ -148,15 +225,22 @@
         </section>
 
         <!-- Quick Actions Section -->
-        <section class="quick-actions-section">
+        <section class="section">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">Quick Actions</h2>
+                    <span class="section-tag">Quick Actions</span>
+                    <h2 class="section-title">Get Things Done Fast</h2>
                     <p class="section-description">
                         Need something specific? Use these quick action buttons for common requests.
                     </p>
                 </div>
                 
+                <div class="quick-actions-grid">
+                    <button class="action-btn primary" onclick="downloadCV()">
+                        <i data-feather="download"></i>
+                        <span>Download CV</span>
+                    </button>
+                    
                     <button class="action-btn secondary" onclick="scheduleCall()">
                         <i data-feather="calendar"></i>
                         <span>Schedule Call</span>
@@ -176,7 +260,7 @@
         </section>
 
         <!-- Availability Status -->
-        <section class="availability-section">
+        <section class="section">
             <div class="container">
                 <div class="availability-card">
                     <div class="availability-status">
@@ -209,12 +293,40 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2024 Ruben trijbs. All rights reserved.</p>
-                <div class="footer-links">
-                    <a href="index.html">Home</a>
-                    <a href="index.html#about">About</a>
-                    <a href="index.html#projects">Projects</a>
-                    <a href="info.html">Connect</a>
+                <div class="footer-main">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <div class="footer-links">
+                            <a href="index.html#about">About</a>
+                            <a href="index.html#skills">Skills</a>
+                            <a href="index.html#projects">Projects</a>
+                            <a href="index.html#contact">Contact</a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <div class="footer-links">
+                            <a href="https://github.com/trijbs" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            <a href="https://linkedin.com/in/trijbs" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                            <a href="https://instagram.com/trijbs" target="_blank" rel="noopener noreferrer">Instagram</a>
+                            <a href="mailto:ruben@trijbs.eu">Email</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; 2024 Ruben Trijbels. All rights reserved.</p>
+                    <div class="footer-social">
+                        <a href="https://github.com/trijbs" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                            <i data-feather="github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/trijbs" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <i data-feather="linkedin"></i>
+                        </a>
+                        <a href="https://instagram.com/trijbs" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <i data-feather="instagram"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -229,7 +341,7 @@
         // Copy Discord username
         function copyDiscord(event) {
             event.preventDefault();
-            const discordUsername = '_tribs_';
+            const discordUsername = 'trijbs#1234';
             
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(discordUsername).then(() => {
@@ -257,6 +369,11 @@
         }
 
         // Quick action functions
+        function downloadCV() {
+            // Replace with actual CV download link
+            window.open('/assets/Ruben_Trijbels_CV.pdf', '_blank');
+        }
+
         function scheduleCall() {
             // Replace with actual scheduling link (Calendly, etc.)
             window.open('https://calendly.com/trijbs', '_blank');
@@ -268,57 +385,6 @@
 
         function sendMessage() {
             window.location.href = 'index.html#contact';
-        }
-
-        // Theme toggle functionality
-        const themeToggle = document.querySelector('.theme-toggle');
-        const body = document.body;
-        
-        if (themeToggle) {
-            themeToggle.addEventListener('click', () => {
-                body.classList.toggle('light-theme');
-                body.classList.toggle('dark-theme');
-                updateThemeIcon();
-            });
-        }
-        
-        function updateThemeIcon() {
-            const isDark = body.classList.contains('dark-theme');
-            const lightIcon = document.querySelector('.light-icon');
-            const darkIcon = document.querySelector('.dark-icon');
-            
-            if (lightIcon && darkIcon) {
-                lightIcon.style.display = isDark ? 'block' : 'none';
-                darkIcon.style.display = isDark ? 'none' : 'block';
-            }
-        }
-        
-        // Initialize theme icon
-        updateThemeIcon();
-
-        // Mobile menu functionality
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const mainNav = document.querySelector('.main-nav');
-        
-        if (mobileMenuToggle && mainNav) {
-            mobileMenuToggle.addEventListener('click', () => {
-                body.classList.toggle('nav-open');
-                
-                const isOpen = body.classList.contains('nav-open');
-                mobileMenuToggle.setAttribute('aria-expanded', isOpen);
-                mobileMenuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
-                body.style.overflow = isOpen ? 'hidden' : '';
-            });
-            
-            // Close menu when clicking on nav links
-            mainNav.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    body.classList.remove('nav-open');
-                    body.style.overflow = '';
-                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
-                    mobileMenuToggle.setAttribute('aria-label', 'Open menu');
-                });
-            });
         }
     </script>
 </body>
