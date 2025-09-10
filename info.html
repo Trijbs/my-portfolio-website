@@ -85,7 +85,7 @@
                     </a>
 
                     <!-- Instagram -->
-                    <a href="https://instagram.com/trijbs" target="_blank" class="social-card instagram" rel="noopener noreferrer">
+                    <a href="https://instagram.com/trijbs.xyz" target="_blank" class="social-card instagram" rel="noopener noreferrer">
                         <div class="social-icon">
                             <i data-feather="instagram"></i>
                         </div>
@@ -115,7 +115,7 @@
                     </a>
 
                     <!-- Portfolio Website -->
-                    <a href="https://trijbs.eu" target="_blank" class="social-card website" rel="noopener noreferrer">
+                    <a href="https://trijbsworld.nl" target="_blank" class="social-card website" rel="noopener noreferrer">
                         <div class="social-icon">
                             <i data-feather="globe"></i>
                         </div>
@@ -137,7 +137,7 @@
                         <div class="social-content">
                             <h3>Discord</h3>
                             <p>Real-time chat for quick questions, collaboration, and community discussions.</p>
-                            <span class="social-handle">trijbs#1234</span>
+                            <span class="social-handle">_tribs_</span>
                         </div>
                         <div class="social-arrow">
                             <i data-feather="copy"></i>
@@ -157,12 +157,6 @@
                     </p>
                 </div>
                 
-                <div class="quick-actions-grid">
-                    <button class="action-btn primary" onclick="downloadCV()">
-                        <i data-feather="download"></i>
-                        <span>Download CV</span>
-                    </button>
-                    
                     <button class="action-btn secondary" onclick="scheduleCall()">
                         <i data-feather="calendar"></i>
                         <span>Schedule Call</span>
@@ -215,7 +209,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2024 Ruben Trijbels. All rights reserved.</p>
+                <p>&copy; 2024 Ruben trijbs. All rights reserved.</p>
                 <div class="footer-links">
                     <a href="index.html">Home</a>
                     <a href="index.html#about">About</a>
@@ -235,7 +229,7 @@
         // Copy Discord username
         function copyDiscord(event) {
             event.preventDefault();
-            const discordUsername = 'trijbs#1234';
+            const discordUsername = '_tribs_';
             
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(discordUsername).then(() => {
@@ -263,11 +257,6 @@
         }
 
         // Quick action functions
-        function downloadCV() {
-            // Replace with actual CV download link
-            window.open('/assets/Ruben_Trijbels_CV.pdf', '_blank');
-        }
-
         function scheduleCall() {
             // Replace with actual scheduling link (Calendly, etc.)
             window.open('https://calendly.com/trijbs', '_blank');
