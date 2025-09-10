@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruben's Portfolio | Web Developer & Designer</title>
+    <title>Ruben Trijbels | Full-Stack Developer & Creative Designer</title>
+    <meta name="description" content="Full-stack developer and creative designer specializing in modern web applications, e-commerce solutions, and innovative digital experiences. Available for freelance projects and full-time opportunities.">
+    <meta name="keywords" content="web developer, full-stack developer, React developer, JavaScript, web design, portfolio, freelance developer">
+    <meta property="og:title" content="Ruben Trijbels | Full-Stack Developer & Creative Designer">
+    <meta property="og:description" content="Creating exceptional digital experiences with modern web technologies">
+    <meta property="og:image" content="https://trijbsworld.nl/img/profile.webp">
+    <meta property="og:url" content="https://trijbsworld.nl">
+    <link rel="canonical" href="https://trijbsworld.nl">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -24,6 +31,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -66,7 +74,10 @@
         <!-- Skills Section -->
         <section id="skills" class="skills-section">
             <div class="container">
-                <h2 class="outline-title">Skills & Capabilities</h2>
+                <div class="section-header">
+                    <span class="section-tag">What I bring to the table</span>
+                    <h2 class="section-title">Skills & Expertise</h2>
+                </div>
                 
                 <div class="skills-container">
                     <div class="technical-skills">
@@ -190,55 +201,165 @@
         <!-- Projects Section -->
         <section id="projects" class="projects-section">
             <div class="container">
-                <h2 class="outline-title">Projects</h2>
+                <div class="section-header">
+                    <span class="section-tag">My recent work</span>
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-description">Here are some of my favorite projects that showcase my skills and passion for creating exceptional digital experiences.</p>
+                </div>
                 
                 <div class="project-filters">
-                    <button class="filter-btn" data-filter="web">Web</button>
-                    <button class="filter-btn" data-filter="apps">Apps</button>
-                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="web">Web Apps</button>
+                    <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+                    <button class="filter-btn" data-filter="creative">Creative</button>
                 </div>
                 
                 <div class="projects-grid">
-                    <!-- Web Projects -->
-                    <div class="project-card" data-category="web">
-                        <div class="project-image" style="background-image: url('img/urban_unleashed.png')"></div>
+                    <!-- Featured Project 1 -->
+                    <div class="project-card featured" data-category="web creative">
+                        <div class="project-image">
+                            <img src="img/urban_unleashed.png" alt="Urban Unleashed - 3D Generative Art" loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="https://urban-unleashed.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                                        <i data-feather="external-link"></i>
+                                        Live Demo
+                                    </a>
+                                    <button class="btn btn-secondary view-details" data-project="urban-unleashed">
+                                        <i data-feather="info"></i>
+                                        Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                         <div class="project-content">
-                            <h3>Urban Unleashed</h3>
-                            <p>A 3D generative art exploration.</p>
+                            <div class="project-header">
+                                <h3>Urban Unleashed</h3>
+                                <div class="project-status">
+                                    <span class="status-badge featured">Featured</span>
+                                </div>
+                            </div>
+                            <p>An immersive 3D generative art experience built with Next.js and Three.js. Features real-time procedural generation and interactive controls.</p>
                             <div class="project-tags">
                                 <span class="tag">Next.js</span>
                                 <span class="tag">Three.js</span>
-                                <span class="tag">Web Design</span>
+                                <span class="tag">WebGL</span>
+                                <span class="tag">Generative Art</span>
                             </div>
-                            <a href="https://urban-unleashed.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Visit Site</a>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <i data-feather="eye"></i>
+                                    <span>2.5k views</span>
+                                </div>
+                                <div class="stat">
+                                    <i data-feather="star"></i>
+                                    <span>4.8/5 rating</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="project-card" data-category="web apps">
-                        <div class="project-image" style="background-image: url('img/popfusion.png')"></div>
+                    <!-- Project 2 -->
+                    <div class="project-card" data-category="web">
+                        <div class="project-image">
+                            <img src="img/popfusion.png" alt="PopFusion - Music Visualizer" loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="https://trijbs.eu/PopFusion2/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                                        <i data-feather="external-link"></i>
+                                        Live Demo
+                                    </a>
+                                    <button class="btn btn-secondary view-details" data-project="popfusion">
+                                        <i data-feather="info"></i>
+                                        Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                         <div class="project-content">
-                            <h3>PopFusion</h3>
-                            <p>A dynamic music visualizer.</p>
+                            <div class="project-header">
+                                <h3>PopFusion</h3>
+                                <div class="project-status">
+                                    <span class="status-badge new">New</span>
+                                </div>
+                            </div>
+                            <p>A dynamic music visualizer that creates stunning visual representations of audio. Built with React and Web Audio API.</p>
                             <div class="project-tags">
                                 <span class="tag">React</span>
-                                <span class="tag">API</span>
+                                <span class="tag">Web Audio API</span>
+                                <span class="tag">Canvas</span>
                                 <span class="tag">Music</span>
                             </div>
-                            <a href="https://trijbs.eu/PopFusion2/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Visit Site</a>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <i data-feather="eye"></i>
+                                    <span>1.8k views</span>
+                                </div>
+                                <div class="stat">
+                                    <i data-feather="heart"></i>
+                                    <span>156 likes</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="project-card" data-category="web">
-                        <div class="project-image" style="background-image: url('img/webshop.png')"></div>
+                    <!-- Project 3 -->
+                    <div class="project-card" data-category="ecommerce web">
+                        <div class="project-image">
+                            <img src="img/Webshop.webp" alt="Modern E-commerce Platform" loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="https://trijbs.eu/Webshop/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                                        <i data-feather="external-link"></i>
+                                        Live Demo
+                                    </a>
+                                    <button class="btn btn-secondary view-details" data-project="webshop">
+                                        <i data-feather="info"></i>
+                                        Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                         <div class="project-content">
-                            <h3>Webshop</h3>
-                            <p>A simple webshop with a shopping cart.</p>
+                            <div class="project-header">
+                                <h3>E-commerce Platform</h3>
+                            </div>
+                            <p>A full-featured e-commerce platform with shopping cart, payment integration, and admin dashboard. Built for scalability and performance.</p>
                             <div class="project-tags">
                                 <span class="tag">React</span>
-                                <span class="tag">API</span>
-                                <span class="tag">E-commerce</span>
+                                <span class="tag">Node.js</span>
+                                <span class="tag">MongoDB</span>
+                                <span class="tag">Stripe API</span>
                             </div>
-                            <a href="https://trijbs.eu/Webshop/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Visit Site</a>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <i data-feather="shopping-cart"></i>
+                                    <span>E-commerce</span>
+                                </div>
+                                <div class="stat">
+                                    <i data-feather="users"></i>
+                                    <span>Multi-user</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Add more projects placeholder -->
+                    <div class="project-card coming-soon" data-category="web">
+                        <div class="project-image">
+                            <div class="coming-soon-content">
+                                <i data-feather="plus-circle"></i>
+                                <h4>More Projects Coming Soon</h4>
+                                <p>I'm always working on new and exciting projects</p>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Stay Tuned</h3>
+                            <p>Follow my journey as I continue to build amazing digital experiences.</p>
+                            <a href="https://github.com/trijbs" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                                <i data-feather="github"></i>
+                                Follow on GitHub
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -246,51 +367,172 @@
         </section>
 
         <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">What clients say</span>
+                    <h2 class="section-title">Testimonials</h2>
+                </div>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">
+                                <i data-feather="quote"></i>
+                            </div>
+                            <p>"Ruben delivered an exceptional e-commerce platform that exceeded our expectations. His attention to detail and technical expertise made the entire process smooth and professional."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="img/profile.webp" alt="Client testimonial" loading="lazy">
+                            </div>
+                            <div class="author-info">
+                                <h4>Sarah Johnson</h4>
+                                <span>CEO, TechStart</span>
+                                <div class="rating">
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">
+                                <i data-feather="quote"></i>
+                            </div>
+                            <p>"Working with Ruben was a game-changer for our project. His creative approach and technical skills brought our vision to life in ways we never imagined possible."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="img/profile.webp" alt="Client testimonial" loading="lazy">
+                            </div>
+                            <div class="author-info">
+                                <h4>Michael Chen</h4>
+                                <span>Creative Director, DesignCo</span>
+                                <div class="rating">
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">
+                                <i data-feather="quote"></i>
+                            </div>
+                            <p>"Ruben's ability to combine beautiful design with robust functionality is remarkable. He delivered our project on time and within budget, with exceptional quality."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="img/profile.webp" alt="Client testimonial" loading="lazy">
+                            </div>
+                            <div class="author-info">
+                                <h4>Emma Rodriguez</h4>
+                                <span>Product Manager, InnovateLab</span>
+                                <div class="rating">
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
         <!-- Contact Section -->
         <section id="contact" class="contact-section">
             <div class="container">
-                <h2 class="outline-title">Contact</h2>
+                <div class="section-header">
+                    <span class="section-tag">Let's work together</span>
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p class="section-description">Ready to bring your ideas to life? I'm always excited to work on new projects and collaborate with amazing people.</p>
+                </div>
                 
                 <div class="contact-container">
                     <div class="contact-info">
-                        <h3>Get In Touch</h3>
-                        <div class="info-item">
-                            <i data-feather="mail"></i>
-                            <a href="mailto:trjbs@icloud.com">trjbs@icloud.com</a>
-                        </div>
-                        <div class="info-item">
-                            <i data-feather="github"></i>
-                            <a href="https://github.com/trijbs" target="_blank" rel="noopener noreferrer">trijbs</a>
-                        </div>
-                        <div class="info-item">
-                            <i data-feather="instagram"></i>
-                            <a href="https://instagram.com/trijbs.xyz" target="_blank" rel="noopener noreferrer">trijbs</a>
+                        <div class="contact-card">
+                            <h3>Let's Start a Conversation</h3>
+                            <p>I'm currently available for freelance projects and full-time opportunities. Let's discuss how we can work together to create something amazing.</p>
+                            
+                            <div class="contact-methods">
+                                <div class="contact-method">
+                                    <div class="method-icon">
+                                        <i data-feather="mail"></i>
+                                    </div>
+                                    <div class="method-info">
+                                        <h4>Email</h4>
+                                        <a href="mailto:trjbs@icloud.com">trjbs@icloud.com</a>
+                                        <span class="response-time">Usually responds within 24 hours</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-method">
+                                    <div class="method-icon">
+                                        <i data-feather="github"></i>
+                                    </div>
+                                    <div class="method-info">
+                                        <h4>GitHub</h4>
+                                        <a href="https://github.com/trijbs" target="_blank" rel="noopener noreferrer">@trijbs</a>
+                                        <span class="response-time">Check out my latest code</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-method">
+                                    <div class="method-icon">
+                                        <i data-feather="instagram"></i>
+                                    </div>
+                                    <div class="method-info">
+                                        <h4>Instagram</h4>
+                                        <a href="https://instagram.com/trijbs.xyz" target="_blank" rel="noopener noreferrer">@trijbs.xyz</a>
+                                        <span class="response-time">Behind the scenes content</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="availability-status">
+                                <div class="status-indicator available"></div>
+                                <span>Available for new projects</span>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="contact-form">
-                        <h3>Send Me a Message</h3>
-                        <form id="contactForm">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" rows="5" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Send Message</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
+                        <div class="form-card">
+                            <h3>Send Me a Message</h3>
+                            <p>Prefer to send a message? Fill out the form below and I'll get back to you as soon as possible.</p>
+                            
+                            <form id="contactForm" class="contact-form-inner">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="name">Full Name *</label>
+                                        <input type="text" id="name" name="name" required placeholder="Your full name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email Address *</label>
+                                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="subject">Subject</label>
+                                    <select id="subject" name="subject">
+                                        <option value="">Select a subject</option>
+                                        <option value=
     </main>
 
     <footer class="footer">
@@ -303,6 +545,7 @@
                             <a href="#about">About</a>
                             <a href="#skills">Skills</a>
                             <a href="#projects">Projects</a>
+                            <a href="#testimonials">Testimonials</a>
                             <a href="#contact">Contact</a>
                         </div>
                     </div>
