@@ -533,8 +533,46 @@
                                     <label for="subject">Subject</label>
                                     <select id="subject" name="subject">
                                         <option value="">Select a subject</option>
-                                        <option value=
-                                    </main>
+                                        <option value="general">General Inquiry</option>
+                                        <option value="project">Project Discussion</option>
+                                        <option value="collaboration">Collaboration</option>
+                                        <option value="freelance">Freelance Work</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="budget">Budget Range (Optional)</label>
+                                    <select id="budget" name="budget">
+                                        <option value="">Select budget range</option>
+                                        <option value="under-1k">Under $1,000</option>
+                                        <option value="1k-5k">$1,000 - $5,000</option>
+                                        <option value="5k-10k">$5,000 - $10,000</option>
+                                        <option value="10k-plus">$10,000+</option>
+                                        <option value="discuss">Let's discuss</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="6" placeholder="Tell me about your project or inquiry..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-full">
+                                <i data-feather="send"></i>
+                                Send Message
+                            </button>
+                            
+                            <p class="form-note">
+                                I'll get back to you within 24 hours. For urgent matters, feel free to reach out via email directly.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer class="footer">
         <div class="container">
