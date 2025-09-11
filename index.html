@@ -749,6 +749,15 @@
             closeLiveDemoModal();
           }
         });
+
+        // Test function for debugging
+        window.testModal = function() {
+          console.log('Testing modal...');
+          openLiveDemoModal('https://example.com', 'Test Demo');
+        };
+
+        // Log that setup is complete
+        console.log('Live demo setup complete. Found', document.querySelectorAll('.live-demo').length, 'buttons');
       });
     </script>
 </body>
