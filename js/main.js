@@ -292,9 +292,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.key === 'Escape' && modal?.classList.contains('open')) {
             closeModal();
         }
-        if (e.key === 'Escape' && liveDemoModal?.classList.contains('open')) {
-            closeLiveDemoModal();
-        }
     });
     
     // Test function for debugging (can be called from browser console)

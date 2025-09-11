@@ -1710,13 +1710,6 @@ textarea:focus {
   z-index: calc(var(--z-modal) + 1); /* Higher than regular modal */
 }
 
-/* Debug: Make modal visible when open */
-.live-demo-modal.open {
-  opacity: 1 !important;
-  visibility: visible !important;
-  background-color: rgba(0, 0, 0, 0.8) !important;
-}
-
 .live-demo-modal .modal-content {
   max-width: 95vw;
   max-height: 95vh;
