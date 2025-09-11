@@ -146,39 +146,8 @@ document.addEventListener('DOMContentLoaded', function() {
         skillObserver.observe(skillsSection);
     }
     
-    // Enhanced contact form handling
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Show loading state
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i data-feather="loader"></i> Sending...';
-            submitBtn.disabled = true;
-            
-            // Simulate form submission (replace with actual form handling)
-            setTimeout(() => {
-                // Show success message
-                showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
-                
-                // Reset form
-                this.reset();
-                
-                // Reset button
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-                
-                // Re-initialize feather icons
-                feather.replace();
-            }, 2000);
-        });
-    }
+    // Contact form is now handled by contact-form.js
+    // Enhanced contact form with real email functionality
     
     // Scroll-triggered animations
     const animateOnScroll = new IntersectionObserver((entries) => {

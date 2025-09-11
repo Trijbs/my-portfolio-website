@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Messages Admin Panel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .admin-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .admin-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .admin-header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: #1a1a1a;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #333;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00ff88;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #00ff88;
+            box-shadow: 0 0 0 2px rgba(0, 255, 136, 0.2);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            background: #333;
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            background: #444;
+        }
+
+        .filter-btn.active {
+            background: #00ff88;
+            color: #000;
+        }
+
+        .messages-container {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .message-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .message-card:hover {
+            border-color: #00ff88;
+            box-shadow: 0 4px 20px rgba(0, 255, 136, 0.1);
+        }
+
+        .message-card.unread {
+            border-left: 4px solid #00ff88;
+        }
+
+        .message-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .message-info h3 {
+            color: #00ff88;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .message-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .message-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .reply-btn {
+            background: #00ff88;
+            color: #000;
+        }
+
+        .reply-btn:hover {
+            background: #00d4ff;
+        }
+
+        .mark-read-btn {
+            background: #333;
+            color: #fff;
+        }
+
+        .mark-read-btn:hover {
+            background: #444;
+        }
+
+        .message-content {
+            padding: 1.5rem;
+        }
+
+        .message-text {
+            background: #0f0f0f;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid #00ff88;
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .status-new {
+            background: #00ff88;
+            color: #000;
+        }
+
+        .status-read {
+            background: #333;
+            color: #fff;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #888;
+        }
+
+        .error {
+            background: #ff4444;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #888;
+        }
+
+        .empty-state h3 {
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .admin-header {
+                padding: 1.5rem;
+            }
+
+            .admin-header h1 {
+                font-size: 2rem;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-box {
+                min-width: auto;
+            }
+
+            .message-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .message-actions {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-header">
+        <h1>📧 Contact Messages</h1>
+        <p>Manage and respond to contact form submissions</p>
+    </div>
+
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalMessages">0</div>
+                <div class="stat-label">Total Messages</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="unreadMessages">0</div>
+                <div class="stat-label">Unread Messages</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="todayMessages">0</div>
+                <div class="stat-label">Today's Messages</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="responseRate">0%</div>
+                <div class="stat-label">Response Rate</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search messages by name, email, or content...">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="new">New</button>
+                <button class="filter-btn" data-filter="read">Read</button>
+            </div>
+        </div>
+
+        <div id="messagesContainer" class="messages-container">
+            <div class="loading">
+                <p>Loading messages...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class ContactAdmin {
+            constructor() {
+                this.messages = [];
+                this.filteredMessages = [];
+                this.currentFilter = 'all';
+                this.searchTerm = '';
+                
+                this.init();
+            }
+
+            async init() {
+                await this.loadMessages();
+                this.setupEventListeners();
+                this.updateStats();
+                this.renderMessages();
+                
+                // Auto-refresh every 30 seconds
+                setInterval(() => this.loadMessages(), 30000);
+            }
+
+            async loadMessages() {
+                try {
+                    const response = await fetch('/api/messages');
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.messages = data.messages;
+                        this.applyFilters();
+                        this.updateStats();
+                        this.renderMessages();
+                    }
+                } catch (error) {
+                    console.error('Error loading messages:', error);
+                    this.showError('Failed to load messages');
+                }
+            }
+
+            setupEventListeners() {
+                // Search functionality
+                document.getElementById('searchInput').addEventListener('input', (e) => {
+                    this.searchTerm = e.target.value.toLowerCase();
+                    this.applyFilters();
+                    this.renderMessages();
+                });
+
+                // Filter buttons
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                        e.target.classList.add('active');
+                        this.currentFilter = e.target.dataset.filter;
+                        this.applyFilters();
+                        this.renderMessages();
+                    });
+                });
+            }
+
+            applyFilters() {
+                this.filteredMessages = this.messages.filter(message => {
+                    // Apply status filter
+                    if (this.currentFilter !== 'all' && message.status !== this.currentFilter) {
+                        return false;
+                    }
+
+                    // Apply search filter
+                    if (this.searchTerm) {
+                        const searchableText = `${message.name} ${message.email} ${message.subject} ${message.message}`.toLowerCase();
+                        return searchableText.includes(this.searchTerm);
+                    }
+
+                    return true;
+                });
+            }
+
+            updateStats() {
+                const total = this.messages.length;
+                const unread = this.messages.filter(m => m.status === 'new').length;
+                const today = this.messages.filter(m => {
+                    const messageDate = new Date(m.timestamp).toDateString();
+                    const todayDate = new Date().toDateString();
+                    return messageDate === todayDate;
+                }).length;
+                const responseRate = total > 0 ? Math.round(((total - unread) / total) * 100) : 0;
+
+                document.getElementById('totalMessages').textContent = total;
+                document.getElementById('unreadMessages').textContent = unread;
+                document.getElementById('todayMessages').textContent = today;
+                document.getElementById('responseRate').textContent = `${responseRate}%`;
+            }
+
+            renderMessages() {
+                const container = document.getElementById('messagesContainer');
+                
+                if (this.filteredMessages.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <h3>No messages found</h3>
+                            <p>No messages match your current filters.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = this.filteredMessages.map(message => `
+                    <div class="message-card ${message.status === 'new' ? 'unread' : ''}" data-id="${message.id}">
+                        <div class="message-header">
+                            <div class="message-info">
+                                <h3>${this.escapeHtml(message.name)}</h3>
+                                <div class="message-meta">
+                                    <span>📧 ${this.escapeHtml(message.email)}</span>
+                                    <span>📅 ${new Date(message.timestamp).toLocaleString()}</span>
+                                    <span>📝 ${this.escapeHtml(message.subject)}</span>
+                                    <span class="status-badge status-${message.status}">${message.status.toUpperCase()}</span>
+                                </div>
+                            </div>
+                            <div class="message-actions">
+                                <button class="action-btn reply-btn" onclick="contactAdmin.replyToMessage('${message.id}', '${message.email}', '${this.escapeHtml(message.subject)}')">
+                                    Reply
+                                </button>
+                                ${message.status === 'new' ? `
+                                    <button class="action-btn mark-read-btn" onclick="contactAdmin.markAsRead('${message.id}')">
+                                        Mark Read
+                                    </button>
+                                ` : ''}
+                            </div>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-text">${this.escapeHtml(message.message)}</div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            async markAsRead(messageId) {
+                try {
+                    const response = await fetch(`/api/messages/${messageId}/read`, {
+                        method: 'PATCH'
+                    });
+                    
+                    if (response.ok) {
+                        await this.loadMessages();
+                        this.showNotification('Message marked as read', 'success');
+                    }
+                } catch (error) {
+                    console.error('Error marking message as read:', error);
+                    this.showError('Failed to mark message as read');
+                }
+            }
+
+            replyToMessage(messageId, email, subject) {
+                const message = this.messages.find(m => m.id === messageId);
+                if (!message) return;
+
+                const replySubject = subject.startsWith('Re:') ? subject : `Re: ${subject}`;
+                const replyBody = `Hi ${message.name},\n\nThank you for your message about "${subject}". \n\n[Your response here]\n\nBest regards,\nRuben Trijbels`;
+                
+                const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(replySubject)}&body=${encodeURIComponent(replyBody)}`;
+                window.open(mailtoLink);
+                
+                // Mark as read when replying
+                this.markAsRead(messageId);
+            }
+
+            showError(message) {
+                const container = document.getElementById('messagesContainer');
+                container.innerHTML = `<div class="error">${message}</div>`;
+            }
+
+            showNotification(message, type = 'info') {
+                // Simple notification - you could enhance this
+                alert(message);
+            }
+
+            escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+        }
+
+        // Initialize the admin panel
+        const contactAdmin = new ContactAdmin();
+    </script>
+</body>
+</html>

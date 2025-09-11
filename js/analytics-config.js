@@ -6,8 +6,8 @@
 window.ANALYTICS_CONFIG = {
     // Server Configuration
     server: {
-        enabled: false, // Set to true if using the Node.js server
-        endpoint: 'http://localhost:3001/api/analytics',
+        enabled: true, // Enable Vercel serverless functions
+        endpoint: '/api/analytics', // Vercel serverless function endpoint
         timeout: 5000
     },
 

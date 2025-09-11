@@ -1,0 +1,30 @@
+{
+  "name": "portfolio-vercel",
+  "version": "1.0.0",
+  "description": "Portfolio website with Vercel serverless functions for contact form and analytics",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Static site ready for deployment'",
+    "start": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "portfolio",
+    "vercel",
+    "serverless",
+    "contact-form",
+    "analytics",
+    "nodejs"
+  ],
+  "author": "Ruben Trijbels",
+  "license": "MIT",
+  "dependencies": {
+    "nodemailer": "^6.9.7"
+  },
+  "devDependencies": {
+    "vercel": "^32.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

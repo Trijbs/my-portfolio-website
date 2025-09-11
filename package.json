@@ -1,18 +1,135 @@
 {
+  "name": "portfolio-vercel",
+  "version": "1.0.0",
+  "description": "Portfolio website with Vercel serverless functions for contact form and analytics",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Static site ready for deployment'",
+    "start": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "portfolio",
+    "vercel",
+    "serverless",
+    "contact-form",
+    "analytics",
+    "nodejs"
+  ],
+  "author": "Ruben Trijbels",
+  "license": "MIT",
+  "dependencies": {
+    "nodemailer": "^6.9.7"
+  },
+  "devDependencies": {
+    "vercel": "^32.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}{
+  "name": "portfolio-vercel",
+  "version": "1.0.0",
+  "description": "Portfolio website with Vercel serverless functions for contact form and analytics",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Static site ready for deployment'",
+    "start": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "portfolio",
+    "vercel",
+    "serverless",
+    "contact-form",
+    "analytics",
+    "nodejs"
+  ],
+  "author": "Ruben Trijbels",
+  "license": "MIT",
+  "dependencies": {
+    "nodemailer": "^6.9.7"
+  },
+  "devDependencies": {
+    "vercel": "^32.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}{
+  "name": "portfolio-vercel",
+  "version": "1.0.0",
+  "description": "Portfolio website with Vercel serverless functions for contact form and analytics",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Static site ready for deployment'",
+    "start": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "portfolio",
+    "vercel",
+    "serverless",
+    "contact-form",
+    "analytics",
+    "nodejs"
+  ],
+  "author": "Ruben Trijbels",
+  "license": "MIT",
+  "dependencies": {
+    "nodemailer": "^6.9.7"
+  },
+  "devDependencies": {
+    "vercel": "^32.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}{
+  "name": "portfolio-vercel",
+  "version": "1.0.0",
+  "description": "Portfolio website with Vercel serverless functions for contact form and analytics",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Static site ready for deployment'",
+    "start": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "portfolio",
+    "vercel",
+    "serverless",
+    "contact-form",
+    "analytics",
+    "nodejs"
+  ],
+  "author": "Ruben Trijbels",
+  "license": "MIT",
+  "dependencies": {
+    "nodemailer": "^6.9.7"
+  },
+  "devDependencies": {
+    "vercel": "^32.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}{
   "name": "portfolio-analytics",
   "version": "1.0.0",
-  "description": "Advanced analytics system for portfolio website",
+  "description": "Advanced analytics for portfolio website",
   "main": "analytics-server.js",
   "scripts": {
     "start": "node analytics-server.js",
     "dev": "nodemon analytics-server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "contact": "node contact-server.js",
+    "contact-dev": "nodemon contact-server.js"
   },
   "keywords": [
     "analytics",
     "tracking",
     "portfolio",
-    "express",
+    "contact-form",
     "nodejs"
   ],
   "author": "Ruben Trijbels",
@@ -20,7 +137,11 @@
   "dependencies": {
     "express": "^4.18.2",
     "cors": "^2.8.5",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "nodemailer": "^6.9.7",
+    "express-rate-limit": "^7.1.5",
+    "helmet": "^7.1.0",
+    "validator": "^13.11.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
@@ -29,3 +150,6 @@
     "node": ">=14.0.0"
   }
 }
+
+
+
