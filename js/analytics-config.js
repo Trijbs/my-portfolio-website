@@ -6,7 +6,7 @@
 window.ANALYTICS_CONFIG = {
     // Server Configuration
     server: {
-        enabled: true, // Set to true if using the Node.js server
+        enabled: false, // Set to true if using the Node.js server
         endpoint: 'http://localhost:3001/api/analytics',
         timeout: 5000
     },
@@ -69,7 +69,7 @@ window.ANALYTICS_CONFIG = {
     // Debug Settings
     debug: {
         enabled: true, // Set to true for console logging
-        verboseLogging: true,
+        verboseLogging: false,
         showEventDetails: true
     }
 };

@@ -14,9 +14,32 @@ class AdvancedAnalytics {
         this.performanceData = {};
         this.deviceInfo = this.getDeviceInfo();
         this.isTracking = true;
-        this.apiEndpoint = '/api/analytics'; // You can change this to your backend endpoint
+        
+        // Auto-configure API endpoint based on environment
+        this.apiEndpoint = this.determineApiEndpoint();
         
         this.init();
+    }
+
+    determineApiEndpoint() {
+        // Check if we're in development (localhost)
+        const isLocalhost = window.location.hostname === 'localhost' || 
+                           window.location.hostname === '127.0.0.1' ||
+                           window.location.hostname === '';
+
+        // Check configuration
+        const config = window.ANALYTICS_CONFIG?.server;
+        
+        if (config?.enabled) {
+            if (isLocalhost) {
+                return config.endpoint; // Use localhost endpoint for development
+            } else {
+                // For production, only use server if explicitly configured
+                return config.endpoint.includes('localhost') ? null : config.endpoint;
+            }
+        }
+        
+        return null; // Default to local-only mode
     }
 
     init() {
@@ -35,6 +58,47 @@ class AdvancedAnalytics {
         this.setupResizeTracking();
         this.setupNetworkTracking();
         this.setupErrorTracking();
+        
+        // Show analytics status
+        this.showAnalyticsStatus();
+    }
+
+    showAnalyticsStatus() {
+        if (window.ANALYTICS_CONFIG?.debug?.enabled) {
+            const status = this.apiEndpoint ? 'Server Mode' : 'Local Mode';
+            const endpoint = this.apiEndpoint || 'localStorage only';
+            
+            console.log(`🎯 Analytics Status: ${status}`);
+            console.log(`📡 Endpoint: ${endpoint}`);
+            console.log(`🔒 Privacy: ${window.privacyManager?.hasUserConsent() ? 'Consent Given' : 'Awaiting Consent'}`);
+            
+            // Optional: Show visual indicator
+            this.createStatusIndicator(status);
+        }
+    }
+
+    createStatusIndicator(status) {
+        if (!window.ANALYTICS_CONFIG?.debug?.showEventDetails) return;
+        
+        const indicator = document.createElement('div');
+        indicator.id = 'analytics-status';
+        indicator.style.cssText = `
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: #111;
+            color: #00ff88;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            z-index: 9999;
+            border: 1px solid #333;
+        `;
+        indicator.textContent = `📊 Analytics: ${status}`;
+        document.body.appendChild(indicator);
+        
+        // Remove after 5 seconds
+        setTimeout(() => indicator.remove(), 5000);
     }
 
     // Session Management
@@ -97,10 +161,17 @@ class AdvancedAnalytics {
         };
 
         this.events.push(event);
+        
+        // Always store locally first
+        this.storeEventLocally(event);
+        
+        // Try to send to server if available
         this.sendEventToServer(event);
         
-        // Store in localStorage as backup
-        this.storeEventLocally(event);
+        // Debug logging
+        if (window.ANALYTICS_CONFIG?.debug?.enabled) {
+            console.log('📊 Analytics Event:', eventType, data);
+        }
     }
 
     trackPageLoad() {
@@ -530,18 +601,25 @@ class AdvancedAnalytics {
     }
 
     sendEventToServer(event) {
-        // Send to your analytics server
-        if (this.apiEndpoint) {
-            fetch(this.apiEndpoint, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(event)
-            }).catch(error => {
-                console.warn('Analytics tracking failed:', error);
-            });
+        // Only send to server if enabled and endpoint is configured
+        if (!this.apiEndpoint || !window.ANALYTICS_CONFIG?.server?.enabled) {
+            return; // Skip server communication
         }
+
+        // Send to your analytics server
+        fetch(this.apiEndpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(event)
+        }).catch(error => {
+            if (window.ANALYTICS_CONFIG?.debug?.enabled) {
+                console.warn('Analytics server not available, using local storage only:', error);
+            }
+            // Gracefully degrade to local-only mode
+            this.apiEndpoint = null;
+        });
     }
 
     // Heartbeat to track session duration
