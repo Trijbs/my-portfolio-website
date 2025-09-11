@@ -1762,8 +1762,8 @@ textarea:focus {
   right: 0;
   width: 100%;
   height: 100%;
-  background: var(--gradient-primary);
-  opacity: 0.1;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  opacity: 0.05;
   z-index: var(--z-back);
 }
 
@@ -1872,47 +1872,47 @@ textarea:focus {
 
 /* Platform-specific colors */
 .social-card.github .social-icon {
-  background: var(--gradient-primary);
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   color: white;
 }
 
 .social-card.instagram .social-icon {
-  background: var(--gradient-secondary);
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-tertiary));
   color: white;
 }
 
 .social-card.linkedin .social-icon {
-  background: var(--gradient-primary);
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   color: white;
 }
 
 .social-card.email .social-icon {
-  background: var(--gradient-primary);
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   color: white;
 }
 
 .social-card.website .social-icon {
-  background: var(--gradient-primary);
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   color: white;
 }
 
 .social-card.twitter .social-icon {
-  background: var(--gradient-secondary);
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-tertiary));
   color: white;
 }
 
 .social-card.discord .social-icon {
-  background: var(--gradient-primary);
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   color: white;
 }
 
 .social-card.youtube .social-icon {
-  background: var(--gradient-secondary);
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-tertiary));
   color: white;
 }
 
 .social-card.behance .social-icon {
-  background: var(--gradient-primary);
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   color: white;
 }
 
@@ -1951,25 +1951,25 @@ textarea:focus {
 }
 
 .action-btn.primary {
-  background: var(--gradient-primary);
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   color: white;
   box-shadow: 0 8px 25px var(--shadow-color);
 }
 
 .action-btn.secondary {
-  background: var(--gradient-secondary);
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-tertiary));
   color: white;
   box-shadow: 0 8px 25px var(--shadow-color);
 }
 
 .action-btn.tertiary {
-  background: var(--gradient-primary);
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   color: white;
   box-shadow: 0 8px 25px var(--shadow-color);
 }
 
 .action-btn.quaternary {
-  background: var(--gradient-secondary);
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-tertiary));
   color: white;
   box-shadow: 0 8px 25px var(--shadow-color);
 }
