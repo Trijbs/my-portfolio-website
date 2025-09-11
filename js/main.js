@@ -297,6 +297,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
+    // Test function for debugging (can be called from browser console)
+    window.testLiveDemoModal = function() {
+        console.log('Testing live demo modal...');
+        openLiveDemoModal('https://example.com', 'Test Demo');
+    };
+    
     // Live Demo Modal functionality
     const liveDemoModal = document.getElementById('liveDemoModal');
     const liveDemoFrame = document.getElementById('liveDemoFrame');
@@ -305,27 +311,63 @@ document.addEventListener('DOMContentLoaded', function() {
     const liveDemoCloseBtn = liveDemoModal?.querySelector('.close-modal');
     const loadingSpinner = liveDemoModal?.querySelector('.loading-spinner');
     
+    console.log('Live demo modal elements:');
+    console.log('liveDemoModal:', liveDemoModal);
+    console.log('liveDemoFrame:', liveDemoFrame);
+    console.log('liveDemoTitle:', liveDemoTitle);
+    console.log('openExternalBtn:', openExternalBtn);
+    console.log('liveDemoCloseBtn:', liveDemoCloseBtn);
+    console.log('loadingSpinner:', loadingSpinner);
+    
     let currentDemoUrl = '';
     
     function openLiveDemoModal(url, title) {
-        if (liveDemoModal && liveDemoFrame && liveDemoTitle) {
-            currentDemoUrl = url;
-            liveDemoTitle.textContent = title;
+        try {
+            console.log('openLiveDemoModal called with:', url, title);
             
-            // Show loading spinner
-            if (loadingSpinner) {
-                loadingSpinner.style.display = 'flex';
+            // Re-query elements in case they weren't available initially
+            const modal = document.getElementById('liveDemoModal');
+            const frame = document.getElementById('liveDemoFrame');
+            const titleEl = document.getElementById('liveDemoTitle');
+            const spinner = modal?.querySelector('.loading-spinner');
+            
+            console.log('Re-queried elements:');
+            console.log('modal:', modal);
+            console.log('frame:', frame);
+            console.log('titleEl:', titleEl);
+            console.log('spinner:', spinner);
+            
+            if (modal && frame && titleEl) {
+                currentDemoUrl = url;
+                titleEl.textContent = title;
+                
+                // Show loading spinner
+                if (spinner) {
+                    spinner.style.display = 'flex';
+                }
+                
+                // Set iframe source
+                frame.src = url;
+                
+                // Show modal
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+                
+                console.log('Modal classes after adding open:', modal.classList.toString());
+                console.log('Modal computed style display:', window.getComputedStyle(modal).display);
+                console.log('Modal computed style opacity:', window.getComputedStyle(modal).opacity);
+                console.log('Modal computed style visibility:', window.getComputedStyle(modal).visibility);
+                console.log('Modal should be open now');
+                
+                // Focus management
+                const closeBtn = modal.querySelector('.close-modal');
+                closeBtn?.focus();
+            } else {
+                console.log('Missing required elements for modal');
+                console.log('Available elements:', {modal, frame, titleEl});
             }
-            
-            // Set iframe source
-            liveDemoFrame.src = url;
-            
-            // Show modal
-            liveDemoModal.classList.add('open');
-            document.body.style.overflow = 'hidden';
-            
-            // Focus management
-            liveDemoCloseBtn?.focus();
+        } catch (error) {
+            console.error('Error in openLiveDemoModal:', error);
         }
     }
     
@@ -344,17 +386,35 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Live demo buttons
-    document.querySelectorAll('.live-demo').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const url = btn.getAttribute('data-url');
-            const title = btn.getAttribute('data-title');
-            
-            if (url && title) {
-                openLiveDemoModal(url, title);
-            }
+    try {
+        console.log('Setting up live demo buttons...');
+        const liveDemoButtons = document.querySelectorAll('.live-demo');
+        console.log('Found', liveDemoButtons.length, 'live demo buttons');
+        
+        liveDemoButtons.forEach((btn, index) => {
+            console.log(`Button ${index}:`, btn);
+            btn.addEventListener('click', (e) => {
+                try {
+                    e.preventDefault();
+                    console.log(`Live demo button ${index} clicked`);
+                    const url = btn.getAttribute('data-url');
+                    const title = btn.getAttribute('data-title');
+                    console.log('URL:', url, 'Title:', title);
+                    
+                    if (url && title) {
+                        console.log('Opening live demo modal');
+                        openLiveDemoModal(url, title);
+                    } else {
+                        console.log('Missing URL or title');
+                    }
+                } catch (error) {
+                    console.error('Error in live demo button click handler:', error);
+                }
+            });
         });
-    });
+    } catch (error) {
+        console.error('Error setting up live demo buttons:', error);
+    }
     
     // Open external button
     if (openExternalBtn) {
