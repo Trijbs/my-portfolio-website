@@ -1747,7 +1747,37 @@ textarea:focus {
   gap: var(--spacing-xs);
 }
 
-/* ===== Info Page Styles (Using Consistent Design) ===== */
+/* ===== Info Page Styles ===== */
+.info-hero-section {
+  padding-top: 120px;
+  padding-bottom: var(--spacing-xl);
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  position: relative;
+}
+
+.info-hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(0, 200, 255, 0.1), transparent 70%);
+  z-index: var(--z-back);
+}
+
+.info-hero-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Social Links Section */
+.social-links-section {
+  padding: var(--spacing-xxl) 0;
+  background-color: var(--bg-primary);
+}
+
 .social-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -1812,7 +1842,6 @@ textarea:focus {
   font-size: 1.4rem;
   margin-bottom: var(--spacing-xs);
   font-weight: 600;
-  color: var(--text-primary);
 }
 
 .social-content p {
@@ -1833,7 +1862,6 @@ textarea:focus {
   flex-shrink: 0;
   opacity: 0.6;
   transition: all var(--transition-normal);
-  color: var(--text-secondary);
 }
 
 .social-card:hover .social-arrow {
@@ -1887,7 +1915,12 @@ textarea:focus {
   color: white;
 }
 
-/* Quick Actions Grid */
+/* Quick Actions Section */
+.quick-actions-section {
+  padding: var(--spacing-xxl) 0;
+  background-color: var(--bg-secondary);
+}
+
 .quick-actions-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -1910,7 +1943,6 @@ textarea:focus {
   border: none;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 5px 20px var(--shadow-color);
 }
 
 .action-btn i {
@@ -1920,21 +1952,25 @@ textarea:focus {
 .action-btn.primary {
   background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   color: white;
+  box-shadow: 0 8px 25px rgba(0, 200, 255, 0.3);
 }
 
 .action-btn.secondary {
   background: linear-gradient(135deg, var(--accent-tertiary), #2dd4bf);
   color: white;
+  box-shadow: 0 8px 25px rgba(74, 237, 139, 0.3);
 }
 
 .action-btn.tertiary {
   background: linear-gradient(135deg, var(--accent-secondary), #f472b6);
   color: white;
+  box-shadow: 0 8px 25px rgba(210, 142, 250, 0.3);
 }
 
 .action-btn.quaternary {
   background: linear-gradient(135deg, #f59e0b, #f97316);
   color: white;
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
 }
 
 .action-btn:hover {
@@ -1957,7 +1993,12 @@ textarea:focus {
   left: 100%;
 }
 
-/* Availability Card */
+/* Availability Section */
+.availability-section {
+  padding: var(--spacing-xxl) 0;
+  background-color: var(--bg-primary);
+}
+
 .availability-card {
   max-width: 800px;
   margin: 0 auto;
@@ -1974,6 +2015,31 @@ textarea:focus {
   margin-bottom: var(--spacing-xl);
   padding-bottom: var(--spacing-lg);
   border-bottom: 1px solid var(--bg-tertiary);
+}
+
+.status-indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-indicator.available {
+  background-color: var(--accent-tertiary);
+  box-shadow: 0 0 0 4px rgba(74, 237, 139, 0.2);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(74, 237, 139, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(74, 237, 139, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(74, 237, 139, 0);
+  }
 }
 
 .status-content h3 {
