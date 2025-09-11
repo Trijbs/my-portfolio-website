@@ -19,14 +19,33 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize Feather icons
     feather.replace();
     
+    // Track page initialization
+    if (window.track) {
+        window.track('page_initialized', {
+            page: document.title,
+            url: window.location.href
+        });
+    }
+    
     // Theme toggle functionality
     const themeToggle = document.querySelector('.theme-toggle');
     const body = document.body;
     
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
+            const oldTheme = body.classList.contains('theme-poster') ? 'poster' : 'light';
             body.classList.toggle('light-theme');
             body.classList.toggle('theme-poster');
+            const newTheme = body.classList.contains('theme-poster') ? 'poster' : 'light';
+            
+            // Track theme change
+            if (window.track) {
+                window.track('theme_changed', {
+                    from: oldTheme,
+                    to: newTheme
+                });
+            }
+            
             updateThemeIcon();
         });
     }
@@ -49,6 +68,24 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
+            
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            // Track navigation click
+            if (window.track) {
+                window.track('navigation_click', {
+                    target: targetId,
+                    linkText: this.textContent.trim()
+                });
+            }
+            
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
                 target.scrollIntoView({
