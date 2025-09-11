@@ -371,7 +371,7 @@ section {
 }
 
 .logo-text {
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  background: linear-gradient(135deg, var(--accent-tertiary), var(--accent-quinary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
