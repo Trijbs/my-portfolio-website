@@ -286,3 +286,91 @@ export default async function handler(req, res) {
         });
     }
 }
+export default async function handler(req, res) {
+    // Set CORS headers
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+
+    // Handle preflight requests
+    if (req.method === 'OPTIONS') {
+        return res.status(200).end();
+    }
+
+    // Only allow POST requests
+    if (req.method !== 'POST') {
+        return res.status(405).json({
+            success: false,
+            message: 'Method not allowed'
+        });
+    }
+
+    try {
+        const { name, email, subject, message } = req.body;
+
+        // Get client IP for rate limiting
+        const clientIP = req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || 'unknown';
+
+        // Check rate limit
+        if (!checkRateLimit(clientIP)) {
+            return res.status(429).json({
+                success: false,
+                message: 'Too many requests. Please try again in 15 minutes.'
+            });
+        }
+
+        // Validate input
+        const errors = validateContactData({ name, email, subject, message });
+        if (errors.length > 0) {
+            return res.status(400).json({
+                success: false,
+                errors,
+                message: 'Please fix the following errors:'
+            });
+        }
+
+        // Check if email credentials are configured
+        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+            console.error('Email credentials not configured');
+            return res.status(500).json({
+                success: false,
+                message: 'Email service not configured. Please contact me directly at rbdegroot@gmail.com'
+            });
+        }
+
+        // Create message data
+        const messageData = {
+            name: name.trim(),
+            email: email.trim().toLowerCase(),
+            subject: subject || 'General Inquiry',
+            message: message.trim(),
+            timestamp: new Date().toISOString(),
+            ip: clientIP
+        };
+
+        // Create email templates
+        const emailTemplates = createEmailTemplate(messageData);
+        const transporter = createTransporter();
+
+        // Send notification email to you
+        await transporter.sendMail(emailTemplates.notification);
+
+        // Send confirmation email to sender
+        await transporter.sendMail(emailTemplates.confirmation);
+
+        console.log(`📧 New contact from ${name} (${email})`);
+
+        return res.status(200).json({
+            success: true,
+            message: 'Message sent successfully! You should receive a confirmation email shortly.'
+        });
+
+    } catch (error) {
+        console.error('Contact form error:', error);
+
+        return res.status(500).json({
+            success: false,
+            message: 'Sorry, there was an error sending your message. Please try again or contact me directly at rbdegroot@gmail.com'
+        });
+    }
+}
