@@ -1,0 +1,36 @@
+{
+  "name": "portfolio-analytics",
+  "version": "1.0.0",
+  "description": "Advanced analytics for portfolio website",
+  "main": "analytics-server.js",
+  "scripts": {
+    "start": "node analytics-server.js",
+    "dev": "nodemon analytics-server.js",
+    "contact": "node contact-server.js",
+    "contact-dev": "nodemon contact-server.js"
+  },
+  "keywords": [
+    "analytics",
+    "tracking",
+    "portfolio",
+    "contact-form",
+    "nodejs"
+  ],
+  "author": "Ruben Trijbels",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "uuid": "^9.0.0",
+    "nodemailer": "^6.9.7",
+    "express-rate-limit": "^7.1.5",
+    "helmet": "^7.1.0",
+    "validator": "^13.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
