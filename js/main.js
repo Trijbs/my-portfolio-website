@@ -355,12 +355,13 @@ function getProjectDetails(projectId) {
         'urban-unleashed': `
             <div class="project-detail">
                 <h2>Urban Unleashed</h2>
-                <p>An immersive 3D generative art experience that pushes the boundaries of web-based creative expression.</p>
+                <p>An immersive 3D generative art experience that pushes the boundaries of web-based creative expression. The homescreen provides an intuitive gateway to explore dynamic 3D environments.</p>
                 <h3>Key Features:</h3>
                 <ul>
+                    <li>Interactive homescreen with smooth navigation</li>
                     <li>Real-time 3D rendering with Three.js</li>
                     <li>Procedural generation algorithms</li>
-                    <li>Interactive user controls</li>
+                    <li>Seamless loading transitions</li>
                     <li>Responsive design for all devices</li>
                 </ul>
                 <h3>Technologies Used:</h3>
