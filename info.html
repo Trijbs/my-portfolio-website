@@ -194,14 +194,14 @@
                         </button>
 
                         <!-- Discord Button -->
-                        <button class="social-button discord" onclick="copyToClipboard('trijbs#1234', 'Discord')" data-platform="Discord">
+                        <button class="social-button discord" onclick="copyToClipboard('_tribs_', 'Discord')" data-platform="Discord">
                             <div class="social-button-header">
                                 <div class="social-button-icon">
                                     <i data-feather="message-circle"></i>
                                 </div>
                                 <div class="social-button-title">
                                     <h3>Discord</h3>
-                                    <span class="social-button-handle">trijbs#1234</span>
+                                    <span class="social-button-handle">_tribs_</span>
                                 </div>
                                 <div class="social-button-action">
                                     <i data-feather="copy"></i>
@@ -237,175 +237,42 @@
                                 </div>
                             </div>
                             <div class="social-button-description">
-                                <p>Professional network, career updates, and business connections in                  <i data-feather="clock"></i>
-                                    <span>24h Response</span>
-                                </span>
-                                <span class="stat-item">
-                                    <i data-feather="shield-check"></i>
-                                    <span>Secure</span>
-                                </span>
-                            </div>
-                        </button>
-
-                        <!-- Portfolio Website Button -->
-                        <button class="social-button website" onclick="openSocialLink('https://trijbsworld.nl')" data-platform="Website">
-                            <div class="social-button-header">
-                                <div class="social-button-icon">
-                                    <i data-feather="globe"></i>
-                                </div>
-                                <div class="social-button-title">
-                                    <h3>Portfolio Website</h3>
-                                    <span class="social-button-handle">trijbsworld.nl</span>
-                                </div>
-                                <div class="social-button-action">
-                                    <i data-feather="external-link"></i>
-                                </div>
-                            </div>
-                            <div class="social-button-description">
-                                <p>My main portfolio showcasing all projects, skills, and professional experience.</p>
+                                <p>Professional network, career updates, and business connections in tech industry.</p>
                             </div>
                             <div class="social-button-stats">
                                 <span class="stat-item">
-                                    <i data-feather="eye"></i>
-                                    <span>5k+ Views</span>
+                                    <i data-feather="briefcase"></i>
+                                    <span>Professional</span>
                                 </span>
                                 <span class="stat-item">
-                                    <i data-feather="zap"></i>
-                                    <span>Fast Load</span>
+                                    <i data-feather="trending-up"></i>
+                                    <span>Growing</span>
                                 </span>
                             </div>
                         </button>
 
-                        <!-- Discord Button -->
-                        <button class="social-button discord" onclick="copyToClipboard('trijbs#1234', 'Discord')" data-platform="Discord">
-                            <div class="social-button-header">
-                                <div class="social-button-icon">
-                                    <i data-feather="message-circle"></i>
-                                </div>
-                                <div class="social-button-title">
-                                    <h3>Discord</h3>
-                                    <span class="social-button-handle">trijbs#1234</span>
-                                </div>
-                                <div class="social-button-action">
-                                    <i data-feather="copy"></i>
-                                </div>
-                            </div>
-                            <div class="social-button-description">
-                                <p>Real-time chat for quick questions, collaboration, and community discussions.</p>
-                            </div>
-                            <div class="social-button-stats">
-                                <span class="stat-item">
-                                    <i data-feather="message-square"></i>
-                                    <span>Active Daily</span>
-                                </span>
-                                <span class="stat-item">
-                                    <i data-feather="users"></i>
-                                    <span>Community</span>
-                                </span>
-                            </div>
-                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                        <!-- LinkedIn Button -->
-                        <button class="social-button linkedin" onclick="openSocialLink('https://linkedin.com/in/trijbs')" data-platform="LinkedIn">
-                            <div class="social-button-header">
-                                <div class="social-button-icon">
-                                    <i data-feather="linkedin"></i>
-                                </div>
-                                <div class="social-button-title">
-                                    <h3>LinkedIn</h3>
-        // Social Button Functions
-        function openSocialLink(url) {
-            window.open(url, '_blank', 'noopener,noreferrer');
-        }
-
-        function copyToClipboard(text, platform) {
-            const button = event.target.closest('.social-button');
-            
-            // Add loading state
-            button.classList.add('loading');ather="external-link"></i>
-                                </div>
-                            </div>
-                navigator.clipboard.writeText(text).then(() => {
-                    showCopySuccess(button, platform, text);
-                }).catch(() => {
-                    fallbackCopy(text, button, platform);s="container">
+        <!-- Quick Actions Section -->
+        <section class="quick-actions-section">
+            <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">Quick Actions</h2>
-                fallbackCopy(text, button, platform);
-            }
-        }
-
-        function fallbackCopy(text, button, platform) {
-            const textArea = document.createElement('textarea');
-            textArea.value = text;
-            textArea.style.position = 'fixed';
-            textArea.style.opacity = '0';
-            document.body.appendChild(textArea);
-            textArea.select();
-            
-            try {
+                    <p class="section-description">Ready to get started? Choose your next step.</p>
+                </div>
+                <div class="quick-actions-grid">
                     <button class="action-btn tertiary" onclick="viewProjects()">
-                showCopySuccess(button, platform, text);
-            } catch (err) {
-                showCopyError(button, platform);
-            }
-            
-            document.body.removeChild(textArea);
-        }
-
-        function showCopySuccess(button, platform, text) {
-            button.classList.remove('loading');
-            button.classList.add('copied');
-            
-            // Update button text temporarily
-            const actionIcon = button.querySelector('.social-button-action i');
-            const originalIcon = actionIcon.getAttribute('data-feather');
-            actionIcon.setAttribute('data-feather', 'check');
-            feather.replace();
-            
-            // Show notification
-            if (window.showNotification) {
-                window.showNotification(`${platform} ${platform === 'Email' ? 'address' : 'username'} copied to clipboard!`, 'success');
-            }
-            
-            // Reset button state after 2 seconds
-            setTimeout(() => {
-                button.classList.remove('copied');
-                actionIcon.setAttribute('data-feather', originalIcon);
-                feather.replace();
-            }, 2000);
-        }
-
-        function showCopyError(button, platform) {
-            button.classList.remove('loading');
-            
-            if (window.showNotification) {
-                window.showNotification(`Failed to copy ${platform}. Please try again.`, 'error');
-            } else {
-                alert(`Failed to copy ${platform}. Please try again.`);
-            }
-        }
-
-        // Enhanced social button interactions
-        document.querySelectorAll('.social-button').forEach(button => {
-            button.addEventListener('mouseenter', () => {
-                const platform = button.getAttribute('data-platform');
-                button.setAttribute('title', `Connect with me on ${platform}`);
-            });
-            
-            button.addEventListener('click', (e) => {
-                // Add click animation
-                button.style.transform = 'scale(0.98)';
-                setTimeout(() => {
-                    button.style.transform = '';
-                }, 150);
-            });
-        });
-
-        // Copy Discord username (legacy function for compatibility)
-        function copyDiscord(event) {
-            event.preventDefault();
-            copyToClipboard('trijbs#1234', 'Discord');       </button>
+                        <i data-feather="folder"></i>
+                        <span>View Projects</span>
+                    </button>
+                    
+                    <button class="action-btn quaternary" onclick="sendMessage()">
+                        <i data-feather="send"></i>
+                        <span>Send Message</span>
+                    </button>
                 </div>
             </div>
         </section>
@@ -461,47 +328,98 @@
         // Initialize Feather icons
         feather.replace();
 
-        // Copy Discord username
-        function copyDiscord(event) {
-            event.preventDefault();
-            const discordUsername = '_tribs_';
+        // Social Button Functions
+        function openSocialLink(url) {
+            window.open(url, '_blank', 'noopener,noreferrer');
+        }
+
+        function copyToClipboard(text, platform) {
+            const button = event.target.closest('.social-button');
+            
+            // Add loading state
+            button.classList.add('loading');
             
             if (navigator.clipboard) {
-                navigator.clipboard.writeText(discordUsername).then(() => {
-                    if (window.showNotification) {
-                        window.showNotification('Discord username copied to clipboard!', 'success');
-                    } else {
-                        alert('Discord username copied: ' + discordUsername);
-                    }
+                navigator.clipboard.writeText(text).then(() => {
+                    showCopySuccess(button, platform, text);
+                }).catch(() => {
+                    fallbackCopy(text, button, platform);
                 });
             } else {
-                // Fallback for older browsers
-                const textArea = document.createElement('textarea');
-                textArea.value = discordUsername;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                
-                if (window.showNotification) {
-                    window.showNotification('Discord username copied to clipboard!', 'success');
-                } else {
-                    alert('Discord username copied: ' + discordUsername);
-                }
+                fallbackCopy(text, button, platform);
             }
         }
 
+        function fallbackCopy(text, button, platform) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.opacity = '0';
+            document.body.appendChild(textArea);
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopySuccess(button, platform, text);
+            } catch (err) {
+                showCopyError(button, platform);
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        function showCopySuccess(button, platform, text) {
+            button.classList.remove('loading');
+            button.classList.add('copied');
+            
+            // Update button text temporarily
+            const actionIcon = button.querySelector('.social-button-action i');
+            const originalIcon = actionIcon.getAttribute('data-feather');
+            actionIcon.setAttribute('data-feather', 'check');
+            feather.replace();
+            
+            // Show notification
+            if (window.showNotification) {
+                window.showNotification(`${platform} ${platform === 'Email' ? 'address' : 'username'} copied to clipboard!`, 'success');
+            }
+            
+            // Reset button state after 2 seconds
+            setTimeout(() => {
+                button.classList.remove('copied');
+                actionIcon.setAttribute('data-feather', originalIcon);
+                feather.replace();
+            }, 2000);
+        }
+
+        function showCopyError(button, platform) {
+            button.classList.remove('loading');
+            
+            if (window.showNotification) {
+                window.showNotification(`Failed to copy ${platform}. Please try again.`, 'error');
+            } else {
+                alert(`Failed to copy ${platform}. Please try again.`);
+            }
+        }
+
+        // Enhanced social button interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.social-button').forEach(button => {
+                button.addEventListener('mouseenter', () => {
+                    const platform = button.getAttribute('data-platform');
+                    button.setAttribute('title', `Connect with me on ${platform}`);
+                });
+                
+                button.addEventListener('click', (e) => {
+                    // Add click animation
+                    button.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        button.style.transform = '';
+                    }, 150);
+                });
+            });
+        });
+
         // Quick action functions
-        function downloadCV() {
-            // Replace with actual CV download link
-            window.open('/assets/Ruben_Trijbels_CV.pdf', '_blank');
-        }
-
-        function scheduleCall() {
-            // Replace with actual scheduling link (Calendly, etc.)
-            window.open('https://calendly.com/trijbs', '_blank');
-        }
-
         function viewProjects() {
             window.location.href = 'index.html#projects';
         }
@@ -516,48 +434,41 @@
         
         if (themeToggle) {
             themeToggle.addEventListener('click', () => {
-                body.classList.toggle('light-theme');
-                body.classList.toggle('theme-poster');
+                if (body.classList.contains('theme-poster')) {
+                    body.classList.remove('theme-poster');
+                    body.classList.add('light-theme');
+                } else {
+                    body.classList.remove('light-theme');
+                    body.classList.add('theme-poster');
+                }
                 updateThemeIcon();
             });
         }
-        
+
         function updateThemeIcon() {
-            const isPoster = body.classList.contains('theme-poster');
             const lightIcon = document.querySelector('.light-icon');
             const darkIcon = document.querySelector('.dark-icon');
             
-            if (lightIcon && darkIcon) {
-                lightIcon.style.display = isPoster ? 'block' : 'none';
-                darkIcon.style.display = isPoster ? 'none' : 'block';
+            if (body.classList.contains('light-theme')) {
+                lightIcon.style.display = 'none';
+                darkIcon.style.display = 'block';
+            } else {
+                lightIcon.style.display = 'block';
+                darkIcon.style.display = 'none';
             }
         }
-        
+
         // Initialize theme icon
         updateThemeIcon();
 
         // Mobile menu functionality
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
         const mainNav = document.querySelector('.main-nav');
-        
-        if (mobileMenuToggle && mainNav) {
+
+        if (mobileMenuToggle) {
             mobileMenuToggle.addEventListener('click', () => {
-                body.classList.toggle('nav-open');
-                
-                const isOpen = body.classList.contains('nav-open');
-                mobileMenuToggle.setAttribute('aria-expanded', isOpen);
-                mobileMenuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
-                body.style.overflow = isOpen ? 'hidden' : '';
-            });
-            
-            // Close menu when clicking on nav links
-            mainNav.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    body.classList.remove('nav-open');
-                    body.style.overflow = '';
-                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
-                    mobileMenuToggle.setAttribute('aria-label', 'Open menu');
-                });
+                mainNav.classList.toggle('active');
+                body.classList.toggle('menu-open');
             });
         }
     </script>
