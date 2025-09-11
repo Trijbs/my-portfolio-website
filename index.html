@@ -225,10 +225,10 @@
                             <img src="img/urban_unleashed_homescreen.png" alt="Urban Unleashed - Interactive Homescreen Interface" loading="lazy">
                             <div class="project-overlay">
                                 <div class="project-actions">
-                                    <a href="https://urban-unleashed.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                                    <button class="btn btn-primary live-demo" data-url="https://urban-unleashed.vercel.app" data-title="Urban Unleashed">shed">shed">shed">
                                         <i data-feather="external-link"></i>
                                         Live Demo
-                                    </a>
+                                    </button>tton>tton>tton>
                                     <button class="btn btn-secondary view-details" data-project="urban-unleashed">
                                         <i data-feather="info"></i>
                                         Details
@@ -269,10 +269,10 @@
                             <img src="img/popfusion.png" alt="PopFusion - Music Visualizer" loading="lazy">
                             <div class="project-overlay">
                                 <div class="project-actions">
-                                    <a href="https://trijbs.eu/PopFusion2/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                                    <button class="btn btn-primary live-demo" data-url="https://trijbs.eu/PopFusion2/" data-title="PopFusion">
                                         <i data-feather="external-link"></i>
                                         Live Demo
-                                    </a>
+                                    </button>tton>tton>
                                     <button class="btn btn-secondary view-details" data-project="popfusion">
                                         <i data-feather="info"></i>
                                         Details
@@ -313,10 +313,10 @@
                             <img src="img/Webshop.webp" alt="Modern E-commerce Platform" loading="lazy">
                             <div class="project-overlay">
                                 <div class="project-actions">
-                                    <a href="https://trijbs.eu/Webshop/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                                    <button class="btn btn-primary live-demo" data-url="https://trijbs.eu/Webshop/" data-title="E-commerce Platform">Platform">
                                         <i data-feather="external-link"></i>
                                         Live Demo
-                                    </a>
+                                    </button>tton>
                                     <button class="btn btn-secondary view-details" data-project="webshop">
                                         <i data-feather="info"></i>
                                         Details
@@ -537,7 +537,30 @@
             </div>
         </div>
     </div>
-
+    <!-- Live Demo Modal -->
+    <div class="modal live-demo-modal" id="liveDemoModal">
+        <div class="modal-content live-demo-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="liveDemoTitle">Live Demo</h3>
+                <div class="modal-actions">
+                    <button class="btn btn-outline open-external" id="openExternal" title="Open in new tab">
+                        <i data-feather="external-link"></i>
+                        Open External
+                    </button>
+                    <button class="close-modal" aria-label="Close modal">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body iframe-container">
+                <iframe id="liveDemoFrame" src="" frameborder="0" allowfullscreen></iframe>
+                <div class="loading-spinner">
+                    <div class="spinner"></div>
+                    <p>Loading demo...</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="js/main.js"></script>
     <script>
       // Initialize Feather icons and wire up modal behavior

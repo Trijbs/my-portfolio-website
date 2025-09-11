@@ -292,7 +292,111 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.key === 'Escape' && modal?.classList.contains('open')) {
             closeModal();
         }
+        if (e.key === 'Escape' && liveDemoModal?.classList.contains('open')) {
+            closeLiveDemoModal();
+        }
     });
+    
+    // Live Demo Modal functionality
+    const liveDemoModal = document.getElementById('liveDemoModal');
+    const liveDemoFrame = document.getElementById('liveDemoFrame');
+    const liveDemoTitle = document.getElementById('liveDemoTitle');
+    const openExternalBtn = document.getElementById('openExternal');
+    const liveDemoCloseBtn = liveDemoModal?.querySelector('.close-modal');
+    const loadingSpinner = liveDemoModal?.querySelector('.loading-spinner');
+    
+    let currentDemoUrl = '';
+    
+    function openLiveDemoModal(url, title) {
+        if (liveDemoModal && liveDemoFrame && liveDemoTitle) {
+            currentDemoUrl = url;
+            liveDemoTitle.textContent = title;
+            
+            // Show loading spinner
+            if (loadingSpinner) {
+                loadingSpinner.style.display = 'flex';
+            }
+            
+            // Set iframe source
+            liveDemoFrame.src = url;
+            
+            // Show modal
+            liveDemoModal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            
+            // Focus management
+            liveDemoCloseBtn?.focus();
+        }
+    }
+    
+    function closeLiveDemoModal() {
+        if (liveDemoModal && liveDemoFrame) {
+            liveDemoModal.classList.remove('open');
+            liveDemoFrame.src = '';
+            currentDemoUrl = '';
+            document.body.style.overflow = '';
+            
+            // Hide loading spinner
+            if (loadingSpinner) {
+                loadingSpinner.style.display = 'none';
+            }
+        }
+    }
+    
+    // Live demo buttons
+    document.querySelectorAll('.live-demo').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const url = btn.getAttribute('data-url');
+            const title = btn.getAttribute('data-title');
+            
+            if (url && title) {
+                openLiveDemoModal(url, title);
+            }
+        });
+    });
+    
+    // Open external button
+    if (openExternalBtn) {
+        openExternalBtn.addEventListener('click', () => {
+            if (currentDemoUrl) {
+                window.open(currentDemoUrl, '_blank', 'noopener,noreferrer');
+            }
+        });
+    }
+    
+    // Live demo modal close events
+    if (liveDemoCloseBtn) {
+        liveDemoCloseBtn.addEventListener('click', closeLiveDemoModal);
+    }
+    
+    if (liveDemoModal) {
+        liveDemoModal.addEventListener('click', (e) => {
+            if (e.target === liveDemoModal) closeLiveDemoModal();
+        });
+    }
+    
+    // Hide loading spinner when iframe loads
+    if (liveDemoFrame) {
+        liveDemoFrame.addEventListener('load', () => {
+            if (loadingSpinner) {
+                loadingSpinner.style.display = 'none';
+            }
+        });
+        
+        // Handle iframe loading errors
+        liveDemoFrame.addEventListener('error', () => {
+            if (loadingSpinner) {
+                loadingSpinner.innerHTML = `
+                    <div class="error-icon" style="font-size: 2rem; color: var(--accent-secondary);">⚠️</div>
+                    <p>Failed to load demo</p>
+                    <button class="btn btn-primary" onclick="window.open('${currentDemoUrl}', '_blank')">
+                        Open in New Tab
+                    </button>
+                `;
+            }
+        });
+    }
     
     // Notification system
     function showNotification(message, type = 'info') {

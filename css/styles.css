@@ -1705,6 +1705,133 @@ textarea:focus {
   height: auto;
 }
 
+/* ===== Live Demo Modal ===== */
+.live-demo-modal .modal-content {
+  max-width: 95vw;
+  max-height: 95vh;
+  width: 1400px;
+  height: 900px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.live-demo-modal .modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: 1px solid var(--bg-tertiary);
+  background-color: var(--bg-secondary);
+  position: relative;
+  z-index: 2;
+}
+
+.live-demo-modal .modal-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.live-demo-modal .modal-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.live-demo-modal .close-modal {
+  position: static;
+  margin: 0;
+}
+
+.live-demo-modal .iframe-container {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 60px); /* Subtract header height */
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--bg-primary);
+}
+
+.live-demo-modal iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  background-color: white;
+}
+
+.loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  color: var(--text-secondary);
+  z-index: 1;
+}
+
+.loading-spinner p {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--bg-tertiary);
+  border-top: 3px solid var(--accent-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.live-demo-modal .open-external {
+  font-size: 0.875rem;
+  padding: var(--spacing-sm) var(--spacing-md);
+  transition: all var(--transition-fast);
+}
+
+.live-demo-modal .open-external:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Responsive adjustments for live demo modal */
+@media (max-width: 768px) {
+  .live-demo-modal .modal-content {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+  
+  .live-demo-modal .modal-header {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+  
+  .live-demo-modal .modal-title {
+    font-size: 1.1rem;
+  }
+  
+  .live-demo-modal .iframe-container {
+    height: calc(100% - 50px);
+  }
+  
+  .live-demo-modal .open-external {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.8rem;
+  }
+}
+
 /* ===== Social Media Animations ===== */
 @keyframes socialGlow {
   0%, 100% { box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3); }
