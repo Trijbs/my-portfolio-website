@@ -1,4 +1,6 @@
 {
+  "buildCommand": "echo 'Static site ready for deployment'",
+  "outputDirectory": ".",
   "functions": {
     "api/contact.js": {
       "maxDuration": 30
