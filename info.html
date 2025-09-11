@@ -75,106 +75,337 @@
                         <h2>Connect & Collaborate</h2>
                         <p>Find me across different platforms and let's create something amazing together.</p>
                     </div>
-                    <div class="social-grid">
-                    <!-- GitHub -->
-                    <a href="https://github.com/trijbs" target="_blank" class="social-card github" rel="noopener noreferrer">
-                        <div class="social-icon">
-                            <i data-feather="github"></i>
-                        </div>
-                        <div class="social-content">
-                            <h3>GitHub</h3>
-                            <p>Explore my code repositories, open source contributions, and development projects.</p>
-                            <span class="social-handle">@trijbs</span>
-                        </div>
-                        <div class="social-arrow">
-                            <i data-feather="external-link"></i>
-                        </div>
-                    </a>
+                    <div class="social-buttons-grid">
+                        
+                        <!-- GitHub Button -->
+                        <button class="social-button github" onclick="openSocialLink('https://github.com/trijbs')" data-platform="GitHub">
+                            <div class="social-button-header">
+                                <div class="social-button-icon">
+                                    <i data-feather="github"></i>
+                                </div>
+                                <div class="social-button-title">
+                                    <h3>GitHub</h3>
+                                    <span class="social-button-handle">@trijbs</span>
+                                </div>
+                                <div class="social-button-action">
+                                    <i data-feather="external-link"></i>
+                                </div>
+                            </div>
+                            <div class="social-button-description">
+                                <p>Explore my code repositories, open source contributions, and development projects.</p>
+                            </div>
+                            <div class="social-button-stats">
+                                <span class="stat-item">
+                                    <i data-feather="star"></i>
+                                    <span>50+ Stars</span>
+                                </span>
+                                <span class="stat-item">
+                                    <i data-feather="git-branch"></i>
+                                    <span>25+ Repos</span>
+                                </span>
+                            </div>
+                        </button>
 
-                    <!-- Instagram -->
-                    <a href="https://instagram.com/trijbs" target="_blank" class="social-card instagram" rel="noopener noreferrer">
-                        <div class="social-icon">
-                            <i data-feather="instagram"></i>
-                        </div>
-                        <div class="social-content">
-                            <h3>Instagram</h3>
-                            <p>Behind-the-scenes content, creative process, and personal moments from my journey.</p>
-                            <span class="social-handle">@trijbs</span>
-                        </div>
-                        <div class="social-arrow">
-                            <i data-feather="external-link"></i>
-                        </div>
-                    </a>
+                        <!-- Instagram Button -->
+                        <button class="social-button instagram" onclick="openSocialLink('https://instagram.com/trijbs')" data-platform="Instagram">
+                            <div class="social-button-header">
+                                <div class="social-button-icon">
+                                    <i data-feather="instagram"></i>
+                                </div>
+                                <div class="social-button-title">
+                                    <h3>Instagram</h3>
+                                    <span class="social-button-handle">@trijbs</span>
+                                </div>
+                                <div class="social-button-action">
+                                    <i data-feather="external-link"></i>
+                                </div>
+                            </div>
+                            <div class="social-button-description">
+                                <p>Behind-the-scenes content, creative process, and personal moments from my journey.</p>
+                            </div>
+                            <div class="social-button-stats">
+                                <span class="stat-item">
+                                    <i data-feather="heart"></i>
+                                    <span>1.2k Likes</span>
+                                </span>
+                                <span class="stat-item">
+                                    <i data-feather="users"></i>
+                                    <span>500+ Followers</span>
+                                </span>
+                            </div>
+                        </button>
 
-                    <!-- Email -->
-                    <a href="mailto:rbdegroot@gmail.com" class="social-card email">
-                        <div class="social-icon">
-                            <i data-feather="mail"></i>
-                        </div>
-                        <div class="social-content">
-                            <h3>Email</h3>
-                            <p>Direct communication for business inquiries, collaborations, and project discussions.</p>
-                            <span class="social-handle">rbdegroot@gmail.com</span>
-                        </div>
-                        <div class="social-arrow">
-                            <i data-feather="copy"></i>
-                        </div>
-                    </a>
+                        <!-- Email Button -->
+                        <button class="social-button email" onclick="copyToClipboard('rbdegroot@gmail.com', 'Email')" data-platform="Email">
+                            <div class="social-button-header">
+                                <div class="social-button-icon">
+                                    <i data-feather="mail"></i>
+                                </div>
+                                <div class="social-button-title">
+                                    <h3>Email</h3>
+                                    <span class="social-button-handle">rbdegroot@gmail.com</span>
+                                </div>
+                                <div class="social-button-action">
+                                    <i data-feather="copy"></i>
+                                </div>
+                            </div>
+                            <div class="social-button-description">
+                                <p>Direct communication for business inquiries, collaborations, and project discussions.</p>
+                            </div>
+                            <div class="social-button-stats">
+                                <span class="stat-item">
+                                    <i data-feather="clock"></i>
+                                    <span>24h Response</span>
+                                </span>
+                                <span class="stat-item">
+                                    <i data-feather="shield-check"></i>
+                                    <span>Secure</span>
+                                </span>
+                            </div>
+                        </button>
 
-                    <!-- Portfolio Website -->
-                    <a href="https://trijbsworld.nl" target="_blank" class="social-card website" rel="noopener noreferrer">
-                        <div class="social-icon">
-                            <i data-feather="globe"></i>
-                        </div>
-                        <div class="social-content">
-                            <h3>Portfolio Website</h3>
-                            <p>My main portfolio showcasing all projects, skills, and professional experience.</p>
-                            <span class="social-handle">trijbs.eu</span>
-                        </div>
-                        <div class="social-arrow">
-                            <i data-feather="external-link"></i>
-                        </div>
-                    </a>
+                        <!-- Portfolio Website Button -->
+                        <button class="social-button website" onclick="openSocialLink('https://trijbsworld.nl')" data-platform="Website">
+                            <div class="social-button-header">
+                                <div class="social-button-icon">
+                                    <i data-feather="globe"></i>
+                                </div>
+                                <div class="social-button-title">
+                                    <h3>Portfolio Website</h3>
+                                    <span class="social-button-handle">trijbsworld.nl</span>
+                                </div>
+                                <div class="social-button-action">
+                                    <i data-feather="external-link"></i>
+                                </div>
+                            </div>
+                            <div class="social-button-description">
+                                <p>My main portfolio showcasing all projects, skills, and professional experience.</p>
+                            </div>
+                            <div class="social-button-stats">
+                                <span class="stat-item">
+                                    <i data-feather="eye"></i>
+                                    <span>5k+ Views</span>
+                                </span>
+                                <span class="stat-item">
+                                    <i data-feather="zap"></i>
+                                    <span>Fast Load</span>
+                                </span>
+                            </div>
+                        </button>
 
-                    <!-- Discord -->
-                    <a href="#" class="social-card discord" onclick="copyDiscord(event)">
-                        <div class="social-icon">
-                            <i data-feather="message-circle"></i>
-                        </div>
-                        <div class="social-content">
-                            <h3>Discord</h3>
-                            <p>Real-time chat for quick questions, collaboration, and community discussions.</p>
-                            <span class="social-handle">trijbs#1234</span>
-                        </div>
-                        <div class="social-arrow">
-                            <i data-feather="copy"></i>
-                        </div>
-                    </a>
+                        <!-- Discord Button -->
+                        <button class="social-button discord" onclick="copyToClipboard('trijbs#1234', 'Discord')" data-platform="Discord">
+                            <div class="social-button-header">
+                                <div class="social-button-icon">
+                                    <i data-feather="message-circle"></i>
+                                </div>
+                                <div class="social-button-title">
+                                    <h3>Discord</h3>
+                                    <span class="social-button-handle">trijbs#1234</span>
+                                </div>
+                                <div class="social-button-action">
+                                    <i data-feather="copy"></i>
+                                </div>
+                            </div>
+                            <div class="social-button-description">
+                                <p>Real-time chat for quick questions, collaboration, and community discussions.</p>
+                            </div>
+                            <div class="social-button-stats">
+                                <span class="stat-item">
+                                    <i data-feather="message-square"></i>
+                                    <span>Active Daily</span>
+                                </span>
+                                <span class="stat-item">
+                                    <i data-feather="users"></i>
+                                    <span>Community</span>
+                                </span>
+                            </div>
+                        </button>
 
-                    </div>
-                </div>
-            </div>
-        </section>
+                        <!-- LinkedIn Button -->
+                        <button class="social-button linkedin" onclick="openSocialLink('https://linkedin.com/in/trijbs')" data-platform="LinkedIn">
+                            <div class="social-button-header">
+                                <div class="social-button-icon">
+                                    <i data-feather="linkedin"></i>
+                                </div>
+                                <div class="social-button-title">
+                                    <h3>LinkedIn</h3>
+                                    <span class="social-button-handle">@trijbs</span>
+                                </div>
+                                <div class="social-button-action">
+                                    <i data-feather="external-link"></i>
+                                </div>
+                            </div>
+                            <div class="social-button-description">
+                                <p>Professional network, career updates, and business connections in                  <i data-feather="clock"></i>
+                                    <span>24h Response</span>
+                                </span>
+                                <span class="stat-item">
+                                    <i data-feather="shield-check"></i>
+                                    <span>Secure</span>
+                                </span>
+                            </div>
+                        </button>
 
-        <!-- Quick Actions Section -->
-        <section class="quick-actions-section">
-            <div class="container">
+                        <!-- Portfolio Website Button -->
+                        <button class="social-button website" onclick="openSocialLink('https://trijbsworld.nl')" data-platform="Website">
+                            <div class="social-button-header">
+                                <div class="social-button-icon">
+                                    <i data-feather="globe"></i>
+                                </div>
+                                <div class="social-button-title">
+                                    <h3>Portfolio Website</h3>
+                                    <span class="social-button-handle">trijbsworld.nl</span>
+                                </div>
+                                <div class="social-button-action">
+                                    <i data-feather="external-link"></i>
+                                </div>
+                            </div>
+                            <div class="social-button-description">
+                                <p>My main portfolio showcasing all projects, skills, and professional experience.</p>
+                            </div>
+                            <div class="social-button-stats">
+                                <span class="stat-item">
+                                    <i data-feather="eye"></i>
+                                    <span>5k+ Views</span>
+                                </span>
+                                <span class="stat-item">
+                                    <i data-feather="zap"></i>
+                                    <span>Fast Load</span>
+                                </span>
+                            </div>
+                        </button>
+
+                        <!-- Discord Button -->
+                        <button class="social-button discord" onclick="copyToClipboard('trijbs#1234', 'Discord')" data-platform="Discord">
+                            <div class="social-button-header">
+                                <div class="social-button-icon">
+                                    <i data-feather="message-circle"></i>
+                                </div>
+                                <div class="social-button-title">
+                                    <h3>Discord</h3>
+                                    <span class="social-button-handle">trijbs#1234</span>
+                                </div>
+                                <div class="social-button-action">
+                                    <i data-feather="copy"></i>
+                                </div>
+                            </div>
+                            <div class="social-button-description">
+                                <p>Real-time chat for quick questions, collaboration, and community discussions.</p>
+                            </div>
+                            <div class="social-button-stats">
+                                <span class="stat-item">
+                                    <i data-feather="message-square"></i>
+                                    <span>Active Daily</span>
+                                </span>
+                                <span class="stat-item">
+                                    <i data-feather="users"></i>
+                                    <span>Community</span>
+                                </span>
+                            </div>
+                        </button>
+
+                        <!-- LinkedIn Button -->
+                        <button class="social-button linkedin" onclick="openSocialLink('https://linkedin.com/in/trijbs')" data-platform="LinkedIn">
+                            <div class="social-button-header">
+                                <div class="social-button-icon">
+                                    <i data-feather="linkedin"></i>
+                                </div>
+                                <div class="social-button-title">
+                                    <h3>LinkedIn</h3>
+        // Social Button Functions
+        function openSocialLink(url) {
+            window.open(url, '_blank', 'noopener,noreferrer');
+        }
+
+        function copyToClipboard(text, platform) {
+            const button = event.target.closest('.social-button');
+            
+            // Add loading state
+            button.classList.add('loading');ather="external-link"></i>
+                                </div>
+                            </div>
+                navigator.clipboard.writeText(text).then(() => {
+                    showCopySuccess(button, platform, text);
+                }).catch(() => {
+                    fallbackCopy(text, button, platform);s="container">
                 <div class="section-header">
                     <h2 class="section-title">Quick Actions</h2>
-                    <p class="section-description">
-                        Need something specific? Use these quick action buttons for common requests.
-                    </p>
-                </div>
+                fallbackCopy(text, button, platform);
+            }
+        }
 
+        function fallbackCopy(text, button, platform) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.opacity = '0';
+            document.body.appendChild(textArea);
+            textArea.select();
+            
+            try {
                     <button class="action-btn tertiary" onclick="viewProjects()">
-                        <i data-feather="folder"></i>
-                        <span>View Projects</span>
-                    </button>
-                    
-                    <button class="action-btn quaternary" onclick="sendMessage()">
-                        <i data-feather="send"></i>
-                        <span>Send Message</span>
-                    </button>
+                showCopySuccess(button, platform, text);
+            } catch (err) {
+                showCopyError(button, platform);
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        function showCopySuccess(button, platform, text) {
+            button.classList.remove('loading');
+            button.classList.add('copied');
+            
+            // Update button text temporarily
+            const actionIcon = button.querySelector('.social-button-action i');
+            const originalIcon = actionIcon.getAttribute('data-feather');
+            actionIcon.setAttribute('data-feather', 'check');
+            feather.replace();
+            
+            // Show notification
+            if (window.showNotification) {
+                window.showNotification(`${platform} ${platform === 'Email' ? 'address' : 'username'} copied to clipboard!`, 'success');
+            }
+            
+            // Reset button state after 2 seconds
+            setTimeout(() => {
+                button.classList.remove('copied');
+                actionIcon.setAttribute('data-feather', originalIcon);
+                feather.replace();
+            }, 2000);
+        }
+
+        function showCopyError(button, platform) {
+            button.classList.remove('loading');
+            
+            if (window.showNotification) {
+                window.showNotification(`Failed to copy ${platform}. Please try again.`, 'error');
+            } else {
+                alert(`Failed to copy ${platform}. Please try again.`);
+            }
+        }
+
+        // Enhanced social button interactions
+        document.querySelectorAll('.social-button').forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                const platform = button.getAttribute('data-platform');
+                button.setAttribute('title', `Connect with me on ${platform}`);
+            });
+            
+            button.addEventListener('click', (e) => {
+                // Add click animation
+                button.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    button.style.transform = '';
+                }, 150);
+            });
+        });
+
+        // Copy Discord username (legacy function for compatibility)
+        function copyDiscord(event) {
+            event.preventDefault();
+            copyToClipboard('trijbs#1234', 'Discord');       </button>
                 </div>
             </div>
         </section>
