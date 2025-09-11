@@ -70,7 +70,7 @@
         <!-- Social Links Section -->
         <section class="social-links-section">
             <div class="container">
-                <div class="social-media-container">
+                <div class="enhanced-container">
                     <div class="section-header">
                         <h2>Connect & Collaborate</h2>
                         <p>Find me across different platforms and let's create something amazing together.</p>
@@ -259,20 +259,101 @@
         <!-- Quick Actions Section -->
         <section class="quick-actions-section">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Quick Actions</h2>
-                    <p class="section-description">Ready to get started? Choose your next step.</p>
-                </div>
-                <div class="quick-actions-grid">
-                    <button class="action-btn tertiary" onclick="viewProjects()">
-                        <i data-feather="folder"></i>
-                        <span>View Projects</span>
-                    </button>
-                    
-                    <button class="action-btn quaternary" onclick="sendMessage()">
-                        <i data-feather="send"></i>
-                        <span>Send Message</span>
-                    </button>
+                <div class="enhanced-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Quick Actions</h2>
+                        <p class="section-description">Ready to get started? Choose your next step and let's create something amazing together.</p>
+                    </div>
+                    <div class="quick-actions-grid">
+                        
+                        <!-- View Projects Action -->
+                        <button class="action-button projects" onclick="viewProjects()" data-action="Projects">
+                            <div class="action-button-header">
+                                <div class="action-button-icon">
+                                    <i data-feather="folder"></i>
+                                </div>
+                                <div class="action-button-title">
+                                    <h3>View Projects</h3>
+                                    <span class="action-button-subtitle">Explore Portfolio</span>
+                                </div>
+                                <div class="action-button-arrow">
+                                    <i data-feather="arrow-right"></i>
+                                </div>
+                            </div>
+                            <div class="action-button-description">
+                                <p>Browse through my latest work, case studies, and creative projects showcasing web development and design skills.</p>
+                            </div>
+                            <div class="action-button-stats">
+                                <span class="stat-item">
+                                    <i data-feather="code"></i>
+                                    <span>15+ Projects</span>
+                                </span>
+                                <span class="stat-item">
+                                    <i data-feather="layers"></i>
+                                    <span>Multiple Tech</span>
+                                </span>
+                            </div>
+                        </button>
+
+                        <!-- Send Message Action -->
+                        <button class="action-button contact" onclick="sendMessage()" data-action="Contact">
+                            <div class="action-button-header">
+                                <div class="action-button-icon">
+                                    <i data-feather="send"></i>
+                                </div>
+                                <div class="action-button-title">
+                                    <h3>Send Message</h3>
+                                    <span class="action-button-subtitle">Get In Touch</span>
+                                </div>
+                                <div class="action-button-arrow">
+                                    <i data-feather="arrow-right"></i>
+                                </div>
+                            </div>
+                            <div class="action-button-description">
+                                <p>Start a conversation about your project ideas, collaboration opportunities, or any questions you might have.</p>
+                            </div>
+                            <div class="action-button-stats">
+                                <span class="stat-item">
+                                    <i data-feather="clock"></i>
+                                    <span>Quick Response</span>
+                                </span>
+                                <span class="stat-item">
+                                    <i data-feather="message-circle"></i>
+                                    <span>Direct Contact</span>
+                                </span>
+                            </div>
+                        </button>
+
+                        <!-- Download CV Action -->
+                        <button class="action-button resume" onclick="downloadCV()" data-action="Resume">
+                            <div class="action-button-header">
+                                <div class="action-button-icon">
+                                    <i data-feather="download"></i>
+                                </div>
+                                <div class="action-button-title">
+                                    <h3>Download CV</h3>
+                                    <span class="action-button-subtitle">Professional Resume</span>
+                                </div>
+                                <div class="action-button-arrow">
+                                    <i data-feather="arrow-right"></i>
+                                </div>
+                            </div>
+                            <div class="action-button-description">
+                                <p>Get my complete professional resume with detailed experience, skills, and achievements in PDF format.</p>
+                            </div>
+                            <div class="action-button-stats">
+                                <span class="stat-item">
+                                    <i data-feather="file-text"></i>
+                                    <span>PDF Format</span>
+                                </span>
+                                <span class="stat-item">
+                                    <i data-feather="calendar"></i>
+                                    <span>Updated 2024</span>
+                                </span>
+                            </div>
+                        </button>
+
+                    </div>
                 </div>
             </div>
         </section>
@@ -280,27 +361,129 @@
         <!-- Availability Status -->
         <section class="availability-section">
             <div class="container">
-                <div class="availability-card">
-                    <div class="availability-status">
-                        <div class="status-indicator available"></div>
-                        <div class="status-content">
-                            <h3>Currently Available</h3>
-                            <p>Open for new projects and collaborations</p>
-                        </div>
+                <div class="enhanced-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Current Availability</h2>
+                        <p class="section-description">Real-time status and information about my availability for new projects and collaborations.</p>
                     </div>
-                    <div class="availability-details">
-                        <div class="detail-item">
-                            <i data-feather="clock"></i>
-                            <span>Response time: Within 24 hours</span>
+                    <div class="availability-grid">
+                        
+                        <!-- Status Card -->
+                        <div class="availability-card status-card">
+                            <div class="availability-card-header">
+                                <div class="availability-card-icon">
+                                    <i data-feather="check-circle"></i>
+                                </div>
+                                <div class="availability-card-title">
+                                    <h3>Currently Available</h3>
+                                    <span class="availability-card-subtitle">Open for Projects</span>
+                                </div>
+                                <div class="status-indicator available">
+                                    <div class="status-pulse"></div>
+                                </div>
+                            </div>
+                            <div class="availability-card-description">
+                                <p>I'm actively seeking new opportunities and excited to collaborate on innovative projects that challenge and inspire.</p>
+                            </div>
+                            <div class="availability-card-stats">
+                                <span class="stat-item">
+                                    <i data-feather="calendar"></i>
+                                    <span>Immediate Start</span>
+                                </span>
+                                <span class="stat-item">
+                                    <i data-feather="trending-up"></i>
+                                    <span>High Priority</span>
+                                </span>
+                            </div>
                         </div>
-                        <div class="detail-item">
-                            <i data-feather="map-pin"></i>
-                            <span>Location: Netherlands (CET timezone)</span>
+
+                        <!-- Response Time Card -->
+                        <div class="availability-card response-card">
+                            <div class="availability-card-header">
+                                <div class="availability-card-icon">
+                                    <i data-feather="clock"></i>
+                                </div>
+                                <div class="availability-card-title">
+                                    <h3>Response Time</h3>
+                                    <span class="availability-card-subtitle">Communication Speed</span>
+                                </div>
+                                <div class="response-indicator fast">
+                                    <span class="response-time">24h</span>
+                                </div>
+                            </div>
+                            <div class="availability-card-description">
+                                <p>I prioritize quick and clear communication, typically responding to inquiries within 24 hours during business days.</p>
+                            </div>
+                            <div class="availability-card-stats">
+                                <span class="stat-item">
+                                    <i data-feather="message-square"></i>
+                                    <span>Quick Reply</span>
+                                </span>
+                                <span class="stat-item">
+                                    <i data-feather="phone"></i>
+                                    <span>Multiple Channels</span>
+                                </span>
+                            </div>
                         </div>
-                        <div class="detail-item">
-                            <i data-feather="briefcase"></i>
-                            <span>Project types: Web Development, UI/UX Design</span>
+
+                        <!-- Location Card -->
+                        <div class="availability-card location-card">
+                            <div class="availability-card-header">
+                                <div class="availability-card-icon">
+                                    <i data-feather="map-pin"></i>
+                                </div>
+                                <div class="availability-card-title">
+                                    <h3>Location</h3>
+                                    <span class="availability-card-subtitle">Time Zone & Region</span>
+                                </div>
+                                <div class="timezone-indicator">
+                                    <span class="timezone">CET</span>
+                                </div>
+                            </div>
+                            <div class="availability-card-description">
+                                <p>Based in the Netherlands (Central European Time), but comfortable working with international teams across different time zones.</p>
+                            </div>
+                            <div class="availability-card-stats">
+                                <span class="stat-item">
+                                    <i data-feather="globe"></i>
+                                    <span>Netherlands</span>
+                                </span>
+                                <span class="stat-item">
+                                    <i data-feather="users"></i>
+                                    <span>Remote Ready</span>
+                                </span>
+                            </div>
                         </div>
+
+                        <!-- Project Types Card -->
+                        <div class="availability-card projects-card">
+                            <div class="availability-card-header">
+                                <div class="availability-card-icon">
+                                    <i data-feather="briefcase"></i>
+                                </div>
+                                <div class="availability-card-title">
+                                    <h3>Project Types</h3>
+                                    <span class="availability-card-subtitle">Areas of Expertise</span>
+                                </div>
+                                <div class="expertise-indicator">
+                                    <i data-feather="star"></i>
+                                </div>
+                            </div>
+                            <div class="availability-card-description">
+                                <p>Specializing in modern web development, user interface design, and full-stack applications with focus on user experience.</p>
+                            </div>
+                            <div class="availability-card-stats">
+                                <span class="stat-item">
+                                    <i data-feather="code"></i>
+                                    <span>Web Development</span>
+                                </span>
+                                <span class="stat-item">
+                                    <i data-feather="palette"></i>
+                                    <span>UI/UX Design</span>
+                                </span>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -403,6 +586,7 @@
 
         // Enhanced social button interactions
         document.addEventListener('DOMContentLoaded', function() {
+            // Social buttons
             document.querySelectorAll('.social-button').forEach(button => {
                 button.addEventListener('mouseenter', () => {
                     const platform = button.getAttribute('data-platform');
@@ -417,6 +601,30 @@
                     }, 150);
                 });
             });
+
+            // Action buttons
+            document.querySelectorAll('.action-button').forEach(button => {
+                button.addEventListener('mouseenter', () => {
+                    const action = button.getAttribute('data-action');
+                    button.setAttribute('title', `${action} - Click to proceed`);
+                });
+                
+                button.addEventListener('click', (e) => {
+                    // Add click animation
+                    button.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        button.style.transform = '';
+                    }, 150);
+                });
+            });
+
+            // Availability cards hover effects
+            document.querySelectorAll('.availability-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    const title = card.querySelector('.availability-card-title h3').textContent;
+                    card.setAttribute('title', `${title} - Current status and information`);
+                });
+            });
         });
 
         // Quick action functions
@@ -426,6 +634,25 @@
 
         function sendMessage() {
             window.location.href = 'index.html#contact';
+        }
+
+        function downloadCV() {
+            // Create a temporary link to trigger download
+            const link = document.createElement('a');
+            link.href = '#'; // Replace with actual CV file path when available
+            link.download = 'Ruben_Trijbels_CV.pdf';
+            
+            // Show notification since we don't have an actual CV file
+            if (window.showNotification) {
+                window.showNotification('CV download will be available soon! Please contact me directly for my resume.', 'info');
+            } else {
+                alert('CV download will be available soon! Please contact me directly for my resume.');
+            }
+            
+            // Uncomment the following lines when you have an actual CV file:
+            // document.body.appendChild(link);
+            // link.click();
+            // document.body.removeChild(link);
         }
 
         // Theme toggle functionality

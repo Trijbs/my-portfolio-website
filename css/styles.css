@@ -818,6 +818,18 @@ textarea:focus {
   animation: fadeInUp 0.8s ease-out;
 }
 
+.social-media-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
+  background-size: 200% 100%;
+  animation: gradientShift 3s ease-in-out infinite;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -827,6 +839,169 @@ textarea:focus {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* ===== Quick Actions Grid ===== */
+.quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+}
+
+/* ===== Action Button Components ===== */
+.action-button {
+  background: var(--bg-secondary);
+  border: 1px solid var(--bg-tertiary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  width: 100%;
+  font-family: inherit;
+  color: inherit;
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.action-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left var(--transition-slow);
+}
+
+.action-button:hover::before {
+  left: 100%;
+}
+
+.action-button:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px var(--shadow-color);
+  border-color: var(--accent-primary);
+}
+
+/* ===== Action Button Header ===== */
+.action-button-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.action-button-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  border-radius: var(--radius-md);
+  font-size: 1.6rem;
+  color: white;
+  transition: all var(--transition-fast);
+}
+
+.action-button:hover .action-button-icon {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.action-button-title {
+  flex: 1;
+}
+
+.action-button-title h3 {
+  margin: 0 0 var(--spacing-xs) 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.action-button-subtitle {
+  font-size: 0.9rem;
+  color: var(--accent-primary);
+  font-weight: 500;
+}
+
+.action-button-arrow {
+  color: var(--text-tertiary);
+  font-size: 1.3rem;
+  transition: all var(--transition-fast);
+}
+
+.action-button:hover .action-button-arrow {
+  color: var(--accent-primary);
+  transform: translateX(5px);
+}
+
+/* ===== Action Button Description ===== */
+.action-button-description {
+  margin-bottom: var(--spacing-md);
+}
+
+.action-button-description p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ===== Action Button Stats ===== */
+.action-button-stats {
+  display: flex;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+/* ===== Action-Specific Styling ===== */
+.action-button.projects .action-button-icon {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.action-button.projects:hover {
+  border-color: #667eea;
+  box-shadow: 0 16px 40px rgba(102, 126, 234, 0.3);
+}
+
+.action-button.contact .action-button-icon {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+}
+
+.action-button.contact:hover {
+  border-color: #ff6b6b;
+  box-shadow: 0 16px 40px rgba(255, 107, 107, 0.3);
+}
+
+.action-button.resume .action-button-icon {
+  background: linear-gradient(135deg, #4ecdc4, #44a08d);
+}
+
+.action-button.resume:hover {
+  border-color: #4ecdc4;
+  box-shadow: 0 16px 40px rgba(78, 205, 196, 0.3);
+}
+
+/* ===== Action Button Animations ===== */
+@keyframes actionPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+.action-button:active {
+  animation: actionPulse 0.3s ease-in-out;
+}
+
+.action-button:hover .action-button-icon {
+  animation: iconBounce 0.6s ease-in-out infinite;
+}
+
+.action-button:hover .stat-item {
+  animation: statsGlow 1.5s ease-in-out infinite;
 }
 
 .social-media-container::before {
@@ -1180,6 +1355,256 @@ textarea:focus {
 @keyframes spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+/* ===== Availability Grid ===== */
+.availability-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+}
+
+/* ===== Availability Card Components ===== */
+.availability-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--bg-tertiary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.availability-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  transition: left var(--transition-slow);
+}
+
+.availability-card:hover::before {
+  left: 100%;
+}
+
+.availability-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 35px var(--shadow-color);
+  border-color: var(--accent-primary);
+}
+
+/* ===== Availability Card Header ===== */
+.availability-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.availability-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-md);
+  font-size: 1.5rem;
+  color: white;
+  transition: all var(--transition-fast);
+}
+
+.availability-card:hover .availability-card-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.availability-card-title {
+  flex: 1;
+}
+
+.availability-card-title h3 {
+  margin: 0 0 var(--spacing-xs) 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.availability-card-subtitle {
+  font-size: 0.85rem;
+  color: var(--accent-primary);
+  font-weight: 500;
+}
+
+/* ===== Availability Card Description ===== */
+.availability-card-description {
+  margin-bottom: var(--spacing-md);
+}
+
+.availability-card-description p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* ===== Availability Card Stats ===== */
+.availability-card-stats {
+  display: flex;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+/* ===== Status Indicators ===== */
+.status-indicator {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-indicator.available {
+  background: linear-gradient(135deg, var(--accent-tertiary), #4aed8b);
+}
+
+.status-pulse {
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+.response-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.response-indicator.fast {
+  background: linear-gradient(135deg, #4ecdc4, #44a08d);
+  color: white;
+}
+
+.timezone-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.expertise-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffd89b, #19547b);
+  color: white;
+  font-size: 1.2rem;
+}
+
+/* ===== Card-Specific Styling ===== */
+.availability-card.status-card .availability-card-icon {
+  background: linear-gradient(135deg, var(--accent-tertiary), #4aed8b);
+}
+
+.availability-card.status-card:hover {
+  border-color: var(--accent-tertiary);
+  box-shadow: 0 14px 35px rgba(78, 237, 139, 0.3);
+}
+
+.availability-card.response-card .availability-card-icon {
+  background: linear-gradient(135deg, #4ecdc4, #44a08d);
+}
+
+.availability-card.response-card:hover {
+  border-color: #4ecdc4;
+  box-shadow: 0 14px 35px rgba(78, 205, 196, 0.3);
+}
+
+.availability-card.location-card .availability-card-icon {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.availability-card.location-card:hover {
+  border-color: #667eea;
+  box-shadow: 0 14px 35px rgba(102, 126, 234, 0.3);
+}
+
+.availability-card.projects-card .availability-card-icon {
+  background: linear-gradient(135deg, #ffd89b, #19547b);
+}
+
+.availability-card.projects-card:hover {
+  border-color: #ffd89b;
+  box-shadow: 0 14px 35px rgba(255, 216, 155, 0.3);
+}
+
+/* ===== Availability Card Animations ===== */
+@keyframes cardFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.availability-card:hover .availability-card-icon {
+  animation: iconBounce 0.6s ease-in-out infinite;
+}
+
+.availability-card:hover .stat-item {
+  animation: statsGlow 1.5s ease-in-out infinite;
+}
+
+.availability-card:hover .status-pulse {
+  animation: pulse 1s ease-in-out infinite;
+}
+
+/* ===== Enhanced Container ===== */
+.enhanced-container {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  margin: var(--spacing-xl) 0;
+  border: 1px solid var(--bg-tertiary);
+  box-shadow: 0 4px 20px var(--shadow-color);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.enhanced-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
+  background-size: 200% 100%;
+  animation: gradientShift 3s ease-in-out infinite;
 }
 
 /* ===== Enhanced Platform-Specific Hover Effects ===== */
@@ -2168,7 +2593,7 @@ textarea:focus {
 
 /* ===== Responsive Social Media Styles ===== */
 @media (max-width: 768px) {
-  .social-media-container {
+  .social-media-container, .enhanced-container {
     padding: var(--spacing-lg);
     margin: var(--spacing-lg) 0;
   }
@@ -2187,34 +2612,40 @@ textarea:focus {
     font-size: 1.3rem;
   }
   
-  .social-buttons-grid {
+  .social-buttons-grid, .quick-actions-grid, .availability-grid {
     grid-template-columns: 1fr;
     gap: var(--spacing-md);
   }
   
-  .social-button {
+  .social-button, .action-button, .availability-card {
     padding: var(--spacing-md);
   }
   
-  .social-button-header {
+  .social-button-header, .action-button-header, .availability-card-header {
     gap: var(--spacing-sm);
   }
   
-  .social-button-icon {
+  .social-button-icon, .action-button-icon, .availability-card-icon {
     width: 40px;
     height: 40px;
     font-size: 1.2rem;
   }
   
-  .social-button-title h3 {
+  .action-button-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.4rem;
+  }
+  
+  .social-button-title h3, .action-button-title h3, .availability-card-title h3 {
     font-size: 1.1rem;
   }
   
-  .social-button-description p {
+  .social-button-description p, .action-button-description p, .availability-card-description p {
     font-size: 0.85rem;
   }
   
-  .social-button-stats {
+  .social-button-stats, .action-button-stats, .availability-card-stats {
     gap: var(--spacing-md);
   }
   
@@ -2234,12 +2665,16 @@ textarea:focus {
     max-width: 200px;
   }
   
-  .social-buttons-grid {
+  .social-buttons-grid, .quick-actions-grid, .availability-grid {
     grid-template-columns: 1fr;
   }
   
-  .social-button-stats {
+  .social-button-stats, .action-button-stats, .availability-card-stats {
     justify-content: center;
+  }
+  
+  .enhanced-container {
+    padding: var(--spacing-md);
   }
 }
 
