@@ -5,20 +5,20 @@
 
 /* ===== Variables ===== */
 :root {
-  /* Colors - Dark Theme (Default) */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #252525;
-  --bg-tertiary: #333333;
-  --text-primary: #ffffff;
-  --text-secondary: #cccccc;
-  --text-tertiary: #999999;
-  --accent-primary: #00c8ff; /* Cyan from trijbsworld.nl */
-  --accent-secondary: #d28efa; /* Purple for creative projects */
-  --accent-tertiary: #4aed8b; /* Green for technical skills */
+  /* Colors - Poster Theme (Default) */
+  --bg-primary: #f6f5f3;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #efefef;
+  --text-primary: #111111;
+  --text-secondary: #393939;
+  --text-tertiary: #6a6a6a;
+  --accent-primary: #111111; /* bold type */
+  --accent-secondary: #ff4d6d; /* warm highlight */
+  --accent-tertiary: #1e90ff; /* cool alt */
   --accent-quaternary: #ed8b4a; /* Orange for clothing projects */
   --accent-quinary: #4a8bed; /* Blue for photography projects */
-  --shadow-color: rgba(0, 0, 0, 0.2);
-  --overlay-color: rgba(0, 0, 0, 0.7);
+  --shadow-color: rgba(17, 17, 17, 0.06);
+  --overlay-color: rgba(10,10,10,0.5);
   
   /* Spacing */
   --spacing-xs: 0.25rem;
@@ -55,21 +55,22 @@
   --z-modal: 1000;
 }
 
-/* ===== Pinterest/Poster Theme ===== */
-.theme-poster {
-  --bg-primary: #f6f5f3;
-  --bg-secondary: #ffffff;
-  --bg-tertiary: #efefef;
-  --text-primary: #111111;
-  --text-secondary: #393939;
-  --text-tertiary: #6a6a6a;
-  --accent-primary: #111111; /* bold type */
-  --accent-secondary: #ff4d6d; /* warm highlight */
-  --accent-tertiary: #1e90ff; /* cool alt */
-  --shadow-color: rgba(17, 17, 17, 0.06);
-  --overlay-color: rgba(10,10,10,0.5);
+/* ===== Dark Theme ===== */
+.dark-theme {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #252525;
+  --bg-tertiary: #333333;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --text-tertiary: #999999;
+  --accent-primary: #00c8ff; /* Cyan from trijbsworld.nl */
+  --accent-secondary: #d28efa; /* Purple for creative projects */
+  --accent-tertiary: #4aed8b; /* Green for technical skills */
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --overlay-color: rgba(0, 0, 0, 0.7);
 }
 
+/* ===== Pinterest/Poster Theme Enhancements ===== */
 .theme-poster body { letter-spacing: 0.01em; }
 .theme-poster h1 { font-size: clamp(2.8rem, 6vw, 5rem); line-height: 0.95; letter-spacing: -0.02em; }
 .theme-poster h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); letter-spacing: -0.01em; }

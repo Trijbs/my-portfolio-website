@@ -19,6 +19,32 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize Feather icons
     feather.replace();
     
+    // Theme toggle functionality
+    const themeToggle = document.querySelector('.theme-toggle');
+    const body = document.body;
+    
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+            body.classList.toggle('theme-poster');
+            updateThemeIcon();
+        });
+    }
+    
+    function updateThemeIcon() {
+        const isPoster = body.classList.contains('theme-poster');
+        const lightIcon = document.querySelector('.light-icon');
+        const darkIcon = document.querySelector('.dark-icon');
+        
+        if (lightIcon && darkIcon) {
+            lightIcon.style.display = isPoster ? 'block' : 'none';
+            darkIcon.style.display = isPoster ? 'none' : 'block';
+        }
+    }
+    
+    // Initialize theme icon
+    updateThemeIcon();
+    
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {

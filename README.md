@@ -1,12 +1,8 @@
-<div id="top">
-
-<!-- HEADER STYLE: CLASSIC -->
 <div align="center">
 
+# Ruben Trijbels - Portfolio Website
 
-# MY-PORTFOLIO-WEBSITE
-
-<em>Showcase your journey, inspire your future.</em>
+<em>Full-Stack Developer & Creative Designer</em>
 
 <!-- BADGES -->
 <img src="https://img.shields.io/github/license/Trijbs/my-portfolio-website?style=flat&logo=opensourceinitiative&logoColor=white&color=0080ff" alt="license">
@@ -14,14 +10,12 @@
 <img src="https://img.shields.io/github/languages/top/Trijbs/my-portfolio-website?style=flat&color=0080ff" alt="repo-top-language">
 <img src="https://img.shields.io/github/languages/count/Trijbs/my-portfolio-website?style=flat&color=0080ff" alt="repo-language-count">
 
-<em>Built with the tools and technologies:</em>
+<em>Built with modern web technologies:</em>
 
-<img src="https://img.shields.io/badge/Flask-000000.svg?style=flat&logo=Flask&logoColor=white" alt="Flask">
-<img src="https://img.shields.io/badge/Markdown-000000.svg?style=flat&logo=Markdown&logoColor=white" alt="Markdown">
+<img src="https://img.shields.io/badge/HTML5-E34F26.svg?style=flat&logo=HTML5&logoColor=white" alt="HTML5">
+<img src="https://img.shields.io/badge/CSS3-1572B6.svg?style=flat&logo=CSS3&logoColor=white" alt="CSS3">
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat&logo=JavaScript&logoColor=black" alt="JavaScript">
-<img src="https://img.shields.io/badge/GNU%20Bash-4EAA25.svg?style=flat&logo=GNU-Bash&logoColor=white" alt="GNU%20Bash">
-<img src="https://img.shields.io/badge/Gunicorn-499848.svg?style=flat&logo=Gunicorn&logoColor=white" alt="Gunicorn">
-<img src="https://img.shields.io/badge/Python-3776AB.svg?style=flat&logo=Python&logoColor=white" alt="Python">
+<img src="https://img.shields.io/badge/Feather_Icons-000000.svg?style=flat&logo=Feather&logoColor=white" alt="Feather Icons">
 
 </div>
 <br>
@@ -30,128 +24,199 @@
 
 ## Table of Contents
 
-- [Overview](#overview)
+- [About This Portfolio](#about-this-portfolio)
+- [Why This Portfolio Exists](#why-this-portfolio-exists)
+- [Features & Highlights](#features--highlights)
+- [Projects Showcased](#projects-showcased)
+- [Technical Implementation](#technical-implementation)
 - [Getting Started](#getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
-    - [Usage](#usage)
-    - [Testing](#testing)
-- [Features](#features)
+- [Live Demo](#live-demo)
 - [License](#license)
-- [Acknowledgment](#acknowledgment)
 
 ---
 
-## Overview
+## About This Portfolio
 
-my-portfolio-website is a sleek and responsive online portfolio designed to showcase your skills and projects effortlessly. 
+This is the personal portfolio website of **Ruben Trijbels**, a passionate full-stack developer and creative designer who specializes in crafting immersive digital experiences. The portfolio showcases a blend of technical expertise and creative vision, featuring modern web applications, interactive 3D experiences, and innovative design solutions.
 
-**Why my-portfolio-website?**
+## Why This Portfolio Exists
 
-This project serves as a digital resume, enabling developers to present their work in an engaging format. The core features include:
+This portfolio was created to:
 
-- 🎨 **Responsive Design:** Ensures optimal viewing experience across devices, catering to diverse user needs.
-- 🧭 **Intuitive Navigation:** Simplifies user experience, allowing visitors to explore your portfolio with ease.
-- 🌐 **Custom Domain Support:** Enhances branding and user recall, making your portfolio memorable.
-- ⚙️ **Flask Backend:** Provides a robust framework for handling user interactions and ensuring data persistence.
-- ✨ **Interactive Features:** Engages users with dynamic elements like theme toggling and project filtering.
-- 🚀 **Automated Setup Script:** Streamlines the development process, reducing setup time for developers.
+🎯 **Showcase Professional Work**: Display a curated collection of projects that demonstrate technical skills, creative problem-solving, and attention to detail.
+
+🌟 **Demonstrate Technical Expertise**: Highlight proficiency in modern web technologies including HTML5, CSS3, JavaScript, React, Next.js, Three.js, and WebGL.
+
+🎨 **Express Creative Vision**: Combine clean code with bold design to create experiences that are both functional and visually striking.
+
+💼 **Attract Opportunities**: Serve as a digital business card for potential clients, employers, and collaborators in the tech industry.
+
+🚀 **Push Creative Boundaries**: Experiment with cutting-edge web technologies and showcase innovative approaches to web development.
+
+The portfolio reflects a philosophy of "transforming ideas into digital experiences that captivate, inspire, and perform" - blending technical excellence with creative innovation.
 
 ---
 
-## Features
+## Features & Highlights
 
-|      | Component       | Details                              |
-| :--- | :-------------- | :----------------------------------- |
-| ⚙️  | **Architecture**  | <ul><li>Single-page application (SPA)</li><li>Responsive design using HTML/CSS</li><li>Client-side rendering with JavaScript</li></ul> |
-| 🔩 | **Code Quality**  | <ul><li>Consistent coding style</li><li>Use of linters (e.g., ESLint for JavaScript)</li><li>Modular code structure</li></ul> |
-| 📄 | **Documentation** | <ul><li>README.md for project overview</li><li>Inline comments for code clarity</li><li>Markdown files for additional documentation</li></ul> |
-| 🔌 | **Integrations**  | <ul><li>Flask as the backend framework</li><li>Gunicorn for WSGI server</li><li>Jinja2 for templating</li></ul> |
-| 🧩 | **Modularity**    | <ul><li>Separation of concerns (HTML, CSS, JS)</li><li>Reusable components in JavaScript</li><li>Flask blueprints for routing</li></ul> |
-| 🧪 | **Testing**       | <ul><li>Unit tests for Python code</li><li>Integration tests for API endpoints</li><li>Manual testing for UI components</li></ul> |
-| ⚡️  | **Performance**   | <ul><li>Optimized asset loading (minified JS/CSS)</li><li>Lazy loading of images</li><li>Efficient API calls</li></ul> |
-| 🛡️ | **Security**      | <ul><li>Use of Flask security features</li><li>Input validation to prevent XSS</li><li>Environment variables for sensitive data</li></ul> |
-| 📦 | **Dependencies**  | <ul><li>Python packages in <code>requirements.txt</code></li><li>JavaScript libraries (e.g., jQuery)</li><li>HTML/CSS frameworks (e.g., Bootstrap)</li></ul> |
-| 🚀 | **Scalability**   | <ul><li>Containerization readiness (Docker)</li><li>Horizontal scaling with Flask and Gunicorn</li><li>Load balancing strategies can be implemented</li></ul> |
+### 🎨 Design & User Experience
+- **Multiple Theme Support**: Dark, light, and unique "poster" theme with paper texture effects
+- **Responsive Design**: Optimized for all devices from mobile to desktop
+- **Smooth Animations**: CSS animations and transitions for enhanced user engagement
+- **Interactive Elements**: Hover effects, animated skill bars, and dynamic content loading
 
+### 🛠️ Technical Features
+- **Modern JavaScript**: ES6+ features with modular code structure
+- **Performance Optimized**: Lazy loading images, efficient DOM manipulation
+- **Accessibility**: Proper ARIA labels, semantic HTML, and keyboard navigation
+- **Cross-Browser Compatible**: Works seamlessly across modern browsers
 
-### Explanation of the Table Components:
-- **Architecture**: Describes the overall structure and design of the application.
-- **Code Quality**: Highlights practices that ensure maintainable and readable code.
-- **Documentation**: Lists the types of documentation available for users and developers.
-- **Integrations**: Details the frameworks and tools used to build the application.
-- **Modularity**: Discusses how the code is organized into manageable parts.
-- **Testing**: Outlines the testing strategies employed to ensure code reliability.
-- **Performance**: Notes optimizations made for faster load times and responsiveness.
-- **Security**: Lists measures taken to protect the application from vulnerabilities.
+### 📱 Interactive Components
+- **Project Filtering**: Dynamic filtering system for different project categories
+- **Modal System**: Detailed project views with rich content
+- **Contact Form**: Functional contact form with validation
+- **Mobile Menu**: Responsive navigation for mobile devices
+- **Notification System**: User feedback for form submissions and interactions
+
+### 🎯 Content Sections
+- **Hero Section**: Eye-catching introduction with animated typing effect
+- **About Section**: Personal introduction and professional philosophy  
+- **Skills Section**: Animated progress bars showing technical proficiencies
+- **Projects Section**: Filterable portfolio showcasing featured work
+- **Contact Section**: Multiple ways to get in touch with social links
+
+## Projects Showcased
+
+### 🌟 Featured Projects
+
+**Urban Unleashed** - 3D Generative Art Experience
+- Built with Next.js and Three.js
+- Real-time procedural generation
+- Interactive WebGL controls
+- 2.5k+ views with 4.8/5 rating
+
+**PopFusion** - Music Visualizer
+- Interactive audio visualization
+- Real-time frequency analysis
+- Custom WebGL shaders
+
+**E-commerce Solutions**
+- Modern online shopping experiences
+- Payment integration
+- Responsive design
+
+### 🎨 Creative Capabilities
+- 3D Modeling & Animation
+- UI/UX Design
+- Brand Identity
+- Digital Art & Illustration
+
+## Technical Implementation
+
+### Architecture
+- **Static Website**: Pure HTML, CSS, and JavaScript - no backend required
+- **Modular Structure**: Organized code with separation of concerns
+- **Progressive Enhancement**: Works without JavaScript, enhanced with it
+
+### Technologies Used
+- **Frontend**: HTML5, CSS3 (with CSS Grid & Flexbox), Vanilla JavaScript
+- **Icons**: Feather Icons for consistent iconography  
+- **Fonts**: Google Fonts (Inter, Montserrat, Roboto Mono)
+- **Animations**: CSS animations and transitions
+- **Build**: No build process required - ready to deploy
+
+### Performance Features
+- Optimized images with WebP format support
+- Lazy loading for improved page speed
+- Efficient CSS with custom properties (CSS variables)
+- Minimal JavaScript footprint
 
 ---
 
 ## Getting Started
 
-### Prerequisites
+This is a static website that requires no backend setup or dependencies. You can run it locally or deploy it to any web hosting service.
 
-This project requires the following dependencies:
-
-- **Programming Language:** Python
-- **Package Manager:** Pip
-
-### Installation
-
-Build my-portfolio-website from the source and intsall dependencies:
+### Local Development
 
 1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Trijbs/my-portfolio-website
+   cd my-portfolio-website
+   ```
 
-    ```sh
-    ❯ git clone https://github.com/Trijbs/my-portfolio-website
-    ```
+2. **Serve the files locally:**
+   
+   Using Python (if you have it installed):
+   ```bash
+   python -m http.server 8000
+   ```
+   
+   Using Node.js (if you have it installed):
+   ```bash
+   npx serve .
+   ```
+   
+   Or simply open `index.html` in your web browser.
 
-2. **Navigate to the project directory:**
+3. **View the portfolio:**
+   Open your browser and navigate to `http://localhost:8000` (or the URL provided by your chosen server).
 
-    ```sh
-    ❯ cd my-portfolio-website
-    ```
+### Deployment Options
 
-3. **Install the dependencies:**
+This static website can be deployed to various platforms:
 
-**Using [pip](https://pypi.org/project/pip/):**
+- **GitHub Pages**: Already configured with CNAME file
+- **Netlify**: Drag and drop the folder or connect your GitHub repo
+- **Vercel**: Import your GitHub repository
+- **Traditional Web Hosting**: Upload files via FTP
 
-```sh
-❯ pip install -r requirements.txt
-```
+### Customization
 
-### Usage
+To customize this portfolio for your own use:
 
-Run the project with:
+1. **Update Content**: Modify the HTML files to include your information
+2. **Replace Images**: Add your own project images to the `img/` folder
+3. **Modify Styles**: Edit `css/styles.css` to match your design preferences
+4. **Update Projects**: Change the project data in `index.html` and `js/main.js`
 
-**Using [pip](https://pypi.org/project/pip/):**
+## Live Demo
 
-```sh
-python {entrypoint}
-```
+🌐 **Visit the live portfolio**: [https://trijbsworld.nl](https://trijbsworld.nl)
 
-### Testing
-
-My-portfolio-website uses the {__test_framework__} test framework. Run the test suite with:
-
-**Using [pip](https://pypi.org/project/pip/):**
-
-```sh
-pytest
-```
+The portfolio is currently hosted and showcases:
+- Interactive 3D projects
+- Modern web applications  
+- Creative design work
+- Professional contact information
 
 ---
 
 ## License
 
-My-portfolio-website is protected under the [LICENSE](https://choosealicense.com/licenses) License. For more details, refer to the [LICENSE](https://choosealicense.com/licenses/) file.
+This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-## Acknowledgments
+## About the Developer
 
-- Credit `contributors`, `inspiration`, `references`, etc.
+**Ruben Trijbels** is a full-stack developer and creative designer passionate about pushing the boundaries of web technology. Specializing in:
 
-<div align="left"><a href="#top">⬆ Return</a></div>
+- Modern JavaScript frameworks (React, Next.js)
+- 3D web experiences (Three.js, WebGL)
+- Creative coding and generative art
+- E-commerce and web application development
+- UI/UX design and brand identity
+
+### Connect
+
+- 🌐 **Website**: [trijbsworld.nl](https://trijbsworld.nl)
+- 💼 **GitHub**: [@Trijbs](https://github.com/Trijbs)
+- 📧 **Email**: Available through the contact form
+- 🎨 **Portfolio**: Features interactive 3D projects and modern web applications
 
 ---
+
+<div align="center">
+<em>Transforming ideas into digital experiences that captivate, inspire, and perform.</em>
+</div>

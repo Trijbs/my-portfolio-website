@@ -20,7 +20,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
-<body class="dark-theme">
+<body class="theme-poster">
     <!-- Header -->
     <header class="header">
         <div class="container">
@@ -281,19 +281,19 @@
         if (themeToggle) {
             themeToggle.addEventListener('click', () => {
                 body.classList.toggle('light-theme');
-                body.classList.toggle('dark-theme');
+                body.classList.toggle('theme-poster');
                 updateThemeIcon();
             });
         }
         
         function updateThemeIcon() {
-            const isDark = body.classList.contains('dark-theme');
+            const isPoster = body.classList.contains('theme-poster');
             const lightIcon = document.querySelector('.light-icon');
             const darkIcon = document.querySelector('.dark-icon');
             
             if (lightIcon && darkIcon) {
-                lightIcon.style.display = isDark ? 'block' : 'none';
-                darkIcon.style.display = isDark ? 'none' : 'block';
+                lightIcon.style.display = isPoster ? 'block' : 'none';
+                darkIcon.style.display = isPoster ? 'none' : 'block';
             }
         }
         
