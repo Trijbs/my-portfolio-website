@@ -1751,7 +1751,7 @@ textarea:focus {
 .info-hero-section {
   padding-top: 120px;
   padding-bottom: var(--spacing-xl);
-  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  background: var(--bg-primary);
   position: relative;
 }
 
@@ -1762,7 +1762,8 @@ textarea:focus {
   right: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at top right, rgba(0, 200, 255, 0.1), transparent 70%);
+  background: var(--gradient-primary);
+  opacity: 0.1;
   z-index: var(--z-back);
 }
 
@@ -1871,47 +1872,47 @@ textarea:focus {
 
 /* Platform-specific colors */
 .social-card.github .social-icon {
-  background-color: #333;
+  background: var(--gradient-primary);
   color: white;
 }
 
 .social-card.instagram .social-icon {
-  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  background: var(--gradient-secondary);
   color: white;
 }
 
 .social-card.linkedin .social-icon {
-  background-color: #0077b5;
+  background: var(--gradient-primary);
   color: white;
 }
 
 .social-card.email .social-icon {
-  background-color: var(--accent-primary);
+  background: var(--gradient-primary);
   color: white;
 }
 
 .social-card.website .social-icon {
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  background: var(--gradient-primary);
   color: white;
 }
 
 .social-card.twitter .social-icon {
-  background-color: #1da1f2;
+  background: var(--gradient-secondary);
   color: white;
 }
 
 .social-card.discord .social-icon {
-  background-color: #5865f2;
+  background: var(--gradient-primary);
   color: white;
 }
 
 .social-card.youtube .social-icon {
-  background-color: #ff0000;
+  background: var(--gradient-secondary);
   color: white;
 }
 
 .social-card.behance .social-icon {
-  background-color: #1769ff;
+  background: var(--gradient-primary);
   color: white;
 }
 
@@ -1950,27 +1951,27 @@ textarea:focus {
 }
 
 .action-btn.primary {
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  background: var(--gradient-primary);
   color: white;
-  box-shadow: 0 8px 25px rgba(0, 200, 255, 0.3);
+  box-shadow: 0 8px 25px var(--shadow-color);
 }
 
 .action-btn.secondary {
-  background: linear-gradient(135deg, var(--accent-tertiary), #2dd4bf);
+  background: var(--gradient-secondary);
   color: white;
-  box-shadow: 0 8px 25px rgba(74, 237, 139, 0.3);
+  box-shadow: 0 8px 25px var(--shadow-color);
 }
 
 .action-btn.tertiary {
-  background: linear-gradient(135deg, var(--accent-secondary), #f472b6);
+  background: var(--gradient-primary);
   color: white;
-  box-shadow: 0 8px 25px rgba(210, 142, 250, 0.3);
+  box-shadow: 0 8px 25px var(--shadow-color);
 }
 
 .action-btn.quaternary {
-  background: linear-gradient(135deg, #f59e0b, #f97316);
+  background: var(--gradient-secondary);
   color: white;
-  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+  box-shadow: 0 8px 25px var(--shadow-color);
 }
 
 .action-btn:hover {
