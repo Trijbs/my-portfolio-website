@@ -61,6 +61,7 @@
         <img src="public/img/business card.png" alt="Ruben Trijbels Business Card - Full Size">
     </div>
 
+    <script src="public/js/vercel-analytics.js"></script>
     <script src="public/js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -73,6 +74,10 @@
             if (businessCardImage && modal) {
                 businessCardImage.addEventListener('click', () => {
                     modal.classList.add('open');
+                    // Track business card view
+                    if (window.VercelAnalytics) {
+                        window.VercelAnalytics.trackBusinessCardView();
+                    }
                 });
                 
                 // Close modal when clicking outside the image

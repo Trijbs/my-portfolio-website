@@ -30,6 +30,12 @@ document.addEventListener('DOMContentLoaded', function() {
             body.classList.toggle('theme-dark');
             body.classList.toggle('theme-poster');
             updateThemeIcon();
+            
+            // Track theme change
+            if (window.VercelAnalytics) {
+                const currentTheme = body.classList.contains('theme-dark') ? 'dark' : 'poster';
+                window.VercelAnalytics.trackThemeChange(currentTheme);
+            }
         });
     }
     
@@ -191,6 +197,33 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize theme icon on page load
     updateThemeIcon();
+    
+    // Track social media clicks
+    const socialLinks = document.querySelectorAll('a[href*="github.com"], a[href*="instagram.com"], a[href*="mailto:"]');
+    socialLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.VercelAnalytics) {
+                let platform = 'unknown';
+                if (link.href.includes('github.com')) platform = 'GitHub';
+                else if (link.href.includes('instagram.com')) platform = 'Instagram';
+                else if (link.href.includes('mailto:')) platform = 'Email';
+                
+                window.VercelAnalytics.trackSocialClick(platform);
+            }
+        });
+    });
+    
+    // Track project clicks
+    const projectButtons = document.querySelectorAll('.live-demo, .project-card a[href*="github.com"]');
+    projectButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            if (window.VercelAnalytics) {
+                const projectCard = button.closest('.project-card');
+                const projectName = projectCard ? projectCard.querySelector('h3')?.textContent || 'Unknown Project' : 'Unknown Project';
+                window.VercelAnalytics.trackProjectClick(projectName);
+            }
+        });
+    });
     
     // Lazy loading for images
     const images = document.querySelectorAll('img[loading="lazy"]');

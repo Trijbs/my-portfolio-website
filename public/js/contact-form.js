@@ -66,6 +66,11 @@ class ContactFormHandler {
             if (response.success) {
                 this.showSuccess(response.message);
                 this.resetForm();
+                
+                // Track successful contact form submission
+                if (window.VercelAnalytics) {
+                    window.VercelAnalytics.trackContactSubmission();
+                }
             } else {
                 this.showError(response.message || 'Failed to send message. Please try again.');
             }
