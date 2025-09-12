@@ -165,7 +165,7 @@ const createEmailTemplate = (data) => {
         
         // Confirmation email to sender
         confirmation: {
-            from: `"Ruben Trijbels" <${process.env.EMAIL_USER || 'rbdegroot@gmail.com'}>`,
+            from: `"Ruben Trijbs" <${process.env.EMAIL_USER || 'rbdegroot@gmail.com'}>`,
             to: data.email,
             subject: `Thanks for reaching out! - ${data.subject || 'Your message'}`,
             html: `
@@ -214,7 +214,7 @@ const createEmailTemplate = (data) => {
                         
                         <p style="color: #333; line-height: 1.6;">
                             Best regards,<br>
-                            <strong>Ruben Trijbels</strong><br>
+                            <strong>Ruben Trijbs</strong><br>
                             Full-Stack Developer & Creative Designer<br>
                             <a href="mailto:rbdegroot@gmail.com" style="color: #00ff88;">rbdegroot@gmail.com</a>
                         </p>
