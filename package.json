@@ -1,8 +1,6 @@
 {
   "name": "portfolio-vercel",
-  "version": "1.0.0",
-  "type": "module",
-  "description": "Portfolio website with Vercel serverless functions for contact form and analytics",
+  "version": "1.0.0",  "type": "module",  "description": "Portfolio website with Vercel serverless functions for contact form and analytics",
   "scripts": {
     "dev": "vercel dev",
     "start": "vercel dev",
