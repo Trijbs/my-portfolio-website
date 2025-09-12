@@ -86,11 +86,21 @@ class ContactFormHandler {
             body: JSON.stringify(formData)
         });
 
+        const result = await response.json();
+        
+        // Log the response for debugging
+        console.log('Contact form response:', {
+            status: response.status,
+            success: result.success,
+            message: result.message,
+            error: result.error
+        });
+
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            throw new Error(result.message || `HTTP error! status: ${response.status}`);
         }
 
-        return await response.json();
+        return result;
     }
 
     getFormData() {
