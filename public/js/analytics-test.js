@@ -52,6 +52,20 @@ window.testAnalytics = function() {
         console.warn('⚠️ You are on localhost. Analytics only work on the live domain.');
     }
     
+    // Test security headers
+    console.log('🔒 Testing security headers...');
+    fetch(window.location.href, { method: 'HEAD' })
+        .then(response => {
+            const headers = response.headers;
+            console.log('🔒 Security headers check:');
+            console.log('  CSP:', headers.get('content-security-policy') ? '✅' : '❌');
+            console.log('  XFO:', headers.get('x-frame-options') ? '✅' : '❌');
+            console.log('  COOP:', headers.get('cross-origin-opener-policy') ? '✅' : '❌');
+        })
+        .catch(error => {
+            console.warn('⚠️ Could not check security headers:', error.message);
+        });
+    
     console.log('🔍 Test complete. Check above for any issues.');
 };
 
