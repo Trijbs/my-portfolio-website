@@ -16,10 +16,34 @@
     <link rel="canonical" href="https://trijbsworld.nl">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/logo-footer.css">
-    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap"></noscript>
+    
+    <!-- Critical CSS inline -->
+    <style>
+        /* Critical above-the-fold styles */
+        body { margin: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+        .header { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); }
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+        .loading { opacity: 0; transition: opacity 0.3s ease; }
+        .loaded { opacity: 1; }
+        
+        /* Prevent layout shifts */
+        img { max-width: 100%; height: auto; }
+        .project-card img { aspect-ratio: 3/2; object-fit: cover; }
+        .github-chart img { aspect-ratio: 4/1; object-fit: contain; }
+        
+        /* Reserve space for dynamic content */
+        .modal { contain: layout style paint; }
+        .project-grid { contain: layout; }
+    </style>
+    
+    <!-- Non-critical CSS -->
+    <link rel="preload" href="css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
+    <link rel="preload" href="css/logo-footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/logo-footer.css"></noscript>
+    <script src="https://unpkg.com/feather-icons" defer></script>
     
     <!-- Structured Data for SEO -->
     <script type="application/ld+json">
@@ -227,7 +251,8 @@
                             <p>Contributions in the last year: <span class="highlight">8</span></p>
                         </div>
                         <div class="contribution-calendar">
-                            <img src="http://ghchart.rshah.org/trijbs" alt="trijbs Github chart" />
+                            <img src="http://ghchart.rshah.org/trijbs" alt="trijbs Github chart" 
+                                 width="800" height="200" loading="lazy" />
                         </div>
                     </div>
                 </div>
@@ -254,7 +279,8 @@
                     <!-- Featured Project 1 -->
                     <div class="project-card featured" data-category="web creative">
                         <div class="project-image">
-                            <img src="img/Urban_unleashed_homescreen.png" alt="Urban Unleashed - Interactive Homescreen Interface" loading="lazy">
+                            <img src="img/Urban_unleashed_homescreen.png" alt="Urban Unleashed - Interactive Homescreen Interface" 
+                                 width="600" height="400" loading="lazy">
                             <div class="project-overlay">
                                 <div class="project-actions">
                                     <button class="btn btn-primary live-demo" data-url="https://urban-unleashed.vercel.app" data-title="Urban Unleashed">
@@ -298,7 +324,8 @@
                     <!-- Project 2 -->
                     <div class="project-card" data-category="web">
                         <div class="project-image">
-                            <img src="img/popfusion.png" alt="PopFusion - Music Visualizer" loading="lazy">
+                            <img src="img/popfusion.png" alt="PopFusion - Music Visualizer" 
+                                 width="600" height="400" loading="lazy">
                             <div class="project-overlay">
                                 <div class="project-actions">
                                     <button class="btn btn-primary live-demo" data-url="https://trijbs.eu/PopFusion2/" data-title="PopFusion">
@@ -342,7 +369,8 @@
                     <!-- Project 3 -->
                     <div class="project-card" data-category="ecommerce web">
                         <div class="project-image">
-                            <img src="img/Webshop.webp" alt="Modern E-commerce Platform" loading="lazy">
+                            <img src="img/Webshop.webp" alt="Modern E-commerce Platform" 
+                                 width="600" height="400" loading="lazy">
                             <div class="project-overlay">
                                 <div class="project-actions">
                                     <button class="btn btn-primary live-demo" data-url="https://trijbs.eu/Webshop/" data-title="E-commerce Platform">
@@ -594,20 +622,20 @@
         </div>
     </div>
     
-    <!-- Core Scripts -->
-    <script src="js/main.js"></script>
+    <!-- Core Scripts - Load in order of importance -->
+    <script src="js/main.js" defer></script>
     
-    <!-- Vercel Analytics -->
-    <script src="js/vercel-analytics.js"></script>
+    <!-- Vercel Analytics - High priority -->
+    <script src="js/vercel-analytics.js" defer></script>
     
     <!-- Privacy Controls & GDPR Compliance -->
-    <script src="js/privacy-controls.js"></script>
+    <script src="js/privacy-controls.js" defer></script>
     
     <!-- Enhanced Contact Form -->
-    <script src="js/contact-form.js"></script>
+    <script src="js/contact-form.js" defer></script>
     
-    <!-- Analytics Test Script (for debugging) -->
-    <script src="js/analytics-test.js"></script>
+    <!-- Analytics Test Script (for debugging) - Low priority -->
+    <script src="js/analytics-test.js" defer></script>
     
     <script>
       // Initialize Feather icons and wire up modal behavior
