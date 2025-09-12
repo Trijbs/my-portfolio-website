@@ -3,681 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact & Social - Ruben's Portfolio</title>
-    <meta name="description" content="Connect with Ruben - Find all my social media profiles, contact information, and ways to get in touch.">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Feather Icons -->
+    <title>Info | Ruben Trijbels</title>
+    <link rel="stylesheet" href="public/css/styles.css">
+    <link rel="stylesheet" href="public/css/logo-footer.css">
     <script src="https://unpkg.com/feather-icons"></script>
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/styles.css">
-    
-    <!-- Analytics Configuration -->
-    <script src="js/analytics-config.js"></script>
-    <!-- Advanced Analytics System -->
-    <script src="js/analytics.js"></script>
-    <!-- Privacy Controls & GDPR Compliance -->
-    <script src="js/privacy-controls.js"></script>
-    <!-- Enhanced Contact Form -->
-    <script src="js/contact-form.js"></script>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 <body class="theme-poster">
-    <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="logo">
                 <a href="index.html" class="logo-container">
+                    <div class="logo-symbol">R</div>
                     <span class="logo-text">trijbs</span>
                 </a>
             </div>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
                     <li><a href="index.html#about">About</a></li>
                     <li><a href="index.html#skills">Skills</a></li>
                     <li><a href="index.html#projects">Projects</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
-                    <li><a href="info.html" class="active">Info</a></li>
+                    <li><a href="info.html">Info</a></li>
                 </ul>
             </nav>
-            <button class="theme-toggle" aria-label="Toggle theme">
-                <i data-feather="sun" class="light-icon"></i>
-                <i data-feather="moon" class="dark-icon"></i>
-            </button>
-            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
-                <i data-feather="menu"></i>
-            </button>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Info Hero Section -->
-        <section class="info-hero-section">
+    <main style="padding-top: 100px;">
+        <section class="info-section">
             <div class="container">
-                <div class="info-hero-content">
-                    <div class="section-header">
-                        <span class="section-tag">Connect With Me</span>
-                        <h1 class="section-title">Let's Stay Connected</h1>
-                        <p class="section-description">
-                            Find me across the web and discover more about my work, thoughts, and creative journey. 
-                            Choose your preferred platform to connect and stay updated with my latest projects.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Social Links Section -->
-        <section class="social-links-section">
-            <div class="container">
-                <div class="enhanced-container">
-                    <div class="section-header">
-                        <h2>Connect & Collaborate</h2>
-                        <p>Find me across different platforms and let's create something amazing together.</p>
-                    </div>
-                    <div class="social-buttons-grid">
-                        
-                        <!-- GitHub Button -->
-                        <button class="social-button github" onclick="openSocialLink('https://github.com/trijbs')" data-platform="GitHub">
-                            <div class="social-button-header">
-                                <div class="social-button-icon">
-                                    <i data-feather="github"></i>
-                                </div>
-                                <div class="social-button-title">
-                                    <h3>GitHub</h3>
-                                    <span class="social-button-handle">@trijbs</span>
-                                </div>
-                                <div class="social-button-action">
-                                    <i data-feather="external-link"></i>
-                                </div>
-                            </div>
-                            <div class="social-button-description">
-                                <p>Explore my code repositories, open source contributions, and development projects.</p>
-                            </div>
-                            <div class="social-button-stats">
-                                <span class="stat-item">
-                                    <i data-feather="star"></i>
-                                    <span>50+ Stars</span>
-                                </span>
-                                <span class="stat-item">
-                                    <i data-feather="git-branch"></i>
-                                    <span>25+ Repos</span>
-                                </span>
-                            </div>
-                        </button>
-
-                        <!-- Instagram Button -->
-                        <button class="social-button instagram" onclick="openSocialLink('https://instagram.com/trijbs.xyz')" data-platform="Instagram">
-                            <div class="social-button-header">
-                                <div class="social-button-icon">
-                                    <i data-feather="instagram"></i>
-                                </div>
-                                <div class="social-button-title">
-                                    <h3>Instagram</h3>
-                                    <span class="social-button-handle">@trijbs.xyz</span>
-                                </div>
-                                <div class="social-button-action">
-                                    <i data-feather="external-link"></i>
-                                </div>
-                            </div>
-                            <div class="social-button-description">
-                                <p>Behind-the-scenes content, creative process, and personal moments from my journey.</p>
-                            </div>
-                            <div class="social-button-stats">
-                                <span class="stat-item">
-                                    <i data-feather="heart"></i>
-                                    <span>1.2k Likes</span>
-                                </span>
-                                <span class="stat-item">
-                                    <i data-feather="users"></i>
-                                    <span>500+ Followers</span>
-                                </span>
-                            </div>
-                        </button>
-
-                        <!-- Email Button -->
-                        <button class="social-button email" onclick="copyToClipboard('rbdegroot@gmail.com', 'Email')" data-platform="Email">
-                            <div class="social-button-header">
-                                <div class="social-button-icon">
-                                    <i data-feather="mail"></i>
-                                </div>
-                                <div class="social-button-title">
-                                    <h3>Email</h3>
-                                    <span class="social-button-handle">rbdegroot@gmail.com</span>
-                                </div>
-                                <div class="social-button-action">
-                                    <i data-feather="copy"></i>
-                                </div>
-                            </div>
-                            <div class="social-button-description">
-                                <p>Direct communication for business inquiries, collaborations, and project discussions.</p>
-                            </div>
-                            <div class="social-button-stats">
-                                <span class="stat-item">
-                                    <i data-feather="clock"></i>
-                                    <span>24h Response</span>
-                                </span>
-                                <span class="stat-item">
-                                    <i data-feather="shield-check"></i>
-                                    <span>Secure</span>
-                                </span>
-                            </div>
-                        </button>
-
-                        <!-- Portfolio Website Button -->
-                        <button class="social-button website" onclick="openSocialLink('https://trijbsworld.nl')" data-platform="Website">
-                            <div class="social-button-header">
-                                <div class="social-button-icon">
-                                    <i data-feather="globe"></i>
-                                </div>
-                                <div class="social-button-title">
-                                    <h3>Portfolio Website</h3>
-                                    <span class="social-button-handle">trijbsworld.nl</span>
-                                </div>
-                                <div class="social-button-action">
-                                    <i data-feather="external-link"></i>
-                                </div>
-                            </div>
-                            <div class="social-button-description">
-                                <p>My main portfolio showcasing all projects, skills, and professional experience.</p>
-                            </div>
-                            <div class="social-button-stats">
-                                <span class="stat-item">
-                                    <i data-feather="eye"></i>
-                                    <span>5k+ Views</span>
-                                </span>
-                                <span class="stat-item">
-                                    <i data-feather="zap"></i>
-                                    <span>Fast Load</span>
-                                </span>
-                            </div>
-                        </button>
-
-                        <!-- Discord Button -->
-                        <button class="social-button discord" onclick="copyToClipboard('_tribs_', 'Discord')" data-platform="Discord">
-                            <div class="social-button-header">
-                                <div class="social-button-icon">
-                                    <i data-feather="message-circle"></i>
-                                </div>
-                                <div class="social-button-title">
-                                    <h3>Discord</h3>
-                                    <span class="social-button-handle">_tribs_</span>
-                                </div>
-                                <div class="social-button-action">
-                                    <i data-feather="copy"></i>
-                                </div>
-                            </div>
-                            <div class="social-button-description">
-                                <p>Real-time chat for quick questions, collaboration, and community discussions.</p>
-                            </div>
-                            <div class="social-button-stats">
-                                <span class="stat-item">
-                                    <i data-feather="message-square"></i>
-                                    <span>Active Daily</span>
-                                </span>
-                                <span class="stat-item">
-                                    <i data-feather="users"></i>
-                                    <span>Community</span>
-                                </span>
-                            </div>
-                        </button>
-
-                        <!-- LinkedIn Button -->
-                        <button class="social-button linkedin" onclick="openSocialLink('https://linkedin.com/in/trijbs')" data-platform="LinkedIn">
-                            <div class="social-button-header">
-                                <div class="social-button-icon">
-                                    <i data-feather="linkedin"></i>
-                                </div>
-                                <div class="social-button-title">
-                                    <h3>LinkedIn</h3>
-                                    <span class="social-button-handle">@trijbs</span>
-                                </div>
-                                <div class="social-button-action">
-                                    <i data-feather="external-link"></i>
-                                </div>
-                            </div>
-                            <div class="social-button-description">
-                                <p>Professional network, career updates, and business connections in tech industry.</p>
-                            </div>
-                            <div class="social-button-stats">
-                                <span class="stat-item">
-                                    <i data-feather="briefcase"></i>
-                                    <span>Professional</span>
-                                </span>
-                                <span class="stat-item">
-                                    <i data-feather="trending-up"></i>
-                                    <span>Growing</span>
-                                </span>
-                            </div>
-                        </button>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Quick Actions Section -->
-        <section class="quick-actions-section">
-            <div class="container">
-                <div class="enhanced-container">
-                    <div class="section-header">
-                        <h2 class="section-title">Quick Actions</h2>
-                        <p class="section-description">Ready to get started? Choose your next step and let's create something amazing together.</p>
-                    </div>
-                    <div class="quick-actions-grid">
-                        
-                        <!-- View Projects Action -->
-                        <button class="action-button projects" onclick="viewProjects()" data-action="Projects">
-                            <div class="action-button-header">
-                                <div class="action-button-icon">
-                                    <i data-feather="folder"></i>
-                                </div>
-                                <div class="action-button-title">
-                                    <h3>View Projects</h3>
-                                    <span class="action-button-subtitle">Explore Portfolio</span>
-                                </div>
-                                <div class="action-button-arrow">
-                                    <i data-feather="arrow-right"></i>
-                                </div>
-                            </div>
-                            <div class="action-button-description">
-                                <p>Browse through my latest work, case studies, and creative projects showcasing web development and design skills.</p>
-                            </div>
-                            <div class="action-button-stats">
-                                <span class="stat-item">
-                                    <i data-feather="code"></i>
-                                    <span>15+ Projects</span>
-                                </span>
-                                <span class="stat-item">
-                                    <i data-feather="layers"></i>
-                                    <span>Multiple Tech</span>
-                                </span>
-                            </div>
-                        </button>
-
-                        <!-- Send Message Action -->
-                        <button class="action-button contact" onclick="sendMessage()" data-action="Contact">
-                            <div class="action-button-header">
-                                <div class="action-button-icon">
-                                    <i data-feather="send"></i>
-                                </div>
-                                <div class="action-button-title">
-                                    <h3>Send Message</h3>
-                                    <span class="action-button-subtitle">Get In Touch</span>
-                                </div>
-                                <div class="action-button-arrow">
-                                    <i data-feather="arrow-right"></i>
-                                </div>
-                            </div>
-                            <div class="action-button-description">
-                                <p>Start a conversation about your project ideas, collaboration opportunities, or any questions you might have.</p>
-                            </div>
-                            <div class="action-button-stats">
-                                <span class="stat-item">
-                                    <i data-feather="clock"></i>
-                                    <span>Quick Response</span>
-                                </span>
-                                <span class="stat-item">
-                                    <i data-feather="message-circle"></i>
-                                    <span>Direct Contact</span>
-                                </span>
-                            </div>
-                        </button>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Availability Status -->
-        <section class="availability-section">
-            <div class="container">
-                <div class="enhanced-container">
-                    <div class="section-header">
-                        <h2 class="section-title">Current Availability</h2>
-                        <p class="section-description">Real-time status and information about my availability for new projects and collaborations.</p>
-                    </div>
-                    <div class="availability-grid">
-                        
-                        <!-- Status Card -->
-                        <div class="availability-card status-card">
-                            <div class="availability-card-header">
-                                <div class="availability-card-icon">
-                                    <i data-feather="check-circle"></i>
-                                </div>
-                                <div class="availability-card-title">
-                                    <h3>Currently Available</h3>
-                                    <span class="availability-card-subtitle">Open for Projects</span>
-                                </div>
-                                <div class="status-indicator available">
-                                    <div class="status-pulse"></div>
-                                </div>
-                            </div>
-                            <div class="availability-card-description">
-                                <p>I'm actively seeking new opportunities and excited to collaborate on innovative projects that challenge and inspire.</p>
-                            </div>
-                            <div class="availability-card-stats">
-                                <span class="stat-item">
-                                    <i data-feather="calendar"></i>
-                                    <span>Immediate Start</span>
-                                </span>
-                                <span class="stat-item">
-                                    <i data-feather="trending-up"></i>
-                                    <span>High Priority</span>
-                                </span>
-                            </div>
-                        </div>
-
-                        <!-- Response Time Card -->
-                        <div class="availability-card response-card">
-                            <div class="availability-card-header">
-                                <div class="availability-card-icon">
-                                    <i data-feather="clock"></i>
-                                </div>
-                                <div class="availability-card-title">
-                                    <h3>Response Time</h3>
-                                    <span class="availability-card-subtitle">Communication Speed</span>
-                                </div>
-                                <div class="response-indicator fast">
-                                    <span class="response-time">24h</span>
-                                </div>
-                            </div>
-                            <div class="availability-card-description">
-                                <p>I prioritize quick and clear communication, typically responding to inquiries within 24 hours during business days.</p>
-                            </div>
-                            <div class="availability-card-stats">
-                                <span class="stat-item">
-                                    <i data-feather="message-square"></i>
-                                    <span>Quick Reply</span>
-                                </span>
-                                <span class="stat-item">
-                                    <i data-feather="phone"></i>
-                                    <span>Multiple Channels</span>
-                                </span>
-                            </div>
-                        </div>
-
-                        <!-- Location Card -->
-                        <div class="availability-card location-card">
-                            <div class="availability-card-header">
-                                <div class="availability-card-icon">
-                                    <i data-feather="map-pin"></i>
-                                </div>
-                                <div class="availability-card-title">
-                                    <h3>Location</h3>
-                                    <span class="availability-card-subtitle">Time Zone & Region</span>
-                                </div>
-                                <div class="timezone-indicator">
-                                    <span class="timezone">CET</span>
-                                </div>
-                            </div>
-                            <div class="availability-card-description">
-                                <p>Based in the Netherlands (Central European Time), but comfortable working with international teams across different time zones.</p>
-                            </div>
-                            <div class="availability-card-stats">
-                                <span class="stat-item">
-                                    <i data-feather="globe"></i>
-                                    <span>Netherlands</span>
-                                </span>
-                                <span class="stat-item">
-                                    <i data-feather="users"></i>
-                                    <span>Remote Ready</span>
-                                </span>
-                            </div>
-                        </div>
-
-                        <!-- Project Types Card -->
-                        <div class="availability-card projects-card">
-                            <div class="availability-card-header">
-                                <div class="availability-card-icon">
-                                    <i data-feather="briefcase"></i>
-                                </div>
-                                <div class="availability-card-title">
-                                    <h3>Project Types</h3>
-                                    <span class="availability-card-subtitle">Areas of Expertise</span>
-                                </div>
-                                <div class="expertise-indicator">
-                                    <i data-feather="star"></i>
-                                </div>
-                            </div>
-                            <div class="availability-card-description">
-                                <p>Specializing in modern web development, user interface design, and full-stack applications with focus on user experience.</p>
-                            </div>
-                            <div class="availability-card-stats">
-                                <span class="stat-item">
-                                    <i data-feather="code"></i>
-                                    <span>Web Development</span>
-                                </span>
-                                <span class="stat-item">
-                                    <i data-feather="palette"></i>
-                                    <span>UI/UX Design</span>
-                                </span>
-                            </div>
-                        </div>
-
-                    </div>
+                <h1>Portfolio Information</h1>
+                
+                <div class="info-content">
+                    <h2>About This Portfolio</h2>
+                    <p>This portfolio showcases my work as a full-stack developer and creative designer. Built with modern web technologies and deployed on Vercel.</p>
+                    
+                    <h2>Technologies Used</h2>
+                    <ul>
+                        <li>HTML5 & CSS3</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>Node.js & Express</li>
+                        <li>Vercel Serverless Functions</li>
+                        <li>Nodemailer for contact form</li>
+                    </ul>
+                    
+                    <h2>Features</h2>
+                    <ul>
+                        <li>Responsive design</li>
+                        <li>Dark/Light theme toggle</li>
+                        <li>Contact form with email notifications</li>
+                        <li>Project filtering</li>
+                        <li>Analytics tracking</li>
+                        <li>GDPR compliant privacy controls</li>
+                    </ul>
+                    
+                    <h2>Contact Information</h2>
+                    <p>Email: <a href="mailto:rbdegroot@gmail.com">rbdegroot@gmail.com</a></p>
+                    <p>GitHub: <a href="https://github.com/trijbs" target="_blank">@trijbs</a></p>
+                    <p>Instagram: <a href="https://instagram.com/trijbs.xyz" target="_blank">@trijbs.xyz</a></p>
+                    
+                    <h2>Test Email Configuration</h2>
+                    <p>To test if the email system is working, visit: <a href="/api/test-email" target="_blank">/api/test-email</a></p>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2024 Ruben Trijbs. All rights reserved.</p>
-                <div class="footer-links">
-                    <a href="index.html">Home</a>
-                    <a href="index.html#about">About</a>
-                    <a href="index.html#projects">Projects</a>
-                    <a href="info.html">Connect</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="js/main.js"></script>
+    <script src="public/js/main.js"></script>
     <script>
-        // Initialize Feather icons
-        feather.replace();
-
-        // Social Button Functions
-        function openSocialLink(url) {
-            window.open(url, '_blank', 'noopener,noreferrer');
-        }
-
-        function copyToClipboard(text, platform) {
-            const button = event.target.closest('.social-button');
-            
-            // Add loading state
-            button.classList.add('loading');
-            
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(text).then(() => {
-                    showCopySuccess(button, platform, text);
-                }).catch(() => {
-                    fallbackCopy(text, button, platform);
-                });
-            } else {
-                fallbackCopy(text, button, platform);
-            }
-        }
-
-        function fallbackCopy(text, button, platform) {
-            const textArea = document.createElement('textarea');
-            textArea.value = text;
-            textArea.style.position = 'fixed';
-            textArea.style.opacity = '0';
-            document.body.appendChild(textArea);
-            textArea.select();
-            
-            try {
-                document.execCommand('copy');
-                showCopySuccess(button, platform, text);
-            } catch (err) {
-                showCopyError(button, platform);
-            }
-            
-            document.body.removeChild(textArea);
-        }
-
-        function showCopySuccess(button, platform, text) {
-            button.classList.remove('loading');
-            button.classList.add('copied');
-            
-            // Update button text temporarily
-            const actionIcon = button.querySelector('.social-button-action i');
-            const originalIcon = actionIcon.getAttribute('data-feather');
-            actionIcon.setAttribute('data-feather', 'check');
+        document.addEventListener('DOMContentLoaded', () => {
             feather.replace();
-            
-            // Show notification
-            if (window.showNotification) {
-                window.showNotification(`${platform} ${platform === 'Email' ? 'address' : 'username'} copied to clipboard!`, 'success');
-            }
-            
-            // Reset button state after 2 seconds
-            setTimeout(() => {
-                button.classList.remove('copied');
-                actionIcon.setAttribute('data-feather', originalIcon);
-                feather.replace();
-            }, 2000);
-        }
-
-        function showCopyError(button, platform) {
-            button.classList.remove('loading');
-            
-            if (window.showNotification) {
-                window.showNotification(`Failed to copy ${platform}. Please try again.`, 'error');
-            } else {
-                alert(`Failed to copy ${platform}. Please try again.`);
-            }
-        }
-
-        // Enhanced social button interactions
-        document.addEventListener('DOMContentLoaded', function() {
-            // Social buttons
-            document.querySelectorAll('.social-button').forEach(button => {
-                button.addEventListener('mouseenter', () => {
-                    const platform = button.getAttribute('data-platform');
-                    button.setAttribute('title', `Connect with me on ${platform}`);
-                });
-                
-                button.addEventListener('click', (e) => {
-                    // Add click animation
-                    button.style.transform = 'scale(0.98)';
-                    setTimeout(() => {
-                        button.style.transform = '';
-                    }, 150);
-                });
-            });
-
-            // Action buttons
-            document.querySelectorAll('.action-button').forEach(button => {
-                button.addEventListener('mouseenter', () => {
-                    const action = button.getAttribute('data-action');
-                    button.setAttribute('title', `${action} - Click to proceed`);
-                });
-                
-                button.addEventListener('click', (e) => {
-                    // Add click animation
-                    button.style.transform = 'scale(0.98)';
-                    setTimeout(() => {
-                        button.style.transform = '';
-                    }, 150);
-                });
-            });
-
-            // Availability cards hover effects
-            document.querySelectorAll('.availability-card').forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    const title = card.querySelector('.availability-card-title h3').textContent;
-                    card.setAttribute('title', `${title} - Current status and information`);
-                });
-            });
         });
-
-        // Quick action functions
-        function viewProjects() {
-            window.location.href = 'index.html#projects';
-        }
-
-        function sendMessage() {
-            window.location.href = 'index.html#contact';
-        }
-
-        function downloadCV() {
-            // Create a temporary link to trigger download
-            const link = document.createElement('a');
-            link.href = '#'; // Replace with actual CV file path when available
-            link.download = 'Ruben_Trijbels_CV.pdf';
-            
-            // Show notification since we don't have an actual CV file
-            if (window.showNotification) {
-                window.showNotification('CV download will be available soon! Please contact me directly for my resume.', 'info');
-            } else {
-                alert('CV download will be available soon! Please contact me directly for my resume.');
-            }
-            
-            // Uncomment the following lines when you have an actual CV file:
-            // document.body.appendChild(link);
-            // link.click();
-            // document.body.removeChild(link);
-        }
-
-        // Theme toggle functionality
-        const themeToggle = document.querySelector('.theme-toggle');
-        const body = document.body;
-        
-        if (themeToggle) {
-            themeToggle.addEventListener('click', () => {
-                if (body.classList.contains('theme-poster')) {
-                    body.classList.remove('theme-poster');
-                    body.classList.add('light-theme');
-                } else {
-                    body.classList.remove('light-theme');
-                    body.classList.add('theme-poster');
-                }
-                updateThemeIcon();
-            });
-        }
-
-        function updateThemeIcon() {
-            const lightIcon = document.querySelector('.light-icon');
-            const darkIcon = document.querySelector('.dark-icon');
-            
-            if (body.classList.contains('light-theme')) {
-                lightIcon.style.display = 'none';
-                darkIcon.style.display = 'block';
-            } else {
-                lightIcon.style.display = 'block';
-                darkIcon.style.display = 'none';
-            }
-        }
-
-        // Initialize theme icon
-        updateThemeIcon();
-
-        // Mobile menu functionality
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const mainNav = document.querySelector('.main-nav');
-
-        if (mobileMenuToggle) {
-            mobileMenuToggle.addEventListener('click', () => {
-                mainNav.classList.toggle('active');
-                body.classList.toggle('menu-open');
-            });
-        }
     </script>
 </body>
 </html>
