@@ -1499,6 +1499,43 @@ section {
   animation: fadeInUp 0.6s ease forwards;
 }
 
+/* Version Update Notification */
+.version-update-notice {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--gradient-secondary);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  z-index: var(--z-tooltip);
+  transform: translateX(400px);
+  transition: transform var(--transition-normal);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.version-update-notice.show {
+  transform: translateX(0);
+}
+
+.version-update-notice button {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  margin-left: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background var(--transition-fast);
+}
+
+.version-update-notice button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
 /* ===== Info Page Styles ===== */
 .info-section {
   padding: var(--spacing-xxl) 0;
