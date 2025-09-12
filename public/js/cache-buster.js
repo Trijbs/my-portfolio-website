@@ -7,7 +7,7 @@
     'use strict';
     
     // Version check and cache busting
-    const CURRENT_VERSION = '2.0.0';
+    const CURRENT_VERSION = '2.1.0';
     const STORAGE_KEY = 'portfolio_version';
     
     function getStoredVersion() {

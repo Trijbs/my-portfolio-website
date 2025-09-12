@@ -231,35 +231,60 @@ document.addEventListener('DOMContentLoaded', function() {
         currentDemoUrl = url;
         
         if (liveDemoTitle) liveDemoTitle.textContent = title;
-        if (liveDemoModal) liveDemoModal.classList.add('active');
+        if (liveDemoModal) liveDemoModal.classList.add('open');
         
         // Show loading spinner
         if (loadingSpinner) loadingSpinner.style.display = 'flex';
         
+        // Clear any previous error messages
+        const existingErrors = document.querySelectorAll('.iframe-error');
+        existingErrors.forEach(error => error.remove());
+        
         // Try to load in iframe first
         if (liveDemoFrame) {
+            // Reset iframe display
+            liveDemoFrame.style.display = 'block';
             liveDemoFrame.src = url;
             
             // Set up iframe load handlers
             liveDemoFrame.onload = () => {
+                console.log('Iframe loaded successfully');
                 if (loadingSpinner) loadingSpinner.style.display = 'none';
             };
             
             liveDemoFrame.onerror = () => {
+                console.log('Iframe error event triggered');
                 handleIframeError();
             };
             
-            // Show loading help after 3 seconds
+            // Check if iframe is blocked after a delay
             setTimeout(() => {
-                showLoadingHelp();
+                try {
+                    // Try to access iframe content to detect if it's blocked
+                    const iframeDoc = liveDemoFrame.contentDocument || liveDemoFrame.contentWindow.document;
+                    if (!iframeDoc || iframeDoc.location.href === 'about:blank') {
+                        console.log('Iframe appears to be blocked or empty');
+                        handleIframeError();
+                    }
+                } catch (e) {
+                    // Cross-origin restriction - this is normal, iframe is likely working
+                    console.log('Cross-origin restriction (normal):', e.message);
+                    if (loadingSpinner) loadingSpinner.style.display = 'none';
+                }
             }, 3000);
             
-            // Fallback timeout in case iframe is blocked
+            // Show loading help after 5 seconds
+            setTimeout(() => {
+                showLoadingHelp();
+            }, 5000);
+            
+            // Final fallback timeout
             setTimeout(() => {
                 if (loadingSpinner && loadingSpinner.style.display !== 'none') {
+                    console.log('Iframe loading timeout - showing error');
                     handleIframeError();
                 }
-            }, 8000);
+            }, 10000);
         }
         
         // Prevent body scroll
@@ -273,22 +298,28 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Handle iframe loading errors (when site blocks embedding)
     function handleIframeError() {
+        console.log('Handling iframe error for URL:', currentDemoUrl);
+        
         if (loadingSpinner) loadingSpinner.style.display = 'none';
         
-        // Show error message and open external button
+        // Hide iframe and show error message
         if (liveDemoFrame) {
             liveDemoFrame.style.display = 'none';
+            
+            // Remove any existing error containers
+            const existingErrors = document.querySelectorAll('.iframe-error');
+            existingErrors.forEach(error => error.remove());
             
             // Create error message
             const errorContainer = document.createElement('div');
             errorContainer.className = 'iframe-error';
             errorContainer.innerHTML = `
-                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 2rem; text-align: center; background: var(--bg-secondary); border-radius: 12px;">
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 2rem; text-align: center; background: var(--bg-secondary); border-radius: 12px; min-height: 400px;">
                     <i data-feather="external-link" style="width: 48px; height: 48px; color: var(--accent-primary); margin-bottom: 1rem;"></i>
-                    <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">Unable to embed this demo</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; max-width: 400px;">This website prevents embedding for security reasons. Click the button below to open it in a new tab.</p>
-                    <button class="btn btn-primary" onclick="window.open('${currentDemoUrl}', '_blank'); closeModal();">
-                        <i data-feather="external-link"></i>
+                    <h3 style="color: var(--text-primary); margin-bottom: 0.5rem; font-size: 1.25rem;">Unable to embed this demo</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; max-width: 400px; line-height: 1.5;">This website prevents embedding for security reasons. Click the button below to open it in a new tab for the full experience.</p>
+                    <button class="btn btn-primary" onclick="window.open('${escapeHTML(currentDemoUrl)}', '_blank', 'noopener,noreferrer'); closeModal();" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                        <i data-feather="external-link" style="width: 16px; height: 16px;"></i>
                         Open in New Tab
                     </button>
                 </div>
@@ -309,12 +340,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Show loading help after delay
     function showLoadingHelp() {
         if (loadingSpinner && loadingSpinner.style.display !== 'none') {
+            // Check if help message already exists
+            const existingHelp = loadingSpinner.querySelector('.loading-help');
+            if (existingHelp) return;
+            
             const helpMessage = document.createElement('div');
             helpMessage.className = 'loading-help';
             helpMessage.innerHTML = `
                 <p style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem;">Taking longer than expected?</p>
-                <button class="btn btn-outline" onclick="handleIframeError();" style="margin-top: 0.5rem; font-size: 0.9rem;">
-                    <i data-feather="external-link"></i>
+                <button class="btn btn-outline" onclick="handleIframeError();" style="margin-top: 0.5rem; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+                    <i data-feather="external-link" style="width: 14px; height: 14px;"></i>
                     Open in New Tab Instead
                 </button>
             `;
@@ -342,7 +377,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Close modal functionality
     function closeModal() {
         modals.forEach(modal => {
-            modal.classList.remove('active');
+            modal.classList.remove('active', 'open');
         });
         
         // Reset iframe
@@ -359,17 +394,32 @@ document.addEventListener('DOMContentLoaded', function() {
         loadingHelp.forEach(help => help.remove());
         
         // Reset loading spinner
-        if (loadingSpinner) loadingSpinner.style.display = 'flex';
+        if (loadingSpinner) {
+            loadingSpinner.style.display = 'none';
+        }
         
-        // Restore body scroll
+        // Reset body scroll
         document.body.style.overflow = '';
         
+        // Clear current demo URL
         currentDemoUrl = '';
     }
     
     // Make closeModal globally accessible
     window.closeModal = closeModal;
     window.handleIframeError = handleIframeError;
+    
+    // Debug function for troubleshooting
+    window.debugLiveDemo = function() {
+        console.log('=== Live Demo Debug Info ===');
+        console.log('Live demo buttons found:', liveDemoButtons.length);
+        console.log('Live demo modal:', liveDemoModal);
+        console.log('Live demo frame:', liveDemoFrame);
+        console.log('Current demo URL:', currentDemoUrl);
+        console.log('Modal classes:', liveDemoModal?.className);
+        console.log('Frame src:', liveDemoFrame?.src);
+        console.log('Loading spinner display:', loadingSpinner?.style.display);
+    };
     
     // Close modal button handlers
     const closeButtons = document.querySelectorAll('.close-modal');

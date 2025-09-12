@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Demo Modal Test</title>
+    <link rel="stylesheet" href="public/css/styles.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <div class="container" style="padding: 2rem;">
+        <h1>Live Demo Modal Test</h1>
+        <p>Test the live demo modal functionality with different types of URLs:</p>
+        
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 2rem 0;">
+            <!-- Test with a site that allows embedding -->
+            <button class="btn btn-primary live-demo" 
+                    data-url="https://example.com" 
+                    data-title="Example.com (Should work)">
+                Test Example.com
+            </button>
+            
+            <!-- Test with a site that blocks embedding -->
+            <button class="btn btn-primary live-demo" 
+                    data-url="https://github.com" 
+                    data-title="GitHub (Should be blocked)">
+                Test GitHub (Blocked)
+            </button>
+            
+            <!-- Test with a Vercel app -->
+            <button class="btn btn-primary live-demo" 
+                    data-url="https://urban-unleashed.vercel.app" 
+                    data-title="Urban Unleashed">
+                Test Vercel App
+            </button>
+            
+            <!-- Test with CodePen -->
+            <button class="btn btn-primary live-demo" 
+                    data-url="https://codepen.io/pen/debug/abcdef" 
+                    data-title="CodePen Demo">
+                Test CodePen
+            </button>
+        </div>
+        
+        <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; margin: 2rem 0;">
+            <h3>Expected Behavior:</h3>
+            <ul>
+                <li><strong>Example.com:</strong> Should load in iframe successfully</li>
+                <li><strong>GitHub:</strong> Should show error message with "Open in New Tab" button</li>
+                <li><strong>Vercel App:</strong> Should load in iframe (if allowed by CSP)</li>
+                <li><strong>CodePen:</strong> Should load in iframe</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Live Demo Modal -->
+    <div class="modal live-demo-modal" id="liveDemoModal">
+        <div class="modal-content live-demo-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="liveDemoTitle">Live Demo</h3>
+                <div class="modal-actions">
+                    <button class="btn btn-outline open-external" id="openExternal" title="Open in new tab">
+                        <i data-feather="external-link"></i>
+                        Open External
+                    </button>
+                    <button class="close-modal" aria-label="Close modal">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body iframe-container">
+                <iframe id="liveDemoFrame" src="" frameborder="0" allowfullscreen 
+                        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation"
+                        loading="lazy"></iframe>
+                <div class="loading-spinner">
+                    <div class="spinner"></div>
+                    <p>Loading demo...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="public/js/main.js"></script>
+    <script>
+        // Initialize Feather icons
+        feather.replace();
+        
+        // Add some debug logging
+        console.log('Live Demo Test Page Loaded');
+        console.log('Found live demo buttons:', document.querySelectorAll('.live-demo').length);
+    </script>
+</body>
+</html>
