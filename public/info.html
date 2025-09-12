@@ -66,9 +66,24 @@
     </main>
 
     <script src="js/main.js"></script>
+    
+    <!-- Vercel Analytics -->
+    <script src="js/vercel-analytics.js"></script>
+    
+    <!-- Privacy Controls & GDPR Compliance -->
+    <script src="js/privacy-controls.js"></script>
+    
+    <!-- Analytics Test Script (for debugging) -->
+    <script src="js/analytics-test.js"></script>
+    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             feather.replace();
+            
+            // Track business card view on info page
+            if (window.VercelAnalytics) {
+                window.VercelAnalytics.trackBusinessCardView();
+            }
         });
     </script>
 </body>

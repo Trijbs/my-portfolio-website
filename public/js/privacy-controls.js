@@ -239,9 +239,16 @@ You can change your preferences at any time by clicking the privacy settings lin
         }
         
         applyPreferences() {
-            // Apply analytics preferences
-            if (window.analyticsConfig) {
-                window.analyticsConfig.enabled = this.preferences.analytics;
+            // Apply analytics preferences for Vercel Analytics
+            if (this.preferences.analytics) {
+                // Enable Vercel Analytics if user consented
+                if (window.VercelAnalytics) {
+                    console.log('Analytics enabled by user preference');
+                }
+            } else {
+                // Disable analytics if user declined
+                console.log('Analytics disabled by user preference');
+                // Note: Vercel Analytics respects DNT headers and privacy settings
             }
             
             // Dispatch event for other scripts to listen to

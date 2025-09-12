@@ -1,4 +1,4 @@
-const nodemailer = require('nodemailer');
+import nodemailer from 'nodemailer';
 
 // Rate limiting storage (in-memory for simplicity)
 const rateLimitStore = new Map();
