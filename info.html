@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Info | Ruben Trijbels</title>
+    <title>Info | Ruben Trijbs</title>
     <link rel="stylesheet" href="public/css/styles.css">
     <link rel="stylesheet" href="public/css/logo-footer.css">
     <script src="https://unpkg.com/feather-icons"></script>
@@ -13,7 +13,6 @@
         <div class="container">
             <div class="logo">
                 <a href="index.html" class="logo-container">
-                    <div class="logo-symbol">R</div>
                     <span class="logo-text">trijbs</span>
                 </a>
             </div>
@@ -34,46 +33,67 @@
             <div class="container">
                 <h1>Portfolio Information</h1>
                 
-                <div class="info-content">
-                    <h2>About This Portfolio</h2>
-                    <p>This portfolio showcases my work as a full-stack developer and creative designer. Built with modern web technologies and deployed on Vercel.</p>
+                <div class="info-content"> 
+                    <p>This section provides detailed contact information and links to my social profiles.</p>
                     
-                    <h2>Technologies Used</h2>
-                    <ul>
-                        <li>HTML5 & CSS3</li>
-                        <li>JavaScript (ES6+)</li>
-                        <li>Node.js & Express</li>
-                        <li>Vercel Serverless Functions</li>
-                        <li>Nodemailer for contact form</li>
-                    </ul>
+                    <!-- Business Card Section -->
+                    <div class="business-card-section">
+                        <h2>Business Card</h2>
+                        <div class="business-card-container">
+                            <img src="public/img/business card.png" alt="Ruben Trijbels Business Card" class="business-card-image">
+                            <p class="business-card-caption">My professional business card design</p>
+                        </div>
+                    </div>
                     
-                    <h2>Features</h2>
-                    <ul>
-                        <li>Responsive design</li>
-                        <li>Dark/Light theme toggle</li>
-                        <li>Contact form with email notifications</li>
-                        <li>Project filtering</li>
-                        <li>Analytics tracking</li>
-                        <li>GDPR compliant privacy controls</li>
-                    </ul>
-                    
-                    <h2>Contact Information</h2>
-                    <p>Email: <a href="mailto:rbdegroot@gmail.com">rbdegroot@gmail.com</a></p>
-                    <p>GitHub: <a href="https://github.com/trijbs" target="_blank">@trijbs</a></p>
-                    <p>Instagram: <a href="https://instagram.com/trijbs.xyz" target="_blank">@trijbs.xyz</a></p>
-                    
-                    <h2>Test Email Configuration</h2>
-                    <p>To test if the email system is working, visit: <a href="/api/test-email" target="_blank">/api/test-email</a></p>
-                </div>
+                    <div class="info-links">
+                        <h2>Contact Information</h2>
+                        <p>Email: <a href="mailto:rbdegroot@gmail.com">rbdegroot@gmail.com</a></p>
+                        <p>GitHub: <a href="https://github.com/trijbs" target="_blank">@trijbs</a></p>
+                        <p>Instagram: <a href="https://instagram.com/trijbs.xyz" target="_blank">@trijbs.xyz</a></p>
+                    </div>
             </div>
         </section>
     </main>
+
+    <!-- Business Card Modal -->
+    <div id="businessCardModal" class="business-card-modal">
+        <button class="close-modal" onclick="closeBusinessCardModal()">×</button>
+        <img src="public/img/business card.png" alt="Ruben Trijbels Business Card - Full Size">
+    </div>
 
     <script src="public/js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             feather.replace();
+            
+            // Business card modal functionality
+            const businessCardImage = document.querySelector('.business-card-image');
+            const modal = document.getElementById('businessCardModal');
+            
+            if (businessCardImage && modal) {
+                businessCardImage.addEventListener('click', () => {
+                    modal.classList.add('open');
+                });
+                
+                // Close modal when clicking outside the image
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.classList.remove('open');
+                    }
+                });
+                
+                // Close modal with Escape key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && modal.classList.contains('open')) {
+                        modal.classList.remove('open');
+                    }
+                });
+            }
         });
+        
+        function closeBusinessCardModal() {
+            document.getElementById('businessCardModal').classList.remove('open');
+        }
     </script>
 </body>
 </html>
