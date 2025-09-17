@@ -3,21 +3,17 @@
   "functions": {
     "api/contact.js": {
       "maxDuration": 30
-    },
-    "api/analytics.js": {
-      "maxDuration": 10
-    },
-    "api/test-email.js": {
-      "maxDuration": 10
     }
   },
   "headers": [
     {
       "source": "/(.*)",
-      "headers": [        {
+      "headers": [
+        {
           "key": "Strict-Transport-Security",
           "value": "max-age=31536000; includeSubDomains; preload"
-        },        {
+        },
+        {
           "key": "X-Content-Type-Options",
           "value": "nosniff"
         },
@@ -100,10 +96,12 @@
         },
         {
           "key": "Access-Control-Allow-Headers",
-          "value": "Content-Type"        },
+          "value": "Content-Type"
+        },
         {
           "key": "X-Content-Type-Options",
-          "value": "nosniff"        }
+          "value": "nosniff"
+        }
       ]
     }
   ],
@@ -115,18 +113,6 @@
     {
       "source": "/security-test",
       "destination": "/security-test.html"
-    },
-    {
-      "source": "/live-demo-test",
-      "destination": "/live-demo-test.html"
-    },
-    {
-      "source": "/contact-admin",
-      "destination": "/contact-admin.html"
-    },
-    {
-      "source": "/analytics-dashboard",
-      "destination": "/analytics-dashboard.html"
     }
   ],
   "redirects": [
@@ -138,21 +124,6 @@
     {
       "source": "/security-test.html",
       "destination": "/security-test",
-      "permanent": true
-    },
-    {
-      "source": "/live-demo-test.html",
-      "destination": "/live-demo-test",
-      "permanent": true
-    },
-    {
-      "source": "/contact-admin.html",
-      "destination": "/contact-admin",
-      "permanent": true
-    },
-    {
-      "source": "/analytics-dashboard.html",
-      "destination": "/analytics-dashboard",
       "permanent": true
     },
     {
