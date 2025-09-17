@@ -1,4 +1,5 @@
 {
+  "public": "public",
   "functions": {
     "api/contact.js": {
       "maxDuration": 30
@@ -106,7 +107,59 @@
       ]
     }
   ],
+  "rewrites": [
+    {
+      "source": "/info",
+      "destination": "/info.html"
+    },
+    {
+      "source": "/security-test",
+      "destination": "/security-test.html"
+    },
+    {
+      "source": "/live-demo-test",
+      "destination": "/live-demo-test.html"
+    },
+    {
+      "source": "/contact-admin",
+      "destination": "/contact-admin.html"
+    },
+    {
+      "source": "/analytics-dashboard",
+      "destination": "/analytics-dashboard.html"
+    }
+  ],
   "redirects": [
+    {
+      "source": "/info.html",
+      "destination": "/info",
+      "permanent": true
+    },
+    {
+      "source": "/security-test.html",
+      "destination": "/security-test",
+      "permanent": true
+    },
+    {
+      "source": "/live-demo-test.html",
+      "destination": "/live-demo-test",
+      "permanent": true
+    },
+    {
+      "source": "/contact-admin.html",
+      "destination": "/contact-admin",
+      "permanent": true
+    },
+    {
+      "source": "/analytics-dashboard.html",
+      "destination": "/analytics-dashboard",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
     {
       "source": "/(.*)",
       "has": [
