@@ -1,5 +1,6 @@
 {
-  "public": "public",
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
   "functions": {
     "api/contact.js": {
       "maxDuration": 30
@@ -105,32 +106,7 @@
       ]
     }
   ],
-  "rewrites": [
-    {
-      "source": "/info",
-      "destination": "/info.html"
-    },
-    {
-      "source": "/security-test",
-      "destination": "/security-test.html"
-    }
-  ],
   "redirects": [
-    {
-      "source": "/info.html",
-      "destination": "/info",
-      "permanent": true
-    },
-    {
-      "source": "/security-test.html",
-      "destination": "/security-test",
-      "permanent": true
-    },
-    {
-      "source": "/index.html",
-      "destination": "/",
-      "permanent": true
-    },
     {
       "source": "/(.*)",
       "has": [
