@@ -443,29 +443,85 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
+    // Secure URL validation function
+    function getSocialPlatform(url) {
+        try {
+            // Handle mailto links separately
+            if (url.startsWith('mailto:')) {
+                return 'Email';
+            }
+            
+            // Parse the URL to get the hostname
+            const urlObj = new URL(url);
+            const hostname = urlObj.hostname.toLowerCase();
+            
+            // Define allowed social media domains
+            const allowedDomains = {
+                'github.com': 'GitHub',
+                'www.github.com': 'GitHub',
+                'instagram.com': 'Instagram',
+                'www.instagram.com': 'Instagram'
+            };
+            
+            // Check if the hostname exactly matches an allowed domain
+            if (allowedDomains[hostname]) {
+                return allowedDomains[hostname];
+            }
+            
+            // Check for subdomains of allowed domains
+            for (const [domain, platform] of Object.entries(allowedDomains)) {
+                if (hostname === domain || hostname.endsWith('.' + domain)) {
+                    return platform;
+                }
+            }
+            
+            return 'unknown';
+        } catch (error) {
+            // Invalid URL
+            return 'unknown';
+        }
+    }
+    
     // Track social media clicks
     const socialLinks = document.querySelectorAll('a[href*="github.com"], a[href*="instagram.com"], a[href*="mailto:"]');
     socialLinks.forEach(link => {
         link.addEventListener('click', () => {
             if (window.VercelAnalytics) {
-                let platform = 'unknown';
-                if (link.href.includes('github.com')) platform = 'GitHub';
-                else if (link.href.includes('instagram.com')) platform = 'Instagram';
-                else if (link.href.includes('mailto:')) platform = 'Email';
-                
+                const platform = getSocialPlatform(link.href);
                 window.VercelAnalytics.trackSocialClick(platform);
             }
         });
     });
     
+    // Secure GitHub URL validation function
+    function isValidGitHubUrl(url) {
+        try {
+            const urlObj = new URL(url);
+            const hostname = urlObj.hostname.toLowerCase();
+            
+            // Check if it's a valid GitHub domain
+            return hostname === 'github.com' || 
+                   hostname === 'www.github.com' || 
+                   hostname.endsWith('.github.com');
+        } catch (error) {
+            return false;
+        }
+    }
+    
     // Track project clicks
-    const projectButtons = document.querySelectorAll('.live-demo, .project-card a[href*="github.com"]');
+    const projectButtons = document.querySelectorAll('.live-demo, .project-card a');
     projectButtons.forEach(button => {
         button.addEventListener('click', () => {
             if (window.VercelAnalytics) {
-                const projectCard = button.closest('.project-card');
-                const projectName = projectCard ? projectCard.querySelector('h3')?.textContent || 'Unknown Project' : 'Unknown Project';
-                window.VercelAnalytics.trackProjectClick(projectName);
+                // Only track if it's a valid GitHub URL or a live demo button
+                const isLiveDemo = button.classList.contains('live-demo');
+                const isValidGitHub = button.href && isValidGitHubUrl(button.href);
+                
+                if (isLiveDemo || isValidGitHub) {
+                    const projectCard = button.closest('.project-card');
+                    const projectName = projectCard ? projectCard.querySelector('h3')?.textContent || 'Unknown Project' : 'Unknown Project';
+                    window.VercelAnalytics.trackProjectClick(projectName);
+                }
             }
         });
     });
