@@ -3,24 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Info | Ruben Trijbels | Portfolio Information</title>
-    <meta name="description" content="Learn about Ruben Trijbels' portfolio, technologies used, features, and contact information. Full-stack developer and creative designer.">
-    <meta name="keywords" content="portfolio info, web developer, full-stack developer, technologies, contact information">
-    <meta name="robots" content="index, follow">
-    <meta name="googlebot" content="index, follow">
-    <meta name="author" content="Ruben Trijbels">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Info | Ruben Trijbels Portfolio">
-    <meta property="og:description" content="Learn about Ruben Trijbels' portfolio, technologies used, and contact information.">
-    <meta property="og:url" content="https://trijbsworld.nl/info.html">
-    <meta property="og:type" content="website">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://trijbsworld.nl/info.html">
-    
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/logo-footer.css">
+    <title>Info | Ruben Trijbs</title>
+    <link rel="stylesheet" href="public/css/styles.css">
+    <link rel="stylesheet" href="public/css/logo-footer.css">
     <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body class="theme-poster">
@@ -48,58 +33,72 @@
             <div class="container">
                 <h1>Portfolio Information</h1>
                 
-                <div class="info-content">
-                    <h2>About This Portfolio</h2>
-                    <p>This portfolio showcases my work as a full-stack developer and creative designer. Built with modern web technologies and deployed on Vercel.</p>
+                <div class="info-content"> 
+                    <p>This section provides detailed contact information and links to my social profiles.</p>
                     
-                    <h2>Technologies Used</h2>
-                    <ul>
-                        <li>HTML5 & CSS3</li>
-                        <li>JavaScript (ES6+)</li>
-                        <li>Node.js & Express</li>
-                        <li>Vercel Serverless Functions</li>
-                        <li>Nodemailer for contact form</li>
-                    </ul>
+                    <!-- Business Card Section -->
+                    <div class="business-card-section">
+                        <h2>Business Card</h2>
+                        <div class="business-card-container">
+                            <img src="public/img/business card.png" alt="Ruben Trijbels Business Card" class="business-card-image">
+                            <p class="business-card-caption">My professional business card design</p>
+                        </div>
+                    </div>
                     
-                    <h2>Features</h2>
-                    <ul>
-                        <li>Responsive design</li>
-                        <li>Dark/Light theme toggle</li>
-                        <li>Contact form with email notifications</li>
-                        <li>Project filtering</li>
-                        <li>Analytics tracking</li>
-                        <li>GDPR compliant privacy controls</li>
-                    </ul>
-                    
-                    <h2>Contact Information</h2>
-                    <p>Email: <a href="mailto:rbdegroot@gmail.com">rbdegroot@gmail.com</a></p>
-                    <p>GitHub: <a href="https://github.com/trijbs" target="_blank">@trijbs</a></p>
-                    <p>Instagram: <a href="https://instagram.com/trijbs.xyz" target="_blank">@trijbs.xyz</a></p>
-                </div>
+                    <div class="info-links">
+                        <h2>Contact Information</h2>
+                        <p>Email: <a href="mailto:rbdegroot@gmail.com">rbdegroot@gmail.com</a></p>
+                        <p>GitHub: <a href="https://github.com/trijbs" target="_blank">@trijbs</a></p>
+                        <p>Instagram: <a href="https://instagram.com/trijbs.xyz" target="_blank">@trijbs.xyz</a></p>
+                    </div>
             </div>
         </section>
     </main>
 
-    <script src="js/main.js"></script>
-    
-    <!-- Vercel Analytics -->
-    <script src="js/vercel-analytics.js"></script>
-    
-    <!-- Privacy Controls & GDPR Compliance -->
-    <script src="js/privacy-controls.js"></script>
-    
-    <!-- Analytics Test Script (for debugging) -->
-    <script src="js/analytics-test.js"></script>
-    
+    <!-- Business Card Modal -->
+    <div id="businessCardModal" class="business-card-modal">
+        <button class="close-modal" onclick="closeBusinessCardModal()">×</button>
+        <img src="public/img/business card.png" alt="Ruben Trijbels Business Card - Full Size">
+    </div>
+
+    <script src="public/js/vercel-analytics.js"></script>
+    <script src="public/js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             feather.replace();
             
-            // Track business card view on info page
-            if (window.VercelAnalytics) {
-                window.VercelAnalytics.trackBusinessCardView();
+            // Business card modal functionality
+            const businessCardImage = document.querySelector('.business-card-image');
+            const modal = document.getElementById('businessCardModal');
+            
+            if (businessCardImage && modal) {
+                businessCardImage.addEventListener('click', () => {
+                    modal.classList.add('open');
+                    // Track business card view
+                    if (window.VercelAnalytics) {
+                        window.VercelAnalytics.trackBusinessCardView();
+                    }
+                });
+                
+                // Close modal when clicking outside the image
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.classList.remove('open');
+                    }
+                });
+                
+                // Close modal with Escape key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && modal.classList.contains('open')) {
+                        modal.classList.remove('open');
+                    }
+                });
             }
         });
+        
+        function closeBusinessCardModal() {
+            document.getElementById('businessCardModal').classList.remove('open');
+        }
     </script>
 </body>
 </html>
