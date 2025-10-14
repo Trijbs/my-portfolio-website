@@ -673,16 +673,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const videoPlayButtons = document.querySelectorAll('.video-play');
     console.log('Found video play buttons:', videoPlayButtons.length);
     
-    videoPlayButtons.forEach(button => {
+    videoPlayButtons.forEach((button, index) => {
+        console.log(`Setting up video play button ${index}:`, {
+            element: button,
+            videoUrl: button.getAttribute('data-video'),
+            title: button.getAttribute('data-title')
+        });
+        
         button.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
+            
             const videoUrl = button.getAttribute('data-video');
             const title = button.getAttribute('data-title') || 'Video';
             
-            console.log('Opening video:', { videoUrl, title });
+            console.log('Video play button clicked:', { videoUrl, title });
             
             if (videoUrl) {
                 openVideoModal(videoUrl, title);
+            } else {
+                console.error('No video URL found on button');
             }
         });
     });
@@ -691,10 +701,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const videoDownloadButtons = document.querySelectorAll('.video-download');
     console.log('Found video download buttons:', videoDownloadButtons.length);
     
-    videoDownloadButtons.forEach(button => {
+    videoDownloadButtons.forEach((button, index) => {
+        console.log(`Setting up video download button ${index}:`, {
+            element: button,
+            videoUrl: button.getAttribute('data-video')
+        });
+        
         button.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
+            
             const videoUrl = button.getAttribute('data-video');
+            
+            console.log('Video download button clicked:', { videoUrl });
             
             if (videoUrl) {
                 // Create temporary link and trigger download
@@ -705,24 +724,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 link.click();
                 document.body.removeChild(link);
                 
+                console.log('Download initiated for:', videoUrl);
+                
                 // Track download
                 if (window.VercelAnalytics) {
                     window.VercelAnalytics.trackEvent('video_download', {
                         video: videoUrl
                     });
                 }
+            } else {
+                console.error('No video URL found on button');
             }
         });
     });
     
     // Open video in modal
     function openVideoModal(videoUrl, title) {
+        console.log('openVideoModal called with:', { videoUrl, title });
+        
         const videoModal = document.getElementById('videoModal');
         const videoModalTitle = document.getElementById('videoModalTitle');
         const modalVideo = document.getElementById('modalVideo');
         
+        console.log('Modal elements:', {
+            videoModal: videoModal ? 'found' : 'NOT FOUND',
+            videoModalTitle: videoModalTitle ? 'found' : 'NOT FOUND',
+            modalVideo: modalVideo ? 'found' : 'NOT FOUND'
+        });
+        
         if (!videoModal || !modalVideo) {
             console.error('Video modal elements not found');
+            alert('Video modal niet gevonden. Probeer de pagina te verversen.');
             return;
         }
         
@@ -734,17 +766,25 @@ document.addEventListener('DOMContentLoaded', () => {
         // Set video source
         const source = modalVideo.querySelector('source');
         if (source) {
+            console.log('Setting video source to:', videoUrl);
             source.src = videoUrl;
             modalVideo.load();
+        } else {
+            console.error('Video source element not found');
         }
         
         // Show modal
         videoModal.classList.add('open');
         document.body.style.overflow = 'hidden';
         
+        console.log('Modal opened, attempting to play video...');
+        
         // Play video
-        modalVideo.play().catch(err => {
-            console.log('Video autoplay prevented:', err);
+        modalVideo.play().then(() => {
+            console.log('Video playing successfully');
+        }).catch(err => {
+            console.error('Video autoplay prevented:', err);
+            // Show play button or message to user
         });
         
         // Track video view

@@ -1,12 +1,42 @@
+# Dependencies
 node_modules
+
+# Git
 .git
+.gitignore
+
+# Environment files
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
 .DS_Store
+.Trash
+Thumbs.db
+
+# Development files
 contact-server.js
 analytics-server.js
 setup-dev.sh
+test-email-config.js
+test-deployment.js
+
+# Documentation
 LIVE_DEMO_FIXES.md
+DEPLOYMENT_CHECKLIST.md
+VIDEO_TEST_INSTRUCTIONS.md
+
+# Scripts
+deploy.sh
+deploy-debug.sh
+
+# Test files
+public/security-test.html
