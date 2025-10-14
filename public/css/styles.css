@@ -903,15 +903,11 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--transition-normal);
+  opacity: 0;  pointer-events: none;  transition: opacity var(--transition-normal);
 }
 
 .project-card:hover .project-overlay {
-  opacity: 1;
-  pointer-events: auto;
-}
+  opacity: 1;  pointer-events: auto;}
 
 .project-actions {
   display: flex;
@@ -993,7 +989,6 @@ section {
     transform: translateY(-10px);
   }
 }
-
 /* ===== Video Project Styling ===== */
 .project-card.video-project .project-image {
   position: relative;
@@ -1221,9 +1216,7 @@ section {
     .project-links .btn {
         width: 100%;
     }
-}
-
-/* Video Modal Styling */
+}/* Video Modal Styling */
 .video-modal .modal-content {
   width: 90vw;
   height: 90vh;
@@ -1318,7 +1311,6 @@ section {
   min-width: 100px;
   text-align: right;
 }
-
 .project-tags {
   display: flex;
   flex-wrap: wrap;
