@@ -321,7 +321,7 @@
                                         <i data-feather="figma"></i>
                                         View in Figma
                                     </button>
-                                    <button class="btn btn-secondary figma-embed" data-figma-embed="https://embed.figma.com/design/URqiY9oVCADc202Wqxb33c/opdracht-10?node-id=8-1346&embed-host=share" data-title="Opdracht 10 - Design Project">33c/opdracht-10?node-id=8-1346&embed-host=share" data-title="Design Project">33c/opdracht-10?node-id=8-1346&embed-host=share" data-title="Design Project">
+                                    <button class="btn btn-secondary figma-embed" data-figma-embed="https://embed.figma.com/design/URqiY9oVCADc202Wqxb33c/opdracht-10?node-id=8-1346&embed-host=share" data-title="Opdracht 10 - Design Project">
                                         <i data-feather="eye"></i>
                                         Preview
                                     </button>
@@ -701,6 +701,23 @@
         </div>
     </div>
 
+    <!-- Project Details Modal -->
+    <div class="modal project-details-modal" id="projectDetailsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="projectDetailsTitle">Project Details</h3>
+                <div class="modal-actions">
+                    <button class="close-modal" aria-label="Close modal">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body" id="projectDetailsBody">
+                <!-- Content will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
     <!-- Live Demo Modal -->
     <div class="modal live-demo-modal" id="liveDemoModal">
         <div class="modal-content live-demo-content">
@@ -723,6 +740,28 @@
                 <div class="loading-spinner">
                     <div class="spinner"></div>
                     <p>Loading demo...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div class="modal video-modal" id="videoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="videoModalTitle">Video</h3>
+                <div class="modal-actions">
+                    <button class="close-modal" aria-label="Close modal">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="video-container">
+                    <video id="modalVideo" controls autoplay>
+                        <source src="" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
             </div>
         </div>

@@ -1100,6 +1100,127 @@ section {
   animation: shimmer 3s ease-in-out infinite;
 }
 
+/* ===== Project Details Modal ===== */
+.project-details-modal .modal-content {
+    max-width: 900px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.project-details-content {
+    padding: var(--spacing-lg);
+}
+
+.project-description {
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.8;
+}
+
+.project-description h4 {
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.project-description ul {
+    list-style: none;
+    padding-left: 0;
+    margin: var(--spacing-md) 0;
+}
+
+.project-description li {
+    padding: var(--spacing-sm) 0;
+    padding-left: var(--spacing-lg);
+    position: relative;
+    line-height: 1.6;
+}
+
+.project-description li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent-secondary);
+    font-weight: bold;
+}
+
+.project-description strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.project-meta {
+    background: var(--bg-secondary);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-lg);
+    border: 1px solid var(--bg-tertiary);
+}
+
+.project-meta h4 {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.tech-tags .tag {
+    background: var(--gradient-primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.project-links {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--bg-tertiary);
+}
+
+.project-links .btn {
+    flex: 1;
+    min-width: 200px;
+    justify-content: center;
+}
+
+/* Responsive adjustments for project details modal */
+@media (max-width: 768px) {
+    .project-details-modal .modal-content {
+        max-width: 95vw;
+        max-height: 95vh;
+    }
+    
+    .project-details-content {
+        padding: var(--spacing-md);
+    }
+    
+    .project-description h4 {
+        font-size: 1.1rem;
+    }
+    
+    .project-links {
+        flex-direction: column;
+    }
+    
+    .project-links .btn {
+        width: 100%;
+    }
+}
+
 /* Video Modal Styling */
 .video-modal .modal-content {
   width: 90vw;

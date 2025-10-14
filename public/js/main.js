@@ -1,134 +1,210 @@
 // Main JavaScript functionality
 // Combines functionality for improved user experience
 
+// Project details data
+const projectDetails = {
+    'urban-unleashed': {
+        title: 'Urban Unleashed',
+        description: 'Een immersieve 3D generatieve kunst ervaring gebouwd met Next.js en Three.js.',
+        fullDescription: `
+            <p><strong>Urban Unleashed</strong> is een innovatief webproject dat de grenzen van web-gebaseerde 3D graphics verkent. Het project combineert moderne web technologieën met creatieve generatieve kunst.</p>
+            
+            <h4>🎯 Belangrijkste Features:</h4>
+            <ul>
+                <li><strong>Real-time 3D Rendering:</strong> Gebruik van Three.js voor vloeiende 3D graphics</li>
+                <li><strong>Procedurele Generatie:</strong> Dynamische content die elke keer uniek is</li>
+                <li><strong>Interactieve Controls:</strong> Intuïtieve interface voor gebruikersinteractie</li>
+                <li><strong>Responsive Design:</strong> Werkt perfect op alle apparaten</li>
+                <li><strong>Performance Optimized:</strong> Geoptimaliseerd voor snelle laadtijden</li>
+            </ul>
+            
+            <h4>🛠️ Technologieën:</h4>
+            <ul>
+                <li><strong>Next.js:</strong> React framework voor server-side rendering</li>
+                <li><strong>Three.js:</strong> JavaScript 3D library voor WebGL</li>
+                <li><strong>WebGL:</strong> Hardware-accelerated graphics</li>
+                <li><strong>React:</strong> Component-based UI development</li>
+            </ul>
+            
+            <h4>🎨 Design Approach:</h4>
+            <p>Het design focust op een clean, moderne interface die de 3D content laat schitteren. De homescreen is ontworpen met gebruiksvriendelijkheid in gedachten, met duidelijke navigatie en intuïtieve controls.</p>
+            
+            <h4>🚀 Performance:</h4>
+            <p>Het project is geoptimaliseerd voor performance met lazy loading, code splitting, en efficient rendering. De 3D graphics zijn geoptimaliseerd om vloeiend te draaien op verschillende apparaten.</p>
+        `,
+        technologies: ['Next.js', 'Three.js', 'WebGL', 'React', 'Generative Art'],
+        liveUrl: 'https://urban-unleashed.vercel.app',
+        githubUrl: 'https://github.com/yourusername/urban-unleashed'
+    },
+    'popfusion': {
+        title: 'PopFusion',
+        description: 'Een moderne e-commerce platform voor popcultuur merchandise.',
+        fullDescription: `
+            <p><strong>PopFusion</strong> is een volledig functioneel e-commerce platform speciaal ontworpen voor popcultuur merchandise. Het project combineert moderne webshop functionaliteit met een aantrekkelijk design.</p>
+            
+            <h4>🎯 Belangrijkste Features:</h4>
+            <ul>
+                <li><strong>Product Catalogus:</strong> Uitgebreide productpagina's met filters en zoekfunctie</li>
+                <li><strong>Winkelwagen:</strong> Volledig functionele shopping cart met real-time updates</li>
+                <li><strong>Checkout Proces:</strong> Gestroomlijnd checkout proces met meerdere betaalopties</li>
+                <li><strong>Responsive Design:</strong> Perfect geoptimaliseerd voor mobile shopping</li>
+                <li><strong>Admin Dashboard:</strong> Beheer producten, orders en klanten</li>
+            </ul>
+            
+            <h4>🛠️ Technologieën:</h4>
+            <ul>
+                <li><strong>React:</strong> Frontend framework voor dynamische UI</li>
+                <li><strong>Node.js:</strong> Backend server voor API endpoints</li>
+                <li><strong>MongoDB:</strong> Database voor product en order management</li>
+                <li><strong>Stripe:</strong> Veilige betalingsverwerking</li>
+                <li><strong>Express:</strong> Web application framework</li>
+            </ul>
+            
+            <h4>🎨 Design Features:</h4>
+            <p>Het design is geïnspireerd door moderne e-commerce platforms met een focus op gebruiksvriendelijkheid. Grote productafbeeldingen, duidelijke call-to-actions, en een intuïtieve navigatie zorgen voor een optimale shopping ervaring.</p>
+            
+            <h4>🔒 Security:</h4>
+            <p>Het platform implementeert industry-standard security practices inclusief HTTPS, secure payment processing via Stripe, en data encryptie voor gebruikersinformatie.</p>
+        `,
+        technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Express', 'E-commerce'],
+        liveUrl: 'https://popfusion.vercel.app',
+        githubUrl: 'https://github.com/yourusername/popfusion'
+    },
+    'webshop': {
+        title: 'Modern Webshop',
+        description: 'Een schaalbare e-commerce oplossing met moderne features.',
+        fullDescription: `
+            <p><strong>Modern Webshop</strong> is een schaalbare e-commerce oplossing gebouwd met de nieuwste web technologieën. Het project demonstreert best practices in webshop development.</p>
+            
+            <h4>🎯 Belangrijkste Features:</h4>
+            <ul>
+                <li><strong>Product Management:</strong> Uitgebreid product management systeem</li>
+                <li><strong>Order Processing:</strong> Geautomatiseerd order processing en tracking</li>
+                <li><strong>User Accounts:</strong> Klant accounts met order geschiedenis</li>
+                <li><strong>Search & Filters:</strong> Geavanceerde zoek- en filterfunctionaliteit</li>
+                <li><strong>Analytics Dashboard:</strong> Real-time sales en traffic analytics</li>
+            </ul>
+            
+            <h4>🛠️ Technologieën:</h4>
+            <ul>
+                <li><strong>Next.js:</strong> Full-stack React framework</li>
+                <li><strong>TypeScript:</strong> Type-safe development</li>
+                <li><strong>Prisma:</strong> Modern database ORM</li>
+                <li><strong>PostgreSQL:</strong> Relational database</li>
+                <li><strong>Tailwind CSS:</strong> Utility-first CSS framework</li>
+            </ul>
+            
+            <h4>🎨 User Experience:</h4>
+            <p>De webshop is ontworpen met focus op conversie optimalisatie. Elke pagina is geoptimaliseerd om bezoekers te converteren naar klanten, met duidelijke product informatie, reviews, en een frictionless checkout proces.</p>
+            
+            <h4>📊 Performance & SEO:</h4>
+            <p>Het project scoort hoog op alle web vitals metrics en is volledig geoptimaliseerd voor zoekmachines. Server-side rendering zorgt voor snelle laadtijden en betere SEO rankings.</p>
+        `,
+        technologies: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Tailwind CSS', 'E-commerce'],
+        liveUrl: 'https://webshop-demo.vercel.app',
+        githubUrl: 'https://github.com/yourusername/webshop'
+    }
+};
+
 // Escape HTML special characters in a string
 function escapeHTML(str) {
-    return str.replace(/[&<>"']/g, function (m) {
-        switch (m) {
-            case '&': return '&amp;';
-            case '<': return '&lt;';
-            case '>': return '&gt;';
-            case '"': return '&quot;';
-            case "'": return '&#39;';
-            default: return m;
-        }
-    });
+    if (!str) return '';
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('Initializing portfolio...');
+    
     // Initialize Feather icons
     if (typeof feather !== 'undefined') {
         feather.replace();
     }
     
-    // Theme toggle functionality
-    const themeToggle = document.querySelector('.theme-toggle');
-    const body = document.body;
+    // ===== Theme Toggle =====
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    
+    // Check for saved theme preference or default to 'poster' theme
+    const currentTheme = localStorage.getItem('theme') || 'poster';
+    html.setAttribute('data-theme', currentTheme);
+    
+    // Update theme icon
+    function updateThemeIcon() {
+        if (!themeToggle) return;
+        const icon = themeToggle.querySelector('i');
+        if (!icon) return;
+        
+        const theme = html.getAttribute('data-theme');
+        icon.setAttribute('data-feather', theme === 'dark' ? 'sun' : 'moon');
+        if (typeof feather !== 'undefined') {
+            feather.replace();
+        }
+    }
+    
+    updateThemeIcon();
     
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
-            body.classList.toggle('theme-dark');
-            body.classList.toggle('theme-poster');
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'poster' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
             updateThemeIcon();
             
             // Track theme change
             if (window.VercelAnalytics) {
-                const currentTheme = body.classList.contains('theme-dark') ? 'dark' : 'poster';
-                window.VercelAnalytics.trackThemeChange(currentTheme);
+                window.VercelAnalytics.trackThemeChange(newTheme);
             }
         });
     }
     
-    function updateThemeIcon() {
-        const lightIcon = themeToggle?.querySelector('.light-icon');
-        const darkIcon = themeToggle?.querySelector('.dark-icon');
-        
-        if (body.classList.contains('theme-dark')) {
-            if (lightIcon) lightIcon.style.display = 'block';
-            if (darkIcon) darkIcon.style.display = 'none';
-        } else {
-            if (lightIcon) lightIcon.style.display = 'none';
-            if (darkIcon) darkIcon.style.display = 'block';
-        }
-    }
-    
-    // Mobile menu functionality
+    // ===== Mobile Menu =====
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const mainNav = document.querySelector('.main-nav');
+    const navLinks = document.querySelector('.nav-links');
     
-    if (mobileMenuToggle && mainNav) {
+    if (mobileMenuToggle && navLinks) {
         mobileMenuToggle.addEventListener('click', () => {
-            body.classList.toggle('nav-open');
-            const isOpen = body.classList.contains('nav-open');
+            navLinks.classList.toggle('active');
+            mobileMenuToggle.classList.toggle('active');
             
-            // Update aria attributes
-            mobileMenuToggle.setAttribute('aria-expanded', isOpen);
-            mobileMenuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
-            
-            // Toggle icons
-            const menuIcon = mobileMenuToggle.querySelector('.icon-menu');
-            const closeIcon = mobileMenuToggle.querySelector('.icon-close');
-            
-            if (menuIcon && closeIcon) {
-                menuIcon.style.display = isOpen ? 'none' : 'block';
-                closeIcon.style.display = isOpen ? 'block' : 'none';
-            }
-            
-            // Prevent body scroll when menu is open
-            body.style.overflow = isOpen ? 'hidden' : '';
+            // Update aria-expanded
+            const isExpanded = navLinks.classList.contains('active');
+            mobileMenuToggle.setAttribute('aria-expanded', isExpanded);
         });
         
-        // Close menu when clicking nav links
-        const navLinks = mainNav.querySelectorAll('a[href^="#"]');
-        navLinks.forEach(link => {
+        // Close mobile menu when clicking on a link
+        const navLinksItems = navLinks.querySelectorAll('a');
+        navLinksItems.forEach(link => {
             link.addEventListener('click', () => {
-                body.classList.remove('nav-open');
-                body.style.overflow = '';
+                navLinks.classList.remove('active');
+                mobileMenuToggle.classList.remove('active');
                 mobileMenuToggle.setAttribute('aria-expanded', 'false');
-                mobileMenuToggle.setAttribute('aria-label', 'Open menu');
-                
-                const menuIcon = mobileMenuToggle.querySelector('.icon-menu');
-                const closeIcon = mobileMenuToggle.querySelector('.icon-close');
-                
-                if (menuIcon && closeIcon) {
-                    menuIcon.style.display = 'block';
-                    closeIcon.style.display = 'none';
-                }
             });
         });
-        
-        // Close menu on window resize to desktop
-        window.addEventListener('resize', () => {
-            if (window.innerWidth >= 1024 && body.classList.contains('nav-open')) {
-                body.classList.remove('nav-open');
-                body.style.overflow = '';
-                mobileMenuToggle.setAttribute('aria-expanded', 'false');
-            }
-        });
     }
     
-    // Smooth scrolling for anchor links
-    const anchorLinks = document.querySelectorAll('a[href^="#"]');
-    anchorLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const href = link.getAttribute('href');
+    // ===== Smooth Scrolling =====
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
             if (href === '#') return;
             
+            e.preventDefault();
             const target = document.querySelector(href);
             if (target) {
-                e.preventDefault();
-                const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
-                const targetPosition = target.offsetTop - headerHeight - 20;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
                 });
             }
         });
     });
     
-    // Project filtering
+    // ===== Project Filtering =====
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
     
@@ -142,119 +218,88 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Filter projects
             projectCards.forEach(card => {
-                const categories = card.getAttribute('data-category');
-                
-                if (filter === 'all' || (categories && categories.includes(filter))) {
+                if (filter === 'all') {
                     card.style.display = 'block';
-                    card.style.animation = 'fadeInUp 0.6s ease forwards';
+                    setTimeout(() => card.classList.add('visible'), 10);
                 } else {
-                    card.style.display = 'none';
+                    const categories = card.getAttribute('data-category').split(' ');
+                    if (categories.includes(filter)) {
+                        card.style.display = 'block';
+                        setTimeout(() => card.classList.add('visible'), 10);
+                    } else {
+                        card.classList.remove('visible');
+                        setTimeout(() => card.style.display = 'none', 300);
+                    }
                 }
             });
         });
     });
     
-    // Skill bar animations
-    const observerOptions = {
-        threshold: 0.5,
-        rootMargin: '0px 0px -100px 0px'
-    };
+    // ===== Skill Bars Animation =====
+    const skillBars = document.querySelectorAll('.skill-progress');
     
-    const skillObserver = new IntersectionObserver((entries) => {
+    const animateSkillBars = (entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const skillBars = entry.target.querySelectorAll('.skill-progress');
-                skillBars.forEach(bar => {
-                    const width = bar.style.width;
-                    bar.style.width = '0%';
-                    setTimeout(() => {
-                        bar.style.width = width;
-                    }, 100);
-                });
+                const progress = entry.target.getAttribute('data-progress');
+                entry.target.style.width = progress + '%';
+                observer.unobserve(entry.target);
             }
         });
-    }, observerOptions);
+    };
     
-    const skillsSection = document.querySelector('.skills-section');
-    if (skillsSection) {
-        skillObserver.observe(skillsSection);
-    }
+    const skillObserver = new IntersectionObserver(animateSkillBars, {
+        threshold: 0.5
+    });
     
-    // Newsletter form handling
+    skillBars.forEach(bar => {
+        skillObserver.observe(bar);
+    });
+    
+    // ===== Newsletter Form =====
     const newsletterForm = document.querySelector('.newsletter-form');
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const email = newsletterForm.querySelector('input[type="email"]').value;
             
-            if (email) {
-                // Here you would typically send the email to your backend
-                alert('Thank you for subscribing! (This is a demo)');
-                newsletterForm.reset();
-            }
+            // Here you would typically send this to your backend
+            console.log('Newsletter signup:', email);
+            alert('Thank you for subscribing!');
+            newsletterForm.reset();
         });
     }
     
-    // Initialize theme icon on page load
-    updateThemeIcon();
-    
-    // Modal functionality
+    // ===== Modal Functionality =====
     const modals = document.querySelectorAll('.modal');
     const liveDemoModal = document.getElementById('liveDemoModal');
     const liveDemoFrame = document.getElementById('liveDemoFrame');
     const liveDemoTitle = document.getElementById('liveDemoTitle');
-    const openExternalBtn = document.getElementById('openExternal');
     const loadingSpinner = document.querySelector('.loading-spinner');
+    const openExternalBtn = document.getElementById('openExternal');
     
     let currentDemoUrl = '';
     
-    // Live demo button handlers
-    const liveDemoButtons = document.querySelectorAll('.live-demo');
-    console.log('Found live demo buttons:', liveDemoButtons.length);
-    
-    liveDemoButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            const url = button.getAttribute('data-url');
-            const title = button.getAttribute('data-title') || 'Live Demo';
-            
-            console.log('Opening live demo:', { url, title });
-            
-            if (url) {
-                openLiveDemo(url, title);
-            }
-        });
-    });
-    
-    // Figma view button handlers
+    // Figma button handlers
     const figmaViewButtons = document.querySelectorAll('.figma-view');
-    console.log('Found Figma view buttons:', figmaViewButtons.length);
+    const figmaEmbedButtons = document.querySelectorAll('.figma-embed');
     
     figmaViewButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             e.preventDefault();
             const figmaUrl = button.getAttribute('data-figma-url');
-            
-            if (figmaUrl && figmaUrl !== 'YOUR_FIGMA_URL_HERE') {
-                // Open Figma in new tab
+            if (figmaUrl) {
                 window.open(figmaUrl, '_blank', 'noopener,noreferrer');
                 
                 // Track Figma view
                 if (window.VercelAnalytics) {
                     window.VercelAnalytics.trackEvent('figma_view', {
-                        title: button.getAttribute('data-title'),
                         url: figmaUrl
                     });
                 }
-            } else {
-                alert('Figma URL not configured yet. Please add your Figma file URL.');
             }
         });
     });
-    
-    // Figma embed button handlers
-    const figmaEmbedButtons = document.querySelectorAll('.figma-embed');
-    console.log('Found Figma embed buttons:', figmaEmbedButtons.length);
     
     figmaEmbedButtons.forEach(button => {
         button.addEventListener('click', (e) => {
@@ -262,52 +307,34 @@ document.addEventListener('DOMContentLoaded', function() {
             const embedUrl = button.getAttribute('data-figma-embed');
             const title = button.getAttribute('data-title') || 'Figma Design';
             
-            if (embedUrl && embedUrl !== 'YOUR_FIGMA_EMBED_URL') {
-                openFigmaEmbed(embedUrl, title);
-            } else {
-                alert('Figma embed URL not configured yet. Please add your Figma embed URL.');
+            if (embedUrl && liveDemoModal && liveDemoFrame) {
+                currentDemoUrl = embedUrl;
+                liveDemoTitle.textContent = title;
+                liveDemoModal.classList.add('open');
+                
+                if (loadingSpinner) loadingSpinner.style.display = 'flex';
+                
+                liveDemoFrame.src = embedUrl;
+                
+                liveDemoFrame.onload = () => {
+                    if (loadingSpinner) loadingSpinner.style.display = 'none';
+                };
+                
+                liveDemoFrame.onerror = () => {
+                    console.log('Figma embed error');
+                    handleIframeError();
+                };
+                
+                // Track Figma embed view
+                if (window.VercelAnalytics) {
+                    window.VercelAnalytics.trackEvent('figma_embed_view', {
+                        title: title,
+                        url: embedUrl
+                    });
+                }
             }
         });
     });
-    
-    // Open Figma embed in modal
-    function openFigmaEmbed(embedUrl, title) {
-        currentDemoUrl = embedUrl;
-        
-        if (liveDemoTitle) liveDemoTitle.textContent = title;
-        if (liveDemoModal) liveDemoModal.classList.add('open');
-        
-        // Show loading spinner
-        if (loadingSpinner) loadingSpinner.style.display = 'flex';
-        
-        // Clear any previous error messages
-        const existingErrors = document.querySelectorAll('.iframe-error');
-        existingErrors.forEach(error => error.remove());
-        
-        // Load Figma embed
-        if (liveDemoFrame) {
-            liveDemoFrame.style.display = 'block';
-            liveDemoFrame.src = embedUrl;
-            
-            liveDemoFrame.onload = () => {
-                console.log('Figma embed loaded successfully');
-                if (loadingSpinner) loadingSpinner.style.display = 'none';
-            };
-            
-            liveDemoFrame.onerror = () => {
-                console.log('Figma embed error');
-                handleIframeError();
-            };
-            
-            // Track Figma embed view
-            if (window.VercelAnalytics) {
-                window.VercelAnalytics.trackEvent('figma_embed_view', {
-                    title: title,
-                    url: embedUrl
-                });
-            }
-        }
-    }
     
     // Open live demo modal
     function openLiveDemo(url, title) {
@@ -343,118 +370,88 @@ document.addEventListener('DOMContentLoaded', function() {
             // Check if iframe is blocked after a delay
             setTimeout(() => {
                 try {
-                    // Try to access iframe content to detect if it's blocked
+                    // Try to access iframe content
                     const iframeDoc = liveDemoFrame.contentDocument || liveDemoFrame.contentWindow.document;
-                    if (!iframeDoc || iframeDoc.location.href === 'about:blank') {
-                        console.log('Iframe appears to be blocked or empty');
+                    if (!iframeDoc || iframeDoc.body.innerHTML === '') {
+                        console.log('Iframe appears to be blocked');
                         handleIframeError();
                     }
                 } catch (e) {
-                    // Cross-origin restriction - this is normal, iframe is likely working
-                    console.log('Cross-origin restriction (normal):', e.message);
+                    // Cross-origin error is expected and means iframe loaded
+                    console.log('Cross-origin check (expected):', e.message);
                     if (loadingSpinner) loadingSpinner.style.display = 'none';
                 }
             }, 3000);
             
             // Show loading help after 5 seconds
             setTimeout(() => {
-                showLoadingHelp();
-            }, 5000);
-            
-            // Final fallback timeout
-            setTimeout(() => {
                 if (loadingSpinner && loadingSpinner.style.display !== 'none') {
-                    console.log('Iframe loading timeout - showing error');
-                    handleIframeError();
+                    showLoadingHelp();
                 }
-            }, 10000);
+            }, 5000);
         }
-        
-        // Prevent body scroll
-        document.body.style.overflow = 'hidden';
         
         // Track demo view
         if (window.VercelAnalytics) {
-            window.VercelAnalytics.trackDemoView(title);
+            window.VercelAnalytics.trackEvent('live_demo_view', {
+                title: title,
+                url: url
+            });
         }
     }
     
-    // Handle iframe loading errors (when site blocks embedding)
+    // Handle iframe loading errors
     function handleIframeError() {
-        console.log('Handling iframe error for URL:', currentDemoUrl);
-        
         if (loadingSpinner) loadingSpinner.style.display = 'none';
+        if (liveDemoFrame) liveDemoFrame.style.display = 'none';
         
-        // Hide iframe and show error message
-        if (liveDemoFrame) {
-            liveDemoFrame.style.display = 'none';
-            
-            // Remove any existing error containers
-            const existingErrors = document.querySelectorAll('.iframe-error');
-            existingErrors.forEach(error => error.remove());
-            
-            // Create error message
-            const errorContainer = document.createElement('div');
-            errorContainer.className = 'iframe-error';
-            errorContainer.innerHTML = `
-                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 2rem; text-align: center; background: var(--bg-secondary); border-radius: 12px; min-height: 400px;">
-                    <i data-feather="external-link" style="width: 48px; height: 48px; color: var(--accent-primary); margin-bottom: 1rem;"></i>
-                    <h3 style="color: var(--text-primary); margin-bottom: 0.5rem; font-size: 1.25rem;">Unable to embed this demo</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; max-width: 400px; line-height: 1.5;">This website prevents embedding for security reasons. Click the button below to open it in a new tab for the full experience.</p>
-                    <button class="btn btn-primary" onclick="window.open('${escapeHTML(currentDemoUrl)}', '_blank', 'noopener,noreferrer'); closeModal();" style="display: inline-flex; align-items: center; gap: 0.5rem;">
-                        <i data-feather="external-link" style="width: 16px; height: 16px;"></i>
-                        Open in New Tab
-                    </button>
-                </div>
-            `;
-            
-            const modalBody = liveDemoModal.querySelector('.modal-body');
-            if (modalBody) {
-                modalBody.appendChild(errorContainer);
-                
-                // Re-initialize feather icons for the new content
-                if (typeof feather !== 'undefined') {
-                    feather.replace();
-                }
-            }
-        }
-    }
-    
-    // Show loading help after delay
-    function showLoadingHelp() {
-        if (loadingSpinner && loadingSpinner.style.display !== 'none') {
-            // Check if help message already exists
-            const existingHelp = loadingSpinner.querySelector('.loading-help');
-            if (existingHelp) return;
-            
-            const helpMessage = document.createElement('div');
-            helpMessage.className = 'loading-help';
-            helpMessage.innerHTML = `
-                <p style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem;">Taking longer than expected?</p>
-                <button class="btn btn-outline" onclick="handleIframeError();" style="margin-top: 0.5rem; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem;">
-                    <i data-feather="external-link" style="width: 14px; height: 14px;"></i>
-                    Open in New Tab Instead
+        const iframeContainer = document.querySelector('.iframe-container');
+        if (!iframeContainer) return;
+        
+        // Check if error message already exists
+        if (iframeContainer.querySelector('.iframe-error')) return;
+        
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'iframe-error';
+        errorDiv.innerHTML = `
+            <div class="error-content">
+                <i data-feather="alert-circle"></i>
+                <h4>Unable to load demo in iframe</h4>
+                <p>This site cannot be embedded due to security restrictions.</p>
+                <button class="btn btn-primary" onclick="window.open('${escapeHTML(currentDemoUrl)}', '_blank')">
+                    <i data-feather="external-link"></i>
+                    Open in New Tab
                 </button>
-            `;
-            
-            if (loadingSpinner) {
-                loadingSpinner.appendChild(helpMessage);
-                
-                // Re-initialize feather icons
-                if (typeof feather !== 'undefined') {
-                    feather.replace();
-                }
-            }
+            </div>
+        `;
+        iframeContainer.appendChild(errorDiv);
+        
+        // Re-initialize feather icons
+        if (typeof feather !== 'undefined') {
+            feather.replace();
         }
     }
     
-    // Open external button handler
-    if (openExternalBtn) {
-        openExternalBtn.addEventListener('click', () => {
-            if (currentDemoUrl) {
-                window.open(currentDemoUrl, '_blank', 'noopener,noreferrer');
-            }
-        });
+    // Show loading help message
+    function showLoadingHelp() {
+        const iframeContainer = document.querySelector('.iframe-container');
+        if (!iframeContainer || iframeContainer.querySelector('.loading-help')) return;
+        
+        const helpDiv = document.createElement('div');
+        helpDiv.className = 'loading-help';
+        helpDiv.innerHTML = `
+            <p>Taking longer than expected?</p>
+            <button class="btn btn-outline" onclick="window.open('${escapeHTML(currentDemoUrl)}', '_blank')">
+                <i data-feather="external-link"></i>
+                Open in New Tab
+            </button>
+        `;
+        iframeContainer.appendChild(helpDiv);
+        
+        // Re-initialize feather icons
+        if (typeof feather !== 'undefined') {
+            feather.replace();
+        }
     }
     
     // Close modal functionality
@@ -486,35 +483,41 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Clear current demo URL
         currentDemoUrl = '';
+        
+        // Also close project details modal
+        closeProjectDetailsModal();
+        
+        // Also close video modal
+        closeVideoModal();
     }
-    
-    // Make closeModal globally accessible
-    window.closeModal = closeModal;
-    window.handleIframeError = handleIframeError;
-    
-    // Debug function for troubleshooting
-    window.debugLiveDemo = function() {
-        console.log('=== Live Demo Debug Info ===');
-        console.log('Live demo buttons found:', liveDemoButtons.length);
-        console.log('Live demo modal:', liveDemoModal);
-        console.log('Live demo frame:', liveDemoFrame);
-        console.log('Current demo URL:', currentDemoUrl);
-        console.log('Modal classes:', liveDemoModal?.className);
-        console.log('Frame src:', liveDemoFrame?.src);
-        console.log('Loading spinner display:', loadingSpinner?.style.display);
-    };
     
     // Close modal button handlers
     const closeButtons = document.querySelectorAll('.close-modal');
     closeButtons.forEach(button => {
-        button.addEventListener('click', closeModal);
+        button.addEventListener('click', (e) => {
+            // Check which modal this button belongs to
+            const modal = button.closest('.modal');
+            if (modal && modal.id === 'projectDetailsModal') {
+                closeProjectDetailsModal();
+            } else if (modal && modal.classList.contains('video-modal')) {
+                closeVideoModal();
+            } else {
+                closeModal();
+            }
+        });
     });
     
     // Close modal on backdrop click
     modals.forEach(modal => {
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
-                closeModal();
+                if (modal.id === 'projectDetailsModal') {
+                    closeProjectDetailsModal();
+                } else if (modal.classList.contains('video-modal')) {
+                    closeVideoModal();
+                } else {
+                    closeModal();
+                }
             }
         });
     });
@@ -523,127 +526,127 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             closeModal();
+            closeProjectDetailsModal();
+            closeVideoModal();
         }
     });
     
-    // Secure URL validation function
-    function getSocialPlatform(url) {
-        try {
-            // Handle mailto links separately
-            if (url.startsWith('mailto:')) {
-                return 'Email';
+    // Open external button
+    if (openExternalBtn) {
+        openExternalBtn.addEventListener('click', () => {
+            if (currentDemoUrl) {
+                window.open(currentDemoUrl, '_blank', 'noopener,noreferrer');
             }
-            
-            // Parse the URL to get the hostname
-            const urlObj = new URL(url);
-            const hostname = urlObj.hostname.toLowerCase();
-            
-            // Define allowed social media domains
-            const allowedDomains = {
-                'github.com': 'GitHub',
-                'www.github.com': 'GitHub',
-                'instagram.com': 'Instagram',
-                'www.instagram.com': 'Instagram'
-            };
-            
-            // Check if the hostname exactly matches an allowed domain
-            if (allowedDomains[hostname]) {
-                return allowedDomains[hostname];
-            }
-            
-            // Check for subdomains of allowed domains
-            for (const [domain, platform] of Object.entries(allowedDomains)) {
-                if (hostname === domain || hostname.endsWith('.' + domain)) {
-                    return platform;
-                }
-            }
-            
-            return 'unknown';
-        } catch (error) {
-            // Invalid URL
-            return 'unknown';
-        }
+        });
     }
     
-    // Track social media clicks
-    const socialLinks = document.querySelectorAll('a[href*="github.com"], a[href*="instagram.com"], a[href*="mailto:"]');
-    socialLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.VercelAnalytics) {
-                const platform = getSocialPlatform(link.href);
-                window.VercelAnalytics.trackSocialClick(platform);
+    // Live demo button handlers
+    const liveDemoButtons = document.querySelectorAll('.live-demo');
+    liveDemoButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const url = button.getAttribute('data-url');
+            const title = button.getAttribute('data-title') || 'Live Demo';
+            
+            if (url) {
+                openLiveDemo(url, title);
             }
         });
     });
     
-    // Secure GitHub URL validation function
-    function isValidGitHubUrl(url) {
-        try {
-            const urlObj = new URL(url);
-            const hostname = urlObj.hostname.toLowerCase();
-            
-            // Check if it's a valid GitHub domain
-            return hostname === 'github.com' || 
-                   hostname === 'www.github.com' || 
-                   hostname.endsWith('.github.com');
-        } catch (error) {
-            return false;
-        }
-    }
+    // ===== Project Details Functionality =====
     
-    // Track project clicks
-    const projectButtons = document.querySelectorAll('.live-demo, .project-card a');
-    projectButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            if (window.VercelAnalytics) {
-                // Only track if it's a valid GitHub URL or a live demo button
-                const isLiveDemo = button.classList.contains('live-demo');
-                const isValidGitHub = button.href && isValidGitHubUrl(button.href);
+    // View details button handlers
+    const viewDetailsButtons = document.querySelectorAll('.view-details');
+    console.log('Found view details buttons:', viewDetailsButtons.length);
+    
+    viewDetailsButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const projectId = button.getAttribute('data-project');
+            
+            console.log('Opening project details:', projectId);
+            
+            if (projectId && projectDetails[projectId]) {
+                openProjectDetails(projectId);
+            }
+        });
+    });
+    
+    // Open project details modal
+    function openProjectDetails(projectId) {
+        const project = projectDetails[projectId];
+        const modal = document.getElementById('projectDetailsModal');
+        const titleElement = document.getElementById('projectDetailsTitle');
+        const bodyElement = document.getElementById('projectDetailsBody');
+        
+        if (!modal || !titleElement || !bodyElement || !project) return;
+        
+        // Set title
+        titleElement.textContent = project.title;
+        
+        // Build content
+        let content = `
+            <div class="project-details-content">
+                <div class="project-description">
+                    ${project.fullDescription}
+                </div>
                 
-                if (isLiveDemo || isValidGitHub) {
-                    const projectCard = button.closest('.project-card');
-                    const projectName = projectCard ? projectCard.querySelector('h3')?.textContent || 'Unknown Project' : 'Unknown Project';
-                    window.VercelAnalytics.trackProjectClick(projectName);
-                }
-            }
-        });
-    });
-    
-    // Lazy loading for images
-    const images = document.querySelectorAll('img[loading="lazy"]');
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.src; // Trigger loading
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
+                <div class="project-meta">
+                    <h4>🏷️ Technologieën</h4>
+                    <div class="tech-tags">
+                        ${project.technologies.map(tech => `<span class="tag">${escapeHTML(tech)}</span>`).join('')}
+                    </div>
+                </div>
+                
+                <div class="project-links">
+                    ${project.liveUrl ? `
+                        <a href="${escapeHTML(project.liveUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                            <i data-feather="external-link"></i>
+                            Live Demo
+                        </a>
+                    ` : ''}
+                    ${project.githubUrl ? `
+                        <a href="${escapeHTML(project.githubUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                            <i data-feather="github"></i>
+                            View Code
+                        </a>
+                    ` : ''}
+                </div>
+            </div>
+        `;
         
-        images.forEach(img => imageObserver.observe(img));
-    }
-    
-    // Add scroll-based header styling
-    let lastScrollTop = 0;
-    const header = document.querySelector('.header');
-    
-    window.addEventListener('scroll', () => {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        bodyElement.innerHTML = content;
         
-        if (header) {
-            if (scrollTop > 100) {
-                header.style.background = 'rgba(246, 245, 243, 0.98)';
-                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-            } else {
-                header.style.background = 'rgba(246, 245, 243, 0.95)';
-                header.style.boxShadow = 'none';
-            }
+        // Show modal
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        
+        // Re-initialize feather icons
+        if (typeof feather !== 'undefined') {
+            feather.replace();
         }
         
-        lastScrollTop = scrollTop;
-    });
+        // Track details view
+        if (window.VercelAnalytics) {
+            window.VercelAnalytics.trackEvent('project_details_view', {
+                project: projectId,
+                title: project.title
+            });
+        }
+    }
+    
+    // Close project details modal
+    function closeProjectDetailsModal() {
+        const modal = document.getElementById('projectDetailsModal');
+        if (modal) {
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+    }
+    
+    // Make closeProjectDetailsModal globally accessible
+    window.closeProjectDetailsModal = closeProjectDetailsModal;
     
     // ===== Video Project Functionality =====
     
@@ -714,75 +717,35 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Open video in modal
     function openVideoModal(videoUrl, title) {
-        // Create video modal if it doesn't exist
-        let videoModal = document.getElementById('videoModal');
+        const videoModal = document.getElementById('videoModal');
+        const videoModalTitle = document.getElementById('videoModalTitle');
+        const modalVideo = document.getElementById('modalVideo');
         
-        if (!videoModal) {
-            videoModal = document.createElement('div');
-            videoModal.id = 'videoModal';
-            videoModal.className = 'modal video-modal';
-            videoModal.innerHTML = `
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 id="videoModalTitle">${escapeHTML(title)}</h3>
-                        <div class="modal-actions">
-                            <button class="close-modal" aria-label="Close modal">
-                                <i data-feather="x"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="video-container">
-                        <video id="modalVideo" controls autoplay>
-                            <source src="${escapeHTML(videoUrl)}" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="video-controls" style="display: none;">
-                            <button class="video-play-pause" aria-label="Play/Pause">
-                                <i data-feather="play"></i>
-                            </button>
-                            <div class="video-progress">
-                                <div class="video-progress-bar"></div>
-                            </div>
-                            <span class="video-time">0:00 / 0:00</span>
-                        </div>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(videoModal);
-            
-            // Re-initialize feather icons
-            if (typeof feather !== 'undefined') {
-                feather.replace();
-            }
-            
-            // Add close button handler
-            const closeBtn = videoModal.querySelector('.close-modal');
-            if (closeBtn) {
-                closeBtn.addEventListener('click', closeVideoModal);
-            }
-            
-            // Close on backdrop click
-            videoModal.addEventListener('click', (e) => {
-                if (e.target === videoModal) {
-                    closeVideoModal();
-                }
-            });
-        } else {
-            // Update existing modal
-            const videoModalTitle = document.getElementById('videoModalTitle');
-            const modalVideo = document.getElementById('modalVideo');
-            
-            if (videoModalTitle) videoModalTitle.textContent = title;
-            if (modalVideo) {
-                modalVideo.src = videoUrl;
-                modalVideo.load();
-                modalVideo.play();
-            }
+        if (!videoModal || !modalVideo) {
+            console.error('Video modal elements not found');
+            return;
+        }
+        
+        // Set title
+        if (videoModalTitle) {
+            videoModalTitle.textContent = title;
+        }
+        
+        // Set video source
+        const source = modalVideo.querySelector('source');
+        if (source) {
+            source.src = videoUrl;
+            modalVideo.load();
         }
         
         // Show modal
         videoModal.classList.add('open');
         document.body.style.overflow = 'hidden';
+        
+        // Play video
+        modalVideo.play().catch(err => {
+            console.log('Video autoplay prevented:', err);
+        });
         
         // Track video view
         if (window.VercelAnalytics) {
@@ -813,15 +776,68 @@ document.addEventListener('DOMContentLoaded', function() {
     // Make closeVideoModal globally accessible
     window.closeVideoModal = closeVideoModal;
     
-    // Close video modal on Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            const videoModal = document.getElementById('videoModal');
-            if (videoModal && videoModal.classList.contains('open')) {
-                closeVideoModal();
+    // ===== Social Links Tracking =====
+    const socialLinks = document.querySelectorAll('a[href*="github.com"], a[href*="instagram.com"], a[href*="linkedin.com"]');
+    socialLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const url = link.getAttribute('href');
+            let platform = 'unknown';
+            
+            if (url.includes('github.com')) platform = 'github';
+            else if (url.includes('instagram.com')) platform = 'instagram';
+            else if (url.includes('linkedin.com')) platform = 'linkedin';
+            
+            if (window.VercelAnalytics) {
+                window.VercelAnalytics.trackSocialClick(platform);
             }
-        }
+        });
     });
+    
+    // ===== Project Button Tracking =====
+    const projectButtons = document.querySelectorAll('.project-card .btn');
+    projectButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const projectCard = button.closest('.project-card');
+            const projectName = projectCard ? projectCard.querySelector('h3')?.textContent : 'Unknown';
+            
+            if (window.VercelAnalytics) {
+                window.VercelAnalytics.trackProjectClick(projectName);
+            }
+        });
+    });
+    
+    // ===== Scroll Header Styling =====
+    const header = document.querySelector('header');
+    let lastScroll = 0;
+    
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > 100) {
+            header?.classList.add('scrolled');
+        } else {
+            header?.classList.remove('scrolled');
+        }
+        
+        lastScroll = currentScroll;
+    });
+    
+    // ===== Lazy Loading Images =====
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src || img.src;
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        });
+        
+        images.forEach(img => imageObserver.observe(img));
+    }
     
     console.log('Portfolio initialized successfully');
 });
