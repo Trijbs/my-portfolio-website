@@ -206,12 +206,14 @@ export default async function handler(req, res) {
 
         // Check if email credentials are configured
         if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-            console.error('Email credentials not configured');
-            console.error('EMAIL_USER:', process.env.EMAIL_USER ? 'Set' : 'Not set');
-            console.error('EMAIL_PASS:', process.env.EMAIL_PASS ? 'Set' : 'Not set');
+            console.error('❌ Email credentials not configured');
+            console.error('   EMAIL_USER:', process.env.EMAIL_USER ? '✅ Set' : '❌ Not set');
+            console.error('   EMAIL_PASS:', process.env.EMAIL_PASS ? '✅ Set' : '❌ Not set');
+            console.error('   Please set these environment variables in Vercel dashboard');
             return res.status(500).json({
                 success: false,
-                message: 'Email service not configured. Please contact me directly at rbdegroot@gmail.com'
+                message: 'Email service not configured. Please contact me directly at rbdegroot@gmail.com',
+                error: 'MISSING_CREDENTIALS'
             });
         }
 
@@ -239,30 +241,48 @@ export default async function handler(req, res) {
 
         try {
             // Test the transporter connection
-            console.log('Verifying SMTP connection...');
+            console.log('🔌 Verifying SMTP connection...');
             await transporter.verify();
             console.log('✅ SMTP connection verified successfully');
         } catch (verifyError) {
             console.error('❌ SMTP verification failed:', verifyError);
+            console.error('   Error code:', verifyError.code);
+            console.error('   Error message:', verifyError.message);
+            
+            let userMessage = 'Email service configuration error. Please contact me directly at rbdegroot@gmail.com';
+            let errorCode = verifyError.code || 'SMTP_ERROR';
+            
+            // Provide more specific error messages
+            if (verifyError.code === 'EAUTH' || verifyError.message.includes('Invalid login')) {
+                userMessage = 'Email authentication failed. Please contact me directly at rbdegroot@gmail.com';
+                errorCode = 'AUTH_FAILED';
+                console.error('   💡 Hint: Check if EMAIL_PASS is a valid Gmail App Password');
+            } else if (verifyError.code === 'ESOCKET' || verifyError.code === 'ETIMEDOUT') {
+                userMessage = 'Cannot connect to email server. Please contact me directly at rbdegroot@gmail.com';
+                errorCode = 'CONNECTION_FAILED';
+            }
+            
             return res.status(500).json({
                 success: false,
-                message: 'Email service configuration error. Please contact me directly at rbdegroot@gmail.com',
-                error: verifyError.message
+                message: userMessage,
+                error: errorCode
             });
         }
 
         try {
             // Send notification email to you
-            console.log('📧 Sending notification email...');
+            console.log('📧 Sending notification email to:', process.env.EMAIL_USER);
             const notificationResult = await transporter.sendMail(emailTemplates.notification);
-            console.log('✅ Notification email sent:', notificationResult.messageId);
+            console.log('✅ Notification email sent successfully');
+            console.log('   Message ID:', notificationResult.messageId);
 
             // Send confirmation email to sender
-            console.log('📧 Sending confirmation email...');
+            console.log('📧 Sending confirmation email to:', messageData.email);
             const confirmationResult = await transporter.sendMail(emailTemplates.confirmation);
-            console.log('✅ Confirmation email sent:', confirmationResult.messageId);
+            console.log('✅ Confirmation email sent successfully');
+            console.log('   Message ID:', confirmationResult.messageId);
 
-            console.log(`🎉 New contact from ${name} (${email}) processed successfully`);
+            console.log(`🎉 Contact form submission from ${name} (${email}) processed successfully`);
 
             return res.status(200).json({
                 success: true,
@@ -271,12 +291,27 @@ export default async function handler(req, res) {
             });
         } catch (emailError) {
             console.error('❌ Email sending failed:', emailError);
+            console.error('   Error code:', emailError.code);
+            console.error('   Error message:', emailError.message);
+            console.error('   Command:', emailError.command);
             
-            // Return more specific error information
+            let userMessage = 'Failed to send email. Please contact me directly at rbdegroot@gmail.com';
+            let errorCode = emailError.code || 'SEND_FAILED';
+            
+            // Provide more specific error messages
+            if (emailError.code === 'EAUTH') {
+                userMessage = 'Email authentication error. Please contact me directly at rbdegroot@gmail.com';
+                errorCode = 'AUTH_ERROR';
+                console.error('   💡 Hint: Gmail App Password may be invalid or expired');
+            } else if (emailError.responseCode === 550) {
+                userMessage = 'Email rejected by server. Please contact me directly at rbdegroot@gmail.com';
+                errorCode = 'EMAIL_REJECTED';
+            }
+            
             return res.status(500).json({
                 success: false,
-                message: `Failed to send email: ${emailError.message}. Please contact me directly at rbdegroot@gmail.com`,
-                error: emailError.code || emailError.message
+                message: userMessage,
+                error: errorCode
             });
         }
 

@@ -72,11 +72,27 @@ class ContactFormHandler {
                     window.VercelAnalytics.trackContactSubmission();
                 }
             } else {
-                this.showError(response.message || 'Failed to send message. Please try again.');
+                // Show the specific error message from the backend
+                const errorMessage = response.message || 'Failed to send message. Please try again.';
+                
+                // If there are validation errors, show them
+                if (response.errors && Array.isArray(response.errors)) {
+                    const errorList = response.errors.join(', ');
+                    this.showError(`${errorMessage} ${errorList}`);
+                } else {
+                    this.showError(errorMessage);
+                }
+                
+                // Log additional error details for debugging
+                if (response.error) {
+                    console.error('Backend error details:', response.error);
+                }
             }
         } catch (error) {
             console.error('Form submission error:', error);
-            this.showError('Sorry, there was an error sending your message. Please try again or contact me directly at rbdegroot@gmail.com');
+            // Show a more helpful error message
+            const errorMsg = error.message || 'Network error occurred';
+            this.showError(`Sorry, there was an error: ${errorMsg}. Please try again or contact me directly at rbdegroot@gmail.com`);
         } finally {
             this.setLoadingState(false);
         }
@@ -101,10 +117,8 @@ class ContactFormHandler {
             error: result.error
         });
 
-        if (!response.ok) {
-            throw new Error(result.message || `HTTP error! status: ${response.status}`);
-        }
-
+        // Return the result even if response is not ok
+        // The handleSubmit will check result.success
         return result;
     }
 
