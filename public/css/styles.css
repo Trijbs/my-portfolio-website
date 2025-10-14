@@ -949,6 +949,49 @@ section {
   color: white;
 }
 
+.status-badge.design {
+  background: linear-gradient(135deg, #F24E1E 0%, #A259FF 50%, #1ABCFE 100%);
+  color: white;
+}
+
+/* Figma Project Styles */
+.project-card.figma-project .project-image {
+  background: linear-gradient(135deg, #f6f5f3 0%, #ffffff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.figma-preview {
+  text-align: center;
+  padding: var(--spacing-xl);
+}
+
+.figma-icon {
+  margin-bottom: var(--spacing-md);
+  animation: float 3s ease-in-out infinite;
+}
+
+.figma-icon svg {
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+}
+
+.figma-label {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 .project-tags {
   display: flex;
   flex-wrap: wrap;

@@ -226,6 +226,89 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Figma view button handlers
+    const figmaViewButtons = document.querySelectorAll('.figma-view');
+    console.log('Found Figma view buttons:', figmaViewButtons.length);
+    
+    figmaViewButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const figmaUrl = button.getAttribute('data-figma-url');
+            
+            if (figmaUrl && figmaUrl !== 'YOUR_FIGMA_URL_HERE') {
+                // Open Figma in new tab
+                window.open(figmaUrl, '_blank', 'noopener,noreferrer');
+                
+                // Track Figma view
+                if (window.VercelAnalytics) {
+                    window.VercelAnalytics.trackEvent('figma_view', {
+                        title: button.getAttribute('data-title'),
+                        url: figmaUrl
+                    });
+                }
+            } else {
+                alert('Figma URL not configured yet. Please add your Figma file URL.');
+            }
+        });
+    });
+    
+    // Figma embed button handlers
+    const figmaEmbedButtons = document.querySelectorAll('.figma-embed');
+    console.log('Found Figma embed buttons:', figmaEmbedButtons.length);
+    
+    figmaEmbedButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const embedUrl = button.getAttribute('data-figma-embed');
+            const title = button.getAttribute('data-title') || 'Figma Design';
+            
+            if (embedUrl && embedUrl !== 'YOUR_FIGMA_EMBED_URL') {
+                openFigmaEmbed(embedUrl, title);
+            } else {
+                alert('Figma embed URL not configured yet. Please add your Figma embed URL.');
+            }
+        });
+    });
+    
+    // Open Figma embed in modal
+    function openFigmaEmbed(embedUrl, title) {
+        currentDemoUrl = embedUrl;
+        
+        if (liveDemoTitle) liveDemoTitle.textContent = title;
+        if (liveDemoModal) liveDemoModal.classList.add('open');
+        
+        // Show loading spinner
+        if (loadingSpinner) loadingSpinner.style.display = 'flex';
+        
+        // Clear any previous error messages
+        const existingErrors = document.querySelectorAll('.iframe-error');
+        existingErrors.forEach(error => error.remove());
+        
+        // Load Figma embed
+        if (liveDemoFrame) {
+            liveDemoFrame.style.display = 'block';
+            liveDemoFrame.src = embedUrl;
+            
+            liveDemoFrame.onload = () => {
+                console.log('Figma embed loaded successfully');
+                if (loadingSpinner) loadingSpinner.style.display = 'none';
+            };
+            
+            liveDemoFrame.onerror = () => {
+                console.log('Figma embed error');
+                handleIframeError();
+            };
+            
+            // Track Figma embed view
+            if (window.VercelAnalytics) {
+                window.VercelAnalytics.trackEvent('figma_embed_view', {
+                    title: title,
+                    url: embedUrl
+                });
+            }
+        }
+    }
+    
     // Open live demo modal
     function openLiveDemo(url, title) {
         currentDemoUrl = url;
