@@ -251,6 +251,7 @@
                     <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
                     <button class="filter-btn" data-filter="design">Design</button>
                     <button class="filter-btn" data-filter="creative">Creative</button>
+                    <button class="filter-btn" data-filter="video">Video</button>
                 </div>
                 
                 <div class="projects-grid">
@@ -329,7 +330,7 @@
                         </div>
                         <div class="project-content">
                             <div class="project-header">
-                                <h3>Opdracht 10 - Design Project</h3>ject</h3>
+                                <h3>E-commerce Platform - Design Project</h3>
                                 <div class="project-status">
                                     <span class="status-badge design">Figma</span>
                                 </div>
@@ -349,6 +350,76 @@
                                 <div class="stat">
                                     <i data-feather="palette"></i>
                                     <span>Design System</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Animated Infographic Video Project -->
+                    <div class="project-card video-project" data-category="design creative">
+                        <div class="project-image">
+                            <div class="video-preview">
+                                <!-- Video Badge -->
+                                <span class="video-badge">Video</span>
+                                
+                                <!-- Video Preview (autoplay on hover, muted, loop) -->
+                                <video 
+                                    class="preview-video" 
+                                    muted 
+                                    loop 
+                                    playsinline
+                                    poster="img/infographic-poster.jpg">
+                                    <source src="videos/infographic.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                
+                                <!-- Play Icon Overlay -->
+                                <div class="video-play-overlay">
+                                    <div class="play-icon">
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 5v14l11-7z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Project Overlay with Buttons -->
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <button class="btn btn-primary video-play" data-video="videos/infographic.mp4" data-title="Geanimeerde Infographic">
+                                        <i data-feather="play-circle"></i>
+                                        Play Video
+                                    </button>
+                                    <button class="btn btn-secondary video-download" data-video="videos/infographic.mp4">
+                                        <i data-feather="download"></i>
+                                        Download
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h3>Geanimeerde Infographic</h3>
+                                <div class="project-status">
+                                    <span class="status-badge video">Video</span>
+                                </div>
+                            </div>
+                            <p>Een professioneel geanimeerde infographic die complexe data visueel aantrekkelijk en begrijpelijk maakt. Gemaakt met moderne motion design technieken.</p>
+                            <div class="project-tags">
+                                <span class="tag">Motion Design</span>
+                                <span class="tag">Infographic</span>
+                                <span class="tag">Animation</span>
+                                <span class="tag">Video</span>
+                            </div>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <i data-feather="film"></i>
+                                    <span>MP4 Video</span>
+                                </div>
+                                <div class="stat">
+                                    <i data-feather="clock"></i>
+                                    <span>HD Quality</span>
                                 </div>
                             </div>
                         </div>

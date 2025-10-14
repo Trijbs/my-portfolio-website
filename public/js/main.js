@@ -645,5 +645,183 @@ document.addEventListener('DOMContentLoaded', function() {
         lastScrollTop = scrollTop;
     });
     
+    // ===== Video Project Functionality =====
+    
+    // Video hover autoplay
+    const videoProjects = document.querySelectorAll('.video-project');
+    videoProjects.forEach(project => {
+        const video = project.querySelector('.preview-video');
+        
+        if (video) {
+            // Play video on hover
+            project.addEventListener('mouseenter', () => {
+                video.play().catch(err => console.log('Video autoplay prevented:', err));
+            });
+            
+            // Pause video when not hovering
+            project.addEventListener('mouseleave', () => {
+                video.pause();
+                video.currentTime = 0; // Reset to start
+            });
+        }
+    });
+    
+    // Video play button handlers
+    const videoPlayButtons = document.querySelectorAll('.video-play');
+    console.log('Found video play buttons:', videoPlayButtons.length);
+    
+    videoPlayButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const videoUrl = button.getAttribute('data-video');
+            const title = button.getAttribute('data-title') || 'Video';
+            
+            console.log('Opening video:', { videoUrl, title });
+            
+            if (videoUrl) {
+                openVideoModal(videoUrl, title);
+            }
+        });
+    });
+    
+    // Video download button handlers
+    const videoDownloadButtons = document.querySelectorAll('.video-download');
+    console.log('Found video download buttons:', videoDownloadButtons.length);
+    
+    videoDownloadButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const videoUrl = button.getAttribute('data-video');
+            
+            if (videoUrl) {
+                // Create temporary link and trigger download
+                const link = document.createElement('a');
+                link.href = videoUrl;
+                link.download = videoUrl.split('/').pop(); // Get filename from URL
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Track download
+                if (window.VercelAnalytics) {
+                    window.VercelAnalytics.trackEvent('video_download', {
+                        video: videoUrl
+                    });
+                }
+            }
+        });
+    });
+    
+    // Open video in modal
+    function openVideoModal(videoUrl, title) {
+        // Create video modal if it doesn't exist
+        let videoModal = document.getElementById('videoModal');
+        
+        if (!videoModal) {
+            videoModal = document.createElement('div');
+            videoModal.id = 'videoModal';
+            videoModal.className = 'modal video-modal';
+            videoModal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 id="videoModalTitle">${escapeHTML(title)}</h3>
+                        <div class="modal-actions">
+                            <button class="close-modal" aria-label="Close modal">
+                                <i data-feather="x"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="video-container">
+                        <video id="modalVideo" controls autoplay>
+                            <source src="${escapeHTML(videoUrl)}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-controls" style="display: none;">
+                            <button class="video-play-pause" aria-label="Play/Pause">
+                                <i data-feather="play"></i>
+                            </button>
+                            <div class="video-progress">
+                                <div class="video-progress-bar"></div>
+                            </div>
+                            <span class="video-time">0:00 / 0:00</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(videoModal);
+            
+            // Re-initialize feather icons
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+            
+            // Add close button handler
+            const closeBtn = videoModal.querySelector('.close-modal');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeVideoModal);
+            }
+            
+            // Close on backdrop click
+            videoModal.addEventListener('click', (e) => {
+                if (e.target === videoModal) {
+                    closeVideoModal();
+                }
+            });
+        } else {
+            // Update existing modal
+            const videoModalTitle = document.getElementById('videoModalTitle');
+            const modalVideo = document.getElementById('modalVideo');
+            
+            if (videoModalTitle) videoModalTitle.textContent = title;
+            if (modalVideo) {
+                modalVideo.src = videoUrl;
+                modalVideo.load();
+                modalVideo.play();
+            }
+        }
+        
+        // Show modal
+        videoModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        
+        // Track video view
+        if (window.VercelAnalytics) {
+            window.VercelAnalytics.trackEvent('video_view', {
+                title: title,
+                url: videoUrl
+            });
+        }
+    }
+    
+    // Close video modal
+    function closeVideoModal() {
+        const videoModal = document.getElementById('videoModal');
+        const modalVideo = document.getElementById('modalVideo');
+        
+        if (videoModal) {
+            videoModal.classList.remove('open');
+        }
+        
+        if (modalVideo) {
+            modalVideo.pause();
+            modalVideo.currentTime = 0;
+        }
+        
+        document.body.style.overflow = '';
+    }
+    
+    // Make closeVideoModal globally accessible
+    window.closeVideoModal = closeVideoModal;
+    
+    // Close video modal on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const videoModal = document.getElementById('videoModal');
+            if (videoModal && videoModal.classList.contains('open')) {
+                closeVideoModal();
+            }
+        }
+    });
+    
     console.log('Portfolio initialized successfully');
 });
