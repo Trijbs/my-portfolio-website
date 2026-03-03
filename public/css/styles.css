@@ -2744,6 +2744,36 @@ section {
 .principle-card {
   border-radius: 28px;
   padding: 1.3rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.principle-card::before,
+.workflow-step::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-quaternary);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  z-index: 0;
+}
+
+.principle-card > *,
+.workflow-step > * {
+  position: relative;
+  z-index: 1;
+}
+
+.principle-card:hover::before,
+.workflow-step:hover::before {
+  opacity: 0.05;
+}
+
+.principle-card:hover,
+.workflow-step:hover {
+  transform: translateY(-5px);
 }
 
 .principle-card h3 {
@@ -2786,6 +2816,10 @@ section {
 .workflow-step {
   padding: 1rem 1.1rem;
   background: rgba(255, 250, 242, 0.54);
+  border-radius: 22px;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 [data-theme="dark"] .workflow-step {

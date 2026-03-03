@@ -3,11 +3,11 @@
 > **Full-Stack Developer & Creative Designer Portfolio**  
 > Modern, secure, and optimized portfolio website with Vercel Analytics integration
 
-[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=flat&logo=vercel)](https://trijbsworld.nl)
+[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=flat&logo=vercel)](https://www.trijbsworld.nl)
 [![Security Headers](https://img.shields.io/badge/Security-A+-green?style=flat&logo=security)](https://securityheaders.com)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-**Live Site:** [trijbsworld.nl](https://trijbsworld.nl)
+**Live Site:** [www.trijbsworld.nl](https://www.trijbsworld.nl)
 
 ---
 
@@ -99,6 +99,14 @@ Create a `.env` file in the root directory:
 # Email Configuration (Required for contact form)
 EMAIL_USER=your-email@gmail.com
 EMAIL_PASS=your-gmail-app-password
+
+# Analytics Admin (optional for local testing)
+ANALYTICS_ADMIN_PASSWORD=choose-a-strong-password
+
+# Persistent analytics storage (optional)
+SUPABASE_URL=https://your-project-ref.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=your-supabase-service-role-key
+SUPABASE_ANALYTICS_TABLE=analytics_events
 
 # Development Settings
 PORT=3002
@@ -216,7 +224,16 @@ testAnalytics();
 - **Historical Data:** View trends over time
 - **Export Data:** Download analytics reports
 
-#### **6. Privacy Compliance**
+#### **6. Persistent Event Storage With Supabase**
+
+1. Create a Supabase project.
+2. Open the SQL editor and run `config/supabase-analytics.sql`.
+3. Copy your project URL into `SUPABASE_URL`.
+4. Copy the service role key into `SUPABASE_SERVICE_ROLE_KEY`.
+5. Add those variables in Vercel for `Production` and `Preview`.
+6. Optionally set `SUPABASE_ANALYTICS_TABLE` if you want a table name other than `analytics_events`.
+
+#### **7. Privacy Compliance**
 
 Analytics respects user privacy:
 - ✅ No cookies used
@@ -310,13 +327,13 @@ Contact form API includes:
 
 ```bash
 # Test security headers
-curl -I https://trijbsworld.nl
+curl -I https://www.trijbsworld.nl
 
 # Check security rating
-# Visit: https://securityheaders.com/?q=trijbsworld.nl
+# Visit: https://securityheaders.com/?q=www.trijbsworld.nl
 
 # Test SSL configuration
-# Visit: https://www.ssllabs.com/ssltest/analyze.html?d=trijbsworld.nl
+# Visit: https://www.ssllabs.com/ssltest/analyze.html?d=www.trijbsworld.nl
 ```
 
 #### **Security Best Practices**
@@ -392,10 +409,10 @@ Target and actual Lighthouse scores:
 ```bash
 # Lighthouse CLI
 npm install -g lighthouse
-lighthouse https://trijbsworld.nl --output html
+lighthouse https://www.trijbsworld.nl --output html
 
 # PageSpeed Insights
-# Visit: https://pagespeed.web.dev/report?url=https://trijbsworld.nl
+# Visit: https://pagespeed.web.dev/report?url=https://www.trijbsworld.nl
 
 # WebPageTest
 # Visit: https://www.webpagetest.org/
@@ -573,9 +590,28 @@ Set these in Vercel Dashboard → Settings → Environment Variables:
 |----------|-------|-------------|
 | `EMAIL_USER` | your-email@gmail.com | Production, Preview |
 | `EMAIL_PASS` | your-gmail-app-password | Production, Preview |
+| `ANALYTICS_ADMIN_PASSWORD` | strong password for `/analytics` login | Production, Preview |
+| `SUPABASE_URL` | `https://your-project-ref.supabase.co` | Production, Preview |
+| `SUPABASE_SERVICE_ROLE_KEY` | Supabase service role key | Production, Preview |
+| `SUPABASE_ANALYTICS_TABLE` | `analytics_events` | Production, Preview |
 | `NODE_ENV` | production | Production |
 
 **Important:** Never commit `.env` file to Git!
+
+### **Where These Values Come From**
+
+- `EMAIL_USER`: The Gmail address that will send and receive portfolio contact-form mail.
+- `EMAIL_PASS`: A Google App Password for that Gmail account. Google requires 2-Step Verification before App Passwords are available.
+- `ANALYTICS_ADMIN_PASSWORD`: A password you choose yourself for the analytics admin page.
+- `SUPABASE_URL`: Copy the project URL from Supabase project settings.
+- `SUPABASE_SERVICE_ROLE_KEY`: Copy the service role key from Supabase project API settings. Keep it server-side only.
+- `SUPABASE_ANALYTICS_TABLE`: Optional override for the analytics events table. The default is `analytics_events`.
+
+### **Where To Place Them**
+
+- GitHub: do not store these secrets in the repo.
+- Vercel Production: Project → Settings → Environment Variables, then add each value to `Production` and `Preview`.
+- Local development: keep them in `.env.local` or pull them with `vercel env pull`.
 
 ### **Post-Deployment Verification**
 
@@ -789,7 +825,7 @@ Complete configuration file:
           "value": "http"
         }
       ],
-      "destination": "https://trijbsworld.nl/$1",
+      "destination": "https://www.trijbsworld.nl/$1",
       "permanent": true
     }
   ]
@@ -1189,13 +1225,13 @@ Regular security audits:
 
 ```bash
 # Weekly security header check
-curl -I https://trijbsworld.nl | grep -E "(Strict-Transport|Content-Security|X-Frame)"
+curl -I https://www.trijbsworld.nl | grep -E "(Strict-Transport|Content-Security|X-Frame)"
 
 # Monthly comprehensive scan
-# Visit: https://securityheaders.com/?q=trijbsworld.nl
+# Visit: https://securityheaders.com/?q=www.trijbsworld.nl
 
 # SSL/TLS check
-# Visit: https://www.ssllabs.com/ssltest/analyze.html?d=trijbsworld.nl
+# Visit: https://www.ssllabs.com/ssltest/analyze.html?d=www.trijbsworld.nl
 ```
 
 #### **Dependency Security**
@@ -1264,7 +1300,7 @@ Automate Lighthouse audits:
 npm install -g @lhci/cli
 
 # Run audit
-lhci autorun --collect.url=https://trijbsworld.nl
+lhci autorun --collect.url=https://www.trijbsworld.nl
 
 # Generate report
 lhci upload --target=temporary-public-storage
@@ -1284,10 +1320,10 @@ Regular performance tests:
 
 ```bash
 # Weekly Lighthouse audit
-lighthouse https://trijbsworld.nl --output html --output-path ./reports/lighthouse-$(date +%Y%m%d).html
+lighthouse https://www.trijbsworld.nl --output html --output-path ./reports/lighthouse-$(date +%Y%m%d).html
 
 # PageSpeed Insights API
-curl "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://trijbsworld.nl"
+curl "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://www.trijbsworld.nl"
 ```
 
 ---

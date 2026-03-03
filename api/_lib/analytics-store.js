@@ -1,84 +1,163 @@
-const EVENTS_KEY = 'portfolio:analytics:events';
+import { createClient } from '@supabase/supabase-js';
+
 const MAX_EVENTS = 10000;
+const SUPABASE_BATCH_SIZE = 1000;
+const DEFAULT_TABLE = 'analytics_events';
 
 let memoryEvents = [];
+let supabaseClient = null;
 
-function hasRedisConfig() {
-    return Boolean(process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN);
+function hasSupabaseConfig() {
+    return Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY);
 }
 
-async function executeRedis(command) {
-    const response = await fetch(process.env.UPSTASH_REDIS_REST_URL, {
-        method: 'POST',
-        headers: {
-            Authorization: `Bearer ${process.env.UPSTASH_REDIS_REST_TOKEN}`,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(command)
-    });
-
-    const payload = await response.json();
-
-    if (!response.ok || payload.error) {
-        throw new Error(payload.error || `Upstash request failed with status ${response.status}`);
-    }
-
-    return payload.result;
+function getSupabaseTable() {
+    return process.env.SUPABASE_ANALYTICS_TABLE || DEFAULT_TABLE;
 }
 
-function parseStoredEvent(item) {
-    if (typeof item !== 'string') {
+function getSupabaseClient() {
+    if (!hasSupabaseConfig()) {
         return null;
     }
 
-    try {
-        return JSON.parse(item);
-    } catch (error) {
-        return null;
+    if (!supabaseClient) {
+        supabaseClient = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY, {
+            auth: {
+                autoRefreshToken: false,
+                persistSession: false
+            }
+        });
     }
+
+    return supabaseClient;
 }
 
-async function readRedisEvents(start, stop) {
-    const result = await executeRedis(['LRANGE', EVENTS_KEY, String(start), String(stop)]);
-    return Array.isArray(result) ? result.map(parseStoredEvent).filter(Boolean) : [];
+function normalizeEvent(event = {}) {
+    const timestamp = Number(event.timestamp) || Date.now();
+    const serverTimestamp = Number(event.serverTimestamp) || Date.now();
+
+    return {
+        ...event,
+        id: typeof event.id === 'string' && event.id
+            ? event.id
+            : `${timestamp.toString(36)}${Math.random().toString(36).slice(2)}`,
+        eventType: typeof event.eventType === 'string' && event.eventType ? event.eventType : 'event',
+        path: typeof event.path === 'string' ? event.path : '',
+        userId: typeof event.userId === 'string' && event.userId ? event.userId : null,
+        sessionId: typeof event.sessionId === 'string' && event.sessionId ? event.sessionId : null,
+        ip: typeof event.ip === 'string' && event.ip ? event.ip : null,
+        timestamp,
+        serverTimestamp
+    };
+}
+
+function buildSupabaseRow(event) {
+    const normalized = normalizeEvent(event);
+
+    return {
+        id: normalized.id,
+        event_type: normalized.eventType,
+        path: normalized.path || null,
+        user_id: normalized.userId,
+        session_id: normalized.sessionId,
+        timestamp: normalized.timestamp,
+        server_timestamp: normalized.serverTimestamp,
+        ip: normalized.ip,
+        payload: normalized
+    };
+}
+
+function parseStoredEvent(row) {
+    if (!row || typeof row.payload !== 'object' || row.payload === null) {
+        return null;
+    }
+
+    return normalizeEvent(row.payload);
+}
+
+async function readSupabaseEvents(limit, offset) {
+    const client = getSupabaseClient();
+    const end = offset + limit - 1;
+    const { data, error } = await client
+        .from(getSupabaseTable())
+        .select('payload')
+        .order('timestamp', { ascending: false })
+        .range(offset, end);
+
+    if (error) {
+        throw new Error(`Supabase query failed: ${error.message}`);
+    }
+
+    return Array.isArray(data) ? data.map(parseStoredEvent).filter(Boolean) : [];
 }
 
 export async function appendAnalyticsEvent(event) {
-    if (!hasRedisConfig()) {
-        memoryEvents.unshift(event);
+    const normalized = normalizeEvent(event);
+
+    if (!hasSupabaseConfig()) {
+        memoryEvents.unshift(normalized);
         memoryEvents = memoryEvents.slice(0, MAX_EVENTS);
         return;
     }
 
-    await executeRedis(['LPUSH', EVENTS_KEY, JSON.stringify(event)]);
-    await executeRedis(['LTRIM', EVENTS_KEY, '0', String(MAX_EVENTS - 1)]);
+    const { error } = await getSupabaseClient()
+        .from(getSupabaseTable())
+        .upsert(buildSupabaseRow(normalized), {
+            onConflict: 'id'
+        });
+
+    if (error) {
+        throw new Error(`Supabase write failed: ${error.message}`);
+    }
 }
 
 export async function readAnalyticsEvents(limit = 100, offset = 0) {
-    if (!hasRedisConfig()) {
+    if (!hasSupabaseConfig()) {
         return memoryEvents.slice(offset, offset + limit);
     }
 
-    return readRedisEvents(offset, offset + limit - 1);
+    return readSupabaseEvents(limit, offset);
 }
 
 export async function readAllAnalyticsEvents() {
-    if (!hasRedisConfig()) {
+    if (!hasSupabaseConfig()) {
         return [...memoryEvents];
     }
 
-    return readRedisEvents(0, MAX_EVENTS - 1);
+    const events = [];
+
+    for (let offset = 0; offset < MAX_EVENTS; offset += SUPABASE_BATCH_SIZE) {
+        const batch = await readSupabaseEvents(
+            Math.min(SUPABASE_BATCH_SIZE, MAX_EVENTS - offset),
+            offset
+        );
+
+        events.push(...batch);
+
+        if (batch.length < SUPABASE_BATCH_SIZE) {
+            break;
+        }
+    }
+
+    return events;
 }
 
 export async function countAnalyticsEvents() {
-    if (!hasRedisConfig()) {
+    if (!hasSupabaseConfig()) {
         return memoryEvents.length;
     }
 
-    const total = await executeRedis(['LLEN', EVENTS_KEY]);
-    return Number(total) || 0;
+    const { count, error } = await getSupabaseClient()
+        .from(getSupabaseTable())
+        .select('id', { count: 'exact', head: true });
+
+    if (error) {
+        throw new Error(`Supabase count failed: ${error.message}`);
+    }
+
+    return Number(count) || 0;
 }
 
 export function getAnalyticsStorageMode() {
-    return hasRedisConfig() ? 'upstash-redis' : 'memory';
+    return hasSupabaseConfig() ? 'supabase' : 'memory';
 }

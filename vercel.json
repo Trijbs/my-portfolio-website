@@ -116,7 +116,7 @@
           "value": "http"
         }
       ],
-      "destination": "https://trijbsworld.nl/$1",
+      "destination": "https://www.trijbsworld.nl/$1",
       "permanent": true
     }
   ]

@@ -239,6 +239,8 @@ export default async function handler(req, res) {
         }
 
         if (action === 'health') {
+            const storageMode = getAnalyticsStorageMode();
+
             return res.status(200).json({
                 status: 'healthy',
                 timestamp: new Date().toISOString(),
@@ -246,8 +248,8 @@ export default async function handler(req, res) {
                 eventsStored: events.length,
                 sessionsActive: sessions.size,
                 usersTracked: users.size,
-                storage: getAnalyticsStorageMode(),
-                persistent: getAnalyticsStorageMode() === 'upstash-redis'
+                storage: storageMode,
+                persistent: storageMode === 'supabase'
             });
         }
 

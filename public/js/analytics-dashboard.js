@@ -106,7 +106,7 @@
 
                 if (!data.configured) {
                     this.showAuthPanel(
-                        'Set ANALYTICS_ADMIN_PASSWORD in Vercel to unlock this page. Add UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN for persistent storage.'
+                        'Set ANALYTICS_ADMIN_PASSWORD in Vercel to unlock this page. Add SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY for persistent storage.'
                     );
                     this.elements.authForm.hidden = true;
                     this.setStatus('Setup Needed', false);
