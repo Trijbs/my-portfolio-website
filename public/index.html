@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruben Trijbs | Full-Stack Developer & Creative Designer</title>
-    <meta name="description" content="Full-stack developer and creative designer specializing in modern web applications, e-commerce solutions, and innovative digital experiences. Available for freelance projects and full-time opportunities.">
-    <meta name="keywords" content="web developer, full-stack developer, React developer, JavaScript, web design, portfolio, freelance developer">
+    <title>Ruben Trijbs | UI/UX &amp; Web Designer</title>
+    <meta name="description" content="UI/UX and web designer crafting responsive websites, interface systems, e-commerce experiences, and creative digital products with strong visual direction.">
+    <meta name="keywords" content="ui ux designer, web designer, interface designer, responsive web design, portfolio, figma designer, freelance designer">
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow">
     <meta name="author" content="Ruben Trijbs">
-    <meta property="og:title" content="Ruben Trijbs | Full-Stack Developer & Creative Designer">
-    <meta property="og:description" content="Creating exceptional digital experiences with modern web technologies">
+    <meta property="og:title" content="Ruben Trijbs | UI/UX &amp; Web Designer">
+    <meta property="og:description" content="Designing modern websites and digital interfaces with a clear visual identity and strong user experience.">
     <meta property="og:image" content="https://trijbsworld.nl/img/profile.webp">
     <meta property="og:url" content="https://trijbsworld.nl">
     <link rel="canonical" href="https://trijbsworld.nl">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css?v=2.0.0">
     <link rel="stylesheet" href="css/logo-footer.css?v=2.0.0">
     <script src="https://unpkg.com/feather-icons"></script>
@@ -28,26 +28,26 @@
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Ruben Trijbs",
-        "jobTitle": "Full-Stack Developer & Creative Designer",
+        "jobTitle": "UI/UX & Web Designer",
         "url": "https://trijbsworld.nl",
         "email": "rbdegroot@gmail.com",
         "sameAs": [
             "https://github.com/trijbs",
-            "https://instagram.com/trijbs.xyz"
+            "https://www.instagram.com/trijbsworld/"
         ],
         "knowsAbout": [
-            "Web Development",
-            "Full-Stack Development",
+            "Web Design",
+            "Interface Design",
             "UI/UX Design",
-            "Creative Design",
+            "Interaction Design",
             "JavaScript",
-            "Node.js",
-            "React",
+            "Figma",
+            "Responsive Web Design",
             "CSS",
             "HTML",
             "E-commerce Solutions"
         ],
-        "description": "Full-stack developer and creative designer specializing in modern web applications, e-commerce solutions, and innovative digital experiences."
+        "description": "UI/UX and web designer specializing in responsive websites, interface systems, e-commerce experiences, and visually driven digital products."
     }
     </script>
 </head>
@@ -65,12 +65,11 @@
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a href="/info">Info</a></li>
+                    <li><a href="/info.html">Info</a></li>
                 </ul>
             </nav>
-            <button class="theme-toggle" aria-label="Toggle theme">
-                <i data-feather="sun" class="light-icon"></i>
-                <i data-feather="moon" class="dark-icon"></i>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <i data-feather="moon"></i>
             </button>
             <button class="mobile-menu-toggle" aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
                 <i data-feather="menu" class="icon-menu"></i>
@@ -83,15 +82,36 @@
         <!-- Hero Section -->
         <section id="hero" class="hero-section">
             <div class="container">
-                <div class="hero-content">
-                    <div class="hero-image">
-                        <div class="profile-image" style="background-image: url('img/hero_image.jpeg')"></div>
+                <div class="hero-grid">
+                    <div class="hero-copy">
+                        <span class="eyebrow">UI/UX &amp; Web Designer</span>
+                        <h1 class="hero-title">UI/UX and web design with a clear visual point of view.</h1>
+                        <p class="hero-lead">I design responsive websites, interface systems, and digital experiences that feel polished from the first screen.</p>
+                        <div class="hero-actions">
+                            <a href="#projects" class="btn btn-primary">Selected Work</a>
+                            <a href="#skills" class="btn btn-secondary">Process</a>
+                        </div>
+                        <div class="hero-signals" aria-label="Key strengths">
+                            <span>Web Design</span>
+                            <span>UI Systems</span>
+                            <span>Responsive Build</span>
+                        </div>
                     </div>
-                    <div class="hero-text">
-                        <h1 class="outline-title">Welcome</h1>
-                        <p class="hero-subtitle">Hi, I'm <span class="highlight">Ruben</span>, a designer crafting immersive visual experiences and creative projects.</p>
-                        <p>Discover my innovative journey as I push the boundaries of technology to deliver optimized solutions for any space or scale.</p>
-                        <a href="#projects" class="btn btn-primary">Explore My Work</a>
+                    <div class="hero-stage">
+                        <aside class="hero-portrait-card">
+                            <div class="profile-image" style="background-image: url('img/profile-hero.jpg')"></div>
+                            <div class="portrait-copy">
+                                <span class="mini-label">About Ruben</span>
+                                <p>Based in the Netherlands, focused on design-led websites and visually clear digital work.</p>
+                            </div>
+                        </aside>
+                        <div class="hero-stage-panel hero-summary-panel">
+                            <article class="stage-main-card">
+                                <span class="mini-label">Best fit</span>
+                                <h2>Landing pages, portfolios, and e-commerce concepts.</h2>
+                                <p>Clear hierarchy, cleaner interactions, and a design-to-development workflow that stays close to the original idea.</p>
+                            </article>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -100,10 +120,33 @@
         <!-- About Section -->
         <section id="about" class="about-section">
             <div class="container">
-                <h2 class="outline-title">About Me</h2>
-                <div class="about-content">
-                    <p class="about-highlight">Transforming ideas into digital experiences that captivate, inspire, and perform.</p>
-                    <p>I blend technical expertise with creative vision to craft solutions that stand out in today's digital landscape. My approach combines clean code with bold design, delivering projects that not only look exceptional but function flawlessly.</p>
+                <div class="section-header section-header-left">
+                    <span class="section-tag">Design Perspective</span>
+                    <h2 class="section-title">Work that looks intentional before you explain it.</h2>
+                    <p class="section-description">My portfolio is built around the kind of projects where layout, hierarchy, and user experience need to carry the first impression. I care about how a screen feels, how fast it reads, and how naturally it guides people forward.</p>
+                </div>
+                <div class="about-layout">
+                    <div class="about-story">
+                        <p class="about-highlight">I work between visual design and front-end execution, which keeps the final website close to the original concept.</p>
+                        <p>That means I am not only thinking about aesthetics. I am thinking about how navigation behaves, how components scale, how sections create momentum, and how a design system stays consistent across desktop and mobile.</p>
+                    </div>
+                    <div class="principles-grid">
+                        <article class="principle-card">
+                            <span class="mini-label">01</span>
+                            <h3>Visual clarity</h3>
+                            <p>Strong typography, calm spacing, and contrast that lets the message land quickly.</p>
+                        </article>
+                        <article class="principle-card">
+                            <span class="mini-label">02</span>
+                            <h3>User flow</h3>
+                            <p>Interfaces that guide visitors naturally instead of making them search for the next step.</p>
+                        </article>
+                        <article class="principle-card">
+                            <span class="mini-label">03</span>
+                            <h3>Responsive finish</h3>
+                            <p>Design decisions that stay sharp across screen sizes and feel built, not just mocked up.</p>
+                        </article>
+                    </div>
                 </div>
             </div>
         </section>
@@ -112,73 +155,114 @@
         <section id="skills" class="skills-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag">What I bring to the table</span>
+                    <span class="section-tag">Workflow &amp; Toolkit</span>
+                    <h2 class="section-title">How I approach UI/UX and web design</h2>
+                    <p class="section-description">I focus on the parts of a project that shape how professional and usable it feels: visual systems, layout rhythm, interaction cues, and a clean handoff into code.</p>
                 </div>
                 
+                <div class="skills-container">
+                    <div class="technical-skills">
+                        <h3>Core Design Strengths</h3>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>UI Design</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="92"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Responsive Web Design</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>UX Structure</span>
+                                <span>86%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="86"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Prototyping</span>
+                                <span>84%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="84"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Design-to-Development</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="88"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="creative-capabilities">
-                        <h3>Creative Capabilities</h3>
-                        <div class="capabilities-grid">
-                            <div class="capability-item">
-                                <i data-feather="smartphone"></i>
-                                <span>Mobile Apps</span>
-                            </div>
-                            <div class="capability-item">
-                                <i data-feather="layers"></i>
-                                <span>Digital Content</span>
-                            </div>
-                            <div class="capability-item">
-                                <i data-feather="shopping-bag"></i>
-                                <span>Webshops</span>
-                            </div>
-                            <div class="capability-item">
-                                <i data-feather="globe"></i>
-                                <span>Websites</span>
-                            </div>
-                            <div class="capability-item">
-                                <i data-feather="shirt"></i>
-                                <span>Clothing Design</span>
-                            </div>
-                            <div class="capability-item">
-                                <i data-feather="pen-tool"></i>
-                                <span>Logo Design</span>
-                            </div>
-                            <div class="capability-item">
-                                <i data-feather="bar-chart-2"></i>
-                                <span>Infographic</span>
-                            </div>
-                            <div class="capability-item">
-                                <i data-feather="file-text"></i>
-                                <span>Flyers</span>
-                            </div>
-                            <div class="capability-item">
-                                <i data-feather="image"></i>
-                                <span>Posters</span>
-                            </div>
-                            <div class="capability-item">
-                                <i data-feather="mail"></i>
-                                <span>Direct Mail</span>
-                            </div>
-                            <div class="capability-item">
-                                <i data-feather="camera"></i>
-                                <span>Photography</span>
-                            </div>
-                            <div class="capability-item">
-                                <i data-feather="trending-up"></i>
-                                <span>Advertising</span>
-                            </div>
+                        <h3>Design Workflow</h3>
+                        <div class="workflow-list">
+                            <article class="workflow-step">
+                                <span class="mini-label">Discover</span>
+                                <p>Understand the brand, audience, and what the page needs to communicate first.</p>
+                            </article>
+                            <article class="workflow-step">
+                                <span class="mini-label">Structure</span>
+                                <p>Build hierarchy, layout rhythm, and clear page sections before adding polish.</p>
+                            </article>
+                            <article class="workflow-step">
+                                <span class="mini-label">Refine</span>
+                                <p>Develop the visual language with typography, color, components, and interaction details.</p>
+                            </article>
+                            <article class="workflow-step">
+                                <span class="mini-label">Launch</span>
+                                <p>Translate the design into responsive front-end work with consistent spacing and behavior.</p>
+                            </article>
                         </div>
                     </div>
                 </div>
                 
-                <div class="github-contributions">
-                    <h3>GitHub Contributions</h3>
-                    <div class="contribution-graph">
-                        <div class="contribution-info">
-                            <p>Contributions in the last year: <span class="highlight">8</span></p>
+                <div class="toolbelt-panel">
+                    <div class="toolbelt-copy">
+                        <span class="mini-label">Tools &amp; Outputs</span>
+                        <h3>What I usually deliver in a design-led project</h3>
+                        <p>Wireframes, interface concepts, component thinking, responsive layouts, Figma-based visuals, and production-ready front-end details.</p>
+                    </div>
+                    <div class="capabilities-grid designer-grid">
+                        <div class="capability-item">
+                            <i data-feather="pen-tool"></i>
+                            <span>Figma Concepts</span>
                         </div>
-                        <div class="github-chart">
-                            <img src="http://ghchart.rshah.org/trijbs" alt="trijbs Github chart" 
-                                 width="800" height="200" loading="lazy" />
+                        <div class="capability-item">
+                            <i data-feather="grid"></i>
+                            <span>Layout Systems</span>
+                        </div>
+                        <div class="capability-item">
+                            <i data-feather="smartphone"></i>
+                            <span>Mobile UX</span>
+                        </div>
+                        <div class="capability-item">
+                            <i data-feather="shopping-bag"></i>
+                            <span>E-commerce UI</span>
+                        </div>
+                        <div class="capability-item">
+                            <i data-feather="pen-tool"></i>
+                            <span>Visual Direction</span>
+                        </div>
+                        <div class="capability-item">
+                            <i data-feather="code"></i>
+                            <span>Front-end Build</span>
                         </div>
                     </div>
                 </div>
@@ -189,25 +273,26 @@
         <section id="projects" class="projects-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag">My recent work</span>
-                    <h2 class="section-title">Featured Projects</h2>
-                    <p class="section-description">Here are some of my favorite projects that showcase my skills and passion for creating exceptional digital experiences.</p>
+                    <span class="section-tag">Selected Work</span>
+                    <h2 class="section-title">Projects that show interface thinking</h2>
+                    <p class="section-description">These projects show how I work across interfaces, visual systems, campaigns, and archive pieces, with older work grouped into clearer collections so the portfolio stays easy to read.</p>
                 </div>
                 
                 <div class="project-filters">
                     <button class="filter-btn active" data-filter="all">All Projects</button>
-                    <button class="filter-btn" data-filter="web">Web Apps</button>
-                    <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
-                    <button class="filter-btn" data-filter="design">Design</button>
-                    <button class="filter-btn" data-filter="creative">Creative</button>
-                    <button class="filter-btn" data-filter="video">Video</button>
+                    <button class="filter-btn" data-filter="uiux">UI / UX</button>
+                    <button class="filter-btn" data-filter="campaign">Campaign</button>
+                    <button class="filter-btn" data-filter="editorial">Editorial</button>
+                    <button class="filter-btn" data-filter="print">Print</button>
+                    <button class="filter-btn" data-filter="motion">Motion</button>
+                    <button class="filter-btn" data-filter="photo">Photo</button>
                 </div>
                 
                 <div class="projects-grid">
                     <!-- Featured Project 1 -->
-                    <div class="project-card featured" data-category="web creative">
+                    <div class="project-card featured" data-category="uiux motion">
                         <div class="project-image">
-                            <img src="img/Urban_unleashed_homescreen.png" alt="Urban Unleashed - Interactive Homescreen Interface" 
+                            <img src="img/urban-unleashed-cover.jpg" alt="Urban Unleashed - Interactive Homescreen Interface" 
                                  width="600" height="400" loading="lazy">
                             <div class="project-overlay">
                                 <div class="project-actions">
@@ -223,13 +308,14 @@
                             </div>
                         </div>
                         <div class="project-content">
+                            <p class="project-kicker">Interactive website concept</p>
                             <div class="project-header">
                                 <h3>Urban Unleashed</h3>
                                 <div class="project-status">
                                     <span class="status-badge featured">Featured</span>
                                 </div>
                             </div>
-                            <p>An immersive 3D generative art experience built with Next.js and Three.js. The homescreen features an intuitive interface with real-time procedural generation and interactive controls.</p>
+                            <p>An immersive landing experience where the interface acts as part of the brand. The concept combines bold visuals, intuitive controls, and a strong first-screen composition.</p>
                             <div class="project-tags">
                                 <span class="tag">Next.js</span>
                                 <span class="tag">Three.js</span>
@@ -250,7 +336,7 @@
                     </div>
                     
                     <!-- Figma Design Project -->
-                    <div class="project-card figma-project" data-category="design creative">
+                    <div class="project-card figma-project" data-category="uiux">
                         <div class="project-image">
                             <div class="figma-preview">
                                 <div class="figma-icon">
@@ -267,7 +353,7 @@
                             <div class="project-overlay">
                                 <div class="project-actions">
                                     <button class="btn btn-primary figma-view" data-figma-url="https://www.figma.com/design/URqiY9oVCADc202Wqxb33c/opdracht-10?node-id=8-1346n" data-title="Opdracht 10 - Design Project">
-                                        <i data-feather="figma"></i>
+                                        <i data-feather="pen-tool"></i>
                                         View in Figma
                                     </button>
                                     <button class="btn btn-secondary figma-embed" data-figma-embed="https://embed.figma.com/design/URqiY9oVCADc202Wqxb33c/opdracht-10?node-id=8-1346&embed-host=share" data-title="Opdracht 10 - Design Project">
@@ -278,13 +364,14 @@
                             </div>
                         </div>
                         <div class="project-content">
+                            <p class="project-kicker">Figma case study</p>
                             <div class="project-header">
-                                <h3>E-commerce Platform - Design Project</h3>
+                                <h3>E-commerce UI Concept</h3>
                                 <div class="project-status">
                                     <span class="status-badge design">Figma</span>
                                 </div>
                             </div>
-                            <p>Een professioneel design project met moderne UI componenten en interactieve prototypes. Bekijk het volledige design in Figma of preview het direct hier.</p>
+                            <p>A focused UI/UX concept for an e-commerce experience with reusable components, clearer hierarchy, and prototype-driven exploration in Figma.</p>
                             <div class="project-tags">
                                 <span class="tag">Figma</span>
                                 <span class="tag">UI/UX</span>
@@ -305,7 +392,7 @@
                     </div>
                     
                     <!-- Animated Infographic Video Project -->
-                    <div class="project-card video-project" data-category="design creative">
+                    <div class="project-card video-project" data-category="motion campaign">
                         <div class="project-image">
                             <div class="video-preview">
                                 <!-- Video Badge -->
@@ -317,8 +404,8 @@
                                     muted 
                                     loop 
                                     playsinline
-                                    poster="img/infographic-poster.jpg">
-                                    <source src="videos/infographic.mp4" type="video/mp4">
+                                    poster="img/archive/infographic-poster.png">
+                                    <source src="videos/archive/infographic.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                                 
@@ -335,26 +422,27 @@
                             <!-- Project Overlay with Buttons -->
                             <div class="project-overlay">
                                 <div class="project-actions">
-                                    <button class="btn btn-primary video-play" data-video="videos/infographic.mp4" data-title="Geanimeerde Infographic">
+                                    <button class="btn btn-primary video-play" data-video="videos/archive/infographic.mp4" data-title="Animated Infographic">
                                         <i data-feather="play-circle"></i>
                                         Play Video
                                     </button>
-                                    <button class="btn btn-secondary video-download" data-video="videos/infographic.mp4">
-                                        <i data-feather="download"></i>
-                                        Download
+                                    <button class="btn btn-secondary view-details" data-project="motion-design-studies">
+                                        <i data-feather="layers"></i>
+                                        View Collection
                                     </button>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="project-content">
+                            <p class="project-kicker">Motion and information design</p>
                             <div class="project-header">
-                                <h3>Geanimeerde Infographic</h3>
+                                <h3>Animated Infographic</h3>
                                 <div class="project-status">
                                     <span class="status-badge video">Video</span>
                                 </div>
                             </div>
-                            <p>Een professioneel geanimeerde infographic die complexe data visueel aantrekkelijk en begrijpelijk maakt. Gemaakt met moderne motion design technieken.</p>
+                            <p>A motion-led design piece that turns complex information into a visual narrative, with pacing, contrast, and composition driving readability.</p>
                             <div class="project-tags">
                                 <span class="tag">Motion Design</span>
                                 <span class="tag">Infographic</span>
@@ -375,9 +463,9 @@
                     </div>
                     
                     <!-- Project 2 -->
-                    <div class="project-card" data-category="web">
+                    <div class="project-card" data-category="uiux motion">
                         <div class="project-image">
-                            <img src="img/popfusion.png" alt="PopFusion - Music Visualizer" 
+                            <img src="img/popfusion-cover.jpg" alt="PopFusion - Music Visualizer" 
                                  width="600" height="400" loading="lazy">
                             <div class="project-overlay">
                                 <div class="project-actions">
@@ -393,13 +481,14 @@
                             </div>
                         </div>
                         <div class="project-content">
+                            <p class="project-kicker">Experimental interface</p>
                             <div class="project-header">
                                 <h3>PopFusion</h3>
                                 <div class="project-status">
                                     <span class="status-badge new">New</span>
                                 </div>
                             </div>
-                            <p>A dynamic music visualizer that creates stunning visual representations of audio. Built with React and Web Audio API.</p>
+                            <p>An audio-reactive web experience focused on atmosphere, motion, and expressive interface behavior. Designed to feel playful without losing clarity.</p>
                             <div class="project-tags">
                                 <span class="tag">React</span>
                                 <span class="tag">Web Audio API</span>
@@ -420,7 +509,7 @@
                     </div>
                     
                     <!-- Project 3 -->
-                    <div class="project-card" data-category="ecommerce web">
+                    <div class="project-card" data-category="uiux">
                         <div class="project-image">
                             <img src="img/Webshop.webp" alt="Modern E-commerce Platform" 
                                  width="600" height="400" loading="lazy">
@@ -438,10 +527,11 @@
                             </div>
                         </div>
                         <div class="project-content">
+                            <p class="project-kicker">Conversion-focused webshop design</p>
                             <div class="project-header">
                                 <h3>E-commerce Platform</h3>
                             </div>
-                            <p>A full-featured e-commerce platform with shopping cart, payment integration, and admin dashboard. Built for scalability and performance.</p>
+                            <p>A webshop concept built around product visibility, CTA hierarchy, and a smoother shopping flow. The design balances usability, trust, and visual consistency.</p>
                             <div class="project-tags">
                                 <span class="tag">React</span>
                                 <span class="tag">Node.js</span>
@@ -456,6 +546,343 @@
                                 <div class="stat">
                                     <i data-feather="users"></i>
                                     <span>Multi-user</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="projects-group-divider" aria-hidden="true">
+                        <span class="divider-label">Archived Collections</span>
+                        <p>Grouped supporting work, ordered from stronger design systems into broader visual experiments.</p>
+                    </div>
+
+                    <div class="project-card archive-card" data-category="uiux campaign">
+                        <div class="project-image">
+                            <img src="img/archive/northface/mobile-01.jpg" alt="The North Face campaign homescreen concept" 
+                                 width="600" height="400" loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <button class="btn btn-primary view-details" data-project="northface-campaign">
+                                        <i data-feather="layers"></i>
+                                        View Collection
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-kicker">Retail interface campaign</p>
+                            <div class="project-header">
+                                <h3>The North Face Digital Campaign</h3>
+                                <div class="project-status">
+                                    <span class="status-badge archive">Archive</span>
+                                </div>
+                            </div>
+                            <p>A focused campaign set built around mobile product screens and a matching CRM email layout, with the strongest work centered on retail hierarchy and campaign clarity.</p>
+                            <div class="project-tags">
+                                <span class="tag">UI Design</span>
+                                <span class="tag">Mobile Screens</span>
+                                <span class="tag">CRM Email</span>
+                                <span class="tag">Campaign Layout</span>
+                            </div>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <i data-feather="layers"></i>
+                                    <span>Mobile-first campaign</span>
+                                </div>
+                                <div class="stat">
+                                    <i data-feather="smartphone"></i>
+                                    <span>Retail UI screens</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card archive-card" data-category="editorial print">
+                        <div class="project-image">
+                            <img src="img/archive/editorial-trends/trends-01.jpg" alt="10 trends of graphic design editorial booklet" 
+                                 width="600" height="400" loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <button class="btn btn-primary view-details" data-project="editorial-booklets">
+                                        <i data-feather="book-open"></i>
+                                        Open Booklets
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-kicker">Editorial sequence</p>
+                            <div class="project-header">
+                                <h3>Editorial Layout Collection</h3>
+                                <div class="project-status">
+                                    <span class="status-badge archive">Archive</span>
+                                </div>
+                            </div>
+                            <p>A grouped collection of spreads and booklet layouts, focused on pacing, hierarchy, and longer-form editorial structure.</p>
+                            <div class="project-tags">
+                                <span class="tag">Booklet Design</span>
+                                <span class="tag">Spreads</span>
+                                <span class="tag">Editorial Layout</span>
+                                <span class="tag">Typography</span>
+                            </div>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <i data-feather="book-open"></i>
+                                    <span>Multi-page design</span>
+                                </div>
+                                <div class="stat">
+                                    <i data-feather="align-left"></i>
+                                    <span>Layout studies</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card archive-card" data-category="campaign editorial motion">
+                        <div class="project-image">
+                            <img src="img/archive/northface-home.svg" alt="Hidden Realms Fest social launch preview" 
+                                 width="600" height="400" loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <button class="btn btn-primary view-details" data-project="hidden-realms-fest">
+                                        <i data-feather="layers"></i>
+                                        View Collection
+                                    </button>
+                                    <button class="btn btn-secondary video-play" data-video="videos/archive/northface-teaser.mp4" data-title="Hidden Realms Fest Teaser">
+                                        <i data-feather="play-circle"></i>
+                                        Play Teaser
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-kicker">Festival brand rollout</p>
+                            <div class="project-header">
+                                <h3>Hidden Realms Fest</h3>
+                                <div class="project-status">
+                                    <span class="status-badge archive">Archive</span>
+                                </div>
+                            </div>
+                            <p>A separate festival project that combines identity boards, social launch assets, and motion teasers into one consistent event-world campaign.</p>
+                            <div class="project-tags">
+                                <span class="tag">Moodboard</span>
+                                <span class="tag">Social Campaign</span>
+                                <span class="tag">Motion Teasers</span>
+                                <span class="tag">Event Identity</span>
+                            </div>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <i data-feather="image"></i>
+                                    <span>Identity + launch</span>
+                                </div>
+                                <div class="stat">
+                                    <i data-feather="play-circle"></i>
+                                    <span>Motion + social assets</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card archive-card" data-category="campaign print">
+                        <div class="project-image">
+                            <img src="img/archive/event-kit/flyer-01.jpg" alt="Event promotion flyer and ticket design" 
+                                 width="600" height="400" loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <button class="btn btn-primary view-details" data-project="event-promo-pack">
+                                        <i data-feather="layers"></i>
+                                        View Collection
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-kicker">Print rollout</p>
+                            <div class="project-header">
+                                <h3>Event Identity Kit</h3>
+                                <div class="project-status">
+                                    <span class="status-badge archive">Archive</span>
+                                </div>
+                            </div>
+                            <p>A set of promotional assets that bundles flyers, tickets, and supporting print pieces into one event identity across announcement and attendance touchpoints.</p>
+                            <div class="project-tags">
+                                <span class="tag">Flyers</span>
+                                <span class="tag">Tickets</span>
+                                <span class="tag">Event Design</span>
+                                <span class="tag">Promo Assets</span>
+                            </div>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <i data-feather="tag"></i>
+                                    <span>Entry materials</span>
+                                </div>
+                                <div class="stat">
+                                    <i data-feather="flag"></i>
+                                    <span>Campaign support</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card archive-card" data-category="print">
+                        <div class="project-image">
+                            <img src="img/archive/posters/poster-bowie.jpg" alt="Poster experiments and promotional print design" 
+                                 width="600" height="400" loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <button class="btn btn-primary view-details" data-project="poster-series">
+                                        <i data-feather="layers"></i>
+                                        View Collection
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-kicker">Poster studies</p>
+                            <div class="project-header">
+                                <h3>Poster Collection</h3>
+                                <div class="project-status">
+                                    <span class="status-badge archive">Archive</span>
+                                </div>
+                            </div>
+                            <p>A poster-led collection covering music, event, and image-treatment experiments, built around composition, contrast, and graphic impact.</p>
+                            <div class="project-tags">
+                                <span class="tag">Poster Design</span>
+                                <span class="tag">Image Editing</span>
+                                <span class="tag">Typography</span>
+                                <span class="tag">Print Visuals</span>
+                            </div>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <i data-feather="layout"></i>
+                                    <span>Promotional formats</span>
+                                </div>
+                                <div class="stat">
+                                    <i data-feather="droplet"></i>
+                                    <span>Color explorations</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card archive-card" data-category="editorial print">
+                        <div class="project-image">
+                            <img src="img/archive/menu-system/menu-03.jpg" alt="Hospitality menu feature spread" 
+                                 width="1600" height="1135" loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <button class="btn btn-primary view-details" data-project="menu-design-system">
+                                        <i data-feather="layers"></i>
+                                        View Collection
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-kicker">Information design</p>
+                            <div class="project-header">
+                                <h3>Hospitality Menu System</h3>
+                                <div class="project-status">
+                                    <span class="status-badge archive">Archive</span>
+                                </div>
+                            </div>
+                            <p>A hospitality-focused layout collection centered on readability, pricing hierarchy, and visual consistency across multiple menu pages.</p>
+                            <div class="project-tags">
+                                <span class="tag">Menu Design</span>
+                                <span class="tag">Print Layout</span>
+                                <span class="tag">Hospitality</span>
+                                <span class="tag">Information Design</span>
+                            </div>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <i data-feather="file-text"></i>
+                                    <span>Multi-page menu</span>
+                                </div>
+                                <div class="stat">
+                                    <i data-feather="list"></i>
+                                    <span>Readable structure</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card archive-card" data-category="campaign editorial print">
+                        <div class="project-image">
+                            <img src="img/archive/research-boards/alternative-typo.jpg" alt="Alternative typography concept board" 
+                                 width="1200" height="1600" loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <button class="btn btn-primary view-details" data-project="research-concept-boards">
+                                        <i data-feather="layers"></i>
+                                        View Collection
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-kicker">Process and concept</p>
+                            <div class="project-header">
+                                <h3>Research &amp; Concept Boards</h3>
+                                <div class="project-status">
+                                    <span class="status-badge archive">Archive</span>
+                                </div>
+                            </div>
+                            <p>A collection of research boards, collage explorations, and reference-led studies used to shape stronger visual directions before final execution.</p>
+                            <div class="project-tags">
+                                <span class="tag">Research</span>
+                                <span class="tag">Collage</span>
+                                <span class="tag">Concept Boards</span>
+                                <span class="tag">Visual References</span>
+                            </div>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <i data-feather="search"></i>
+                                    <span>Direction setting</span>
+                                </div>
+                                <div class="stat">
+                                    <i data-feather="copy"></i>
+                                    <span>Reference grouping</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card archive-card" data-category="photo">
+                        <div class="project-image">
+                            <img src="img/archive/photo-series/photo-collage.jpg" alt="Photography collage overview" 
+                                 width="1273" height="1800" loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <button class="btn btn-primary view-details" data-project="photography-studies">
+                                        <i data-feather="layers"></i>
+                                        View Collection
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-kicker">Image study</p>
+                            <div class="project-header">
+                                <h3>Product Styling Photo Series</h3>
+                                <div class="project-status">
+                                    <span class="status-badge archive">Archive</span>
+                                </div>
+                            </div>
+                            <p>A visual study series built from styled product photography, composition experiments, and collage-based presentation around one object set.</p>
+                            <div class="project-tags">
+                                <span class="tag">Photography</span>
+                                <span class="tag">Styling</span>
+                                <span class="tag">Collage</span>
+                                <span class="tag">Art Direction</span>
+                            </div>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <i data-feather="camera"></i>
+                                    <span>Object studies</span>
+                                </div>
+                                <div class="stat">
+                                    <i data-feather="grid"></i>
+                                    <span>Collage presentation</span>
                                 </div>
                             </div>
                         </div>
@@ -488,16 +915,16 @@
         <section id="contact" class="contact-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag">Let's work together</span>
-                    <h2 class="section-title">Get In Touch</h2>
-                    <p class="section-description">Ready to bring your ideas to life? I'm always excited to work on new projects and collaborate with amazing people.</p>
+                    <span class="section-tag">Let&apos;s Build Something Better</span>
+                    <h2 class="section-title">Need a designer who can shape the look and the experience?</h2>
+                    <p class="section-description">I&apos;m available for portfolio sites, landing pages, design concepts, creative web experiences, and interface refreshes that need a stronger visual direction.</p>
                 </div>
                 
                 <div class="contact-container">
                     <div class="contact-info">
                         <div class="contact-card">
-                            <h3>Let's Start a Conversation</h3>
-                            <p>I'm currently available for freelance projects and full-time opportunities. Let's discuss how we can work together to create something amazing.</p>
+                            <h3>Start a Design-Led Project</h3>
+                            <p>If you need a website or interface that should feel sharper, clearer, and more intentional, send me the idea and I can help shape the direction.</p>
                             
                             <div class="contact-methods">
                                 <div class="contact-method">
@@ -507,7 +934,7 @@
                                     <div class="method-info">
                                         <h4>Email</h4>
                                         <a href="mailto:rbdegroot@gmail.com">rbdegroot@gmail.com</a>
-                                        <span class="response-time">Usually responds within 24 hours</span>
+                                        <span class="response-time">Best for project inquiries and freelance work</span>
                                     </div>
                                 </div>
                                 
@@ -518,7 +945,7 @@
                                     <div class="method-info">
                                         <h4>GitHub</h4>
                                         <a href="https://github.com/trijbs" target="_blank" rel="noopener noreferrer">@trijbs</a>
-                                        <span class="response-time">Check out my latest code</span>
+                                        <span class="response-time">See how design ideas translate into build quality</span>
                                     </div>
                                 </div>
                                 
@@ -528,23 +955,23 @@
                                     </div>
                                     <div class="method-info">
                                         <h4>Instagram</h4>
-                                        <a href="https://instagram.com/trijbs.xyz" target="_blank" rel="noopener noreferrer">@trijbs.xyz</a>
-                                        <span class="response-time">Behind the scenes content</span>
+                                        <a href="https://www.instagram.com/trijbsworld/" target="_blank" rel="noopener noreferrer">@trijbsworld</a>
+                                        <span class="response-time">Creative direction and visual inspiration</span>
                                     </div>
                                 </div>
                             </div>
                             
                             <div class="availability-status">
                                 <div class="status-indicator available"></div>
-                                <span>Available for new projects</span>
+                                <span>Available for new UI/UX and web design projects</span>
                             </div>
                         </div>
                     </div>
                     
                     <div class="contact-form">
                         <div class="form-card">
-                            <h3>Send Me a Message</h3>
-                            <p>Prefer to send a message? Fill out the form below and I'll get back to you as soon as possible.</p>
+                            <h3>Tell Me What You Want the Site to Feel Like</h3>
+                            <p>Share the goal, audience, and style you have in mind. I&apos;ll reply with how I would approach the design and build.</p>
                             
                             <form id="contactForm" class="contact-form-inner">
                                 <div class="form-row">
@@ -561,10 +988,10 @@
                                     <label for="subject">Subject *</label>
                                     <select id="subject" name="subject">
                                         <option value="">Select a subject</option>
-                                        <option value="general">General Inquiry</option>
-                                        <option value="project">Project Discussion</option>
-                                        <option value="collaboration">Collaboration</option>
-                                        <option value="freelance">Freelance Work</option>
+                                        <option value="landing-page">Landing Page Design</option>
+                                        <option value="portfolio">Portfolio Website</option>
+                                        <option value="ecommerce">E-commerce UI</option>
+                                        <option value="redesign">Website Redesign</option>
                                         <option value="other">Other</option>
                                     </select>
                                 </div>
@@ -578,7 +1005,7 @@
                                     Send Message
                                 </button>
                                 <p class="form-note">
-                                    I'll get back to you within 24 hours. For urgent matters, feel free to reach out via email directly.
+                                    I&apos;ll get back to you within 24 hours. If you already have references or a moodboard, include them in your message.
                                 </p>
                             </form>
                         </div>
@@ -604,8 +1031,9 @@
                     <div class="footer-column">
                         <h4>Projects</h4>
                         <div class="footer-links">
-                            <a href="#projects">Web Development</a>
-                            <a href="#projects">Editorial Design</a>
+                            <a href="#projects">UI/UX Design</a>
+                            <a href="#projects">Web Design</a>
+                            <a href="#projects">Creative Concepts</a>
                         </div>
                     </div>
                     <div class="footer-column">
@@ -613,13 +1041,13 @@
                         <div class="footer-links">
                             <a href="mailto:trjbs@icloud.com">Email</a>
                             <a href="https://github.com/trijbs" target="_blank" rel="noopener noreferrer">GitHub</a>
-                            <a href="https://instagram.com/trijbs.xyz" target="_blank" rel="noopener noreferrer">Instagram</a>
+                            <a href="https://www.instagram.com/trijbsworld/" target="_blank" rel="noopener noreferrer">Instagram</a>
                             <a href="#contact">Contact Form</a>
                         </div>
                     </div>
                     <div class="footer-column footer-newsletter">
-                        <h4>Stay Updated</h4>
-                        <p>Subscribe to my newsletter for the latest projects and updates.</p>
+                        <h4>Design Updates</h4>
+                        <p>Subscribe for new projects, design experiments, and portfolio updates.</p>
                         <form class="newsletter-form">
                             <input type="email" placeholder="Your email address" required>
                             <button type="submit">
@@ -631,7 +1059,7 @@
                 
                 <div class="footer-bottom">
                     <div class="copyright">
-                        <p>&copy; 2025 Ruben | All Rights Reserved</p>
+                        <p>&copy; 2026 Ruben | UI/UX &amp; Web Designer</p>
                     </div>
                 </div>
             </div>
@@ -711,6 +1139,30 @@
                         <source src="" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal image-zoom-modal" id="imageZoomModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="imageZoomTitle">Image Preview</h3>
+                <div class="modal-actions">
+                    <button class="close-modal" aria-label="Close image preview">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="image-zoom-stage" id="imageZoomStage">
+                    <button class="image-zoom-toggle" id="imageZoomToggle" type="button" aria-label="Zoom image">
+                        <img class="image-zoom-target" id="imageZoomTarget" src="" alt="" loading="lazy">
+                    </button>
+                </div>
+                <div class="image-zoom-meta">
+                    <p class="image-zoom-caption" id="imageZoomCaption" hidden></p>
+                    <p class="image-zoom-hint" id="imageZoomHint">Tap the image to zoom closer.</p>
                 </div>
             </div>
         </div>

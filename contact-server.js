@@ -202,7 +202,7 @@ const createEmailTemplate = (data) => {
                         
                         <ul style="color: #333; line-height: 1.6;">
                             <li>Check out my latest projects on <a href="https://github.com/trijbs" style="color: #00ff88;">GitHub</a></li>
-                            <li>Follow me on <a href="https://instagram.com/trijbs.xyz" style="color: #00ff88;">Instagram</a> for behind-the-scenes content</li>
+                            <li>Follow me on <a href="https://www.instagram.com/trijbsworld/" style="color: #00ff88;">Instagram</a> for behind-the-scenes content</li>
                             <li>Visit my website at <a href="https://trijbsworld.nl" style="color: #00ff88;">trijbsworld.nl</a></li>
                         </ul>
                         

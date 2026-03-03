@@ -40,3 +40,30 @@ deploy-debug.sh
 
 # Test files
 public/security-test.html
+
+# Unused source-sized media kept locally for reference
+public/videos/infographic.mp4
+public/img/Background.png
+public/img/popfusion.png
+public/img/Urban_unleashed_homescreen.png
+public/img/archive/northface-home.svg
+public/img/archive/northface-email.svg
+public/img/archive/northface-instagram.svg
+public/img/archive/northface-mobile-1.svg
+public/img/archive/northface-mobile-2.svg
+public/img/archive/poster-david-bowie.png
+public/img/archive/poster-study.png
+public/img/archive/trends-booklet.jpg
+public/img/archive/booklet-spread.jpg
+public/img/archive/menu-design.jpg
+public/img/archive/menu-design-2.jpg
+public/img/archive/event-flyer.jpg
+public/img/archive/event-flyer-2.jpg
+public/img/archive/event-tickets.jpg
+public/img/archive/festival-moodboard.jpg
+public/img/archive/festival-style-sheet.jpg
+public/img/archive/balenciaga-editorial.jpg
+public/img/archive/alternative-typo.jpg
+public/img/archive/photo-collage.jpg
+public/img/archive/product-photo-1.jpg
+public/img/archive/product-photo-2.jpg

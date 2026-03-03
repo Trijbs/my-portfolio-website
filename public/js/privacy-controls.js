@@ -54,40 +54,25 @@
         showPrivacyBanner() {
             const banner = document.createElement('div');
             banner.id = 'privacy-banner';
-            banner.style.cssText = `
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                background: var(--bg-secondary);
-                border-top: 2px solid var(--accent-secondary);
-                padding: 1rem;
-                box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
-                z-index: 1000;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                gap: 1rem;
-                flex-wrap: wrap;
-            `;
+            banner.className = 'privacy-banner';
             
             banner.innerHTML = `
-                <div style="flex: 1; min-width: 300px;">
-                    <p style="margin: 0; color: var(--text-primary); font-size: 0.9rem;">
+                <div class="privacy-banner-copy">
+                    <p class="privacy-banner-text">
                         This website uses cookies and analytics to improve your experience. 
-                        <a href="#" id="privacy-details" style="color: var(--accent-secondary); text-decoration: underline;">
+                        <a href="#" id="privacy-details" class="privacy-banner-link">
                             Learn more
                         </a>
                     </p>
                 </div>
-                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                    <button id="privacy-accept" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
+                <div class="privacy-banner-actions">
+                    <button id="privacy-accept" class="btn btn-primary privacy-banner-btn">
                         Accept All
                     </button>
-                    <button id="privacy-customize" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
+                    <button id="privacy-customize" class="btn btn-secondary privacy-banner-btn">
                         Customize
                     </button>
-                    <button id="privacy-decline" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
+                    <button id="privacy-decline" class="btn btn-outline privacy-banner-btn">
                         Decline
                     </button>
                 </div>
@@ -119,55 +104,35 @@
         showCustomizeModal() {
             const modal = document.createElement('div');
             modal.id = 'privacy-modal';
-            modal.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: rgba(0, 0, 0, 0.8);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 1100;
-                padding: 1rem;
-            `;
+            modal.className = 'privacy-modal';
             
             modal.innerHTML = `
-                <div style="
-                    background: var(--bg-secondary);
-                    border-radius: 12px;
-                    padding: 2rem;
-                    max-width: 500px;
-                    width: 100%;
-                    max-height: 80vh;
-                    overflow-y: auto;
-                ">
-                    <h3 style="margin-top: 0; color: var(--text-primary);">Privacy Preferences</h3>
+                <div class="privacy-modal-panel">
+                    <h3 class="privacy-modal-title">Privacy Preferences</h3>
                     
-                    <div style="margin: 1.5rem 0;">
-                        <label style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                    <div class="privacy-modal-options">
+                        <label class="privacy-option">
                             <input type="checkbox" id="functional-cookies" checked disabled>
                             <div>
                                 <strong>Functional Cookies</strong>
-                                <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">
+                                <p class="privacy-option-copy">
                                     Required for the website to function properly. Cannot be disabled.
                                 </p>
                             </div>
                         </label>
                         
-                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                        <label class="privacy-option">
                             <input type="checkbox" id="analytics-cookies" ${this.preferences.analytics ? 'checked' : ''}>
                             <div>
                                 <strong>Analytics Cookies</strong>
-                                <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">
+                                <p class="privacy-option-copy">
                                     Help me understand how visitors interact with the website.
                                 </p>
                             </div>
                         </label>
                     </div>
                     
-                    <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
+                    <div class="privacy-modal-actions">
                         <button id="privacy-save" class="btn btn-primary">Save Preferences</button>
                         <button id="privacy-cancel" class="btn btn-secondary">Cancel</button>
                     </div>
@@ -295,7 +260,7 @@ You can change your preferences at any time by clicking the privacy settings lin
             privacyLink.id = 'privacy-settings-link';
             privacyLink.href = '#';
             privacyLink.textContent = 'Privacy Settings';
-            privacyLink.style.cssText = 'color: var(--text-secondary); font-size: 0.9rem;';
+            privacyLink.className = 'privacy-settings-link';
             privacyLink.addEventListener('click', (e) => {
                 e.preventDefault();
                 window.privacyManager.showPreferences();
