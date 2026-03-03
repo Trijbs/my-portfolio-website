@@ -136,8 +136,8 @@ const projectDetails = {
                     { type: 'image', src: 'img/archive/northface/mobile-02.jpg', alt: 'North Face mobile concept 2', caption: 'Mobile concept 02', frame: 'portrait' },
                     { type: 'image', src: 'img/archive/northface/mobile-03.jpg', alt: 'North Face mobile concept 3', caption: 'Mobile concept 03', frame: 'portrait' },
                     { type: 'image', src: 'img/archive/northface/mobile-04.jpg', alt: 'North Face mobile concept 4', caption: 'Mobile concept 04', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/northface/mobile-05.svg', alt: 'North Face mobile concept 5', caption: 'Mobile concept 05', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/northface/mobile-06.svg', alt: 'North Face mobile concept 6', caption: 'Mobile concept 06', frame: 'portrait' }
+                    { type: 'image', src: 'img/archive/northface/mobile-05.png', alt: 'North Face mobile concept 5', caption: 'Mobile concept 05', frame: 'portrait' },
+                    { type: 'image', src: 'img/archive/northface/mobile-06.png', alt: 'North Face mobile concept 6', caption: 'Mobile concept 06', frame: 'portrait' }
                 ]
             },
             {
@@ -188,7 +188,7 @@ const projectDetails = {
         `,
         technologies: ['Festival Branding', 'Art Direction', 'Social Campaign Design', 'Motion Design', 'Identity Boards'],
         media: [
-            { type: 'image', src: 'img/archive/northface-mobile-1.svg', alt: 'Hidden Realms Fest mobile concept preview', caption: 'Festival landing concept', frame: 'portrait' }
+            { type: 'image', src: 'img/archive/northface-mobile-1.png', alt: 'Hidden Realms Fest mobile concept preview', caption: 'Festival landing concept', frame: 'portrait' }
         ],
         collections: [
             {
@@ -203,8 +203,8 @@ const projectDetails = {
                 title: 'Social Launch Assets',
                 description: 'Mobile-first festival touchpoints and social announcements used to preview the event world before launch.',
                 media: [
-                    { type: 'image', src: 'img/archive/northface-mobile-1.svg', alt: 'Hidden Realms Fest landing page concept', caption: 'Festival landing concept', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/northface-home.svg', alt: 'Hidden Realms Fest TikTok announcement screen', caption: 'TikTok announcement screen', frame: 'portrait' },
+                    { type: 'image', src: 'img/archive/northface-mobile-1.png', alt: 'Hidden Realms Fest landing page concept', caption: 'Festival landing concept', frame: 'portrait' },
+                    { type: 'image', src: 'img/archive/northface-home.png', alt: 'Hidden Realms Fest TikTok announcement screen', caption: 'TikTok announcement screen', frame: 'portrait' },
                     { type: 'image', src: 'img/archive/northface/instagram.jpg', alt: 'Hidden Realms Fest Instagram campaign post', caption: 'Instagram line-up post', frame: 'portrait' }
                 ]
             },
