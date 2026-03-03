@@ -1443,13 +1443,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         // Set video source
-        const source = modalVideo.querySelector('source');
-        if (source) {
-            source.src = videoUrl;
-            modalVideo.load();
-        } else {
-            console.error('Video source element not found');
-        }
+        modalVideo.src = videoUrl;
+        modalVideo.load();
         
         // Show modal
         videoModal.classList.add('open');
@@ -1482,6 +1477,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (modalVideo) {
             modalVideo.pause();
             modalVideo.currentTime = 0;
+            modalVideo.removeAttribute('src');
+            modalVideo.load();
         }
         
         syncBodyScrollLock();
