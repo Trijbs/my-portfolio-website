@@ -111,6 +111,18 @@ const updateUser = (userId, eventData) => {
     }
 };
 
+const summarizeTopCounts = (events, key) => {
+    return events.reduce((accumulator, event) => {
+        const value = event[key];
+        if (!value) {
+            return accumulator;
+        }
+
+        accumulator[value] = (accumulator[value] || 0) + 1;
+        return accumulator;
+    }, {});
+};
+
 // Main handler function for Vercel
 export default async function handler(req, res) {
     // Set CORS headers
@@ -125,7 +137,8 @@ export default async function handler(req, res) {
 
     try {
         // Get client IP for rate limiting
-        const clientIP = req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || 'unknown';
+        const forwardedFor = req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || 'unknown';
+        const clientIP = String(forwardedFor).split(',')[0].trim();
 
         // Check rate limit
         if (!checkRateLimit(clientIP)) {
@@ -203,11 +216,8 @@ export default async function handler(req, res) {
                     totalUsers: users.size,
                     avgSessionDuration: Array.from(sessions.values())
                         .reduce((sum, s) => sum + s.duration, 0) / sessions.size || 0,
-                    topEvents: analyticsData
-                        .reduce((acc, event) => {
-                            acc[event.eventType] = (acc[event.eventType] || 0) + 1;
-                            return acc;
-                        }, {}),
+                    topEvents: summarizeTopCounts(analyticsData, 'eventType'),
+                    topPages: summarizeTopCounts(analyticsData, 'path'),
                     recentEvents: analyticsData.slice(-10).reverse()
                 };
                 

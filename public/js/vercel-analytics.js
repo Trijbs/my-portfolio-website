@@ -1,75 +1,307 @@
 /**
- * Vercel Web Analytics Integration
- * This script initializes Vercel's web analytics for tracking page views and user interactions
+ * Analytics bridge for Vercel Web Analytics and the local /api/analytics endpoint.
+ * Custom events only fire after the visitor has granted analytics consent.
  */
 
-// Load Vercel Analytics script
 (function() {
-  const script = document.createElement('script');
-  script.src = 'https://va.vercel-scripts.com/v1/script.js';
-  script.defer = true;
-  script.setAttribute('data-website-id', 'auto'); // Vercel will auto-detect
-  document.head.appendChild(script);
+    'use strict';
+
+    const ANALYTICS_ENDPOINT = '/api/analytics';
+    const USER_KEY = 'portfolio_analytics_user_id';
+    const SESSION_KEY = 'portfolio_analytics_session_id';
+    const PRIVACY_KEY = 'portfolio_privacy_preferences';
+    const ADMIN_PATH_PREFIX = '/analytics';
+
+    let analyticsEnabled = false;
+    let pageViewTracked = false;
+    let vercelScriptLoaded = false;
+    const pendingVercelEvents = [];
+
+    function readPrivacyPreferences() {
+        try {
+            const stored = localStorage.getItem(PRIVACY_KEY);
+            return stored ? JSON.parse(stored) : null;
+        } catch (error) {
+            return null;
+        }
+    }
+
+    function syncAnalyticsPreference(preferences = readPrivacyPreferences()) {
+        analyticsEnabled = Boolean(preferences?.consentGiven && preferences?.analytics);
+
+        if (analyticsEnabled) {
+            loadVercelScript();
+        }
+    }
+
+    function loadVercelScript() {
+        if (vercelScriptLoaded || typeof document === 'undefined') {
+            return;
+        }
+
+        const script = document.createElement('script');
+        script.src = 'https://va.vercel-scripts.com/v1/script.js';
+        script.defer = true;
+        script.setAttribute('data-website-id', 'auto');
+        script.addEventListener('load', flushQueuedVercelEvents);
+        document.head.appendChild(script);
+        vercelScriptLoaded = true;
+    }
+
+    function flushQueuedVercelEvents() {
+        if (typeof window.va !== 'function' || !pendingVercelEvents.length) {
+            return;
+        }
+
+        while (pendingVercelEvents.length) {
+            const event = pendingVercelEvents.shift();
+            window.va('track', event.name, event.properties);
+        }
+    }
+
+    function generateId(prefix) {
+        return `${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+    }
+
+    function getUserId() {
+        try {
+            const stored = localStorage.getItem(USER_KEY);
+            if (stored) {
+                return stored;
+            }
+
+            const generated = generateId('usr');
+            localStorage.setItem(USER_KEY, generated);
+            return generated;
+        } catch (error) {
+            return generateId('usr');
+        }
+    }
+
+    function getSessionId() {
+        try {
+            const stored = sessionStorage.getItem(SESSION_KEY);
+            if (stored) {
+                return stored;
+            }
+
+            const generated = generateId('ses');
+            sessionStorage.setItem(SESSION_KEY, generated);
+            return generated;
+        } catch (error) {
+            return generateId('ses');
+        }
+    }
+
+    function getDeviceInfo() {
+        return {
+            userAgent: navigator.userAgent,
+            language: navigator.language,
+            platform: navigator.platform,
+            screenWidth: window.screen.width,
+            screenHeight: window.screen.height,
+            windowWidth: window.innerWidth,
+            windowHeight: window.innerHeight
+        };
+    }
+
+    function onAdminPage() {
+        return window.location.pathname === ADMIN_PATH_PREFIX || window.location.pathname.startsWith(`${ADMIN_PATH_PREFIX}/`);
+    }
+
+    function trackWithVercel(eventName, properties = {}) {
+        if (!analyticsEnabled || typeof window.va !== 'function') {
+            if (analyticsEnabled) {
+                pendingVercelEvents.push({ name: eventName, properties });
+            }
+            return;
+        }
+
+        window.va('track', eventName, properties);
+    }
+
+    function postEvent(eventType, properties = {}) {
+        if (!analyticsEnabled || onAdminPage()) {
+            return Promise.resolve(false);
+        }
+
+        const payload = {
+            eventType,
+            timestamp: Date.now(),
+            sessionId: getSessionId(),
+            userId: getUserId(),
+            url: window.location.href,
+            path: window.location.pathname,
+            referrer: document.referrer || '',
+            title: document.title,
+            deviceInfo: getDeviceInfo(),
+            ...properties
+        };
+
+        return fetch(ANALYTICS_ENDPOINT, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'same-origin',
+            keepalive: true,
+            body: JSON.stringify(payload)
+        }).catch(() => false);
+    }
+
+    function trackEvent(eventName, properties = {}) {
+        trackWithVercel(eventName, properties);
+        return postEvent(eventName, properties);
+    }
+
+    function trackPageView(pathname) {
+        const path = pathname || window.location.pathname;
+        trackWithVercel('pageview', { path });
+        return postEvent('page_load', { path });
+    }
+
+    function trackContactSubmission() {
+        return trackEvent('contact_form_submitted', {
+            page: window.location.pathname
+        });
+    }
+
+    function trackProjectClick(projectName) {
+        return trackEvent('project_clicked', {
+            project: projectName,
+            page: window.location.pathname
+        });
+    }
+
+    function trackSocialClick(platform) {
+        return trackEvent('social_clicked', {
+            platform,
+            page: window.location.pathname
+        });
+    }
+
+    function trackBusinessCardView() {
+        return trackEvent('business_card_view', {
+            page: window.location.pathname
+        });
+    }
+
+    function trackThemeChange(theme) {
+        return trackEvent('theme_changed', {
+            theme,
+            page: window.location.pathname
+        });
+    }
+
+    function getTargetLabel(target) {
+        return (
+            target.getAttribute('aria-label') ||
+            target.getAttribute('alt') ||
+            target.textContent ||
+            target.getAttribute('title') ||
+            ''
+        ).trim().slice(0, 120);
+    }
+
+    function installAutoTracking() {
+        let lastClickTimestamp = 0;
+
+        document.addEventListener('click', (event) => {
+            if (!analyticsEnabled || onAdminPage()) {
+                return;
+            }
+
+            const target = event.target.closest('a, button, .media-zoom-trigger, img, video');
+            if (!target) {
+                return;
+            }
+
+            const now = Date.now();
+            if (now - lastClickTimestamp < 250) {
+                return;
+            }
+
+            lastClickTimestamp = now;
+
+            postEvent('click', {
+                x: event.clientX,
+                y: event.clientY,
+                targetTag: target.tagName.toLowerCase(),
+                targetLabel: getTargetLabel(target),
+                href: target.getAttribute('href') || '',
+                targetProject: target.getAttribute('data-project') || ''
+            });
+        }, true);
+
+        window.addEventListener('error', (event) => {
+            if (!analyticsEnabled || onAdminPage()) {
+                return;
+            }
+
+            postEvent('javascript_error', {
+                message: event.message || 'Unknown error',
+                source: event.filename || '',
+                line: event.lineno || 0,
+                column: event.colno || 0
+            });
+        });
+
+        window.addEventListener('load', () => {
+            if (!analyticsEnabled || onAdminPage()) {
+                return;
+            }
+
+            window.setTimeout(() => {
+                const navigationEntry = performance.getEntriesByType('navigation')[0];
+                if (!navigationEntry) {
+                    return;
+                }
+
+                postEvent('performance_timing', {
+                    loadEventEnd: Math.round(navigationEntry.loadEventEnd),
+                    domContentLoadedEventEnd: Math.round(navigationEntry.domContentLoadedEventEnd),
+                    responseEnd: Math.round(navigationEntry.responseEnd),
+                    transferSize: navigationEntry.transferSize || 0,
+                    entryType: navigationEntry.type || 'navigate'
+                });
+            }, 0);
+        });
+    }
+
+    window.VercelAnalytics = {
+        trackEvent,
+        trackPageView,
+        trackContactSubmission,
+        trackProjectClick,
+        trackSocialClick,
+        trackBusinessCardView,
+        trackThemeChange,
+        isEnabled() {
+            return analyticsEnabled;
+        }
+    };
+
+    syncAnalyticsPreference();
+    installAutoTracking();
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            if (analyticsEnabled && !pageViewTracked && !onAdminPage()) {
+                pageViewTracked = true;
+                trackPageView();
+            }
+        });
+    } else if (analyticsEnabled && !pageViewTracked && !onAdminPage()) {
+        pageViewTracked = true;
+        trackPageView();
+    }
+
+    window.addEventListener('privacyPreferencesApplied', (event) => {
+        syncAnalyticsPreference(event.detail);
+
+        if (analyticsEnabled && !pageViewTracked && !onAdminPage()) {
+            pageViewTracked = true;
+            trackPageView();
+        }
+    });
 })();
-
-// Analytics helper functions
-window.VercelAnalytics = {
-  // Track custom events
-  trackEvent: function(eventName, properties = {}) {
-    if (typeof window !== 'undefined' && window.va) {
-      window.va('track', eventName, properties);
-    }
-  },
-
-  // Track page views manually if needed
-  trackPageView: function(path) {
-    if (typeof window !== 'undefined' && window.va) {
-      window.va('track', 'pageview', { path: path || window.location.pathname });
-    }
-  },
-
-  // Track contact form submissions
-  trackContactSubmission: function() {
-    this.trackEvent('Contact Form Submitted', {
-      page: window.location.pathname,
-      timestamp: new Date().toISOString()
-    });
-  },
-
-  // Track project clicks
-  trackProjectClick: function(projectName) {
-    this.trackEvent('Project Clicked', {
-      project: projectName,
-      page: window.location.pathname,
-      timestamp: new Date().toISOString()
-    });
-  },
-
-  // Track social media clicks
-  trackSocialClick: function(platform) {
-    this.trackEvent('Social Media Clicked', {
-      platform: platform,
-      page: window.location.pathname,
-      timestamp: new Date().toISOString()
-    });
-  },
-
-  // Track business card views
-  trackBusinessCardView: function() {
-    this.trackEvent('Business Card Viewed', {
-      page: window.location.pathname,
-      timestamp: new Date().toISOString()
-    });
-  },
-
-  // Track theme changes
-  trackThemeChange: function(theme) {
-    this.trackEvent('Theme Changed', {
-      theme: theme,
-      page: window.location.pathname,
-      timestamp: new Date().toISOString()
-    });
-  }
-};
-
-console.log('Vercel Analytics initialized successfully');

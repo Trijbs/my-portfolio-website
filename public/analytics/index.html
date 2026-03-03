@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics | Ruben Trijbs</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f3efe6;
+            --panel: rgba(255, 255, 255, 0.82);
+            --line: rgba(14, 18, 28, 0.12);
+            --text: #141923;
+            --muted: #5b6472;
+            --accent: #bb4d00;
+            --accent-soft: rgba(187, 77, 0, 0.12);
+            --shadow: 0 18px 45px rgba(20, 25, 35, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Manrope', sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(187, 77, 0, 0.16), transparent 28%),
+                radial-gradient(circle at right center, rgba(14, 18, 28, 0.08), transparent 30%),
+                linear-gradient(180deg, #f6f1e7 0%, #efe7db 100%);
+            min-height: 100vh;
+        }
+
+        .shell {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 32px 20px 56px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+            margin-bottom: 28px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background: #8c97a8;
+            box-shadow: 0 0 0 8px rgba(140, 151, 168, 0.14);
+        }
+
+        .status-dot[data-healthy="true"] {
+            background: #2f8f55;
+            box-shadow: 0 0 0 8px rgba(47, 143, 85, 0.14);
+        }
+
+        h1 {
+            margin: 10px 0 8px;
+            font-size: clamp(32px, 5vw, 54px);
+            line-height: 0.96;
+            max-width: 10ch;
+        }
+
+        .intro {
+            max-width: 56ch;
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .topbar-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .action {
+            appearance: none;
+            border: 1px solid var(--line);
+            background: var(--panel);
+            color: var(--text);
+            padding: 12px 16px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            grid-column: span 3;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            padding: 22px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(14px);
+        }
+
+        .card.wide {
+            grid-column: span 6;
+        }
+
+        .card.full {
+            grid-column: 1 / -1;
+        }
+
+        .metric-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .metric-value {
+            margin: 16px 0 6px;
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .metric-copy,
+        .panel-copy {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .panel-title {
+            margin: 0 0 18px;
+            font-size: 18px;
+        }
+
+        .analytics-list-row,
+        .analytics-event {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .analytics-list-row:first-child,
+        .analytics-event:first-child {
+            border-top: 0;
+            padding-top: 0;
+        }
+
+        .analytics-list-row span,
+        .analytics-event p,
+        .analytics-event-head span {
+            color: var(--muted);
+        }
+
+        .analytics-event {
+            display: block;
+        }
+
+        .analytics-event-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 6px;
+        }
+
+        .analytics-empty {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        pre {
+            margin: 0;
+            padding: 18px;
+            border-radius: 18px;
+            background: #161c27;
+            color: #dce5f4;
+            overflow: auto;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 1040px) {
+            .card,
+            .card.wide {
+                grid-column: span 6;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .shell {
+                padding: 24px 16px 40px;
+            }
+
+            .topbar {
+                flex-direction: column;
+            }
+
+            .topbar-actions {
+                justify-content: flex-start;
+            }
+
+            .card,
+            .card.wide {
+                grid-column: 1 / -1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="shell">
+        <section class="topbar">
+            <div>
+                <span class="eyebrow">
+                    <span class="status-dot" id="analyticsStatusDot" data-healthy="false"></span>
+                    <span id="analyticsStatusText">Connecting…</span>
+                </span>
+                <h1>Live analytics admin.</h1>
+                <p class="intro">
+                    Same-domain monitoring page for real visitor activity, custom portfolio interactions, and quick health checks.
+                    Last updated <strong id="analyticsLastUpdated">never</strong>.
+                </p>
+            </div>
+            <div class="topbar-actions">
+                <button class="action" id="analyticsRefreshButton" type="button">Refresh</button>
+                <a class="action" href="/">Back To Site</a>
+            </div>
+        </section>
+
+        <section class="grid">
+            <article class="card">
+                <div class="metric-label">Total Events</div>
+                <div class="metric-value" id="analyticsTotalEvents">0</div>
+                <p class="metric-copy">All tracked custom events currently retained by the analytics function.</p>
+            </article>
+            <article class="card">
+                <div class="metric-label">Today</div>
+                <div class="metric-value" id="analyticsTodayEvents">0</div>
+                <p class="metric-copy">Events recorded in the last 24 hours.</p>
+            </article>
+            <article class="card">
+                <div class="metric-label">Sessions</div>
+                <div class="metric-value" id="analyticsActiveSessions">0</div>
+                <p class="metric-copy">Unique sessions seen by the current analytics runtime.</p>
+            </article>
+            <article class="card">
+                <div class="metric-label">Tracked Users</div>
+                <div class="metric-value" id="analyticsTotalUsers">0</div>
+                <p class="metric-copy">User ids observed by the current analytics runtime.</p>
+            </article>
+            <article class="card">
+                <div class="metric-label">Avg Duration</div>
+                <div class="metric-value" id="analyticsAvgDuration">0s</div>
+                <p class="metric-copy">Average session duration across tracked sessions.</p>
+            </article>
+            <article class="card wide">
+                <h2 class="panel-title">What This Page Shows</h2>
+                <p class="panel-copy">
+                    This dashboard reads from <code>/api/analytics</code> and updates on an interval. It is intentionally separate from the public portfolio UI, so the main page stays unchanged.
+                </p>
+            </article>
+            <article class="card wide">
+                <h2 class="panel-title">Top Events</h2>
+                <div id="analyticsTopEvents"></div>
+            </article>
+            <article class="card wide">
+                <h2 class="panel-title">Top Pages</h2>
+                <div id="analyticsTopPages"></div>
+            </article>
+            <article class="card wide">
+                <h2 class="panel-title">Device Split</h2>
+                <div id="analyticsDeviceSplit"></div>
+            </article>
+            <article class="card wide">
+                <h2 class="panel-title">Recent Events</h2>
+                <div id="analyticsRecentEvents"></div>
+            </article>
+            <article class="card full">
+                <h2 class="panel-title">Raw Snapshot</h2>
+                <pre id="analyticsRawJson">{}</pre>
+            </article>
+        </section>
+    </main>
+
+    <script src="../js/analytics-dashboard.js?v=2.1.2"></script>
+</body>
+</html>
