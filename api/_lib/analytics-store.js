@@ -7,12 +7,77 @@ const DEFAULT_TABLE = 'analytics_events';
 let memoryEvents = [];
 let supabaseClient = null;
 
+function decodeJwtPayload(token = '') {
+    const parts = token.split('.');
+    if (parts.length !== 3) {
+        return null;
+    }
+
+    try {
+        return JSON.parse(Buffer.from(parts[1], 'base64url').toString('utf8'));
+    } catch (error) {
+        return null;
+    }
+}
+
 function hasSupabaseConfig() {
     return Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY);
 }
 
 function getSupabaseTable() {
     return process.env.SUPABASE_ANALYTICS_TABLE || DEFAULT_TABLE;
+}
+
+function getSupabaseKeyType() {
+    const key = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
+    if (!key) {
+        return 'missing';
+    }
+
+    if (key.startsWith('sb_secret_')) {
+        return 'sb_secret';
+    }
+
+    if (key.startsWith('sb_publishable_')) {
+        return 'sb_publishable';
+    }
+
+    const jwtPayload = decodeJwtPayload(key);
+    if (typeof jwtPayload?.role === 'string' && jwtPayload.role) {
+        return `jwt-${jwtPayload.role}`;
+    }
+
+    return 'unknown';
+}
+
+function buildSupabaseDiagnostics() {
+    return {
+        table: getSupabaseTable(),
+        hasSupabaseUrl: Boolean(process.env.SUPABASE_URL),
+        hasSupabaseServiceRoleKey: Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY),
+        supabaseKeyType: getSupabaseKeyType()
+    };
+}
+
+function createStorageError(operation, error, context = {}) {
+    const wrappedError = new Error(`Supabase ${operation} failed: ${error?.message || 'Unknown error'}`);
+
+    wrappedError.name = 'AnalyticsStorageError';
+    wrappedError.cause = error;
+    wrappedError.analyticsContext = {
+        operation,
+        ...buildSupabaseDiagnostics(),
+        ...context,
+        supabaseError: error ? {
+            message: error.message || null,
+            code: error.code || null,
+            details: error.details || null,
+            hint: error.hint || null,
+            status: error.status || null
+        } : null
+    };
+
+    return wrappedError;
 }
 
 function getSupabaseClient() {
@@ -85,7 +150,7 @@ async function readSupabaseEvents(limit, offset) {
         .range(offset, end);
 
     if (error) {
-        throw new Error(`Supabase query failed: ${error.message}`);
+        throw createStorageError('read', error, { limit, offset });
     }
 
     return Array.isArray(data) ? data.map(parseStoredEvent).filter(Boolean) : [];
@@ -107,7 +172,11 @@ export async function appendAnalyticsEvent(event) {
         });
 
     if (error) {
-        throw new Error(`Supabase write failed: ${error.message}`);
+        throw createStorageError('write', error, {
+            eventId: normalized.id,
+            eventType: normalized.eventType,
+            path: normalized.path || null
+        });
     }
 }
 
@@ -152,7 +221,7 @@ export async function countAnalyticsEvents() {
         .select('id', { count: 'exact', head: true });
 
     if (error) {
-        throw new Error(`Supabase count failed: ${error.message}`);
+        throw createStorageError('count', error);
     }
 
     return Number(count) || 0;

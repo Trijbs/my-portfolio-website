@@ -122,6 +122,25 @@ function getClientIp(req) {
     return String(forwardedFor).split(',')[0].trim();
 }
 
+function buildErrorLogContext(req, error) {
+    const isPost = req.method === 'POST';
+
+    return {
+        method: req.method,
+        action: req.query?.action || null,
+        path: req.url || null,
+        storage: getAnalyticsStorageMode(),
+        analyticsContext: error?.analyticsContext || null,
+        requestSummary: isPost ? {
+            eventType: req.body?.eventType || null,
+            path: req.body?.path || null,
+            id: req.body?.id || null
+        } : null,
+        message: error instanceof Error ? error.message : String(error),
+        stack: error instanceof Error ? error.stack : null
+    };
+}
+
 function requireAnalyticsAuth(req, res) {
     if (!isAnalyticsAuthConfigured()) {
         res.status(503).json({
@@ -258,7 +277,7 @@ export default async function handler(req, res) {
             message: 'Invalid action parameter'
         });
     } catch (error) {
-        console.error('Analytics function error:', error);
+        console.error('Analytics function error:', buildErrorLogContext(req, error));
 
         return res.status(500).json({
             success: false,
