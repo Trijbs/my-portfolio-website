@@ -5,17 +5,16 @@
     const SUMMARY_URL = '/api/analytics?action=summary';
     const EVENTS_URL = '/api/analytics?action=events&limit=150';
     const HEALTH_URL = '/api/analytics?action=health';
+    const AUTH_URL = '/api/analytics-auth';
 
     const dashboard = {
         refreshTimer: null,
+        authenticated: false,
 
         async init() {
             this.cacheElements();
             this.bindEvents();
-            await this.refresh();
-            this.refreshTimer = window.setInterval(() => {
-                this.refresh();
-            }, REFRESH_INTERVAL_MS);
+            await this.checkAuthState();
         },
 
         cacheElements() {
@@ -33,7 +32,14 @@
                 recentEvents: document.getElementById('analyticsRecentEvents'),
                 deviceSplit: document.getElementById('analyticsDeviceSplit'),
                 rawJson: document.getElementById('analyticsRawJson'),
-                refreshButton: document.getElementById('analyticsRefreshButton')
+                refreshButton: document.getElementById('analyticsRefreshButton'),
+                logoutButton: document.getElementById('analyticsLogoutButton'),
+                authPanel: document.getElementById('analyticsAuthPanel'),
+                dashboardGrid: document.getElementById('analyticsDashboardGrid'),
+                authForm: document.getElementById('analyticsAuthForm'),
+                authMessage: document.getElementById('analyticsAuthMessage'),
+                passwordInput: document.getElementById('analyticsPassword'),
+                storageNote: document.getElementById('analyticsStorageNote')
             };
         },
 
@@ -41,6 +47,115 @@
             this.elements.refreshButton?.addEventListener('click', () => {
                 this.refresh();
             });
+
+            this.elements.logoutButton?.addEventListener('click', async () => {
+                await fetch(AUTH_URL, {
+                    method: 'DELETE',
+                    credentials: 'same-origin'
+                });
+
+                this.authenticated = false;
+                this.stopRefreshing();
+                this.showAuthPanel('Enter the admin password to view live analytics on this domain.');
+            });
+
+            this.elements.authForm?.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                const password = this.elements.passwordInput.value.trim();
+                if (!password) {
+                    this.showAuthPanel('Enter a password before submitting.');
+                    return;
+                }
+
+                this.showAuthPanel('Checking password…');
+
+                try {
+                    const response = await fetch(AUTH_URL, {
+                        method: 'POST',
+                        credentials: 'same-origin',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ password })
+                    });
+
+                    const data = await response.json();
+                    if (!response.ok || !data.success) {
+                        this.showAuthPanel(data.message || 'Password rejected.');
+                        this.elements.passwordInput.select();
+                        return;
+                    }
+
+                    this.elements.passwordInput.value = '';
+                    this.hideAuthPanel();
+                    await this.refresh();
+                    this.startRefreshing();
+                } catch (error) {
+                    this.showAuthPanel('Auth request failed. Try again.');
+                }
+            });
+        },
+
+        async checkAuthState() {
+            try {
+                const response = await fetch(AUTH_URL, {
+                    credentials: 'same-origin'
+                });
+                const data = await response.json();
+
+                if (!data.configured) {
+                    this.showAuthPanel(
+                        'Set ANALYTICS_ADMIN_PASSWORD in Vercel to unlock this page. Add UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN for persistent storage.'
+                    );
+                    this.elements.authForm.hidden = true;
+                    this.setStatus('Setup Needed', false);
+                    return;
+                }
+
+                this.elements.authForm.hidden = false;
+
+                if (!data.authenticated) {
+                    this.showAuthPanel('Enter the admin password to view live analytics on this domain.');
+                    this.setStatus('Locked', false);
+                    return;
+                }
+
+                this.hideAuthPanel();
+                await this.refresh();
+                this.startRefreshing();
+            } catch (error) {
+                this.showAuthPanel('Auth check failed. Refresh the page and try again.');
+                this.setStatus('Unavailable', false);
+            }
+        },
+
+        startRefreshing() {
+            this.stopRefreshing();
+            this.refreshTimer = window.setInterval(() => {
+                this.refresh();
+            }, REFRESH_INTERVAL_MS);
+        },
+
+        stopRefreshing() {
+            if (this.refreshTimer) {
+                window.clearInterval(this.refreshTimer);
+                this.refreshTimer = null;
+            }
+        },
+
+        showAuthPanel(message) {
+            this.elements.authPanel.hidden = false;
+            this.elements.dashboardGrid.hidden = true;
+            this.elements.logoutButton.hidden = true;
+            this.elements.authMessage.textContent = message;
+        },
+
+        hideAuthPanel() {
+            this.authenticated = true;
+            this.elements.authPanel.hidden = true;
+            this.elements.dashboardGrid.hidden = false;
+            this.elements.logoutButton.hidden = false;
         },
 
         async refresh() {
@@ -53,13 +168,26 @@
                     fetch(HEALTH_URL, { credentials: 'same-origin' })
                 ]);
 
+                if ([summaryResponse, eventsResponse, healthResponse].some((response) => response.status === 401)) {
+                    this.authenticated = false;
+                    this.stopRefreshing();
+                    this.showAuthPanel('Session expired. Enter the analytics password again.');
+                    this.setStatus('Locked', false);
+                    return;
+                }
+
                 const [summaryData, eventsData, healthData] = await Promise.all([
                     summaryResponse.json(),
                     eventsResponse.json(),
                     healthResponse.json()
                 ]);
 
+                if (!summaryResponse.ok || !eventsResponse.ok || !healthResponse.ok) {
+                    throw new Error(summaryData.message || eventsData.message || healthData.message || 'Dashboard request failed');
+                }
+
                 this.render(summaryData.summary || {}, eventsData.events || [], healthData || {});
+                this.hideAuthPanel();
                 this.setStatus('Live', true);
                 this.elements.lastUpdated.textContent = new Date().toLocaleTimeString();
             } catch (error) {
@@ -74,8 +202,13 @@
         },
 
         render(summary, events, health) {
-            const deviceSummary = this.summarizeDevices(events);
-            const topPages = this.summarizePages(events);
+            const topPages = Object.entries(summary.topPages || {})
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 6)
+                .map(([path, count]) => ({
+                    label: path,
+                    value: `${count} hits`
+                }));
             const topEvents = Object.entries(summary.topEvents || {})
                 .sort((a, b) => b[1] - a[1])
                 .slice(0, 6);
@@ -85,6 +218,7 @@
             this.elements.activeSessions.textContent = this.formatNumber(summary.totalSessions || 0);
             this.elements.totalUsers.textContent = this.formatNumber(summary.totalUsers || 0);
             this.elements.avgDuration.textContent = `${Math.round((summary.avgSessionDuration || 0) / 1000)}s`;
+            this.elements.storageNote.textContent = `Storage: ${health.storage || 'unknown'}${health.persistent ? ' (persistent)' : ' (ephemeral fallback)'}`;
 
             this.renderList(
                 this.elements.topEvents,
@@ -95,24 +229,18 @@
                 'No event data yet.'
             );
 
-            this.renderList(
-                this.elements.topPages,
-                topPages,
-                'No page views tracked yet.'
-            );
-
-            this.renderList(
-                this.elements.deviceSplit,
-                deviceSummary,
-                'No device breakdown yet.'
-            );
-
+            this.renderList(this.elements.topPages, topPages, 'No page views tracked yet.');
+            this.renderList(this.elements.deviceSplit, this.summarizeDevices(events), 'No device breakdown yet.');
             this.renderRecentEvents(events);
-            this.elements.rawJson.textContent = JSON.stringify({
-                summary,
-                health,
-                sampleEvents: events.slice(0, 10)
-            }, null, 2);
+            this.elements.rawJson.textContent = JSON.stringify(
+                {
+                    summary,
+                    health,
+                    sampleEvents: events.slice(0, 10)
+                },
+                null,
+                2
+            );
         },
 
         renderRecentEvents(events) {
@@ -149,27 +277,6 @@
         renderError(error) {
             const message = error instanceof Error ? error.message : 'Unknown error';
             this.elements.recentEvents.innerHTML = `<p class="analytics-empty">Dashboard refresh failed: ${this.escapeHtml(message)}</p>`;
-        },
-
-        summarizePages(events) {
-            const counts = new Map();
-
-            events.forEach((event) => {
-                const key = event.path || event.page || event.url;
-                if (!key) {
-                    return;
-                }
-
-                counts.set(key, (counts.get(key) || 0) + 1);
-            });
-
-            return Array.from(counts.entries())
-                .sort((a, b) => b[1] - a[1])
-                .slice(0, 6)
-                .map(([path, count]) => ({
-                    label: path,
-                    value: `${count} hits`
-                }));
         },
 
         summarizeDevices(events) {
