@@ -4,6 +4,7 @@ node_modules
 # Git
 .git
 .gitignore
+.vercel
 
 # Environment files
 .env.local
@@ -24,3 +25,14 @@ Thumbs.db
 
 # Local-only test helpers
 test-email-config.js
+
+# Local tooling output
+.playwright-cli
+output
+
+# Source and docs not needed at runtime
+README.md
+config
+scripts
+public/img
+public/videos/archive/motion-remake.mp4

@@ -11,18 +11,20 @@
     <meta name="author" content="Ruben Trijbs">
     <meta property="og:title" content="Ruben Trijbs | UI/UX &amp; Web Designer">
     <meta property="og:description" content="Designing modern websites and digital interfaces with a clear visual identity and strong user experience.">
-    <meta property="og:image" content="https://www.trijbsworld.nl/img/profile.webp">
+    <meta property="og:image" content="https://www.trijbsworld.nl/media/profile-hero-640.jpg">
     <meta property="og:url" content="https://www.trijbsworld.nl">
     <link rel="canonical" href="https://www.trijbsworld.nl">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css?v=2.1.3">
-    <link rel="stylesheet" href="css/logo-footer.css?v=2.1.3">
-    <script src="https://unpkg.com/feather-icons"></script>
-    
-    <!-- Cache Buster -->
-    <script src="js/cache-buster.js?v=2.1.3"></script>
+    <link rel="preload" href="/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/ibm-plex-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link
+        rel="preload"
+        as="image"
+        href="/media/profile-hero-640.jpg"
+        imagesrcset="/media/profile-hero-320.jpg 320w, /media/profile-hero-480.jpg 480w, /media/profile-hero-640.jpg 640w"
+        imagesizes="(max-width: 767px) calc(100vw - 2rem), 160px">
+    <link rel="stylesheet" href="css/styles.css?v=2.2.0">
+    <link rel="stylesheet" href="css/logo-footer.css?v=2.2.0">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -99,7 +101,26 @@
                     </div>
                     <div class="hero-stage">
                         <aside class="hero-portrait-card">
-                            <div class="profile-image" style="background-image: url('img/profile-hero.jpg')"></div>
+                            <picture class="profile-image">
+                                <source
+                                    type="image/avif"
+                                    srcset="media/profile-hero-320.avif 320w, media/profile-hero-480.avif 480w, media/profile-hero-640.avif 640w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), 160px">
+                                <source
+                                    type="image/webp"
+                                    srcset="media/profile-hero-320.webp 320w, media/profile-hero-480.webp 480w, media/profile-hero-640.webp 640w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), 160px">
+                                <img
+                                    src="media/profile-hero-480.jpg"
+                                    srcset="media/profile-hero-320.jpg 320w, media/profile-hero-480.jpg 480w, media/profile-hero-640.jpg 640w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), 160px"
+                                    alt="Portrait of Ruben Trijbels"
+                                    width="1199"
+                                    height="1800"
+                                    loading="eager"
+                                    fetchpriority="high"
+                                    decoding="async">
+                            </picture>
                             <div class="portrait-copy">
                                 <span class="mini-label">About Ruben</span>
                                 <p>Based in the Netherlands, focused on design-led websites and visually clear digital work.</p>
@@ -292,8 +313,25 @@
                     <!-- Featured Project 1 -->
                     <div class="project-card featured" data-category="uiux motion">
                         <div class="project-image">
-                            <img src="img/urban-unleashed-cover.jpg" alt="Urban Unleashed - Interactive Homescreen Interface" 
-                                 width="600" height="400" loading="lazy">
+                            <picture>
+                                <source
+                                    type="image/avif"
+                                    srcset="media/urban-unleashed-cover-480.avif 480w, media/urban-unleashed-cover-768.avif 768w, media/urban-unleashed-cover-1200.avif 1200w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
+                                <source
+                                    type="image/webp"
+                                    srcset="media/urban-unleashed-cover-480.webp 480w, media/urban-unleashed-cover-768.webp 768w, media/urban-unleashed-cover-1200.webp 1200w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
+                                <img
+                                    src="media/urban-unleashed-cover-768.jpg"
+                                    srcset="media/urban-unleashed-cover-480.jpg 480w, media/urban-unleashed-cover-768.jpg 768w, media/urban-unleashed-cover-1200.jpg 1200w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px"
+                                    alt="Urban Unleashed - Interactive Homescreen Interface"
+                                    width="1800"
+                                    height="854"
+                                    loading="lazy"
+                                    decoding="async">
+                            </picture>
                             <div class="project-overlay">
                                 <div class="project-actions">
                                     <button class="btn btn-primary live-demo" data-url="https://urban-unleashed.vercel.app" data-title="Urban Unleashed">
@@ -394,8 +432,25 @@
                     <!-- Project 2 -->
                     <div class="project-card" data-category="uiux">
                         <div class="project-image">
-                            <img src="img/Webshop.webp" alt="Modern E-commerce Platform" 
-                                 width="600" height="400" loading="lazy">
+                            <picture>
+                                <source
+                                    type="image/avif"
+                                    srcset="media/Webshop-480.avif 480w, media/Webshop-768.avif 768w, media/Webshop-1000.avif 1000w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
+                                <source
+                                    type="image/webp"
+                                    srcset="media/Webshop-480.webp 480w, media/Webshop-768.webp 768w, media/Webshop-1000.webp 1000w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
+                                <img
+                                    src="media/Webshop-768.webp"
+                                    srcset="media/Webshop-480.webp 480w, media/Webshop-768.webp 768w, media/Webshop-1000.webp 1000w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px"
+                                    alt="Modern E-commerce Platform"
+                                    width="1000"
+                                    height="510"
+                                    loading="lazy"
+                                    decoding="async">
+                            </picture>
                             <div class="project-overlay">
                                 <div class="project-actions">
                                     <button class="btn btn-primary live-demo" data-url="https://trijbs.eu/Webshop/" data-title="E-commerce Platform">
@@ -439,16 +494,25 @@
                         <div class="project-image">
                             <div class="video-preview">
                                 <span class="video-badge">Video</span>
-
-                                <video
-                                    class="preview-video"
-                                    muted
-                                    loop
-                                    playsinline
-                                    poster="img/archive/infographic-poster.png">
-                                    <source src="videos/archive/infographic.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
+                                <picture>
+                                    <source
+                                        type="image/avif"
+                                        srcset="media/archive/infographic-poster-480.avif 480w, media/archive/infographic-poster-768.avif 768w, media/archive/infographic-poster-1200.avif 1200w"
+                                        sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
+                                    <source
+                                        type="image/webp"
+                                        srcset="media/archive/infographic-poster-480.webp 480w, media/archive/infographic-poster-768.webp 768w, media/archive/infographic-poster-1200.webp 1200w"
+                                        sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
+                                    <img
+                                        src="media/archive/infographic-poster-768.png"
+                                        srcset="media/archive/infographic-poster-480.png 480w, media/archive/infographic-poster-768.png 768w, media/archive/infographic-poster-1200.png 1200w"
+                                        sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px"
+                                        alt="Animated infographic preview"
+                                        width="1200"
+                                        height="675"
+                                        loading="lazy"
+                                        decoding="async">
+                                </picture>
 
                                 <div class="video-play-overlay">
                                     <div class="play-icon">
@@ -505,16 +569,25 @@
                         <div class="project-image">
                             <div class="video-preview">
                                 <span class="video-badge">Video</span>
-
-                                <video
-                                    class="preview-video"
-                                    muted
-                                    loop
-                                    playsinline
-                                    poster="img/archive/video-namaak-editen-poster.png">
-                                    <source src="videos/archive/video-namaak-editen.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
+                                <picture>
+                                    <source
+                                        type="image/avif"
+                                        srcset="media/archive/video-namaak-editen-poster-480.avif 480w, media/archive/video-namaak-editen-poster-768.avif 768w, media/archive/video-namaak-editen-poster-1200.avif 1200w"
+                                        sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
+                                    <source
+                                        type="image/webp"
+                                        srcset="media/archive/video-namaak-editen-poster-480.webp 480w, media/archive/video-namaak-editen-poster-768.webp 768w, media/archive/video-namaak-editen-poster-1200.webp 1200w"
+                                        sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
+                                    <img
+                                        src="media/archive/video-namaak-editen-poster-768.png"
+                                        srcset="media/archive/video-namaak-editen-poster-480.png 480w, media/archive/video-namaak-editen-poster-768.png 768w, media/archive/video-namaak-editen-poster-1200.png 1200w"
+                                        sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px"
+                                        alt="Video editing remake preview"
+                                        width="1600"
+                                        height="720"
+                                        loading="lazy"
+                                        decoding="async">
+                                </picture>
 
                                 <div class="video-play-overlay">
                                     <div class="play-icon">
@@ -570,8 +643,25 @@
                     <!-- Project 3 -->
                     <div class="project-card popfusion-card" data-category="uiux motion">
                         <div class="project-image">
-                            <img src="img/popfusion-cover.jpg" alt="PopFusion - Music Visualizer"
-                                 width="600" height="400" loading="lazy">
+                            <picture>
+                                <source
+                                    type="image/avif"
+                                    srcset="media/popfusion-cover-480.avif 480w, media/popfusion-cover-768.avif 768w, media/popfusion-cover-1200.avif 1200w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
+                                <source
+                                    type="image/webp"
+                                    srcset="media/popfusion-cover-480.webp 480w, media/popfusion-cover-768.webp 768w, media/popfusion-cover-1200.webp 1200w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
+                                <img
+                                    src="media/popfusion-cover-768.jpg"
+                                    srcset="media/popfusion-cover-480.jpg 480w, media/popfusion-cover-768.jpg 768w, media/popfusion-cover-1200.jpg 1200w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px"
+                                    alt="PopFusion - Music Visualizer"
+                                    width="1800"
+                                    height="1125"
+                                    loading="lazy"
+                                    decoding="async">
+                            </picture>
                             <div class="project-overlay">
                                 <div class="project-actions">
                                     <button class="btn btn-primary live-demo" data-url="https://trijbs.eu/PopFusion2/" data-title="PopFusion">
@@ -620,8 +710,25 @@
 
                     <div class="project-card archive-card" data-category="campaign editorial print">
                         <div class="project-image">
-                            <img src="img/archive/iris-van-herpen/01_Artists_Impression_Expositie.jpg" alt="Iris van Herpen exhibition concept render"
-                                 width="1312" height="736" loading="lazy">
+                            <picture>
+                                <source
+                                    type="image/avif"
+                                    srcset="media/archive/iris-van-herpen/01_Artists_Impression_Expositie-480.avif 480w, media/archive/iris-van-herpen/01_Artists_Impression_Expositie-768.avif 768w, media/archive/iris-van-herpen/01_Artists_Impression_Expositie-1200.avif 1200w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
+                                <source
+                                    type="image/webp"
+                                    srcset="media/archive/iris-van-herpen/01_Artists_Impression_Expositie-480.webp 480w, media/archive/iris-van-herpen/01_Artists_Impression_Expositie-768.webp 768w, media/archive/iris-van-herpen/01_Artists_Impression_Expositie-1200.webp 1200w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
+                                <img
+                                    src="media/archive/iris-van-herpen/01_Artists_Impression_Expositie-768.jpg"
+                                    srcset="media/archive/iris-van-herpen/01_Artists_Impression_Expositie-480.jpg 480w, media/archive/iris-van-herpen/01_Artists_Impression_Expositie-768.jpg 768w, media/archive/iris-van-herpen/01_Artists_Impression_Expositie-1200.jpg 1200w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px"
+                                    alt="Iris van Herpen exhibition concept render"
+                                    width="1312"
+                                    height="736"
+                                    loading="lazy"
+                                    decoding="async">
+                            </picture>
                             <div class="project-overlay">
                                 <div class="project-actions">
                                     <button class="btn btn-primary view-details" data-project="iris-van-herpen-exhibition">
@@ -661,8 +768,25 @@
 
                     <div class="project-card archive-card" data-category="editorial print">
                         <div class="project-image">
-                            <img src="img/archive/spread-week-3/spread-week-3-01.png" alt="Figurative photo editorial spread cover"
-                                 width="1275" height="1768" loading="lazy">
+                            <picture>
+                                <source
+                                    type="image/avif"
+                                    srcset="media/archive/spread-week-3/spread-week-3-01-360.avif 360w, media/archive/spread-week-3/spread-week-3-01-640.avif 640w, media/archive/spread-week-3/spread-week-3-01-960.avif 960w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
+                                <source
+                                    type="image/webp"
+                                    srcset="media/archive/spread-week-3/spread-week-3-01-360.webp 360w, media/archive/spread-week-3/spread-week-3-01-640.webp 640w, media/archive/spread-week-3/spread-week-3-01-960.webp 960w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
+                                <img
+                                    src="media/archive/spread-week-3/spread-week-3-01-640.png"
+                                    srcset="media/archive/spread-week-3/spread-week-3-01-360.png 360w, media/archive/spread-week-3/spread-week-3-01-640.png 640w, media/archive/spread-week-3/spread-week-3-01-960.png 960w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px"
+                                    alt="Figurative photo editorial spread cover"
+                                    width="1275"
+                                    height="1768"
+                                    loading="lazy"
+                                    decoding="async">
+                            </picture>
                             <div class="project-overlay">
                                 <div class="project-actions">
                                     <button class="btn btn-primary view-details" data-project="figurative-photo-spread">
@@ -706,8 +830,25 @@
 
                     <div class="project-card archive-card" data-category="uiux campaign">
                         <div class="project-image">
-                            <img src="img/archive/northface/mobile-01.jpg" alt="The North Face campaign homescreen concept" 
-                                 width="600" height="400" loading="lazy">
+                            <picture>
+                                <source
+                                    type="image/avif"
+                                    srcset="media/archive/northface/mobile-01-360.avif 360w, media/archive/northface/mobile-01-480.avif 480w, media/archive/northface/mobile-01-615.avif 615w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
+                                <source
+                                    type="image/webp"
+                                    srcset="media/archive/northface/mobile-01-360.webp 360w, media/archive/northface/mobile-01-480.webp 480w, media/archive/northface/mobile-01-615.webp 615w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
+                                <img
+                                    src="media/archive/northface/mobile-01-480.jpg"
+                                    srcset="media/archive/northface/mobile-01-360.jpg 360w, media/archive/northface/mobile-01-480.jpg 480w, media/archive/northface/mobile-01-615.jpg 615w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px"
+                                    alt="The North Face campaign homescreen concept"
+                                    width="615"
+                                    height="1600"
+                                    loading="lazy"
+                                    decoding="async">
+                            </picture>
                             <div class="project-overlay">
                                 <div class="project-actions">
                                     <button class="btn btn-primary view-details" data-project="northface-campaign">
@@ -747,8 +888,25 @@
 
                     <div class="project-card archive-card" data-category="campaign print">
                         <div class="project-image">
-                            <img src="img/archive/sire-diabetes/sire-diabetes-01.png" alt="SIRE diabetes awareness campaign spread"
-                                 width="1275" height="924" loading="lazy">
+                            <picture>
+                                <source
+                                    type="image/avif"
+                                    srcset="media/archive/sire-diabetes/sire-diabetes-01-480.avif 480w, media/archive/sire-diabetes/sire-diabetes-01-768.avif 768w, media/archive/sire-diabetes/sire-diabetes-01-1200.avif 1200w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
+                                <source
+                                    type="image/webp"
+                                    srcset="media/archive/sire-diabetes/sire-diabetes-01-480.webp 480w, media/archive/sire-diabetes/sire-diabetes-01-768.webp 768w, media/archive/sire-diabetes/sire-diabetes-01-1200.webp 1200w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
+                                <img
+                                    src="media/archive/sire-diabetes/sire-diabetes-01-768.png"
+                                    srcset="media/archive/sire-diabetes/sire-diabetes-01-480.png 480w, media/archive/sire-diabetes/sire-diabetes-01-768.png 768w, media/archive/sire-diabetes/sire-diabetes-01-1200.png 1200w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px"
+                                    alt="SIRE diabetes awareness campaign spread"
+                                    width="1275"
+                                    height="924"
+                                    loading="lazy"
+                                    decoding="async">
+                            </picture>
                             <div class="project-overlay">
                                 <div class="project-actions">
                                     <button class="btn btn-primary view-details" data-project="sire-diabetes-campaign">
@@ -792,8 +950,25 @@
 
                     <div class="project-card archive-card" data-category="editorial print">
                         <div class="project-image">
-                            <img src="img/archive/editorial-trends/trends-01.jpg" alt="10 trends of graphic design editorial booklet" 
-                                 width="600" height="400" loading="lazy">
+                            <picture>
+                                <source
+                                    type="image/avif"
+                                    srcset="media/archive/editorial-trends/trends-01-360.avif 360w, media/archive/editorial-trends/trends-01-640.avif 640w, media/archive/editorial-trends/trends-01-960.avif 960w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
+                                <source
+                                    type="image/webp"
+                                    srcset="media/archive/editorial-trends/trends-01-360.webp 360w, media/archive/editorial-trends/trends-01-640.webp 640w, media/archive/editorial-trends/trends-01-960.webp 960w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
+                                <img
+                                    src="media/archive/editorial-trends/trends-01-640.jpg"
+                                    srcset="media/archive/editorial-trends/trends-01-360.jpg 360w, media/archive/editorial-trends/trends-01-640.jpg 640w, media/archive/editorial-trends/trends-01-960.jpg 960w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px"
+                                    alt="10 trends of graphic design editorial booklet"
+                                    width="1184"
+                                    height="1600"
+                                    loading="lazy"
+                                    decoding="async">
+                            </picture>
                             <div class="project-overlay">
                                 <div class="project-actions">
                                     <button class="btn btn-primary view-details" data-project="editorial-booklets">
@@ -833,8 +1008,25 @@
 
                     <div class="project-card archive-card" data-category="campaign editorial motion">
                         <div class="project-image">
-                            <img src="img/archive/northface-home.png" alt="Hidden Realms Fest social launch preview" 
-                                 width="600" height="400" loading="lazy">
+                            <picture>
+                                <source
+                                    type="image/avif"
+                                    srcset="media/archive/northface-home-320.avif 320w, media/archive/northface-home-360.avif 360w, media/archive/northface-home-375.avif 375w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
+                                <source
+                                    type="image/webp"
+                                    srcset="media/archive/northface-home-320.webp 320w, media/archive/northface-home-360.webp 360w, media/archive/northface-home-375.webp 375w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
+                                <img
+                                    src="media/archive/northface-home-360.png"
+                                    srcset="media/archive/northface-home-320.png 320w, media/archive/northface-home-360.png 360w, media/archive/northface-home-375.png 375w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px"
+                                    alt="Hidden Realms Fest social launch preview"
+                                    width="375"
+                                    height="812"
+                                    loading="lazy"
+                                    decoding="async">
+                            </picture>
                             <div class="project-overlay">
                                 <div class="project-actions">
                                     <button class="btn btn-primary view-details" data-project="hidden-realms-fest">
@@ -878,8 +1070,25 @@
 
                     <div class="project-card archive-card" data-category="campaign print">
                         <div class="project-image">
-                            <img src="img/archive/event-kit/flyer-01.jpg" alt="Event promotion flyer and ticket design" 
-                                 width="600" height="400" loading="lazy">
+                            <picture>
+                                <source
+                                    type="image/avif"
+                                    srcset="media/archive/event-kit/flyer-01-360.avif 360w, media/archive/event-kit/flyer-01-640.avif 640w, media/archive/event-kit/flyer-01-960.avif 960w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
+                                <source
+                                    type="image/webp"
+                                    srcset="media/archive/event-kit/flyer-01-360.webp 360w, media/archive/event-kit/flyer-01-640.webp 640w, media/archive/event-kit/flyer-01-960.webp 960w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
+                                <img
+                                    src="media/archive/event-kit/flyer-01-640.jpg"
+                                    srcset="media/archive/event-kit/flyer-01-360.jpg 360w, media/archive/event-kit/flyer-01-640.jpg 640w, media/archive/event-kit/flyer-01-960.jpg 960w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px"
+                                    alt="Event promotion flyer and ticket design"
+                                    width="1127"
+                                    height="1600"
+                                    loading="lazy"
+                                    decoding="async">
+                            </picture>
                             <div class="project-overlay">
                                 <div class="project-actions">
                                     <button class="btn btn-primary view-details" data-project="event-promo-pack">
@@ -919,8 +1128,25 @@
 
                     <div class="project-card archive-card" data-category="print">
                         <div class="project-image">
-                            <img src="img/archive/posters/poster-bowie.jpg" alt="Poster experiments and promotional print design" 
-                                 width="600" height="400" loading="lazy">
+                            <picture>
+                                <source
+                                    type="image/avif"
+                                    srcset="media/archive/posters/poster-bowie-360.avif 360w, media/archive/posters/poster-bowie-640.avif 640w, media/archive/posters/poster-bowie-960.avif 960w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
+                                <source
+                                    type="image/webp"
+                                    srcset="media/archive/posters/poster-bowie-360.webp 360w, media/archive/posters/poster-bowie-640.webp 640w, media/archive/posters/poster-bowie-960.webp 960w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
+                                <img
+                                    src="media/archive/posters/poster-bowie-640.jpg"
+                                    srcset="media/archive/posters/poster-bowie-360.jpg 360w, media/archive/posters/poster-bowie-640.jpg 640w, media/archive/posters/poster-bowie-960.jpg 960w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px"
+                                    alt="Poster experiments and promotional print design"
+                                    width="1261"
+                                    height="1800"
+                                    loading="lazy"
+                                    decoding="async">
+                            </picture>
                             <div class="project-overlay">
                                 <div class="project-actions">
                                     <button class="btn btn-primary view-details" data-project="poster-series">
@@ -960,8 +1186,25 @@
 
                     <div class="project-card archive-card" data-category="editorial print">
                         <div class="project-image">
-                            <img src="img/archive/menu-system/menu-03.jpg" alt="Hospitality menu feature spread" 
-                                 width="1600" height="1135" loading="lazy">
+                            <picture>
+                                <source
+                                    type="image/avif"
+                                    srcset="media/archive/menu-system/menu-03-480.avif 480w, media/archive/menu-system/menu-03-768.avif 768w, media/archive/menu-system/menu-03-1200.avif 1200w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
+                                <source
+                                    type="image/webp"
+                                    srcset="media/archive/menu-system/menu-03-480.webp 480w, media/archive/menu-system/menu-03-768.webp 768w, media/archive/menu-system/menu-03-1200.webp 1200w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
+                                <img
+                                    src="media/archive/menu-system/menu-03-768.jpg"
+                                    srcset="media/archive/menu-system/menu-03-480.jpg 480w, media/archive/menu-system/menu-03-768.jpg 768w, media/archive/menu-system/menu-03-1200.jpg 1200w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px"
+                                    alt="Hospitality menu feature spread"
+                                    width="1600"
+                                    height="1135"
+                                    loading="lazy"
+                                    decoding="async">
+                            </picture>
                             <div class="project-overlay">
                                 <div class="project-actions">
                                     <button class="btn btn-primary view-details" data-project="menu-design-system">
@@ -1001,8 +1244,25 @@
 
                     <div class="project-card archive-card" data-category="campaign editorial print">
                         <div class="project-image">
-                            <img src="img/archive/research-boards/alternative-typo.jpg" alt="Alternative typography concept board" 
-                                 width="1200" height="1600" loading="lazy">
+                            <picture>
+                                <source
+                                    type="image/avif"
+                                    srcset="media/archive/research-boards/alternative-typo-360.avif 360w, media/archive/research-boards/alternative-typo-640.avif 640w, media/archive/research-boards/alternative-typo-960.avif 960w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
+                                <source
+                                    type="image/webp"
+                                    srcset="media/archive/research-boards/alternative-typo-360.webp 360w, media/archive/research-boards/alternative-typo-640.webp 640w, media/archive/research-boards/alternative-typo-960.webp 960w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
+                                <img
+                                    src="media/archive/research-boards/alternative-typo-640.jpg"
+                                    srcset="media/archive/research-boards/alternative-typo-360.jpg 360w, media/archive/research-boards/alternative-typo-640.jpg 640w, media/archive/research-boards/alternative-typo-960.jpg 960w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px"
+                                    alt="Alternative typography concept board"
+                                    width="1200"
+                                    height="1600"
+                                    loading="lazy"
+                                    decoding="async">
+                            </picture>
                             <div class="project-overlay">
                                 <div class="project-actions">
                                     <button class="btn btn-primary view-details" data-project="research-concept-boards">
@@ -1042,8 +1302,25 @@
 
                     <div class="project-card archive-card" data-category="photo">
                         <div class="project-image">
-                            <img src="img/archive/photo-series/photo-collage.jpg" alt="Photography collage overview" 
-                                 width="1273" height="1800" loading="lazy">
+                            <picture>
+                                <source
+                                    type="image/avif"
+                                    srcset="media/archive/photo-series/photo-collage-360.avif 360w, media/archive/photo-series/photo-collage-640.avif 640w, media/archive/photo-series/photo-collage-960.avif 960w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
+                                <source
+                                    type="image/webp"
+                                    srcset="media/archive/photo-series/photo-collage-360.webp 360w, media/archive/photo-series/photo-collage-640.webp 640w, media/archive/photo-series/photo-collage-960.webp 960w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
+                                <img
+                                    src="media/archive/photo-series/photo-collage-640.jpg"
+                                    srcset="media/archive/photo-series/photo-collage-360.jpg 360w, media/archive/photo-series/photo-collage-640.jpg 640w, media/archive/photo-series/photo-collage-960.jpg 960w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px"
+                                    alt="Photography collage overview"
+                                    width="1273"
+                                    height="1800"
+                                    loading="lazy"
+                                    decoding="async">
+                            </picture>
                             <div class="project-overlay">
                                 <div class="project-actions">
                                     <button class="btn btn-primary view-details" data-project="photography-studies">
@@ -1328,7 +1605,7 @@
             </div>
             <div class="modal-body">
                 <div class="video-container">
-                    <video id="modalVideo" controls autoplay>
+                    <video id="modalVideo" controls preload="metadata" playsinline>
                         Your browser does not support the video tag.
                     </video>
                 </div>
@@ -1361,21 +1638,24 @@
     </div>
 
     <!-- Core Scripts -->
-    <script src="js/main.js?v=2.1.3"></script>
+    <script src="js/vendor/feather.min.js?v=2.2.0"></script>
+    <script src="js/main.js?v=2.2.0"></script>
     
     <!-- Vercel Analytics -->
-    <script src="js/vercel-analytics.js?v=2.1.3"></script>
+    <script src="js/vercel-analytics.js?v=2.2.0"></script>
     
     <!-- Privacy Controls & GDPR Compliance -->
-    <script src="js/privacy-controls.js?v=2.1.3"></script>
+    <script src="js/privacy-controls.js?v=2.2.0"></script>
     
     <!-- Enhanced Contact Form -->
-    <script src="js/contact-form.js?v=2.1.3"></script>
+    <script src="js/contact-form.js?v=2.2.0"></script>
     
     <script>
       // Initialize Feather icons and wire up modal behavior
       document.addEventListener('DOMContentLoaded', () => {
-        feather.replace();
+        if (window.feather) {
+          feather.replace();
+        }
         
         // Mobile menu toggle
         const bodyEl = document.body;

@@ -1,508 +1,170 @@
 // Main JavaScript functionality
 // Combines functionality for improved user experience
 
-// Project details data
-const projectDetails = {
-    'urban-unleashed': {
-        title: 'Urban Unleashed',
-        fullDescription: `
-            <p><strong>Urban Unleashed</strong> is an interface-led landing page concept where visual atmosphere, motion, and interaction work together. The project is less about showing raw technology and more about how a bold digital first impression can still feel usable.</p>
-            <h4>What the project is showing</h4>
-            <ul>
-                <li><strong>Landing-page composition:</strong> Hero framing, visual focus, and a strong first-screen impact</li>
-                <li><strong>Immersive interface thinking:</strong> Motion and 3D styling used to support the brand feel instead of overwhelming it</li>
-                <li><strong>Responsive execution:</strong> The concept is built to stay visually coherent across screen sizes</li>
-            </ul>
-        `,
-        technologies: ['Next.js', 'Three.js', 'WebGL', 'React', 'Creative Coding'],
-        liveUrl: 'https://urban-unleashed.vercel.app',
-        media: [
-            { type: 'image', src: 'img/urban-unleashed-cover.jpg', alt: 'Urban Unleashed homescreen concept', caption: 'Lead interface screen', frame: 'wide' }
-        ],
-        collections: [
-            {
-                title: 'Lead Interface',
-                description: 'The main homescreen composition used to introduce the project.',
-                media: [
-                    { type: 'image', src: 'img/urban-unleashed-cover.jpg', alt: 'Urban Unleashed lead screen', caption: 'Immersive landing page concept', frame: 'wide' }
-                ]
-            }
-        ]
-    },
-    'popfusion': {
-        title: 'PopFusion',
-        fullDescription: `
-            <p><strong>PopFusion</strong> is an experimental music visualizer built as an expressive web interface. The goal is to make sound feel visual without losing control, readability, or interaction clarity.</p>
-            <h4>What the project is showing</h4>
-            <ul>
-                <li><strong>Audio-reactive behavior:</strong> Motion and visuals respond to sound input</li>
-                <li><strong>Expressive UI:</strong> Interface elements feel energetic without turning chaotic</li>
-                <li><strong>Creative coding:</strong> The project sits between visual experimentation and front-end interaction design</li>
-            </ul>
-        `,
-        technologies: ['React', 'Web Audio API', 'Canvas', 'Motion Design', 'Creative Coding'],
-        liveUrl: 'https://trijbs.eu/PopFusion2/',
-        media: [
-            { type: 'image', src: 'img/popfusion-cover.jpg', alt: 'PopFusion music visualizer preview', caption: 'Experimental music interface', frame: 'wide' }
-        ],
-        collections: [
-            {
-                title: 'Screen Preview',
-                description: 'A cover image showing the visual tone of the interface.',
-                media: [
-                    { type: 'image', src: 'img/popfusion-cover.jpg', alt: 'PopFusion screen preview', caption: 'Audio-reactive visualizer layout', frame: 'wide' }
-                ]
-            }
-        ]
-    },
-    'webshop': {
-        title: 'E-commerce Platform',
-        fullDescription: `
-            <p><strong>E-commerce Platform</strong> is a webshop concept focused on product visibility, conversion hierarchy, and a smoother browsing-to-checkout flow. The project is included here as interface work rather than as a full technical case study.</p>
-            <h4>What the project is showing</h4>
-            <ul>
-                <li><strong>Product-first layout:</strong> Product imagery and calls-to-action stay visually clear</li>
-                <li><strong>Usability:</strong> Navigation, listing, and purchase flow are designed to feel direct and trustworthy</li>
-                <li><strong>Consistency:</strong> Repeated UI patterns help the store feel stable across sections</li>
-            </ul>
-        `,
-        technologies: ['React', 'Node.js', 'MongoDB', 'Stripe API', 'E-commerce UI'],
-        liveUrl: 'https://trijbs.eu/Webshop/',
-        media: [
-            { type: 'image', src: 'img/Webshop.webp', alt: 'Webshop homepage preview', caption: 'Conversion-focused storefront concept', frame: 'wide' }
-        ],
-        collections: [
-            {
-                title: 'Storefront Preview',
-                description: 'A screen capture of the main webshop interface.',
-                media: [
-                    { type: 'image', src: 'img/Webshop.webp', alt: 'Webshop preview image', caption: 'Product-led e-commerce layout', frame: 'wide' }
-                ]
-            }
-        ]
-    },
-    'motion-design-studies': {
-        title: 'Animated Infographic',
-        fullDescription: `
-            <p><strong>Animated Infographic</strong> is a motion-led information design piece built around pacing, contrast, and sequencing. The goal is to make the information easier to follow by giving every transition and visual shift a clear role.</p>
-            <h4>What the project is showing</h4>
-            <ul>
-                <li><strong>Information hierarchy in motion:</strong> Each scene uses timing and contrast to direct attention toward the next key point</li>
-                <li><strong>Readable animation:</strong> Movement supports the content instead of competing with it</li>
-                <li><strong>Narrative pacing:</strong> The full piece is structured as a visual explanation rather than a loose animation experiment</li>
-            </ul>
-        `,
-        technologies: ['Motion Design', 'Animation', 'Information Design', 'Visual Storytelling'],
-        media: [
-            { type: 'video', src: 'videos/archive/infographic.mp4', poster: 'img/archive/infographic-poster.png', alt: 'Animated infographic preview', caption: 'Animated infographic preview', frame: 'wide' }
-        ],
-        collections: [
-            {
-                title: 'Animated Infographic',
-                description: 'A motion-led piece where timing, contrast, and sequencing are used to explain information clearly.',
-                media: [
-                    { type: 'video', src: 'videos/archive/infographic.mp4', poster: 'img/archive/infographic-poster.png', alt: 'Animated infographic video', caption: 'Motion-driven infographic piece', frame: 'wide' }
-                ]
-            }
-        ]
-    },
-    'video-editing-remake': {
-        title: 'Video Editing Remake',
-        fullDescription: `
-            <p><strong>Video Editing Remake</strong> is a short timing study built around pacing, shot order, and cleaner transitions. The split-screen setup makes the edit decisions visible instead of hiding them behind effects.</p>
-            <h4>What the project is showing</h4>
-            <ul>
-                <li><strong>Editing rhythm:</strong> Cut timing shapes the pace from shot to shot</li>
-                <li><strong>Split-screen comparison:</strong> The remake and reference can be judged side by side</li>
-                <li><strong>Cleaner transitions:</strong> The focus stays on control and flow, not extra effects</li>
-            </ul>
-        `,
-        technologies: ['Video Editing', 'Pacing', 'Transition Design', 'Motion Study', 'Shot Matching'],
-        media: [
-            { type: 'video', src: 'videos/archive/video-namaak-editen.mp4', poster: 'img/archive/video-namaak-editen-poster.png', alt: 'Video editing remake preview', caption: 'Split-screen remake study', frame: 'wide' }
-        ]
-    },
-    'iris-van-herpen-exhibition': {
-        title: 'Iris van Herpen Exhibition',
-        fullDescription: `
-            <p><strong>Iris van Herpen Exhibition</strong> is a museum concept built around <em>Metamorfose</em>. The project carries one visual language across posters, flyers, and social assets, with a more fashion-led and curated tone throughout.</p>
-            <h4>Why the work belongs together</h4>
-            <ul>
-                <li><strong>One identity system:</strong> The same visual language holds across posters, flyers, and social formats</li>
-                <li><strong>Strong format shifts:</strong> Wide, portrait, and square assets still feel connected</li>
-                <li><strong>Consistent atmosphere:</strong> The campaign reads as one exhibition world instead of separate pieces</li>
-            </ul>
-        `,
-        technologies: ['Exhibition Identity', 'Poster Design', 'Social Campaign', 'Print Collateral', 'Art Direction'],
-        media: [
-            { type: 'image', src: 'img/archive/iris-van-herpen/01_Artists_Impression_Expositie.jpg', alt: 'Iris van Herpen exhibition artist impression', caption: 'Exhibition concept render', frame: 'wide' }
-        ],
-        collections: [
-            {
-                title: 'Exhibition Concept',
-                description: 'The lead visual work that sets the atmosphere for the exhibition before the supporting campaign formats take over.',
-                media: [
-                    { type: 'image', src: 'img/archive/iris-van-herpen/01_Artists_Impression_Expositie.jpg', alt: 'Iris van Herpen exhibition concept render', caption: 'Artist impression', frame: 'wide' },
-                    { type: 'image', src: 'img/archive/iris-van-herpen/09_Facebook_Banner.jpg', alt: 'Iris van Herpen exhibition Facebook banner', caption: 'Wide digital banner', frame: 'wide' }
-                ]
-            },
-            {
-                title: 'Poster Directions',
-                description: 'Three poster directions exploring how the exhibition can be framed through different levels of restraint, contrast, and color.',
-                media: [
-                    { type: 'image', src: 'img/archive/iris-van-herpen/02_Poster_1_Minimalistisch.jpg', alt: 'Minimal Iris van Herpen exhibition poster', caption: 'Minimal poster direction', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/iris-van-herpen/03_Poster_2_Bold_Kleurrijk.jpg', alt: 'Bold colorful Iris van Herpen exhibition poster', caption: 'Bold color direction', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/iris-van-herpen/04_Poster_3_Monochroom.jpg', alt: 'Monochrome Iris van Herpen exhibition poster', caption: 'Monochrome direction', frame: 'portrait' }
-                ]
-            },
-            {
-                title: 'Campaign Formats',
-                description: 'Supporting formats that adapt the same identity into handout, editorial, and social-media touchpoints.',
-                media: [
-                    { type: 'image', src: 'img/archive/iris-van-herpen/05_Flyer_Voorkant.jpg', alt: 'Iris van Herpen flyer front', caption: 'Flyer front', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/iris-van-herpen/06_Flyer_Achterkant.jpg', alt: 'Iris van Herpen flyer back', caption: 'Flyer back', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/iris-van-herpen/07_Advertentie_Kunstblad.jpg', alt: 'Iris van Herpen magazine advertisement', caption: 'Magazine ad', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/iris-van-herpen/08_Instagram_Post.jpg', alt: 'Iris van Herpen Instagram post', caption: 'Instagram post', frame: 'portrait' }
-                ]
-            }
-        ]
-    },
-    'sire-diabetes-campaign': {
-        title: 'SIRE Diabetes Campaign',
-        fullDescription: `
-            <p><strong>SIRE Diabetes Campaign</strong> is a public-awareness concept that turns sugar consumption into a clearer print message. The layouts use direct headlines, food imagery, and short copy to keep the campaign urgent and readable.</p>
-            <h4>Why the work belongs together</h4>
-            <ul>
-                <li><strong>Clear awareness angle:</strong> The message links sugar consumption to broader health consequences</li>
-                <li><strong>Shared call to action:</strong> Each page supports the same petition-led message</li>
-                <li><strong>Consistent print system:</strong> Type, spacing, and image treatment stay steady across the set</li>
-            </ul>
-        `,
-        technologies: ['Campaign Design', 'Health Awareness', 'Print Layout', 'Typography', 'Public Communication'],
-        links: [
-            { href: 'files/sire-diabetes.pdf', label: 'Open PDF', icon: 'file-text', tone: 'secondary' }
-        ],
-        media: [
-            { type: 'image', src: 'img/archive/sire-diabetes/sire-diabetes-01.png', alt: 'SIRE diabetes campaign cover spread', caption: 'Campaign opener', frame: 'wide' }
-        ],
-        collections: [
-            {
-                title: 'Campaign Pages',
-                description: 'The full three-page sequence showing the campaign message, supporting copy, and call to action.',
-                media: [
-                    { type: 'image', src: 'img/archive/sire-diabetes/sire-diabetes-01.png', alt: 'SIRE diabetes campaign page 1', caption: 'Page 01', frame: 'wide' },
-                    { type: 'image', src: 'img/archive/sire-diabetes/sire-diabetes-02.png', alt: 'SIRE diabetes campaign page 2', caption: 'Page 02', frame: 'wide' },
-                    { type: 'image', src: 'img/archive/sire-diabetes/sire-diabetes-03.png', alt: 'SIRE diabetes campaign page 3', caption: 'Page 03', frame: 'wide' }
-                ]
-            }
-        ]
-    },
-    'figurative-photo-spread': {
-        title: 'Figurative Photo Spread',
-        fullDescription: `
-            <p><strong>Figurative Photo Spread</strong> is a four-page editorial study that combines image-led layout, typography references, and design theory in one consistent sequence. It works best as a full spread set because the pacing between pages is part of the result.</p>
-            <h4>Why the work belongs together</h4>
-            <ul>
-                <li><strong>Editorial flow:</strong> Each page shifts topic without losing the same rhythm</li>
-                <li><strong>Layout-led explanation:</strong> The composition helps explain the theory instead of only decorating it</li>
-                <li><strong>One print language:</strong> The orange accent, spacing, and image treatment hold the set together</li>
-            </ul>
-        `,
-        technologies: ['Editorial Design', 'Typography', 'Print Layout', 'Photography Theory', 'Adobe InDesign'],
-        links: [
-            { href: 'files/spread-week-3.pdf', label: 'Open PDF', icon: 'file-text', tone: 'secondary' }
-        ],
-        media: [
-            { type: 'image', src: 'img/archive/spread-week-3/spread-week-3-01.png', alt: 'Figurative photo spread cover page', caption: 'Page 01 - Figuratieve foto', frame: 'portrait' }
-        ],
-        collections: [
-            {
-                title: 'Four-Page Spread',
-                description: 'A four-page editorial sequence covering figurative photography, abstract photography, letterforms, and shape versus negative space.',
-                media: [
-                    { type: 'image', src: 'img/archive/spread-week-3/spread-week-3-01.png', alt: 'Figurative photo spread page 1', caption: 'Page 01', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/spread-week-3/spread-week-3-02.png', alt: 'Figurative photo spread page 2', caption: 'Page 02', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/spread-week-3/spread-week-3-03.png', alt: 'Figurative photo spread page 3', caption: 'Page 03', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/spread-week-3/spread-week-3-04.png', alt: 'Figurative photo spread page 4', caption: 'Page 04', frame: 'portrait' }
-                ]
-            }
-        ]
-    },
-    'northface-campaign': {
-        title: 'The North Face Digital Campaign',
-        fullDescription: `
-            <p><strong>The North Face Digital Campaign</strong> is shown here as a focused interface rollout rather than a mixed archive. The project is strongest as a set of mobile screens and CRM-style touchpoints built around product visibility, promotional hierarchy, and a consistent retail look.</p>
-            <h4>Why the work belongs together</h4>
-            <ul>
-                <li><strong>Retail consistency:</strong> Product promotion, navigation, and campaign messaging keep the same brand direction throughout the set</li>
-                <li><strong>Mobile-first layout:</strong> The strongest assets focus on phone-sized screens, product grids, and supporting campaign pages</li>
-                <li><strong>CRM support:</strong> The email piece shows how the same campaign language carries into a direct customer touchpoint</li>
-            </ul>
-        `,
-        technologies: ['UI Design', 'Mobile Campaign Screens', 'CRM Design', 'Retail Layout', 'Campaign Art Direction'],
-        media: [
-            { type: 'image', src: 'img/archive/northface/mobile-01.jpg', alt: 'The North Face campaign homescreen concept', caption: 'Campaign homescreen concept', frame: 'portrait' }
-        ],
-        collections: [
-            {
-                title: 'Mobile Campaign Screens',
-                description: 'The mobile views that carry the campaign through product promotion, brand storytelling, and supporting utility screens.',
-                media: [
-                    { type: 'image', src: 'img/archive/northface/mobile-01.jpg', alt: 'North Face mobile concept 1', caption: 'Mobile concept 01', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/northface/mobile-02.jpg', alt: 'North Face mobile concept 2', caption: 'Mobile concept 02', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/northface/mobile-03.jpg', alt: 'North Face mobile concept 3', caption: 'Mobile concept 03', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/northface/mobile-04.jpg', alt: 'North Face mobile concept 4', caption: 'Mobile concept 04', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/northface/mobile-05.png', alt: 'North Face mobile concept 5', caption: 'Mobile concept 05', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/northface/mobile-06.png', alt: 'North Face mobile concept 6', caption: 'Mobile concept 06', frame: 'portrait' }
-                ]
-            },
-            {
-                title: 'CRM Email Touchpoint',
-                description: 'A supporting email layout that adapts the campaign into a more direct product and update channel.',
-                media: [
-                    { type: 'image', src: 'img/archive/northface/email.jpg', alt: 'North Face email concept', caption: 'Direct email design', frame: 'portrait' }
-                ]
-            }
-        ]
-    },
-    'research-concept-boards': {
-        title: 'Research & Concept Boards',
-        fullDescription: `
-            <p><strong>Research & Concept Boards</strong> collects the work that happens before a final deliverable is locked. These pieces show how references, collage, and typography experiments help shape a clearer visual direction.</p>
-            <h4>Why the work belongs together</h4>
-            <ul>
-                <li><strong>Early-stage thinking:</strong> These files support decision-making before final design execution</li>
-                <li><strong>Visual direction:</strong> They establish tone, references, and possible styling routes</li>
-                <li><strong>Concept development:</strong> They make the creative process visible, not just the final output</li>
-            </ul>
-        `,
-        technologies: ['Research Boards', 'Collage', 'Typography', 'Concept Development', 'Art Direction'],
-        media: [
-            { type: 'image', src: 'img/archive/research-boards/alternative-typo.jpg', alt: 'Alternative typography concept board', caption: 'Typography-led concept board', frame: 'portrait' }
-        ],
-        collections: [
-            {
-                title: 'Research Boards',
-                description: 'Reference-heavy visual studies used to shape tone and direction.',
-                media: [
-                    { type: 'image', src: 'img/archive/research-boards/alternative-typo.jpg', alt: 'Alternative typography collage', caption: 'Typography collage experiment', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/research-boards/balenciaga.jpg', alt: 'Balenciaga research board', caption: 'Fashion and campaign reference board', frame: 'wide' },
-                ]
-            }
-        ]
-    },
-    'hidden-realms-fest': {
-        title: 'Hidden Realms Fest',
-        fullDescription: `
-            <p><strong>Hidden Realms Fest</strong> is the separate festival project that was previously mixed into the North Face archive. It works best as one event-world collection: identity boards, social launch assets, and motion teasers all built around the same festival look and tone.</p>
-            <h4>Why the work belongs together</h4>
-            <ul>
-                <li><strong>Identity planning:</strong> The moodboard and style sheet define the atmosphere before the launch assets appear</li>
-                <li><strong>Campaign rollout:</strong> Social posts and motion teasers extend the same identity into promotional formats</li>
-                <li><strong>Event-world consistency:</strong> Typography, color, and imagery stay connected across still and moving pieces</li>
-            </ul>
-        `,
-        technologies: ['Festival Branding', 'Art Direction', 'Social Campaign Design', 'Motion Design', 'Identity Boards'],
-        media: [
-            { type: 'image', src: 'img/archive/northface-mobile-1.png', alt: 'Hidden Realms Fest mobile concept preview', caption: 'Festival landing concept', frame: 'portrait' }
-        ],
-        collections: [
-            {
-                title: 'Identity Boards',
-                description: 'The concept boards used to define the festival atmosphere, type direction, and visual language.',
-                media: [
-                    { type: 'image', src: 'img/archive/festival-identity/moodboard.jpg', alt: 'Hidden Realms Fest moodboard', caption: 'Moodboard', frame: 'wide' },
-                    { type: 'image', src: 'img/archive/festival-identity/style-sheet.jpg', alt: 'Hidden Realms Fest style sheet', caption: 'Style sheet', frame: 'portrait' }
-                ]
-            },
-            {
-                title: 'Social Launch Assets',
-                description: 'Mobile-first festival touchpoints and social announcements used to preview the event world before launch.',
-                media: [
-                    { type: 'image', src: 'img/archive/northface-mobile-1.png', alt: 'Hidden Realms Fest landing page concept', caption: 'Festival landing concept', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/northface-home.png', alt: 'Hidden Realms Fest TikTok announcement screen', caption: 'TikTok announcement screen', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/northface/instagram.jpg', alt: 'Hidden Realms Fest Instagram campaign post', caption: 'Instagram line-up post', frame: 'portrait' }
-                ]
-            },
-            {
-                title: 'Motion Teasers',
-                description: 'Short-form motion pieces used to build anticipation around the festival launch.',
-                media: [
-                    { type: 'video', src: 'videos/archive/northface-teaser.mp4', poster: 'img/archive/festival-identity/teaser-poster.png', alt: 'Hidden Realms Fest teaser video', caption: 'Teaser video', frame: 'wide' },
-                    { type: 'video', src: 'videos/archive/northface-tiktok.mp4', poster: 'img/archive/festival-identity/tiktok-poster.png', alt: 'Hidden Realms Fest TikTok teaser', caption: 'TikTok teaser', frame: 'portrait' },
-                    { type: 'video', src: 'videos/archive/northface-text-logo.mp4', poster: 'img/archive/festival-identity/text-logo-poster.png', alt: 'Hidden Realms Fest text logo animation', caption: 'Text logo animation', frame: 'wide' }
-                ]
-            }
-        ]
-    },
-    'editorial-booklets': {
-        title: 'Editorial Layout Collection',
-        fullDescription: `
-            <p><strong>Editorial Layout Collection</strong> is organized as a set of browsable page sequences instead of a few loose cover images. That makes the editorial work read properly as pacing, page rhythm, hierarchy, and spread design.</p>
-            <h4>Why the work belongs together</h4>
-            <ul>
-                <li><strong>Booklet thinking:</strong> The projects are meant to be read across multiple pages</li>
-                <li><strong>Editorial rhythm:</strong> Typography, image placement, and white space change from spread to spread</li>
-                <li><strong>Print structure:</strong> Each sequence shows how layout decisions build over time, not in isolation</li>
-            </ul>
-        `,
-        technologies: ['Editorial Design', 'Booklet Layout', 'Typography', 'Print Composition', 'Page Rhythm'],
-        media: [
-            { type: 'image', src: 'img/archive/editorial-trends/trends-01.jpg', alt: '10 Trends of Graphic Design cover', caption: '10 Trends of Graphic Design', frame: 'portrait' }
-        ],
-        collections: [
-            {
-                title: '10 Trends of Graphic Design',
-                description: 'A multi-page editorial project shown as a browsable sequence so the booklet reads like an actual publication.',
-                media: [
-                    { type: 'image', src: 'img/archive/editorial-trends/trends-01.jpg', alt: '10 Trends page 1', caption: 'Page 01', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/editorial-trends/trends-02.jpg', alt: '10 Trends page 2', caption: 'Page 02', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/editorial-trends/trends-03.jpg', alt: '10 Trends page 3', caption: 'Page 03', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/editorial-trends/trends-04.jpg', alt: '10 Trends page 4', caption: 'Page 04', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/editorial-trends/trends-05.jpg', alt: '10 Trends page 5', caption: 'Page 05', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/editorial-trends/trends-06.jpg', alt: '10 Trends page 6', caption: 'Page 06', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/editorial-trends/trends-07.jpg', alt: '10 Trends page 7', caption: 'Page 07', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/editorial-trends/trends-08.jpg', alt: '10 Trends page 8', caption: 'Page 08', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/editorial-trends/trends-09.jpg', alt: '10 Trends page 9', caption: 'Page 09', frame: 'portrait' }
-                ]
-            },
-            {
-                title: 'Eigen boekje',
-                description: 'A second booklet sequence focused on spread rhythm, image placement, and typography across multiple pages.',
-                media: [
-                    { type: 'image', src: 'img/archive/editorial-booklet/booklet-01.jpg', alt: 'Eigen boekje spread 1', caption: 'Spread 01', frame: 'landscape' },
-                    { type: 'image', src: 'img/archive/editorial-booklet/booklet-02.jpg', alt: 'Eigen boekje spread 2', caption: 'Spread 02', frame: 'landscape' },
-                    { type: 'image', src: 'img/archive/editorial-booklet/booklet-03.jpg', alt: 'Eigen boekje spread 3', caption: 'Spread 03', frame: 'landscape' },
-                    { type: 'image', src: 'img/archive/editorial-booklet/booklet-04.jpg', alt: 'Eigen boekje spread 4', caption: 'Spread 04', frame: 'landscape' },
-                    { type: 'image', src: 'img/archive/editorial-booklet/booklet-05.jpg', alt: 'Eigen boekje spread 5', caption: 'Spread 05', frame: 'landscape' },
-                    { type: 'image', src: 'img/archive/editorial-booklet/booklet-06.jpg', alt: 'Eigen boekje spread 6', caption: 'Spread 06', frame: 'landscape' },
-                    { type: 'image', src: 'img/archive/editorial-booklet/booklet-07.jpg', alt: 'Eigen boekje spread 7', caption: 'Spread 07', frame: 'landscape' }
-                ]
-            }
-        ]
-    },
-    'poster-series': {
-        title: 'Poster Collection',
-        fullDescription: `
-            <p><strong>Poster Collection</strong> brings the poster work together as one graphic exploration set. The files vary in subject, but the shared goal is the same: strong single-frame impact, readable hierarchy, and deliberate image treatment.</p>
-            <h4>Why the work belongs together</h4>
-            <ul>
-                <li><strong>One-frame communication:</strong> Each piece has to land quickly</li>
-                <li><strong>Graphic experimentation:</strong> Color, contrast, and editing changes are part of the process</li>
-                <li><strong>Print-led visuals:</strong> Typography and imagery are combined as one poster system</li>
-            </ul>
-        `,
-        technologies: ['Poster Design', 'Image Treatment', 'Typography', 'Composition', 'Print Visuals'],
-        media: [
-            { type: 'image', src: 'img/archive/posters/poster-bowie.jpg', alt: 'David Bowie poster', caption: 'David Bowie poster', frame: 'portrait' }
-        ],
-        collections: [
-            {
-                title: 'Poster Series',
-                description: 'A grouped set of poster experiments, from music posters to image-treatment studies.',
-                media: [
-                    { type: 'image', src: 'img/archive/posters/poster-bowie.jpg', alt: 'David Bowie poster', caption: 'David Bowie poster', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/posters/poster-01-original.jpg', alt: 'Poster original version', caption: 'Original version', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/posters/poster-02-tone.jpg', alt: 'Poster tone adjustment', caption: 'Tone adjustment', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/posters/poster-03-contrast.jpg', alt: 'Poster contrast study', caption: 'Contrast study', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/posters/poster-04-mix.jpg', alt: 'Poster color mix study', caption: 'Two-color mix', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/posters/poster-05-door.jpg', alt: 'Poster with door and sunlight', caption: 'Door & sunlight', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/posters/poster-06-glass.jpg', alt: 'Glass poster study', caption: 'Glass study', frame: 'portrait' }
-                ]
-            }
-        ]
-    },
-    'event-promo-pack': {
-        title: 'Event Identity Kit',
-        fullDescription: `
-            <p><strong>Event Identity Kit</strong> groups the event flyers and tickets into one identity system. Shown together, they communicate much better than separate files because the consistency between awareness and attendance materials becomes visible.</p>
-            <h4>Why the work belongs together</h4>
-            <ul>
-                <li><strong>Shared event language:</strong> Flyers and tickets use the same visual voice</li>
-                <li><strong>Touchpoint consistency:</strong> Promotion and on-entry materials feel connected</li>
-                <li><strong>Campaign logic:</strong> The set works as one announcement-to-attendance flow</li>
-            </ul>
-        `,
-        technologies: ['Event Design', 'Flyers', 'Ticket Design', 'Print Promotion', 'Identity System'],
-        media: [
-            { type: 'image', src: 'img/archive/event-kit/flyer-01.jpg', alt: 'Event flyer', caption: 'Flyer 01', frame: 'portrait' }
-        ],
-        collections: [
-            {
-                title: 'Event Assets',
-                description: 'Flyers and tickets grouped as one event identity instead of standalone prints.',
-                media: [
-                    { type: 'image', src: 'img/archive/event-kit/flyer-01.jpg', alt: 'Event flyer 1', caption: 'Flyer 01', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/event-kit/flyer-02.jpg', alt: 'Event flyer 2', caption: 'Flyer 02', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/event-kit/ticket-01.jpg', alt: 'Event ticket 1', caption: 'Ticket 01', frame: 'landscape' },
-                    { type: 'image', src: 'img/archive/event-kit/ticket-02.jpg', alt: 'Event ticket 2', caption: 'Ticket 02', frame: 'landscape' }
-                ]
-            }
-        ]
-    },
-    'menu-design-system': {
-        title: 'Hospitality Menu System',
-        fullDescription: `
-            <p><strong>Hospitality Menu System</strong> is presented as a browsable set of pages so the structure of the menu can be read properly. The strength of this work is not one single page, but the consistency across the entire set.</p>
-            <h4>Why the work belongs together</h4>
-            <ul>
-                <li><strong>System thinking:</strong> The menu works through repeated layout rules across categories</li>
-                <li><strong>Readable hierarchy:</strong> Prices, headings, and descriptions stay clear throughout the set</li>
-                <li><strong>Hospitality context:</strong> Decorative styling supports the brand without hurting clarity</li>
-            </ul>
-        `,
-        technologies: ['Information Design', 'Menu Layout', 'Typography', 'Print Design', 'Hospitality'],
-        media: [
-            { type: 'image', src: 'img/archive/menu-system/menu-03.jpg', alt: 'Hospitality menu feature spread', caption: 'Feature menu spread', frame: 'landscape' }
-        ],
-        collections: [
-            {
-                title: 'Menu Pages',
-                description: 'The full menu sequence grouped together as one hospitality print system.',
-                media: [
-                    { type: 'image', src: 'img/archive/menu-system/menu-01.jpg', alt: 'Menu page 1', caption: 'Page 01', frame: 'portrait' },
-                    { type: 'image', src: 'img/archive/menu-system/menu-02.jpg', alt: 'Menu page 2', caption: 'Page 02', frame: 'landscape' },
-                    { type: 'image', src: 'img/archive/menu-system/menu-03.jpg', alt: 'Menu page 3', caption: 'Page 03', frame: 'landscape' },
-                    { type: 'image', src: 'img/archive/menu-system/menu-04.jpg', alt: 'Menu page 4', caption: 'Page 04', frame: 'landscape' },
-                    { type: 'image', src: 'img/archive/menu-system/menu-05.jpg', alt: 'Menu page 5', caption: 'Page 05', frame: 'landscape' },
-                    { type: 'image', src: 'img/archive/menu-system/menu-06.jpg', alt: 'Menu page 6', caption: 'Page 06', frame: 'portrait' }
-                ]
-            }
-        ]
-    },
-    'photography-studies': {
-        title: 'Product Styling Photo Series',
-        fullDescription: `
-            <p><strong>Product Styling Photo Series</strong> is grouped as a set of related image studies around one object family. The value is in seeing the different compositions, lighting moods, and framing decisions next to each other.</p>
-            <h4>Why the work belongs together</h4>
-            <ul>
-                <li><strong>Object consistency:</strong> The same subject is explored in multiple visual treatments</li>
-                <li><strong>Composition studies:</strong> Framing and styling are tested across the set</li>
-                <li><strong>Presentation logic:</strong> The collage and the individual shots support each other</li>
-            </ul>
-        `,
-        technologies: ['Photography', 'Product Styling', 'Composition', 'Collage', 'Art Direction'],
-        media: [
-            { type: 'image', src: 'img/archive/photo-series/photo-collage.jpg', alt: 'Photography collage overview', caption: 'Collage overview', frame: 'tall' }
-        ],
-        collections: [
-            {
-                title: 'Photo Series',
-                description: 'The collage and the individual product studies grouped into one sequence.',
-                media: [
-                    { type: 'image', src: 'img/archive/photo-series/photo-01.jpg', alt: 'Product photo 1', caption: 'Lead styling shot', frame: 'landscape' },
-                    { type: 'image', src: 'img/archive/photo-series/photo-collage.jpg', alt: 'Photography collage', caption: 'Collage overview', frame: 'tall' },
-                    { type: 'image', src: 'img/archive/photo-series/photo-02.jpg', alt: 'Product photo 2', caption: 'Photo 02', frame: 'landscape' },
-                    { type: 'image', src: 'img/archive/photo-series/photo-03.jpg', alt: 'Product photo 3', caption: 'Photo 03', frame: 'landscape' },
-                    { type: 'image', src: 'img/archive/photo-series/photo-04.jpg', alt: 'Product photo 4', caption: 'Photo 04', frame: 'landscape' },
-                    { type: 'image', src: 'img/archive/photo-series/photo-05.jpg', alt: 'Product photo 5', caption: 'Photo 05', frame: 'landscape' },
-                    { type: 'image', src: 'img/archive/photo-series/photo-06.jpg', alt: 'Product photo 6', caption: 'Photo 06', frame: 'landscape' },
-                    { type: 'image', src: 'img/archive/photo-series/photo-07.jpg', alt: 'Product photo 7', caption: 'Photo 07', frame: 'landscape' }
-                ]
-            }
-        ]
+const PROJECT_DETAILS_URL = 'data/project-details.json';
+const DETAIL_IMAGE_WIDTHS = [768, 1280, 1600];
+
+let projectDetailsById = null;
+let projectDetailsPromise = null;
+let projectDetailsRequestId = 0;
+
+function replaceFeatherIcons() {
+    if (typeof feather !== 'undefined') {
+        feather.replace();
     }
-};
+}
+
+function parseImageAsset(src) {
+    if (!src || typeof src !== 'string') {
+        return null;
+    }
+
+    const normalizedSrc = src.replace(/^\/+/, '');
+    if (!normalizedSrc.startsWith('img/')) {
+        return null;
+    }
+
+    const match = normalizedSrc.slice(4).match(/^(.*)\.([a-z0-9]+)$/i);
+    if (!match) {
+        return null;
+    }
+
+    const extension = match[2].toLowerCase() === 'jpeg' ? 'jpg' : match[2].toLowerCase();
+    return {
+        baseName: match[1],
+        extension
+    };
+}
+
+function getCandidateWidths(sourceWidth, preferredWidths) {
+    const widths = Array.isArray(preferredWidths) ? [...preferredWidths] : [];
+    const numericWidth = Number(sourceWidth);
+
+    if (Number.isFinite(numericWidth) && numericWidth > 0) {
+        const filteredWidths = widths.filter(width => width <= numericWidth);
+        if (!filteredWidths.includes(numericWidth)) {
+            filteredWidths.push(numericWidth);
+        }
+        return Array.from(new Set(filteredWidths)).sort((left, right) => left - right);
+    }
+
+    return Array.from(new Set(widths)).sort((left, right) => left - right);
+}
+
+function buildSizedImageUrl(src, width, format) {
+    const asset = parseImageAsset(src);
+    if (!asset || !width) {
+        return src;
+    }
+
+    const resolvedFormat = format || asset.extension;
+    return 'media/' + asset.baseName + '-' + width + '.' + resolvedFormat;
+}
+
+function getPosterImageUrl(item) {
+    if (!item?.poster) {
+        return '';
+    }
+
+    const posterWidths = getCandidateWidths(item.posterWidth, DETAIL_IMAGE_WIDTHS);
+    return posterWidths.length
+        ? buildSizedImageUrl(item.poster, posterWidths[posterWidths.length - 1])
+        : item.poster;
+}
+
+function getZoomImageUrl(item) {
+    const detailWidths = getCandidateWidths(item.width, DETAIL_IMAGE_WIDTHS);
+    return detailWidths.length
+        ? buildSizedImageUrl(item.src, detailWidths[detailWidths.length - 1])
+        : item.src;
+}
+
+function renderResponsivePicture(item, options = {}) {
+    const asset = parseImageAsset(item?.src);
+    const imageAlt = escapeHTML(item?.alt || '');
+    const sizes = escapeHTML(options.sizes || '100vw');
+    const loading = options.loading || 'lazy';
+    const decoding = options.decoding || 'async';
+    const fetchPriority = options.fetchPriority || '';
+    const className = options.className ? ' class="' + escapeHTML(options.className) + '"' : '';
+    const widthAttr = item?.width ? ' width="' + item.width + '"' : '';
+    const heightAttr = item?.height ? ' height="' + item.height + '"' : '';
+    const loadingAttr = loading ? ' loading="' + escapeHTML(loading) + '"' : '';
+    const decodingAttr = decoding ? ' decoding="' + escapeHTML(decoding) + '"' : '';
+    const fetchPriorityAttr = fetchPriority ? ' fetchpriority="' + escapeHTML(fetchPriority) + '"' : '';
+
+    if (!asset) {
+        return '<img src="' + escapeHTML(item?.src || '') + '" alt="' + imageAlt + '"' + widthAttr + heightAttr + loadingAttr + decodingAttr + fetchPriorityAttr + '>';
+    }
+
+    const candidateWidths = getCandidateWidths(item.width, options.widths || DETAIL_IMAGE_WIDTHS);
+    if (!candidateWidths.length) {
+        return '<img src="' + escapeHTML(item.src) + '" alt="' + imageAlt + '"' + widthAttr + heightAttr + loadingAttr + decodingAttr + fetchPriorityAttr + '>';
+    }
+
+    const sourceTags = ['avif', 'webp'].map(format => {
+        const srcset = candidateWidths
+            .map(width => buildSizedImageUrl(item.src, width, format) + ' ' + width + 'w')
+            .join(', ');
+
+        return '<source type="image/' + format + '" srcset="' + escapeHTML(srcset) + '" sizes="' + sizes + '">';
+    }).join('');
+
+    const fallbackSrcset = candidateWidths
+        .map(width => buildSizedImageUrl(item.src, width, asset.extension) + ' ' + width + 'w')
+        .join(', ');
+    const fallbackSrc = buildSizedImageUrl(item.src, candidateWidths[candidateWidths.length - 1], asset.extension);
+
+    return '<picture' + className + '>' +
+        sourceTags +
+        '<img src="' + escapeHTML(fallbackSrc) + '" srcset="' + escapeHTML(fallbackSrcset) + '" sizes="' + sizes + '" alt="' + imageAlt + '"' + widthAttr + heightAttr + loadingAttr + decodingAttr + fetchPriorityAttr + '>' +
+        '</picture>';
+}
+
+async function loadProjectDetails() {
+    if (projectDetailsById) {
+        return projectDetailsById;
+    }
+
+    if (!projectDetailsPromise) {
+        projectDetailsPromise = fetch(PROJECT_DETAILS_URL, {
+            credentials: 'same-origin'
+        })
+            .then(async response => {
+                if (!response.ok) {
+                    throw new Error('Unable to load project details.');
+                }
+
+                const payload = await response.json();
+                if (!Array.isArray(payload)) {
+                    throw new Error('Project details payload is invalid.');
+                }
+
+                projectDetailsById = payload.reduce((index, project) => {
+                    if (project?.slug) {
+                        index[project.slug] = project;
+                    }
+                    return index;
+                }, {});
+
+                return projectDetailsById;
+            })
+            .catch(error => {
+                projectDetailsPromise = null;
+                throw error;
+            });
+    }
+
+    return projectDetailsPromise;
+}
+
+function renderProjectDetailsLoading(projectTitle) {
+    return '<div class="project-details-loading" role="status" aria-live="polite"><p>Loading ' + escapeHTML(projectTitle || 'project details') + '...</p></div>';
+}
+
+function renderProjectDetailsError(message) {
+    return '<div class="project-details-error" role="alert"><p>' + escapeHTML(message || 'Project details could not be loaded right now.') + '</p></div>';
+}
 
 // Escape HTML special characters in a string
 function escapeHTML(str) {
@@ -512,16 +174,18 @@ function escapeHTML(str) {
     return div.innerHTML;
 }
 
-function renderProjectMediaItem(item, projectTitle) {
+function renderProjectMediaItem(item, projectTitle, options = {}) {
     const frame = item.frame ? ` media-frame--${escapeHTML(item.frame)}` : '';
     const slideFrame = item.frame ? ` collection-slide--${escapeHTML(item.frame)}` : '';
     const caption = item.caption ? `<figcaption>${escapeHTML(item.caption)}</figcaption>` : '';
+    const sizes = options.sizes || '(max-width: 767px) calc(100vw - 4rem), (max-width: 1200px) 50vw, 520px';
 
     if (item.type === 'video') {
+        const posterUrl = item.poster ? getPosterImageUrl(item) : '';
         return `
             <figure class="collection-slide is-video${slideFrame}">
                 <div class="collection-media${frame}">
-                    <video controls preload="metadata" playsinline ${item.poster ? `poster="${escapeHTML(item.poster)}"` : ''}>
+                    <video controls preload="metadata" playsinline ${posterUrl ? `poster="${escapeHTML(posterUrl)}"` : ''}>
                         <source src="${escapeHTML(item.src)}" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
@@ -533,6 +197,13 @@ function renderProjectMediaItem(item, projectTitle) {
 
     const zoomLabel = escapeHTML(item.caption || item.alt || projectTitle);
     const imageAlt = escapeHTML(item.alt || projectTitle);
+    const zoomSrc = getZoomImageUrl(item);
+    const responsiveImage = renderResponsivePicture(item, {
+        sizes,
+        widths: DETAIL_IMAGE_WIDTHS,
+        loading: 'lazy',
+        decoding: 'async'
+    });
 
     return `
         <figure class="collection-slide${slideFrame}">
@@ -540,12 +211,12 @@ function renderProjectMediaItem(item, projectTitle) {
                 <button
                     class="media-zoom-trigger"
                     type="button"
-                    data-zoom-src="${escapeHTML(item.src)}"
+                    data-zoom-src="${escapeHTML(zoomSrc)}"
                     data-zoom-alt="${imageAlt}"
                     data-zoom-caption="${escapeHTML(item.caption || '')}"
                     aria-label="Open full image: ${zoomLabel}"
                 >
-                    <img src="${escapeHTML(item.src)}" alt="${imageAlt}" loading="lazy" decoding="async">
+                    ${responsiveImage}
                     <span class="media-zoom-badge" aria-hidden="true">
                         <i data-feather="maximize-2"></i>
                     </span>
@@ -581,7 +252,9 @@ function renderProjectOverview(project) {
     return `
         <section class="${showcaseClasses.join(' ')}">
             <div class="project-showcase-media">
-                ${renderProjectMediaItem(leadItem, project.title)}
+                ${renderProjectMediaItem(leadItem, project.title, {
+                    sizes: '(max-width: 767px) calc(100vw - 4rem), (max-width: 1200px) 70vw, 820px'
+                })}
             </div>
             ${leadHint}
         </section>
@@ -822,9 +495,7 @@ function resetProjectDetailsScroll(modal, bodyElement) {
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize Feather icons
-    if (typeof feather !== 'undefined') {
-        feather.replace();
-    }
+    replaceFeatherIcons();
     
     // ===== Theme Toggle =====
     const themeToggle = document.getElementById('themeToggle');
@@ -840,9 +511,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const theme = html.getAttribute('data-theme');
         themeToggle.innerHTML = `<i data-feather="${theme === 'dark' ? 'sun' : 'moon'}"></i>`;
         themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
-        if (typeof feather !== 'undefined') {
-            feather.replace();
-        }
+        replaceFeatherIcons();
     }
     
     updateThemeIcon();
@@ -860,31 +529,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.VercelAnalytics) {
                 window.VercelAnalytics.trackThemeChange(newTheme);
             }
-        });
-    }
-    
-    // ===== Mobile Menu =====
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    
-    if (mobileMenuToggle && navLinks) {
-        mobileMenuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileMenuToggle.classList.toggle('active');
-            
-            // Update aria-expanded
-            const isExpanded = navLinks.classList.contains('active');
-            mobileMenuToggle.setAttribute('aria-expanded', isExpanded);
-        });
-        
-        // Close mobile menu when clicking on a link
-        const navLinksItems = navLinks.querySelectorAll('a');
-        navLinksItems.forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileMenuToggle.classList.remove('active');
-                mobileMenuToggle.setAttribute('aria-expanded', 'false');
-            });
         });
     }
     
@@ -1145,9 +789,7 @@ document.addEventListener('DOMContentLoaded', () => {
         iframeContainer.appendChild(errorDiv);
         
         // Re-initialize feather icons
-        if (typeof feather !== 'undefined') {
-            feather.replace();
-        }
+        replaceFeatherIcons();
     }
     
     // Show loading help message
@@ -1167,9 +809,7 @@ document.addEventListener('DOMContentLoaded', () => {
         iframeContainer.appendChild(helpDiv);
         
         // Re-initialize feather icons
-        if (typeof feather !== 'undefined') {
-            feather.replace();
-        }
+        replaceFeatherIcons();
     }
 
     function centerImageZoomStage() {
@@ -1395,11 +1035,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // View details button handlers
     const viewDetailsButtons = document.querySelectorAll('.view-details');
     viewDetailsButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
+        button.addEventListener('click', async (e) => {
             e.preventDefault();
             const projectId = button.getAttribute('data-project');
-            if (projectId && projectDetails[projectId]) {
-                openProjectDetails(projectId);
+            if (projectId) {
+                const fallbackTitle = button.closest('.project-card')?.querySelector('h3')?.textContent?.trim() || 'Project Details';
+                await openProjectDetails(projectId, fallbackTitle);
             }
         });
     });
@@ -1420,66 +1061,83 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // Open project details modal
-    function openProjectDetails(projectId) {
-        const project = projectDetails[projectId];
+    async function openProjectDetails(projectId, fallbackTitle = 'Project Details') {
         const modal = document.getElementById('projectDetailsModal');
         const titleElement = document.getElementById('projectDetailsTitle');
         const bodyElement = document.getElementById('projectDetailsBody');
         
-        if (!modal || !titleElement || !bodyElement || !project) return;
-        
-        // Set title
-        titleElement.textContent = project.title;
-        const overviewMarkup = renderProjectOverview(project);
-        const collectionsMarkup = Array.isArray(project.collections) && project.collections.length
-            ? `
-                <div class="project-collections">
-                    ${project.collections.map((collection, index) => renderProjectCollection(collection, project.title, index)).join('')}
-                </div>
-            `
-            : '';
-        
-        // Build content
-        let content = `
-            <div class="project-details-content">
-                ${overviewMarkup}
-                <div class="project-description">
-                    ${project.fullDescription}
-                </div>
+        if (!modal || !titleElement || !bodyElement) return;
 
-                ${collectionsMarkup}
-                
-                <div class="project-meta">
-                    <h4>Tools and Focus</h4>
-                    <div class="tech-tags">
-                        ${project.technologies.map(tech => `<span class="tag">${escapeHTML(tech)}</span>`).join('')}
-                    </div>
-                </div>
-
-                ${renderProjectLinks(project)}
-            </div>
-        `;
-        
-        bodyElement.innerHTML = content;
-        initializeCollectionCarousels(bodyElement);
-        resetProjectDetailsScroll(modal, bodyElement);
-        
-        // Show modal
+        const requestId = ++projectDetailsRequestId;
+        titleElement.textContent = fallbackTitle;
+        bodyElement.innerHTML = renderProjectDetailsLoading(fallbackTitle);
         modal.classList.add('open');
         syncBodyScrollLock();
         requestAnimationFrame(() => resetProjectDetailsScroll(modal, bodyElement));
-        
-        // Re-initialize feather icons
-        if (typeof feather !== 'undefined') {
-            feather.replace();
-        }
-        
-        // Track details view
-        if (window.VercelAnalytics) {
-            window.VercelAnalytics.trackEvent('project_details_view', {
-                project: projectId,
-                title: project.title
-            });
+
+        try {
+            const projects = await loadProjectDetails();
+            const project = projects[projectId];
+
+            if (requestId !== projectDetailsRequestId) {
+                return;
+            }
+
+            if (!project) {
+                titleElement.textContent = fallbackTitle;
+                bodyElement.innerHTML = renderProjectDetailsError('Project details for this item are not available yet.');
+                return;
+            }
+
+            titleElement.textContent = project.title;
+            const overviewMarkup = renderProjectOverview(project);
+            const collectionsMarkup = Array.isArray(project.collections) && project.collections.length
+                ? `
+                    <div class="project-collections">
+                        ${project.collections.map((collection, index) => renderProjectCollection(collection, project.title, index)).join('')}
+                    </div>
+                `
+                : '';
+
+            bodyElement.innerHTML = `
+                <div class="project-details-content">
+                    ${overviewMarkup}
+                    <div class="project-description">
+                        ${project.fullDescriptionHtml || ''}
+                    </div>
+
+                    ${collectionsMarkup}
+                    
+                    <div class="project-meta">
+                        <h4>Tools and Focus</h4>
+                        <div class="tech-tags">
+                            ${project.technologies.map(tech => `<span class="tag">${escapeHTML(tech)}</span>`).join('')}
+                        </div>
+                    </div>
+
+                    ${renderProjectLinks(project)}
+                </div>
+            `;
+
+            initializeCollectionCarousels(bodyElement);
+            resetProjectDetailsScroll(modal, bodyElement);
+            requestAnimationFrame(() => resetProjectDetailsScroll(modal, bodyElement));
+            replaceFeatherIcons();
+
+            if (window.VercelAnalytics) {
+                window.VercelAnalytics.trackEvent('project_details_view', {
+                    project: projectId,
+                    title: project.title
+                });
+            }
+        } catch (error) {
+            if (requestId !== projectDetailsRequestId) {
+                return;
+            }
+
+            console.error(error);
+            titleElement.textContent = fallbackTitle;
+            bodyElement.innerHTML = renderProjectDetailsError('Project details could not be loaded right now. Please try again.');
         }
     }
     
@@ -1487,6 +1145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function closeProjectDetailsModal() {
         const modal = document.getElementById('projectDetailsModal');
         if (modal) {
+            projectDetailsRequestId += 1;
             closeImageZoomModal();
             pauseProjectDetailsMedia(modal);
             modal.classList.remove('open');
@@ -1499,25 +1158,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // ===== Video Project Functionality =====
     
-    // Video hover autoplay
-    const videoProjects = document.querySelectorAll('.video-project');
-    videoProjects.forEach(project => {
-        const video = project.querySelector('.preview-video');
-        
-        if (video) {
-            // Play video on hover
-            project.addEventListener('mouseenter', () => {
-                video.play().catch(() => {});
-            });
-            
-            // Pause video when not hovering
-            project.addEventListener('mouseleave', () => {
-                video.pause();
-                video.currentTime = 0; // Reset to start
-            });
-        }
-    });
-    
     // Video play button handlers
     const videoPlayButtons = document.querySelectorAll('.video-play');
     videoPlayButtons.forEach(button => {
@@ -1529,35 +1169,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const title = button.getAttribute('data-title') || 'Video';
             if (videoUrl) {
                 openVideoModal(videoUrl, title);
-            } else {
-                console.error('No video URL found on button');
-            }
-        });
-    });
-    
-    // Video download button handlers
-    const videoDownloadButtons = document.querySelectorAll('.video-download');
-    videoDownloadButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const videoUrl = button.getAttribute('data-video');
-            if (videoUrl) {
-                // Create temporary link and trigger download
-                const link = document.createElement('a');
-                link.href = videoUrl;
-                link.download = videoUrl.split('/').pop(); // Get filename from URL
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-
-                // Track download
-                if (window.VercelAnalytics) {
-                    window.VercelAnalytics.trackEvent('video_download', {
-                        video: videoUrl
-                    });
-                }
             } else {
                 console.error('No video URL found on button');
             }
@@ -1658,7 +1269,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // ===== Scroll Header Styling =====
     const header = document.querySelector('header');
-    let lastScroll = 0;
     
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
@@ -1668,25 +1278,5 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             header?.classList.remove('scrolled');
         }
-        
-        lastScroll = currentScroll;
     });
-    
-    // ===== Lazy Loading Images =====
-    const images = document.querySelectorAll('img[loading="lazy"]');
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src || img.src;
-                    img.classList.add('loaded');
-                    observer.unobserve(img);
-                }
-            });
-        });
-        
-        images.forEach(img => imageObserver.observe(img));
-    }
-    
 });
