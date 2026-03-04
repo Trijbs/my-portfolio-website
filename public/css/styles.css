@@ -2484,23 +2484,38 @@ section {
 .hero-signals {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: 0.7rem 1.1rem;
+  align-items: center;
 }
 
 .hero-signals span {
-  padding: 0.58rem 0.9rem;
-  border-radius: 999px;
-  background: rgba(255, 250, 242, 0.66);
-  border: 1px solid rgba(22, 19, 17, 0.08);
-  font-size: 0.92rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.15rem 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  font-size: 0.76rem;
   font-weight: 700;
-  color: var(--text-secondary);
-  box-shadow: 0 10px 22px rgba(22, 19, 17, 0.05);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  box-shadow: none;
+}
+
+.hero-signals span::before {
+  content: '';
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  background: var(--accent-secondary);
+  opacity: 0.72;
 }
 
 [data-theme="dark"] .hero-signals span {
-  background: rgba(24, 21, 19, 0.76);
-  border-color: rgba(247, 241, 231, 0.08);
+  background: transparent;
+  color: rgba(247, 241, 231, 0.66);
 }
 
 .hero-stage {
