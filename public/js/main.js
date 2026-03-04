@@ -82,16 +82,17 @@ const projectDetails = {
         ]
     },
     'motion-design-studies': {
-        title: 'Motion Design Studies',
+        title: 'Animated Infographic',
         fullDescription: `
-            <p><strong>Motion Design Studies</strong> groups the moving-image work in the portfolio into one clearer collection. Instead of showing a single MP4 as a standalone card, this archive presents the motion pieces as related studies in pacing, information design, and editing.</p>
-            <h4>Included work</h4>
+            <p><strong>Animated Infographic</strong> is a motion-led information design piece built around pacing, contrast, and sequencing. The goal is to make the information easier to follow by giving every transition and visual shift a clear role.</p>
+            <h4>What the project is showing</h4>
             <ul>
-                <li><strong>Animated infographic:</strong> Motion used to guide the viewer through information with clear timing and contrast</li>
-                <li><strong>Editing remake:</strong> A separate video study focused on rhythm, transitions, and timing choices</li>
+                <li><strong>Information hierarchy in motion:</strong> Each scene uses timing and contrast to direct attention toward the next key point</li>
+                <li><strong>Readable animation:</strong> Movement supports the content instead of competing with it</li>
+                <li><strong>Narrative pacing:</strong> The full piece is structured as a visual explanation rather than a loose animation experiment</li>
             </ul>
         `,
-        technologies: ['Motion Design', 'Video Editing', 'Animation', 'Information Design'],
+        technologies: ['Motion Design', 'Animation', 'Information Design', 'Visual Storytelling'],
         media: [
             { type: 'video', src: 'videos/archive/infographic.mp4', poster: 'img/archive/infographic-poster.png', alt: 'Animated infographic preview', caption: 'Animated infographic preview', frame: 'wide' }
         ],
@@ -102,12 +103,127 @@ const projectDetails = {
                 media: [
                     { type: 'video', src: 'videos/archive/infographic.mp4', poster: 'img/archive/infographic-poster.png', alt: 'Animated infographic video', caption: 'Motion-driven infographic piece', frame: 'wide' }
                 ]
+            }
+        ]
+    },
+    'video-editing-remake': {
+        title: 'Video Editing Remake',
+        fullDescription: `
+            <p><strong>Video Editing Remake</strong> is a short timing study built around pacing, shot order, and cleaner transitions. The split-screen setup makes the edit decisions visible instead of hiding them behind effects.</p>
+            <h4>What the project is showing</h4>
+            <ul>
+                <li><strong>Editing rhythm:</strong> Cut timing shapes the pace from shot to shot</li>
+                <li><strong>Split-screen comparison:</strong> The remake and reference can be judged side by side</li>
+                <li><strong>Cleaner transitions:</strong> The focus stays on control and flow, not extra effects</li>
+            </ul>
+        `,
+        technologies: ['Video Editing', 'Pacing', 'Transition Design', 'Motion Study', 'Shot Matching'],
+        media: [
+            { type: 'video', src: 'videos/archive/video-namaak-editen.mp4', poster: 'img/archive/video-namaak-editen-poster.png', alt: 'Video editing remake preview', caption: 'Split-screen remake study', frame: 'wide' }
+        ]
+    },
+    'iris-van-herpen-exhibition': {
+        title: 'Iris van Herpen Exhibition',
+        fullDescription: `
+            <p><strong>Iris van Herpen Exhibition</strong> is a museum concept built around <em>Metamorfose</em>. The project carries one visual language across posters, flyers, and social assets, with a more fashion-led and curated tone throughout.</p>
+            <h4>Why the work belongs together</h4>
+            <ul>
+                <li><strong>One identity system:</strong> The same visual language holds across posters, flyers, and social formats</li>
+                <li><strong>Strong format shifts:</strong> Wide, portrait, and square assets still feel connected</li>
+                <li><strong>Consistent atmosphere:</strong> The campaign reads as one exhibition world instead of separate pieces</li>
+            </ul>
+        `,
+        technologies: ['Exhibition Identity', 'Poster Design', 'Social Campaign', 'Print Collateral', 'Art Direction'],
+        media: [
+            { type: 'image', src: 'img/archive/iris-van-herpen/01_Artists_Impression_Expositie.jpg', alt: 'Iris van Herpen exhibition artist impression', caption: 'Exhibition concept render', frame: 'wide' }
+        ],
+        collections: [
+            {
+                title: 'Exhibition Concept',
+                description: 'The lead visual work that sets the atmosphere for the exhibition before the supporting campaign formats take over.',
+                media: [
+                    { type: 'image', src: 'img/archive/iris-van-herpen/01_Artists_Impression_Expositie.jpg', alt: 'Iris van Herpen exhibition concept render', caption: 'Artist impression', frame: 'wide' },
+                    { type: 'image', src: 'img/archive/iris-van-herpen/09_Facebook_Banner.jpg', alt: 'Iris van Herpen exhibition Facebook banner', caption: 'Wide digital banner', frame: 'wide' }
+                ]
             },
             {
-                title: 'Editing Remake Study',
-                description: 'A separate editing project focused on pacing, transitions, and visual rhythm.',
+                title: 'Poster Directions',
+                description: 'Three poster directions exploring how the exhibition can be framed through different levels of restraint, contrast, and color.',
                 media: [
-                    { type: 'video', src: 'videos/archive/motion-remake.mp4', poster: 'img/archive/motion-remake-poster.png', alt: 'Editing remake study video', caption: 'Editing and pacing study', frame: 'wide' }
+                    { type: 'image', src: 'img/archive/iris-van-herpen/02_Poster_1_Minimalistisch.jpg', alt: 'Minimal Iris van Herpen exhibition poster', caption: 'Minimal poster direction', frame: 'portrait' },
+                    { type: 'image', src: 'img/archive/iris-van-herpen/03_Poster_2_Bold_Kleurrijk.jpg', alt: 'Bold colorful Iris van Herpen exhibition poster', caption: 'Bold color direction', frame: 'portrait' },
+                    { type: 'image', src: 'img/archive/iris-van-herpen/04_Poster_3_Monochroom.jpg', alt: 'Monochrome Iris van Herpen exhibition poster', caption: 'Monochrome direction', frame: 'portrait' }
+                ]
+            },
+            {
+                title: 'Campaign Formats',
+                description: 'Supporting formats that adapt the same identity into handout, editorial, and social-media touchpoints.',
+                media: [
+                    { type: 'image', src: 'img/archive/iris-van-herpen/05_Flyer_Voorkant.jpg', alt: 'Iris van Herpen flyer front', caption: 'Flyer front', frame: 'portrait' },
+                    { type: 'image', src: 'img/archive/iris-van-herpen/06_Flyer_Achterkant.jpg', alt: 'Iris van Herpen flyer back', caption: 'Flyer back', frame: 'portrait' },
+                    { type: 'image', src: 'img/archive/iris-van-herpen/07_Advertentie_Kunstblad.jpg', alt: 'Iris van Herpen magazine advertisement', caption: 'Magazine ad', frame: 'portrait' },
+                    { type: 'image', src: 'img/archive/iris-van-herpen/08_Instagram_Post.jpg', alt: 'Iris van Herpen Instagram post', caption: 'Instagram post', frame: 'portrait' }
+                ]
+            }
+        ]
+    },
+    'sire-diabetes-campaign': {
+        title: 'SIRE Diabetes Campaign',
+        fullDescription: `
+            <p><strong>SIRE Diabetes Campaign</strong> is a public-awareness concept that turns sugar consumption into a clearer print message. The layouts use direct headlines, food imagery, and short copy to keep the campaign urgent and readable.</p>
+            <h4>Why the work belongs together</h4>
+            <ul>
+                <li><strong>Clear awareness angle:</strong> The message links sugar consumption to broader health consequences</li>
+                <li><strong>Shared call to action:</strong> Each page supports the same petition-led message</li>
+                <li><strong>Consistent print system:</strong> Type, spacing, and image treatment stay steady across the set</li>
+            </ul>
+        `,
+        technologies: ['Campaign Design', 'Health Awareness', 'Print Layout', 'Typography', 'Public Communication'],
+        links: [
+            { href: 'files/sire-diabetes.pdf', label: 'Open PDF', icon: 'file-text', tone: 'secondary' }
+        ],
+        media: [
+            { type: 'image', src: 'img/archive/sire-diabetes/sire-diabetes-01.png', alt: 'SIRE diabetes campaign cover spread', caption: 'Campaign opener', frame: 'wide' }
+        ],
+        collections: [
+            {
+                title: 'Campaign Pages',
+                description: 'The full three-page sequence showing the campaign message, supporting copy, and call to action.',
+                media: [
+                    { type: 'image', src: 'img/archive/sire-diabetes/sire-diabetes-01.png', alt: 'SIRE diabetes campaign page 1', caption: 'Page 01', frame: 'wide' },
+                    { type: 'image', src: 'img/archive/sire-diabetes/sire-diabetes-02.png', alt: 'SIRE diabetes campaign page 2', caption: 'Page 02', frame: 'wide' },
+                    { type: 'image', src: 'img/archive/sire-diabetes/sire-diabetes-03.png', alt: 'SIRE diabetes campaign page 3', caption: 'Page 03', frame: 'wide' }
+                ]
+            }
+        ]
+    },
+    'figurative-photo-spread': {
+        title: 'Figurative Photo Spread',
+        fullDescription: `
+            <p><strong>Figurative Photo Spread</strong> is a four-page editorial study that combines image-led layout, typography references, and design theory in one consistent sequence. It works best as a full spread set because the pacing between pages is part of the result.</p>
+            <h4>Why the work belongs together</h4>
+            <ul>
+                <li><strong>Editorial flow:</strong> Each page shifts topic without losing the same rhythm</li>
+                <li><strong>Layout-led explanation:</strong> The composition helps explain the theory instead of only decorating it</li>
+                <li><strong>One print language:</strong> The orange accent, spacing, and image treatment hold the set together</li>
+            </ul>
+        `,
+        technologies: ['Editorial Design', 'Typography', 'Print Layout', 'Photography Theory', 'Adobe InDesign'],
+        links: [
+            { href: 'files/spread-week-3.pdf', label: 'Open PDF', icon: 'file-text', tone: 'secondary' }
+        ],
+        media: [
+            { type: 'image', src: 'img/archive/spread-week-3/spread-week-3-01.png', alt: 'Figurative photo spread cover page', caption: 'Page 01 - Figuratieve foto', frame: 'portrait' }
+        ],
+        collections: [
+            {
+                title: 'Four-Page Spread',
+                description: 'A four-page editorial sequence covering figurative photography, abstract photography, letterforms, and shape versus negative space.',
+                media: [
+                    { type: 'image', src: 'img/archive/spread-week-3/spread-week-3-01.png', alt: 'Figurative photo spread page 1', caption: 'Page 01', frame: 'portrait' },
+                    { type: 'image', src: 'img/archive/spread-week-3/spread-week-3-02.png', alt: 'Figurative photo spread page 2', caption: 'Page 02', frame: 'portrait' },
+                    { type: 'image', src: 'img/archive/spread-week-3/spread-week-3-03.png', alt: 'Figurative photo spread page 3', caption: 'Page 03', frame: 'portrait' },
+                    { type: 'image', src: 'img/archive/spread-week-3/spread-week-3-04.png', alt: 'Figurative photo spread page 4', caption: 'Page 04', frame: 'portrait' }
                 ]
             }
         ]
@@ -469,6 +585,42 @@ function renderProjectOverview(project) {
             </div>
             ${leadHint}
         </section>
+    `;
+}
+
+function renderProjectLinks(project) {
+    const links = [];
+
+    if (project.liveUrl) {
+        links.push({ href: project.liveUrl, label: 'Live Demo', icon: 'external-link', tone: 'primary' });
+    }
+
+    if (project.githubUrl) {
+        links.push({ href: project.githubUrl, label: 'View Code', icon: 'github', tone: 'secondary' });
+    }
+
+    if (Array.isArray(project.links)) {
+        links.push(...project.links);
+    }
+
+    if (!links.length) {
+        return '';
+    }
+
+    return `
+        <div class="project-links">
+            ${links.map(link => `
+                <a
+                    href="${escapeHTML(link.href)}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-${escapeHTML(link.tone || 'secondary')}"
+                >
+                    <i data-feather="${escapeHTML(link.icon || 'external-link')}"></i>
+                    ${escapeHTML(link.label || 'Open Link')}
+                </a>
+            `).join('')}
+        </div>
     `;
 }
 
@@ -1303,21 +1455,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${project.technologies.map(tech => `<span class="tag">${escapeHTML(tech)}</span>`).join('')}
                     </div>
                 </div>
-                
-                <div class="project-links">
-                    ${project.liveUrl ? `
-                        <a href="${escapeHTML(project.liveUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                            <i data-feather="external-link"></i>
-                            Live Demo
-                        </a>
-                    ` : ''}
-                    ${project.githubUrl ? `
-                        <a href="${escapeHTML(project.githubUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-                            <i data-feather="github"></i>
-                            View Code
-                        </a>
-                    ` : ''}
-                </div>
+
+                ${renderProjectLinks(project)}
             </div>
         `;
         

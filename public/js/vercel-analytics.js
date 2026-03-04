@@ -11,6 +11,7 @@
     const SESSION_KEY = 'portfolio_analytics_session_id';
     const PRIVACY_KEY = 'portfolio_privacy_preferences';
     const ADMIN_PATH_PREFIX = '/analytics';
+    const LOCAL_HOSTS = new Set(['localhost', '127.0.0.1', '::1']);
 
     let analyticsEnabled = false;
     let pageViewTracked = false;
@@ -29,9 +30,13 @@
     function syncAnalyticsPreference(preferences = readPrivacyPreferences()) {
         analyticsEnabled = Boolean(preferences?.consentGiven && preferences?.analytics);
 
-        if (analyticsEnabled) {
+        if (analyticsEnabled && !isLocalPreview()) {
             loadVercelScript();
         }
+    }
+
+    function isLocalPreview() {
+        return window.location.protocol === 'file:' || LOCAL_HOSTS.has(window.location.hostname);
     }
 
     function loadVercelScript() {
@@ -110,6 +115,10 @@
     }
 
     function trackWithVercel(eventName, properties = {}) {
+        if (isLocalPreview()) {
+            return;
+        }
+
         if (!analyticsEnabled || typeof window.va !== 'function') {
             if (analyticsEnabled) {
                 pendingVercelEvents.push({ name: eventName, properties });
@@ -121,7 +130,7 @@
     }
 
     function postEvent(eventType, properties = {}) {
-        if (!analyticsEnabled || onAdminPage()) {
+        if (!analyticsEnabled || onAdminPage() || isLocalPreview()) {
             return Promise.resolve(false);
         }
 
