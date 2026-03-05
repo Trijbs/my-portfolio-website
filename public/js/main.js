@@ -174,6 +174,57 @@ function escapeHTML(str) {
     return div.innerHTML;
 }
 
+function isLocalDevelopmentHost(hostname = '') {
+    const normalized = String(hostname).toLowerCase();
+    return normalized === 'localhost'
+        || normalized === '127.0.0.1'
+        || normalized === '::1'
+        || normalized.endsWith('.localhost');
+}
+
+function toSafeHttpUrl(rawUrl) {
+    if (!rawUrl || typeof rawUrl !== 'string') {
+        return null;
+    }
+
+    try {
+        const parsed = new URL(rawUrl.trim(), window.location.origin);
+        if (parsed.protocol !== 'https:' && parsed.protocol !== 'http:') {
+            return null;
+        }
+
+        if (parsed.protocol === 'http:' && !isLocalDevelopmentHost(parsed.hostname)) {
+            return null;
+        }
+
+        return parsed.href;
+    } catch (error) {
+        return null;
+    }
+}
+
+function detectSocialPlatform(rawUrl) {
+    const safeUrl = toSafeHttpUrl(rawUrl);
+    if (!safeUrl) {
+        return null;
+    }
+
+    const hostname = new URL(safeUrl).hostname.toLowerCase();
+    if (hostname === 'github.com' || hostname.endsWith('.github.com')) {
+        return 'github';
+    }
+
+    if (hostname === 'instagram.com' || hostname === 'www.instagram.com' || hostname.endsWith('.instagram.com')) {
+        return 'instagram';
+    }
+
+    if (hostname === 'linkedin.com' || hostname === 'www.linkedin.com' || hostname.endsWith('.linkedin.com')) {
+        return 'linkedin';
+    }
+
+    return null;
+}
+
 function renderProjectMediaItem(item, projectTitle, options = {}) {
     const frame = item.frame ? ` media-frame--${escapeHTML(item.frame)}` : '';
     const slideFrame = item.frame ? ` collection-slide--${escapeHTML(item.frame)}` : '';
@@ -640,6 +691,14 @@ document.addEventListener('DOMContentLoaded', () => {
         naturalHeight: 0
     };
 
+    function openCurrentDemoInNewTab() {
+        if (!currentDemoUrl) {
+            return;
+        }
+
+        window.open(currentDemoUrl, '_blank', 'noopener,noreferrer');
+    }
+
     function syncBodyScrollLock() {
         const hasOpenModal = document.querySelector('.modal.open, .modal.active');
         document.body.style.overflow = hasOpenModal ? 'hidden' : '';
@@ -652,14 +711,14 @@ document.addEventListener('DOMContentLoaded', () => {
     figmaViewButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             e.preventDefault();
-            const figmaUrl = button.getAttribute('data-figma-url');
-            if (figmaUrl) {
-                window.open(figmaUrl, '_blank', 'noopener,noreferrer');
+            const safeFigmaUrl = toSafeHttpUrl(button.getAttribute('data-figma-url'));
+            if (safeFigmaUrl) {
+                window.open(safeFigmaUrl, '_blank', 'noopener,noreferrer');
                 
                 // Track Figma view
                 if (window.VercelAnalytics) {
                     window.VercelAnalytics.trackEvent('figma_view', {
-                        url: figmaUrl
+                        url: safeFigmaUrl
                     });
                 }
             }
@@ -669,18 +728,18 @@ document.addEventListener('DOMContentLoaded', () => {
     figmaEmbedButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             e.preventDefault();
-            const embedUrl = button.getAttribute('data-figma-embed');
+            const safeEmbedUrl = toSafeHttpUrl(button.getAttribute('data-figma-embed'));
             const title = button.getAttribute('data-title') || 'Figma Design';
             
-            if (embedUrl && liveDemoModal && liveDemoFrame) {
-                currentDemoUrl = embedUrl;
+            if (safeEmbedUrl && liveDemoModal && liveDemoFrame) {
+                currentDemoUrl = safeEmbedUrl;
                 liveDemoTitle.textContent = title;
                 liveDemoModal.classList.add('open');
                 syncBodyScrollLock();
                 
                 if (loadingSpinner) loadingSpinner.style.display = 'flex';
                 
-                liveDemoFrame.src = embedUrl;
+                liveDemoFrame.src = safeEmbedUrl;
                 
                 liveDemoFrame.onload = () => {
                     if (loadingSpinner) loadingSpinner.style.display = 'none';
@@ -694,7 +753,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (window.VercelAnalytics) {
                     window.VercelAnalytics.trackEvent('figma_embed_view', {
                         title: title,
-                        url: embedUrl
+                        url: safeEmbedUrl
                     });
                 }
             }
@@ -703,7 +762,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Open live demo modal
     function openLiveDemo(url, title) {
-        currentDemoUrl = url;
+        const safeUrl = toSafeHttpUrl(url);
+        if (!safeUrl) {
+            console.warn('Blocked unsafe demo URL:', url);
+            return;
+        }
+
+        currentDemoUrl = safeUrl;
         
         if (liveDemoTitle) liveDemoTitle.textContent = title;
         if (liveDemoModal) liveDemoModal.classList.add('open');
@@ -720,7 +785,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (liveDemoFrame) {
             // Reset iframe display
             liveDemoFrame.style.display = 'block';
-            liveDemoFrame.src = url;
+            liveDemoFrame.src = safeUrl;
             
             // Set up iframe load handlers
             liveDemoFrame.onload = () => {
@@ -757,7 +822,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.VercelAnalytics) {
             window.VercelAnalytics.trackEvent('live_demo_view', {
                 title: title,
-                url: url
+                url: safeUrl
             });
         }
     }
@@ -780,12 +845,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 <i data-feather="alert-circle"></i>
                 <h4>Unable to load demo in iframe</h4>
                 <p>This site cannot be embedded due to security restrictions.</p>
-                <button class="btn btn-primary" onclick="window.open('${escapeHTML(currentDemoUrl)}', '_blank')">
+                <button class="btn btn-primary js-open-demo-tab" type="button">
                     <i data-feather="external-link"></i>
                     Open in New Tab
                 </button>
             </div>
         `;
+        const openButton = errorDiv.querySelector('.js-open-demo-tab');
+        openButton?.addEventListener('click', openCurrentDemoInNewTab);
         iframeContainer.appendChild(errorDiv);
         
         // Re-initialize feather icons
@@ -801,11 +868,13 @@ document.addEventListener('DOMContentLoaded', () => {
         helpDiv.className = 'loading-help';
         helpDiv.innerHTML = `
             <p>Taking longer than expected?</p>
-            <button class="btn btn-outline" onclick="window.open('${escapeHTML(currentDemoUrl)}', '_blank')">
+            <button class="btn btn-outline js-open-demo-tab" type="button">
                 <i data-feather="external-link"></i>
                 Open in New Tab
             </button>
         `;
+        const openButton = helpDiv.querySelector('.js-open-demo-tab');
+        openButton?.addEventListener('click', openCurrentDemoInNewTab);
         iframeContainer.appendChild(helpDiv);
         
         // Re-initialize feather icons
@@ -999,11 +1068,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Open external button
     if (openExternalBtn) {
-        openExternalBtn.addEventListener('click', () => {
-            if (currentDemoUrl) {
-                window.open(currentDemoUrl, '_blank', 'noopener,noreferrer');
-            }
-        });
+        openExternalBtn.addEventListener('click', openCurrentDemoInNewTab);
     }
 
     if (imageZoomToggle) {
@@ -1180,10 +1245,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const videoModal = document.getElementById('videoModal');
         const videoModalTitle = document.getElementById('videoModalTitle');
         const modalVideo = document.getElementById('modalVideo');
+        const safeVideoUrl = toSafeHttpUrl(videoUrl);
 
         if (!videoModal || !modalVideo) {
             console.error('Video modal elements not found');
             alert('Video modal niet gevonden. Probeer de pagina te verversen.');
+            return;
+        }
+
+        if (!safeVideoUrl) {
+            console.error('Blocked unsafe video URL:', videoUrl);
+            alert('Video kon niet veilig geladen worden.');
             return;
         }
         
@@ -1193,7 +1265,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         // Set video source
-        modalVideo.src = videoUrl;
+        modalVideo.src = safeVideoUrl;
         modalVideo.load();
         
         // Show modal
@@ -1210,7 +1282,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.VercelAnalytics) {
             window.VercelAnalytics.trackEvent('video_view', {
                 title: title,
-                url: videoUrl
+                url: safeVideoUrl
             });
         }
     }
@@ -1241,14 +1313,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const socialLinks = document.querySelectorAll('a[href*="github.com"], a[href*="instagram.com"], a[href*="linkedin.com"]');
     socialLinks.forEach(link => {
         link.addEventListener('click', () => {
-            const url = link.getAttribute('href');
-            let platform = 'unknown';
+            const platform = detectSocialPlatform(link.getAttribute('href'));
             
-            if (url.includes('github.com')) platform = 'github';
-            else if (url.includes('instagram.com')) platform = 'instagram';
-            else if (url.includes('linkedin.com')) platform = 'linkedin';
-            
-            if (window.VercelAnalytics) {
+            if (platform && window.VercelAnalytics) {
                 window.VercelAnalytics.trackSocialClick(platform);
             }
         });

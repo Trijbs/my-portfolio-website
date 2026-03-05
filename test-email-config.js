@@ -32,17 +32,15 @@ const password = process.env.EMAIL_PASS;
 const hasSpaces = password.includes(' ');
 const length = password.replace(/\s/g, '').length;
 
-console.log('  Password length (without spaces):', length);
-console.log('  Has spaces:', hasSpaces ? 'Yes' : 'No');
+console.log('  Contains spaces:', hasSpaces ? 'Yes' : 'No');
 
 if (length !== 16) {
-    console.warn('  ⚠️  Warning: Gmail App Passwords are typically 16 characters');
-    console.warn('  ⚠️  Your password length is:', length);
+    console.warn('  ⚠️  Warning: Gmail App Password format looks unusual (expected 16 chars without spaces)');
 }
 
 // Create transporter
 console.log('\n🔧 Creating Email Transporter...');
-const transporter = nodemailer.createTransporter({
+const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: process.env.EMAIL_USER,

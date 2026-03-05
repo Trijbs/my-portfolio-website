@@ -65,7 +65,18 @@
     }
 
     function generateId(prefix) {
-        return `${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+        const randomBuffer = new Uint8Array(8);
+        if (window.crypto && typeof window.crypto.getRandomValues === 'function') {
+            window.crypto.getRandomValues(randomBuffer);
+        } else {
+            return `${prefix}-${Date.now().toString(36)}-no-crypto`;
+        }
+
+        const randomSuffix = Array.from(randomBuffer)
+            .map(byte => byte.toString(16).padStart(2, '0'))
+            .join('');
+
+        return `${prefix}-${Date.now().toString(36)}-${randomSuffix}`;
     }
 
     function getUserId() {

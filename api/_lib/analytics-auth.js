@@ -3,13 +3,25 @@ import crypto from 'node:crypto';
 export const ANALYTICS_AUTH_COOKIE = 'analytics_admin';
 
 const WEEK_IN_SECONDS = 60 * 60 * 24 * 7;
+const AUTH_SALT = process.env.ANALYTICS_AUTH_SALT || 'analytics-auth-cookie-v1';
 
 function getPassword() {
     return process.env.ANALYTICS_ADMIN_PASSWORD || '';
 }
 
 function buildToken(password) {
-    return crypto.createHash('sha256').update(password).digest('hex');
+    return crypto.scryptSync(password, AUTH_SALT, 32).toString('hex');
+}
+
+function safeTokenEqual(left = '', right = '') {
+    const leftBuffer = Buffer.from(left);
+    const rightBuffer = Buffer.from(right);
+
+    if (leftBuffer.length !== rightBuffer.length) {
+        return false;
+    }
+
+    return crypto.timingSafeEqual(leftBuffer, rightBuffer);
 }
 
 function parseCookies(headerValue = '') {
@@ -54,7 +66,7 @@ export function isAnalyticsAuthorized(req) {
     }
 
     const cookies = parseCookies(req.headers?.cookie || '');
-    return cookies[ANALYTICS_AUTH_COOKIE] === buildToken(password);
+    return safeTokenEqual(cookies[ANALYTICS_AUTH_COOKIE], buildToken(password));
 }
 
 export function setAnalyticsAuthCookie(res) {

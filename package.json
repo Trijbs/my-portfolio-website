@@ -4,9 +4,9 @@
   "type": "module",
   "description": "Portfolio website with Vercel serverless functions for contact form and analytics",
   "scripts": {
-    "dev": "vercel dev",
-    "start": "vercel dev",
-    "deploy": "vercel --prod",
+    "dev": "npx vercel dev",
+    "start": "npx vercel dev",
+    "deploy": "npx vercel --prod",
     "test:email": "node test-email-config.js",
     "build:media": "node scripts/build-media.mjs",
     "check:media": "node scripts/build-media.mjs --check"
@@ -25,14 +25,10 @@
     "@supabase/supabase-js": "^2.56.1",
     "@vercel/analytics": "^1.1.1",
     "dotenv": "^16.3.1",
-    "nodemailer": "^6.9.7",
+    "nodemailer": "^7.0.13",
     "sharp": "^0.34.5"
-  },
-  "devDependencies": {
-    "vercel": "^32.0.0"
   },
   "engines": {
     "node": ">=18.0.0"
   }
 }
-
