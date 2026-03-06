@@ -2777,6 +2777,12 @@ section {
 
 .section-title {
   max-width: 14ch;
+  margin-inline: auto;
+  text-wrap: balance;
+}
+
+.section-header-left .section-title {
+  margin-inline: 0;
 }
 
 .section-description {
@@ -3497,13 +3503,14 @@ section {
 /* ===== Project Gallery Refresh ===== */
 .projects-grid {
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-  align-items: stretch;
+  align-items: start;
 }
 
 .project-card {
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+  min-height: 0;
+  align-self: start;
 }
 
 .project-card.featured {
@@ -3562,9 +3569,9 @@ section {
 .project-content {
   display: flex;
   flex-direction: column;
-  gap: 0.72rem;
-  height: 100%;
-  padding: 1.05rem 1.08rem 1.08rem;
+  gap: 0.62rem;
+  height: auto;
+  padding: 0.95rem 1rem 1rem;
 }
 
 .project-header,
@@ -3576,7 +3583,8 @@ section {
 }
 
 .project-content > p {
-  flex: 1 1 auto;
+  flex: 0 0 auto;
+  min-height: 0;
   line-height: 1.48;
 }
 
@@ -3584,11 +3592,11 @@ section {
   display: flex;
   flex-wrap: wrap;
   gap: 0.45rem;
-  margin: 0.45rem 0 0.7rem;
+  margin: 0.2rem 0 0.45rem;
 }
 
 .project-stats {
-  margin-top: auto;
+  margin-top: 0;
   gap: 0.65rem;
 }
 
