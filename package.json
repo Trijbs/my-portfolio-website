@@ -19,7 +19,7 @@
     "analytics",
     "nodejs"
   ],
-  "author": "Ruben Trijbels",
+  "author": "Trijbs",
   "license": "MIT",
   "dependencies": {
     "@supabase/supabase-js": "^2.56.1",
