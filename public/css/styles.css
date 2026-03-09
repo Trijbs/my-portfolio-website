@@ -2126,10 +2126,6 @@ section {
   .info-content li {
     font-size: 1rem;
   }
-  
-  .business-card-image {
-    max-width: 100% !important;
-  }
 }
 
 @media (max-width: 480px) {
@@ -2140,100 +2136,6 @@ section {
   .info-section h1 {
     margin-bottom: var(--spacing-lg);
   }
-}
-
-/* ===== Business Card Styles ===== */
-.business-card-section {
-  margin: var(--spacing-xl) 0;
-  text-align: center;
-}
-
-.business-card-container {
-  background: var(--bg-primary);
-  padding: var(--spacing-xl);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 10px 30px var(--shadow-color);
-  margin-top: var(--spacing-lg);
-  transition: transform var(--transition-normal);
-}
-
-.business-card-container:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px var(--shadow-color);
-}
-
-.business-card-image {
-  max-width: 500px;
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius-md);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  transition: transform var(--transition-normal);
-  cursor: pointer;
-}
-
-.business-card-image:hover {
-  transform: scale(1.02);
-}
-
-.business-card-caption {
-  margin-top: var(--spacing-md);
-  font-style: italic;
-  color: var(--text-tertiary);
-  font-size: 0.95rem;
-}
-
-/* Business card modal for full-size view */
-.business-card-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: var(--z-modal);
-  opacity: 0;
-  visibility: hidden;
-  transition: all var(--transition-normal);
-  cursor: pointer;
-}
-
-.business-card-modal.open {
-  opacity: 1;
-  visibility: visible;
-}
-
-.business-card-modal img {
-  max-width: 90vw;
-  max-height: 90vh;
-  border-radius: var(--radius-md);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-}
-
-.business-card-modal .close-modal {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: rgba(255, 255, 255, 0.9);
-  border: none;
-  border-radius: var(--radius-full);
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 1.5rem;
-  color: var(--text-primary);
-  transition: all var(--transition-fast);
-}
-
-.business-card-modal .close-modal:hover {
-  background: white;
-  transform: scale(1.1);
 }
 
 /* ===== Designer Portfolio Refresh ===== */
