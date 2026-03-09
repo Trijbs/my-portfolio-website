@@ -3270,6 +3270,13 @@ section {
   max-width: min(34ch, 100%);
 }
 
+.section-header:not(.section-header-left) .section-title {
+  width: fit-content;
+  max-width: 100%;
+  white-space: nowrap;
+  text-wrap: normal;
+}
+
 .contact-container {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
@@ -3593,6 +3600,11 @@ section {
   .projects-section .section-title,
   .contact-section .section-title {
     max-width: min(18ch, 100%);
+  }
+
+  .section-header:not(.section-header-left) .section-title {
+    width: auto;
+    white-space: normal;
   }
 
   .hero-actions,
