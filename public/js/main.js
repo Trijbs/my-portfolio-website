@@ -543,10 +543,96 @@ function resetProjectDetailsScroll(modal, bodyElement) {
     modal.querySelector('.modal-content')?.scrollTo(0, 0);
 }
 
+function initHeroCardHoverEffects() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+    }
+
+    const interactiveCards = document.querySelectorAll('.hero-portrait-card, .hero-summary-panel');
+    if (!interactiveCards.length) {
+        return;
+    }
+
+    const resetCard = (card) => {
+        card.classList.remove('is-hovered');
+        card.style.setProperty('--card-tilt-x', '0deg');
+        card.style.setProperty('--card-tilt-y', '0deg');
+        card.style.setProperty('--card-pointer-x', '50%');
+        card.style.setProperty('--card-pointer-y', '50%');
+    };
+
+    interactiveCards.forEach((card) => {
+        let frameId = null;
+
+        const updateCardPerspective = (event) => {
+            const rect = card.getBoundingClientRect();
+            if (!rect.width || !rect.height) {
+                return;
+            }
+
+            const relativeX = Math.min(Math.max(event.clientX - rect.left, 0), rect.width);
+            const relativeY = Math.min(Math.max(event.clientY - rect.top, 0), rect.height);
+            const percentX = relativeX / rect.width;
+            const percentY = relativeY / rect.height;
+            const tiltX = ((0.5 - percentY) * 10).toFixed(2);
+            const tiltY = ((percentX - 0.5) * 10).toFixed(2);
+
+            if (frameId) {
+                cancelAnimationFrame(frameId);
+            }
+
+            frameId = requestAnimationFrame(() => {
+                card.style.setProperty('--card-tilt-x', `${tiltX}deg`);
+                card.style.setProperty('--card-tilt-y', `${tiltY}deg`);
+                card.style.setProperty('--card-pointer-x', `${(percentX * 100).toFixed(2)}%`);
+                card.style.setProperty('--card-pointer-y', `${(percentY * 100).toFixed(2)}%`);
+            });
+        };
+
+        card.addEventListener('pointerenter', (event) => {
+            if (event.pointerType === 'touch') {
+                return;
+            }
+
+            card.classList.add('is-hovered');
+            updateCardPerspective(event);
+        });
+
+        card.addEventListener('pointermove', (event) => {
+            if (event.pointerType === 'touch') {
+                return;
+            }
+
+            card.classList.add('is-hovered');
+            updateCardPerspective(event);
+        }, { passive: true });
+
+        card.addEventListener('pointerleave', () => {
+            if (frameId) {
+                cancelAnimationFrame(frameId);
+                frameId = null;
+            }
+
+            resetCard(card);
+        });
+
+        card.addEventListener('focusin', () => {
+            card.classList.add('is-hovered');
+        });
+
+        card.addEventListener('focusout', () => {
+            if (!card.contains(document.activeElement)) {
+                resetCard(card);
+            }
+        });
+    });
+}
+
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize Feather icons
     replaceFeatherIcons();
+    initHeroCardHoverEffects();
     
     // ===== Theme Toggle =====
     const themeToggle = document.getElementById('themeToggle');
