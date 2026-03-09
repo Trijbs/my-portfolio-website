@@ -2935,7 +2935,7 @@ section {
 }
 
 .section-title {
-  max-width: 14ch;
+  max-width: min(24ch, 100%);
   margin-inline: auto;
   text-wrap: balance;
 }
@@ -3102,7 +3102,7 @@ section {
 }
 
 .projects-section .section-title {
-  max-width: 12ch;
+  max-width: min(24ch, 100%);
 }
 
 .project-filters {
@@ -3267,7 +3267,7 @@ section {
 }
 
 .contact-section .section-title {
-  max-width: 14ch;
+  max-width: min(28ch, 100%);
 }
 
 .contact-container {
@@ -3584,6 +3584,15 @@ section {
 
   .hero-lead {
     font-size: 0.96rem;
+  }
+
+  .section-title {
+    max-width: min(16ch, 100%);
+  }
+
+  .projects-section .section-title,
+  .contact-section .section-title {
+    max-width: min(18ch, 100%);
   }
 
   .hero-actions,
