@@ -2935,7 +2935,7 @@ section {
 }
 
 .section-title {
-  max-width: min(24ch, 100%);
+  max-width: min(30ch, 100%);
   margin-inline: auto;
   text-wrap: balance;
 }
@@ -3102,7 +3102,7 @@ section {
 }
 
 .projects-section .section-title {
-  max-width: min(24ch, 100%);
+  max-width: min(30ch, 100%);
 }
 
 .project-filters {
@@ -3267,7 +3267,7 @@ section {
 }
 
 .contact-section .section-title {
-  max-width: min(28ch, 100%);
+  max-width: min(34ch, 100%);
 }
 
 .contact-container {
