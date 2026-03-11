@@ -2112,9 +2112,23 @@ section {
 }
 
 .info-links-subtle {
+  display: block;
   margin-top: var(--spacing-xxl);
-  padding-top: var(--spacing-lg);
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.info-links-eyebrow {
+  display: inline-block;
+  margin-bottom: 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  opacity: 0.72;
 }
 
 .info-links-subtle h2 {
@@ -2128,6 +2142,7 @@ section {
 .quiet-links {
   display: grid;
   gap: 0.5rem;
+  margin-bottom: 0;
 }
 
 .quiet-links li {
@@ -2140,6 +2155,7 @@ section {
 }
 
 .quiet-links a {
+  display: inline-block;
   color: var(--text-secondary);
   font-weight: 500;
 }
