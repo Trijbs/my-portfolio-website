@@ -2111,6 +2111,43 @@ section {
   width: 100%;
 }
 
+.info-links-subtle {
+  margin-top: var(--spacing-xxl);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.info-links-subtle h2 {
+  border-bottom-color: rgba(0, 0, 0, 0.12);
+}
+
+.info-links-subtle h2::before {
+  background: rgba(0, 0, 0, 0.22);
+}
+
+.quiet-links {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.quiet-links li {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.quiet-links li::before {
+  content: '';
+}
+
+.quiet-links a {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.quiet-links a:hover {
+  color: var(--text-primary);
+}
+
 /* Info page responsive design */
 @media (max-width: 768px) {
   .info-content {
