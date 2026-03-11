@@ -1,3 +1,6 @@
 node_modules/
 .DS_Store
 .vercel
+public/files/trijbs-brand-style-guide.pdf
+public/files/trijbs-brand-style-guide.png
+scripts/generate_brand_style_guide.py
