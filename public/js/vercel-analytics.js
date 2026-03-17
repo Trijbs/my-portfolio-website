@@ -16,6 +16,8 @@
     let analyticsEnabled = false;
     let pageViewTracked = false;
     let vercelScriptLoaded = false;
+    let analyticsFailureCount = 0;
+    let analyticsBackoffUntil = 0;
     const pendingVercelEvents = [];
 
     function readPrivacyPreferences() {
@@ -145,6 +147,10 @@
             return Promise.resolve(false);
         }
 
+        if (analyticsBackoffUntil > Date.now()) {
+            return Promise.resolve(false);
+        }
+
         const payload = {
             eventType,
             timestamp: Date.now(),
@@ -166,7 +172,31 @@
             credentials: 'same-origin',
             keepalive: true,
             body: JSON.stringify(payload)
-        }).catch(() => false);
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    analyticsFailureCount += 1;
+
+                    if (analyticsFailureCount >= 3) {
+                        analyticsBackoffUntil = Date.now() + (5 * 60 * 1000);
+                    }
+
+                    return false;
+                }
+
+                analyticsFailureCount = 0;
+                analyticsBackoffUntil = 0;
+                return true;
+            })
+            .catch(() => {
+                analyticsFailureCount += 1;
+
+                if (analyticsFailureCount >= 3) {
+                    analyticsBackoffUntil = Date.now() + (5 * 60 * 1000);
+                }
+
+                return false;
+            });
     }
 
     function trackEvent(eventName, properties = {}) {

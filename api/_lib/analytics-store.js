@@ -6,6 +6,7 @@ const DEFAULT_TABLE = 'analytics_events';
 
 let memoryEvents = [];
 let supabaseClient = null;
+let storageFallbackReason = null;
 
 function decodeJwtPayload(token = '') {
     const parts = token.split('.');
@@ -97,6 +98,22 @@ function getSupabaseClient() {
     return supabaseClient;
 }
 
+function hasActiveSupabaseStorage() {
+    return hasSupabaseConfig() && !storageFallbackReason;
+}
+
+function appendMemoryEvent(event) {
+    memoryEvents.unshift(event);
+    memoryEvents = memoryEvents.slice(0, MAX_EVENTS);
+}
+
+function activateMemoryFallback(error) {
+    if (!storageFallbackReason) {
+        storageFallbackReason = error instanceof Error ? error.message : 'Unknown storage failure';
+        console.error('Analytics storage fallback activated:', error);
+    }
+}
+
 function normalizeEvent(event = {}) {
     const timestamp = Number(event.timestamp) || Date.now();
     const serverTimestamp = Number(event.serverTimestamp) || Date.now();
@@ -159,74 +176,97 @@ async function readSupabaseEvents(limit, offset) {
 export async function appendAnalyticsEvent(event) {
     const normalized = normalizeEvent(event);
 
-    if (!hasSupabaseConfig()) {
-        memoryEvents.unshift(normalized);
-        memoryEvents = memoryEvents.slice(0, MAX_EVENTS);
+    if (!hasActiveSupabaseStorage()) {
+        appendMemoryEvent(normalized);
         return;
     }
 
-    const { error } = await getSupabaseClient()
-        .from(getSupabaseTable())
-        .upsert(buildSupabaseRow(normalized), {
-            onConflict: 'id'
-        });
+    try {
+        const { error } = await getSupabaseClient()
+            .from(getSupabaseTable())
+            .upsert(buildSupabaseRow(normalized), {
+                onConflict: 'id'
+            });
 
-    if (error) {
-        throw createStorageError('write', error, {
-            eventId: normalized.id,
-            eventType: normalized.eventType,
-            path: normalized.path || null
-        });
+        if (error) {
+            throw createStorageError('write', error, {
+                eventId: normalized.id,
+                eventType: normalized.eventType,
+                path: normalized.path || null
+            });
+        }
+    } catch (error) {
+        activateMemoryFallback(error);
+        appendMemoryEvent(normalized);
     }
 }
 
 export async function readAnalyticsEvents(limit = 100, offset = 0) {
-    if (!hasSupabaseConfig()) {
+    if (!hasActiveSupabaseStorage()) {
         return memoryEvents.slice(offset, offset + limit);
     }
 
-    return readSupabaseEvents(limit, offset);
+    try {
+        return await readSupabaseEvents(limit, offset);
+    } catch (error) {
+        activateMemoryFallback(error);
+        return memoryEvents.slice(offset, offset + limit);
+    }
 }
 
 export async function readAllAnalyticsEvents() {
-    if (!hasSupabaseConfig()) {
+    if (!hasActiveSupabaseStorage()) {
         return [...memoryEvents];
     }
 
-    const events = [];
+    try {
+        const events = [];
 
-    for (let offset = 0; offset < MAX_EVENTS; offset += SUPABASE_BATCH_SIZE) {
-        const batch = await readSupabaseEvents(
-            Math.min(SUPABASE_BATCH_SIZE, MAX_EVENTS - offset),
-            offset
-        );
+        for (let offset = 0; offset < MAX_EVENTS; offset += SUPABASE_BATCH_SIZE) {
+            const batch = await readSupabaseEvents(
+                Math.min(SUPABASE_BATCH_SIZE, MAX_EVENTS - offset),
+                offset
+            );
 
-        events.push(...batch);
+            events.push(...batch);
 
-        if (batch.length < SUPABASE_BATCH_SIZE) {
-            break;
+            if (batch.length < SUPABASE_BATCH_SIZE) {
+                break;
+            }
         }
-    }
 
-    return events;
+        return events;
+    } catch (error) {
+        activateMemoryFallback(error);
+        return [...memoryEvents];
+    }
 }
 
 export async function countAnalyticsEvents() {
-    if (!hasSupabaseConfig()) {
+    if (!hasActiveSupabaseStorage()) {
         return memoryEvents.length;
     }
 
-    const { count, error } = await getSupabaseClient()
-        .from(getSupabaseTable())
-        .select('id', { count: 'exact', head: true });
+    try {
+        const { count, error } = await getSupabaseClient()
+            .from(getSupabaseTable())
+            .select('id', { count: 'exact', head: true });
 
-    if (error) {
-        throw createStorageError('count', error);
+        if (error) {
+            throw createStorageError('count', error);
+        }
+
+        return Number(count) || 0;
+    } catch (error) {
+        activateMemoryFallback(error);
+        return memoryEvents.length;
     }
-
-    return Number(count) || 0;
 }
 
 export function getAnalyticsStorageMode() {
+    if (storageFallbackReason) {
+        return 'memory-fallback';
+    }
+
     return hasSupabaseConfig() ? 'supabase' : 'memory';
 }
