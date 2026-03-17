@@ -637,35 +637,110 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===== Theme Toggle =====
     const themeToggle = document.getElementById('themeToggle');
     const html = document.documentElement;
-    
-    // Check for saved theme preference or default to 'poster' theme
-    const currentTheme = localStorage.getItem('theme') || 'poster';
-    html.setAttribute('data-theme', currentTheme);
-    
-    // Update theme icon
+
+    function isSupportedTheme(theme) {
+        return theme === 'poster' || theme === 'dark' || theme === 'proof';
+    }
+
+    function getStoredTheme() {
+        const storedTheme = localStorage.getItem('theme') || 'poster';
+        return isSupportedTheme(storedTheme) ? storedTheme : 'poster';
+    }
+
+    function getStoredBaseTheme() {
+        const storedBaseTheme = localStorage.getItem('themeBase') || 'poster';
+        return storedBaseTheme === 'dark' ? 'dark' : 'poster';
+    }
+
+    function dispatchThemeChange(theme) {
+        document.dispatchEvent(new CustomEvent('trijbs:themechange', {
+            detail: { theme }
+        }));
+    }
+
     function updateThemeIcon() {
         if (!themeToggle) return;
         const theme = html.getAttribute('data-theme');
-        themeToggle.innerHTML = `<i data-feather="${theme === 'dark' ? 'sun' : 'moon'}"></i>`;
-        themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+
+        let icon = 'moon';
+        let label = 'Switch to dark theme';
+
+        if (theme === 'dark') {
+            icon = 'sun';
+            label = 'Switch to light theme';
+        } else if (theme === 'proof') {
+            icon = 'crosshair';
+            label = 'Leave proof mode';
+        }
+
+        themeToggle.innerHTML = `<i data-feather="${icon}"></i>`;
+        themeToggle.setAttribute('aria-label', label);
         replaceFeatherIcons();
     }
-    
-    updateThemeIcon();
-    
+
+    function setTheme(newTheme, options = {}) {
+        const resolvedTheme = isSupportedTheme(newTheme) ? newTheme : 'poster';
+        const persist = options.persist !== false;
+        const trackAnalytics = options.trackAnalytics === true;
+        const previousTheme = html.getAttribute('data-theme') || getStoredBaseTheme();
+
+        html.setAttribute('data-theme', resolvedTheme);
+
+        if (persist) {
+            localStorage.setItem('theme', resolvedTheme);
+            if (resolvedTheme === 'proof') {
+                const baseTheme = options.baseTheme === 'dark' || options.baseTheme === 'poster'
+                    ? options.baseTheme
+                    : (previousTheme === 'dark' ? 'dark' : getStoredBaseTheme());
+                localStorage.setItem('themeBase', baseTheme);
+            } else {
+                localStorage.setItem('themeBase', resolvedTheme);
+            }
+        }
+
+        updateThemeIcon();
+        dispatchThemeChange(resolvedTheme);
+
+        if (trackAnalytics && window.VercelAnalytics) {
+            window.VercelAnalytics.trackThemeChange(resolvedTheme);
+        }
+
+        return resolvedTheme;
+    }
+
+    window.TrijbsThemeController = {
+        getTheme() {
+            return html.getAttribute('data-theme') || 'poster';
+        },
+        getBaseTheme() {
+            return getStoredBaseTheme();
+        },
+        setTheme(theme, options = {}) {
+            return setTheme(theme, options);
+        },
+        cycleTheme() {
+            const currentTheme = html.getAttribute('data-theme');
+            const nextTheme = currentTheme === 'dark'
+                ? 'poster'
+                : currentTheme === 'proof'
+                    ? getStoredBaseTheme()
+                    : 'dark';
+
+            return setTheme(nextTheme, {
+                persist: true,
+                trackAnalytics: true
+            });
+        }
+    };
+
+    setTheme(getStoredTheme(), {
+        persist: false,
+        trackAnalytics: false
+    });
+
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'poster' : 'dark';
-            
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon();
-            
-            // Track theme change
-            if (window.VercelAnalytics) {
-                window.VercelAnalytics.trackThemeChange(newTheme);
-            }
+            window.TrijbsThemeController.cycleTheme();
         });
     }
     
@@ -1274,6 +1349,13 @@ document.addEventListener('DOMContentLoaded', () => {
             resetProjectDetailsScroll(modal, bodyElement);
             requestAnimationFrame(() => resetProjectDetailsScroll(modal, bodyElement));
             replaceFeatherIcons();
+
+            document.dispatchEvent(new CustomEvent('trijbs:projectdetailsopen', {
+                detail: {
+                    projectId,
+                    title: project.title
+                }
+            }));
 
             if (window.VercelAnalytics) {
                 window.VercelAnalytics.trackEvent('project_details_view', {
