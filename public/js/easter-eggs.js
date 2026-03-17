@@ -1,12 +1,12 @@
 (function () {
     const STORAGE_KEY = 'trijbsEasterEggs.v1';
     const SESSION_BOOT_KEY = 'trijbsEasterEggs.sessionBoot.v1';
-    const SESSION_SECRET_PREFIX = 'trijbsEasterEggs.sessionSecret.';
+    const SESSION_FLAG_PREFIX = 'trijbsEasterEggs.flag.';
     const LAB_PATH = '/lab';
     const GRID_BADGE_ID = 'found-grid';
     const LAB_BADGE_ID = 'entered-lab';
     const CASE_STUDY_BADGE_ID = 'opened-five-case-studies';
-    const NAME_SELECTION_SECRET = 'name-selection';
+    const NAME_SELECTION_FLAG = 'ns1';
     const GRID_SEQUENCE = 'grid';
     const KONAMI_SEQUENCE = [
         'ArrowUp',
@@ -62,9 +62,7 @@
             openedProjectSlugs: [],
             labUnlocked: false,
             proofModeSeen: false,
-            sessionSecrets: [],
-            specialDateLastShown: '',
-            proofBaseTheme: 'poster'
+            specialDateLastShown: ''
         };
 
         try {
@@ -79,9 +77,7 @@
                 openedProjectSlugs: Array.isArray(parsed.openedProjectSlugs) ? parsed.openedProjectSlugs : [],
                 labUnlocked: parsed.labUnlocked === true,
                 proofModeSeen: parsed.proofModeSeen === true,
-                sessionSecrets: Array.isArray(parsed.sessionSecrets) ? parsed.sessionSecrets : [],
-                specialDateLastShown: typeof parsed.specialDateLastShown === 'string' ? parsed.specialDateLastShown : '',
-                proofBaseTheme: parsed.proofBaseTheme === 'dark' ? 'dark' : 'poster'
+                specialDateLastShown: typeof parsed.specialDateLastShown === 'string' ? parsed.specialDateLastShown : ''
             };
         } catch (error) {
             return fallbackState;
@@ -102,11 +98,6 @@
         }
 
         sessionStorage.setItem(SESSION_BOOT_KEY, String(Date.now()));
-
-        if (state.sessionSecrets.length) {
-            state.sessionSecrets = [];
-            saveState();
-        }
     }
 
     function hasReducedMotion() {
@@ -143,21 +134,16 @@
         }, 2600);
     }
 
-    function markSessionSecret(secretId) {
-        if (!secretId) {
+    function markSessionFlag(flagId) {
+        if (!flagId) {
             return;
         }
 
-        sessionStorage.setItem(SESSION_SECRET_PREFIX + secretId, '1');
-        if (!state.sessionSecrets.includes(secretId)) {
-            state.sessionSecrets.push(secretId);
-            saveState();
-        }
+        sessionStorage.setItem(SESSION_FLAG_PREFIX + flagId, '1');
     }
 
-    function hasSeenSessionSecret(secretId) {
-        return sessionStorage.getItem(SESSION_SECRET_PREFIX + secretId) === '1'
-            || state.sessionSecrets.includes(secretId);
+    function hasSessionFlag(flagId) {
+        return sessionStorage.getItem(SESSION_FLAG_PREFIX + flagId) === '1';
     }
 
     function unlockBadge(badgeId, toastMessage, options = {}) {
@@ -370,7 +356,7 @@
     }
 
     function maybeShowSelectionSecret() {
-        if (hasSeenSessionSecret(NAME_SELECTION_SECRET)) {
+        if (hasSessionFlag(NAME_SELECTION_FLAG)) {
             return;
         }
 
@@ -389,7 +375,7 @@
             return;
         }
 
-        markSessionSecret(NAME_SELECTION_SECRET);
+        markSessionFlag(NAME_SELECTION_FLAG);
         showSelectionCard(rect);
     }
 
@@ -692,7 +678,6 @@
             : (currentTheme === 'dark' ? 'dark' : 'poster');
 
         state.proofModeSeen = true;
-        state.proofBaseTheme = baseTheme;
         saveState();
 
         window.TrijbsThemeController.setTheme('proof', {
