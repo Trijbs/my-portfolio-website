@@ -5361,3 +5361,378 @@ section {
     padding-top: var(--spacing-lg);
   }
 }
+   v3.0 OVERHAUL — NEW COMPONENT STYLES
+   ============================================================ */
+
+/* ── Currently Block ── */
+.currently-block {
+  margin-top: var(--spacing-lg);
+  padding: 0.75rem 1rem;
+  border-left: 2px solid var(--accent-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-tertiary);
+  line-height: 1.5;
+}
+
+.currently-block strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.currently-block a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.currently-block a:hover strong {
+  color: var(--accent-secondary);
+}
+
+.currently-label {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-secondary);
+  margin-right: 0.5em;
+}
+
+/* ── Practice Grid (replaces skill bars) ── */
+.practice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+@media (max-width: 767px) {
+  .practice-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.practice-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--bg-tertiary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  position: relative;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.practice-card:hover {
+  border-color: var(--accent-secondary);
+  transform: translateY(-2px);
+}
+
+.practice-number {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.practice-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+  color: var(--text-primary);
+}
+
+.practice-card p {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.practice-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.practice-tags span {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-tertiary);
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+  padding: 0.2em 0.55em;
+  letter-spacing: 0.03em;
+}
+
+/* ── Code Preview Cards (for projects without screenshots) ── */
+.code-preview-card .project-image {
+  background: var(--preview-bg, #0a0a0a);
+  min-height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.code-preview-card .project-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 40%, color-mix(in srgb, var(--preview-accent, #c8ff00) 12%, transparent), transparent 65%);
+  pointer-events: none;
+}
+
+.code-preview {
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.code-preview-inner {
+  width: 100%;
+  max-width: 320px;
+}
+
+.code-preview-sigil {
+  font-family: var(--font-mono);
+  font-size: 2.8rem;
+  font-weight: 500;
+  color: var(--preview-accent, #c8ff00);
+  letter-spacing: 0.05em;
+  line-height: 1;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 40px color-mix(in srgb, var(--preview-accent, #c8ff00) 40%, transparent);
+}
+
+.code-preview-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--preview-accent, #c8ff00) 20%, transparent);
+}
+
+.code-preview-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: color-mix(in srgb, var(--preview-accent, #c8ff00) 60%, white);
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+}
+
+.code-preview-url {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: color-mix(in srgb, white 30%, transparent);
+  letter-spacing: 0.04em;
+}
+
+.code-preview-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.cpl {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  display: flex;
+  gap: 0.75em;
+}
+
+.cpl-k {
+  color: color-mix(in srgb, white 35%, transparent);
+  min-width: 5em;
+}
+
+.cpl-v {
+  color: color-mix(in srgb, white 60%, transparent);
+}
+
+.cpl-active {
+  color: var(--preview-accent, #c8ff00);
+}
+
+/* ── Status badge: build type ── */
+.status-badge.build {
+  background: rgba(67, 233, 123, 0.12);
+  color: #43e97b;
+  border: 1px solid rgba(67, 233, 123, 0.2);
+}
+
+/* ── Info page improvements ── */
+.info-section {
+  padding: var(--spacing-xxl) 0;
+}
+
+.info-section h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: var(--spacing-xl);
+  color: var(--text-primary);
+}
+
+.info-content {
+  max-width: 640px;
+}
+
+.info-links {
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-xl);
+  border-bottom: 1px solid var(--bg-tertiary);
+}
+
+.info-links:last-child {
+  border-bottom: none;
+}
+
+.info-links h2 {
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-md);
+  color: var(--text-primary);
+}
+
+.info-links p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.info-links a {
+  color: var(--accent-secondary);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.info-links a:hover {
+  color: var(--accent-tertiary);
+}
+
+.info-links-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 0.5rem;
+}
+
+.info-links-subtle h2 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.quiet-links {
+  list-style: none;
+  padding: 0;
+  margin: var(--spacing-md) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.quiet-links li a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-family: var(--font-body);
+  transition: color var(--transition-fast);
+}
+
+.quiet-links li a::before {
+  content: '↗';
+  font-size: 0.7em;
+  color: var(--accent-secondary);
+  font-family: var(--font-mono);
+}
+
+.quiet-links li a:hover {
+  color: var(--text-primary);
+}
+
+/* ── Remove old skill-bar styles from rendered output ── */
+.skill-item,
+.skill-bar,
+.skill-progress,
+.technical-skills,
+.creative-capabilities,
+.workflow-list,
+.workflow-step {
+  /* Retained for backwards compat if JS references them, but hidden visually */
+  display: none;
+}
+
+/* ── Project card: remove fake stat rows ── */
+.project-stats {
+  display: none;
+}
+
+/* ── Small refinements to existing components ── */
+.hero-title {
+  letter-spacing: -0.02em;
+}
+
+.section-title {
+  letter-spacing: -0.015em;
+}
+
+/* Subtle grain overlay on hero */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.4;
+  z-index: 0;
+}
+
+.hero-section {
+  position: relative;
+}
+
+.hero-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Dark theme code preview adjustments ── */
+[data-theme="dark"] .practice-card,
+.theme-dark .practice-card {
+  background: var(--bg-secondary);
+  border-color: var(--bg-tertiary);
+}
+
+[data-theme="dark"] .practice-tags span,
+.theme-dark .practice-tags span {
+  background: var(--bg-tertiary);
+}
+
+/* ── Mobile: currently block ── */
+@media (max-width: 480px) {
+  .currently-block {
+    font-size: 0.72rem;
+  }
+}
+
+/* ── Accessibility: reduce motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .practice-card:hover {
+    transform: none;
+  }
+  .code-preview-card .project-image::before {
+    display: none;
+  }
+}

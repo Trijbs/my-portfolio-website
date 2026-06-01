@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Info | Ruben Trijbs</title>
+    <title>Info | Trijbs</title>
+    <meta name="description" content="Contact info, links, and a quiet collection of sites that feel inspiring, inventive, or just nicely made.">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="css/styles.css?v=2.3.0">
+    <link rel="preload" href="/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/ibm-plex-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/styles.css?v=3.0.0">
     <script src="js/vendor/feather.min.js?v=2.2.0"></script>
 </head>
 <body class="theme-poster">
@@ -16,17 +20,21 @@
                     <span class="logo-text">trijbs</span>
                 </a>
             </div>
-            <nav class="main-nav">
+            <nav class="main-nav" id="primary-nav">
                 <ul>
                     <li><a href="/#about">About</a></li>
-                    <li><a href="/#skills">Skills</a></li>
-                    <li><a href="/#projects">Projects</a></li>
+                    <li><a href="/#skills">Practice</a></li>
+                    <li><a href="/#projects">Work</a></li>
                     <li><a href="/#contact">Contact</a></li>
-                    <li><a href="/info.html">Info</a></li>
+                    <li><a href="/info.html" aria-current="page">Info</a></li>
                 </ul>
             </nav>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
                 <i data-feather="moon"></i>
+            </button>
+            <button class="mobile-menu-toggle" aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
+                <i data-feather="menu" class="icon-menu"></i>
+                <i data-feather="x" class="icon-close" style="display:none"></i>
             </button>
         </div>
     </header>
@@ -34,19 +42,21 @@
     <main style="padding-top: 100px;">
         <section class="info-section">
             <div class="container">
-                <h1>Portfolio Information</h1>
-                
-                <div class="info-content"> 
-                    <p>This section provides detailed contact information and links to my social profiles.</p>
 
+                <h1>Info</h1>
+
+                <div class="info-content">
+
+                    <!-- Contact -->
                     <div class="info-links">
-                        <h2>Contact Information</h2>
+                        <h2>Contact</h2>
                         <p>Email: <a href="mailto:rbdegroot@gmail.com">rbdegroot@gmail.com</a></p>
-                        <p>GitHub: <a href="https://github.com/trijbs" target="_blank">@trijbs</a></p>
-                        <p>Instagram: <a href="https://www.instagram.com/trijbsworld/" target="_blank">@trijbsworld</a></p>
-                        <p>Pinterest: <a href="https://nl.pinterest.com/closesz/" target="_blank">closesz</a></p>
+                        <p>GitHub: <a href="https://github.com/trijbs" target="_blank" rel="noopener noreferrer">@trijbs</a></p>
+                        <p>Instagram: <a href="https://www.instagram.com/trijbsworld/" target="_blank" rel="noopener noreferrer">@trijbsworld</a></p>
+                        <p>Pinterest: <a href="https://nl.pinterest.com/closesz/" target="_blank" rel="noopener noreferrer">closesz</a></p>
                     </div>
-                    
+
+                    <!-- Cool Links — content preserved exactly as original -->
                     <section class="info-links info-links-subtle" aria-labelledby="cool-links-title">
                         <span class="info-links-eyebrow">Collected</span>
                         <h2 id="cool-links-title">Cool Links</h2>
@@ -56,21 +66,55 @@
                             <li><a href="https://pointerpointer.com" target="_blank" rel="noopener noreferrer">Pointer Pointer</a></li>
                             <li><a href="https://simone.computer" target="_blank" rel="noopener noreferrer">Simone Computer</a></li>
                             <li><a href="https://theuselessweb.com" target="_blank" rel="noopener noreferrer">The Useless Web</a></li>
-                            <li><a href="https://www.instagram.com/soph.hackmanart/?hl=en" target="_blank" rel="noopener noreferrer">Sophie Hackmanart</li>
+                            <li><a href="https://www.instagram.com/soph.hackmanart/?hl=en" target="_blank" rel="noopener noreferrer">Sophie Hackmanart</a></li>
                         </ul>
                     </section>
+
                 </div>
             </div>
         </section>
     </main>
 
-    <script src="js/vercel-analytics.js?v=2.1.3"></script>
-    <script src="js/privacy-controls.js?v=2.1.3"></script>
-    <script src="js/main.js?v=2.3.0"></script>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-bottom">
+                    <div class="copyright">
+                        <p>&copy; 2026 Ruben Trijbels &mdash; <a href="https://mvxworld.art" target="_blank" rel="noopener noreferrer">mvxworld.art</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/vercel-analytics.js?v=2.2.0"></script>
+    <script src="js/privacy-controls.js?v=2.2.0"></script>
+    <script src="js/main.js?v=3.0.0"></script>
     <script src="js/easter-eggs.js?v=2.3.0"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            feather.replace();
+            if (window.feather) feather.replace();
+
+            const bodyEl = document.body;
+            const nav = document.getElementById('primary-nav');
+            const menuBtn = document.querySelector('.mobile-menu-toggle');
+            if (menuBtn) {
+                function setMenuState(open) {
+                    bodyEl.classList.toggle('nav-open', open);
+                    document.body.style.overflow = open ? 'hidden' : '';
+                    menuBtn.setAttribute('aria-expanded', String(open));
+                    const iconMenu = menuBtn.querySelector('.icon-menu');
+                    const iconClose = menuBtn.querySelector('.icon-close');
+                    if (iconMenu && iconClose) {
+                        iconMenu.style.display = open ? 'none' : '';
+                        iconClose.style.display = open ? '' : 'none';
+                    }
+                }
+                menuBtn.addEventListener('click', () => setMenuState(!bodyEl.classList.contains('nav-open')));
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth >= 1024 && bodyEl.classList.contains('nav-open')) setMenuState(false);
+                });
+            }
         });
     </script>
 </body>
