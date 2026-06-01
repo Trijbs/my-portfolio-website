@@ -10,7 +10,11 @@
     <meta name="author" content="Trijbs">
     <meta property="og:title" content="Trijbs | Designer · Developer · Builder">
     <meta property="og:description" content="I work at the intersection of design and code, building interfaces, interactive experiments, and digital worlds from scratch.">
-    <meta property="og:image" content="https://www.trijbsworld.nl/media/profile-hero-640.jpg">
+    <meta property="og:image" content="https://www.trijbsworld.nl/img/og-card.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.trijbsworld.nl/img/og-card.svg">
     <meta property="og:url" content="https://www.trijbsworld.nl">
     <link rel="canonical" href="https://www.trijbsworld.nl">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -67,6 +71,7 @@
                     <li><a href="#projects">Work</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="/info.html">Info</a></li>
+                    <li><a href="/lab.html">Lab</a></li>
                 </ul>
             </nav>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
@@ -95,7 +100,7 @@
                             <a href="#projects" class="btn btn-primary">Selected Work</a>
                             <a href="#about" class="btn btn-secondary">How I think</a>
                         </div>
-                        <div class="currently-block">
+                        <div class="currently-block" id="currentlyBlock">
                             <span class="currently-label">currently</span>
                             building <a href="https://mvxworld.art" target="_blank" rel="noopener noreferrer"><strong>mvxworld.art</strong></a> &middot; shipping <strong>KAAR</strong> &middot; thinking about <strong>worlds</strong>
                         </div>
@@ -889,6 +894,31 @@
         </div>
     </div>
 
+    <script>
+        // Live "currently" block driven by /data/status.json
+        (function () {
+            fetch('/data/status.json', { credentials: 'same-origin' })
+                .then(function (r) { return r.ok ? r.json() : null; })
+                .then(function (s) {
+                    if (!s) return;
+                    var block = document.getElementById('currentlyBlock');
+                    if (!block) return;
+                    var parts = [];
+                    if (s.building) {
+                        var link = s.buildingUrl
+                            ? '<a href="' + s.buildingUrl + '" target="_blank" rel="noopener noreferrer"><strong>' + s.building + '</strong></a>'
+                            : '<strong>' + s.building + '</strong>';
+                        parts.push('building ' + link);
+                    }
+                    if (s.shipping) parts.push('shipping <strong>' + s.shipping + '</strong>');
+                    if (s.thinking) parts.push('thinking about <strong>' + s.thinking + '</strong>');
+                    if (parts.length) {
+                        block.innerHTML = '<span class="currently-label">currently</span> ' + parts.join(' &middot; ');
+                    }
+                })
+                .catch(function () {}); // silently keep hardcoded fallback
+        })();
+    </script>
     <script src="js/vendor/feather.min.js?v=2.2.0"></script>
     <script src="js/main.js?v=3.1.0"></script>
     <script src="js/easter-eggs.js?v=2.3.0"></script>
