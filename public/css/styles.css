@@ -6435,14 +6435,14 @@ section {
    v3.2 — MARQUEE FULL-WIDTH FIX + ENHANCEMENTS
    ================================================================ */
 
-/* ── Marquee: break out of container to full viewport width ── */
+/* ── Marquee: full-width within its card, not breaking outside ── */
 .tools-marquee-wrap {
   position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  width: 100vw;
+  left: auto;
+  right: auto;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
   overflow: hidden;
   padding: 1.1rem 0;
   margin-top: var(--spacing-lg);
@@ -6450,26 +6450,26 @@ section {
   border-bottom: 1px solid var(--bg-tertiary);
 }
 
-/* Wider fade masks now that it's truly full-width */
+/* Fade masks — reference the card's background colour */
 .tools-marquee-wrap::before,
 .tools-marquee-wrap::after {
   content: '';
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 8rem;
+  width: 6rem;
   z-index: 2;
   pointer-events: none;
 }
 
 .tools-marquee-wrap::before {
   left: 0;
-  background: linear-gradient(to right, var(--bg-primary) 20%, transparent);
+  background: linear-gradient(to right, var(--bg-secondary) 30%, transparent);
 }
 
 .tools-marquee-wrap::after {
   right: 0;
-  background: linear-gradient(to left, var(--bg-primary) 20%, transparent);
+  background: linear-gradient(to left, var(--bg-secondary) 30%, transparent);
 }
 
 /* ── OG card image ── */
