@@ -9,16 +9,14 @@
     <link rel="preload" href="/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/ibm-plex-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="css/styles.css?v=3.0.0">
-    <script src="js/vendor/feather.min.js?v=2.2.0"></script>
+    <link rel="stylesheet" href="css/styles.css?v=3.1.0">
 </head>
 <body class="theme-poster">
+
     <header class="header">
         <div class="container">
             <div class="logo">
-                <a href="/" class="logo-container">
-                    <span class="logo-text">trijbs</span>
-                </a>
+                <a href="/" class="logo-container"><span class="logo-text">trijbs</span></a>
             </div>
             <nav class="main-nav" id="primary-nav">
                 <ul>
@@ -39,29 +37,44 @@
         </div>
     </header>
 
-    <main style="padding-top: 100px;">
-        <section class="info-section">
-            <div class="container">
+    <main class="info-main">
+        <div class="container">
+            <div class="info-page-inner">
 
-                <h1>Info</h1>
+                <header class="info-page-header">
+                    <span class="section-tag">Info</span>
+                    <h1 class="info-page-title">Trijbs</h1>
+                </header>
 
-                <div class="info-content">
+                <div class="info-page-grid">
 
-                    <!-- Contact -->
-                    <div class="info-links">
-                        <h2>Contact</h2>
-                        <p>Email: <a href="mailto:rbdegroot@gmail.com">rbdegroot@gmail.com</a></p>
-                        <p>GitHub: <a href="https://github.com/trijbs" target="_blank" rel="noopener noreferrer">@trijbs</a></p>
-                        <p>Instagram: <a href="https://www.instagram.com/trijbsworld/" target="_blank" rel="noopener noreferrer">@trijbsworld</a></p>
-                        <p>Pinterest: <a href="https://nl.pinterest.com/closesz/" target="_blank" rel="noopener noreferrer">closesz</a></p>
-                    </div>
+                    <section class="info-block" aria-labelledby="contact-heading">
+                        <h2 class="info-block-title" id="contact-heading">Contact</h2>
+                        <ul class="info-link-list">
+                            <li>
+                                <span class="info-link-label">Email</span>
+                                <a href="mailto:trijbsprod@icloud.com">trijbsprod@icloud.com</a>
+                            </li>
+                            <li>
+                                <span class="info-link-label">GitHub</span>
+                                <a href="https://github.com/trijbs" target="_blank" rel="noopener noreferrer">@trijbs</a>
+                            </li>
+                            <li>
+                                <span class="info-link-label">Instagram</span>
+                                <a href="https://www.instagram.com/trijbsworld/" target="_blank" rel="noopener noreferrer">@trijbsworld</a>
+                            </li>
+                            <li>
+                                <span class="info-link-label">Pinterest</span>
+                                <a href="https://nl.pinterest.com/closesz/" target="_blank" rel="noopener noreferrer">closesz</a>
+                            </li>
+                        </ul>
+                    </section>
 
-                    <!-- Cool Links — content preserved exactly as original -->
-                    <section class="info-links info-links-subtle" aria-labelledby="cool-links-title">
-                        <span class="info-links-eyebrow">Collected</span>
-                        <h2 id="cool-links-title">Cool Links</h2>
-                        <p>A quiet place to collect websites and personal pages that feel inspiring, inventive, or just nicely made.</p>
-                        <ul class="quiet-links">
+                    <section class="info-block" aria-labelledby="cool-links-heading">
+                        <span class="info-block-eyebrow">Collected</span>
+                        <h2 class="info-block-title" id="cool-links-heading">Cool Links</h2>
+                        <p class="info-block-desc">A quiet place to collect websites and personal pages that feel inspiring, inventive, or just nicely made.</p>
+                        <ul class="info-link-list info-quiet-links">
                             <li><a href="https://gui.neocities.org" target="_blank" rel="noopener noreferrer">GUI Gallery</a></li>
                             <li><a href="https://pointerpointer.com" target="_blank" rel="noopener noreferrer">Pointer Pointer</a></li>
                             <li><a href="https://simone.computer" target="_blank" rel="noopener noreferrer">Simone Computer</a></li>
@@ -72,44 +85,38 @@
 
                 </div>
             </div>
-        </section>
+        </div>
     </main>
 
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-bottom">
-                    <div class="copyright">
-                        <p>&copy; 2026 Ruben Trijbels &mdash; <a href="https://mvxworld.art" target="_blank" rel="noopener noreferrer">mvxworld.art</a></p>
-                    </div>
+                    <p>&copy; 2026 Trijbs &middot; <a href="https://mvxworld.art" target="_blank" rel="noopener noreferrer">mvxworld.art</a></p>
                 </div>
             </div>
         </div>
     </footer>
 
+    <script src="js/vendor/feather.min.js?v=2.2.0"></script>
     <script src="js/vercel-analytics.js?v=2.2.0"></script>
     <script src="js/privacy-controls.js?v=2.2.0"></script>
-    <script src="js/main.js?v=3.0.0"></script>
-    <script src="js/easter-eggs.js?v=2.3.0"></script>
+    <script src="js/main.js?v=3.1.0"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             if (window.feather) feather.replace();
-
             const bodyEl = document.body;
-            const nav = document.getElementById('primary-nav');
             const menuBtn = document.querySelector('.mobile-menu-toggle');
-            if (menuBtn) {
-                function setMenuState(open) {
+            const nav = document.getElementById('primary-nav');
+            if (menuBtn && nav) {
+                const setMenuState = (open) => {
                     bodyEl.classList.toggle('nav-open', open);
                     document.body.style.overflow = open ? 'hidden' : '';
                     menuBtn.setAttribute('aria-expanded', String(open));
-                    const iconMenu = menuBtn.querySelector('.icon-menu');
-                    const iconClose = menuBtn.querySelector('.icon-close');
-                    if (iconMenu && iconClose) {
-                        iconMenu.style.display = open ? 'none' : '';
-                        iconClose.style.display = open ? '' : 'none';
-                    }
-                }
+                    const im = menuBtn.querySelector('.icon-menu');
+                    const ic = menuBtn.querySelector('.icon-close');
+                    if (im && ic) { im.style.display = open ? 'none' : ''; ic.style.display = open ? '' : 'none'; }
+                };
                 menuBtn.addEventListener('click', () => setMenuState(!bodyEl.classList.contains('nav-open')));
                 window.addEventListener('resize', () => {
                     if (window.innerWidth >= 1024 && bodyEl.classList.contains('nav-open')) setMenuState(false);
