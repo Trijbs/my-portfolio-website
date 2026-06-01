@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trijbs | UI/UX &amp; Web Designer</title>
-    <meta name="description" content="UI/UX and web designer crafting responsive websites, interface systems, e-commerce experiences, and creative digital products with strong visual direction.">
-    <meta name="keywords" content="ui ux designer, web designer, interface designer, responsive web design, portfolio, figma designer, freelance designer">
+    <title>Trijbs | Designer · Developer · Builder</title>
+    <meta name="description" content="Ruben Trijbels — designer, developer, and builder of interactive experiences, digital worlds, and visual systems. Based in the Netherlands.">
+    <meta name="keywords" content="designer developer, creative coding, interface design, web designer, portfolio, ruben trijbels, trijbs, interactive design, generative art">
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow">
     <meta name="author" content="Trijbs">
-    <meta property="og:title" content="Trijbs | UI/UX &amp; Web Designer">
-    <meta property="og:description" content="Designing modern websites and digital interfaces with a clear visual identity and strong user experience.">
+    <meta property="og:title" content="Trijbs | Designer · Developer · Builder">
+    <meta property="og:description" content="I work at the intersection of design and code — building interfaces, interactive experiments, and digital worlds from scratch.">
     <meta property="og:image" content="https://www.trijbsworld.nl/media/profile-hero-640.jpg">
     <meta property="og:url" content="https://www.trijbsworld.nl">
     <link rel="canonical" href="https://www.trijbsworld.nl">
@@ -24,32 +24,33 @@
         href="/media/profile-hero-640.jpg"
         imagesrcset="/media/profile-hero-320.jpg 320w, /media/profile-hero-480.jpg 480w, /media/profile-hero-640.jpg 640w"
         imagesizes="(max-width: 767px) calc(100vw - 2rem), 160px">
-    <link rel="stylesheet" href="css/styles.css?v=2.3.0">
+    <link rel="stylesheet" href="css/styles.css?v=3.0.0">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Person",
-        "name": "Ruben Trijbs",
-        "jobTitle": "UI/UX & Web Designer",
+        "name": "Ruben Trijbels",
+        "jobTitle": "Designer & Developer",
         "url": "https://www.trijbsworld.nl",
         "email": "rbdegroot@gmail.com",
         "sameAs": [
             "https://github.com/trijbs",
-            "https://www.instagram.com/trijbsworld/"
+            "https://www.instagram.com/trijbsworld/",
+            "https://mvxworld.art"
         ],
         "knowsAbout": [
-            "Web Design",
             "Interface Design",
-            "UI/UX Design",
-            "Interaction Design",
-            "JavaScript",
+            "Creative Coding",
+            "Brand Identity",
+            "Web Development",
+            "Three.js",
+            "WebGL",
+            "React",
+            "Next.js",
             "Figma",
-            "Responsive Web Design",
-            "CSS",
-            "HTML",
-            "E-commerce Solutions"
+            "Generative Art"
         ],
-        "description": "UI/UX and web designer specializing in responsive websites, interface systems, e-commerce experiences, and visually driven digital products."
+        "description": "Designer and developer building interfaces, interactive experiments, and digital worlds from scratch."
     }
     </script>
 </head>
@@ -64,8 +65,8 @@
             <nav class="main-nav" id="primary-nav">
                 <ul>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Practice</a></li>
+                    <li><a href="#projects">Work</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="/info.html">Info</a></li>
                 </ul>
@@ -81,22 +82,23 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
+        <!-- ================================================
+             HERO
+        ================================================ -->
         <section id="hero" class="hero-section">
             <div class="container">
                 <div class="hero-grid">
                     <div class="hero-copy">
-                        <span class="eyebrow">UI/UX &amp; Web Designer</span>
-                        <h1 class="hero-title">UI/UX and web design with a clear visual point of view.</h1>
-                        <p class="hero-lead">I design responsive websites, interface systems, and digital experiences that feel polished from the first screen.</p>
+                        <span class="eyebrow">Designer &middot; Developer &middot; Builder</span>
+                        <h1 class="hero-title">Making things that look right and feel earned.</h1>
+                        <p class="hero-lead">I work at the intersection of design and code &mdash; building interfaces, interactive experiments, and digital worlds from scratch. Based in the Netherlands.</p>
                         <div class="hero-actions">
                             <a href="#projects" class="btn btn-primary">Selected Work</a>
-                            <a href="#skills" class="btn btn-secondary">Process</a>
+                            <a href="#about" class="btn btn-secondary">How I think</a>
                         </div>
-                        <div class="hero-signals" aria-label="Key strengths">
-                            <span>Web Design</span>
-                            <span>UI Systems</span>
-                            <span>Responsive Build</span>
+                        <div class="currently-block">
+                            <span class="currently-label">currently</span>
+                            building <a href="https://mvxworld.art" target="_blank" rel="noopener noreferrer"><strong>mvxworld.art</strong></a> &middot; shipping <strong>KAAR</strong> &middot; thinking about <strong>worlds</strong>
                         </div>
                     </div>
                     <div class="hero-stage">
@@ -122,15 +124,15 @@
                                     decoding="async">
                             </picture>
                             <div class="portrait-copy">
-                                <span class="mini-label">About Ruben</span>
-                                <p>Based in the Netherlands, focused on design-led websites and visually clear digital work.</p>
+                                <span class="mini-label">Ruben Trijbels</span>
+                                <p>NL-based. Design-led. Always building something.</p>
                             </div>
                         </aside>
                         <div class="hero-stage-panel hero-summary-panel">
                             <article class="stage-main-card">
-                                <span class="mini-label">Best fit</span>
-                                <h2>Landing pages, portfolios, and e-commerce concepts.</h2>
-                                <p>Clear hierarchy, cleaner interactions, and a design-to-development workflow that stays close to the original idea.</p>
+                                <span class="mini-label">The practice</span>
+                                <h2>Interface design, creative coding, and world-building as one gesture.</h2>
+                                <p>I don&apos;t separate design from development. The best work happens when both inform each other from the start.</p>
                             </article>
                         </div>
                     </div>
@@ -138,180 +140,159 @@
             </div>
         </section>
 
-        <!-- About Section -->
+        <!-- ================================================
+             ABOUT
+        ================================================ -->
         <section id="about" class="about-section">
             <div class="container">
                 <div class="section-header section-header-left">
-                    <span class="section-tag">Design Perspective</span>
-                    <h2 class="section-title">Work that looks intentional before you explain it.</h2>
-                    <p class="section-description">My portfolio is built around the kind of projects where layout, hierarchy, and user experience need to carry the first impression. I care about how a screen feels, how fast it reads, and how naturally it guides people forward.</p>
+                    <span class="section-tag">The Practice</span>
+                    <h2 class="section-title">Design and code are the same gesture, just different tools.</h2>
+                    <p class="section-description">I&apos;m a designer and developer who builds from first principles. The portfolio spans interactive experiences, brand identities, mobile apps, full-stack builds, and automated systems.</p>
                 </div>
                 <div class="about-layout">
                     <div class="about-story">
-                        <p class="about-highlight">I work between visual design and front-end execution, which keeps the final website close to the original concept.</p>
-                        <p>That means I am not only thinking about aesthetics. I am thinking about how navigation behaves, how components scale, how sections create momentum, and how a design system stays consistent across desktop and mobile.</p>
+                        <p class="about-highlight">The most interesting problems live between disciplines &mdash; where a visual decision is also a technical one, and the line between designer and engineer stops mattering.</p>
+                        <p>I started with graphic design, moved into front-end, and kept expanding from there. Today I build interactive experiences with Three.js and WebGL, design visual systems in Figma, develop full-stack apps with React and Next.js, and build automated tools when something should exist and doesn&apos;t yet. I also run a separate creative universe at <a href="https://mvxworld.art" target="_blank" rel="noopener noreferrer">mvxworld.art</a> &mdash; a personal identity hub I treat as a living archive and design experiment.</p>
+                        <p>What drives me is originality. Work that couldn&apos;t belong to anyone else. Work that has a point of view before it needs an explanation.</p>
                     </div>
                     <div class="principles-grid">
                         <article class="principle-card">
                             <span class="mini-label">01</span>
-                            <h3>Visual clarity</h3>
-                            <p>Strong typography, calm spacing, and contrast that lets the message land quickly.</p>
+                            <h3>First principles</h3>
+                            <p>I prefer building from scratch over assembling templates. Understanding the why makes every decision sharper.</p>
                         </article>
                         <article class="principle-card">
                             <span class="mini-label">02</span>
-                            <h3>User flow</h3>
-                            <p>Interfaces that guide visitors naturally instead of making them search for the next step.</p>
+                            <h3>Design close to code</h3>
+                            <p>Design decisions made without understanding the implementation rarely survive contact with reality. I close that gap by working both sides.</p>
                         </article>
                         <article class="principle-card">
                             <span class="mini-label">03</span>
-                            <h3>Responsive finish</h3>
-                            <p>Design decisions that stay sharp across screen sizes and feel built, not just mocked up.</p>
+                            <h3>Originality over optimization</h3>
+                            <p>A portfolio should have a point of view. Work that could belong to anyone isn&apos;t worth making. The interesting stuff lives past the generic solution.</p>
                         </article>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Skills Section -->
+        <!-- ================================================
+             PRACTICE (formerly Skills)
+        ================================================ -->
         <section id="skills" class="skills-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag">Workflow &amp; Toolkit</span>
-                    <h2 class="section-title">How I approach UI/UX<br>and web design</h2>
-                    <p class="section-description">I focus on the parts of a project that shape how professional and usable it feels: visual systems, layout rhythm, interaction cues, and a clean handoff into code.</p>
+                    <span class="section-tag">Disciplines</span>
+                    <h2 class="section-title">How I work<br>and what I build</h2>
+                    <p class="section-description">I move across design and development depending on what the work needs. Most of my best projects live at the boundary between both.</p>
                 </div>
-                
-                <div class="skills-container">
-                    <div class="technical-skills">
-                        <h3>Core Design Strengths</h3>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>UI Design</span>
-                                <span>92%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="92"></div>
-                            </div>
+
+                <div class="practice-grid">
+                    <article class="practice-card">
+                        <span class="practice-number">01</span>
+                        <h3>Interface Design</h3>
+                        <p>Visual systems, UI components, typography hierarchy, responsive layouts, and design-to-development handoff. Figma-first, then close to the browser.</p>
+                        <div class="practice-tags">
+                            <span>Figma</span>
+                            <span>UI Systems</span>
+                            <span>Prototyping</span>
+                            <span>Design Tokens</span>
                         </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Responsive Web Design</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="90"></div>
-                            </div>
+                    </article>
+                    <article class="practice-card">
+                        <span class="practice-number">02</span>
+                        <h3>Creative Coding</h3>
+                        <p>Interactive web experiences, WebGL, generative visuals, audio-reactive interfaces. The space where code becomes a design medium rather than just an output.</p>
+                        <div class="practice-tags">
+                            <span>Three.js</span>
+                            <span>WebGL</span>
+                            <span>Canvas API</span>
+                            <span>React</span>
                         </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>UX Structure</span>
-                                <span>86%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="86"></div>
-                            </div>
+                    </article>
+                    <article class="practice-card">
+                        <span class="practice-number">03</span>
+                        <h3>Brand &amp; Identity</h3>
+                        <p>Visual identity systems, campaign design, exhibition concepts, motion. Making a brand feel consistent and intentional across every format and touchpoint.</p>
+                        <div class="practice-tags">
+                            <span>Identity Systems</span>
+                            <span>Print</span>
+                            <span>Motion</span>
+                            <span>Social Campaigns</span>
                         </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Prototyping</span>
-                                <span>84%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="84"></div>
-                            </div>
+                    </article>
+                    <article class="practice-card">
+                        <span class="practice-number">04</span>
+                        <h3>Build &amp; Automate</h3>
+                        <p>Full-stack apps, mobile prototypes, bots, and tools. When something should exist and doesn&apos;t &mdash; I build it. Shipping counts as much as designing.</p>
+                        <div class="practice-tags">
+                            <span>Next.js</span>
+                            <span>TypeScript</span>
+                            <span>Python</span>
+                            <span>React Native</span>
                         </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Design-to-Development</span>
-                                <span>88%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="88"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="creative-capabilities">
-                        <h3>Design Workflow</h3>
-                        <div class="workflow-list">
-                            <article class="workflow-step">
-                                <span class="mini-label">Discover</span>
-                                <p>Understand the brand, audience, and what the page needs to communicate first.</p>
-                            </article>
-                            <article class="workflow-step">
-                                <span class="mini-label">Structure</span>
-                                <p>Build hierarchy, layout rhythm, and clear page sections before adding polish.</p>
-                            </article>
-                            <article class="workflow-step">
-                                <span class="mini-label">Refine</span>
-                                <p>Develop the visual language with typography, color, components, and interaction details.</p>
-                            </article>
-                            <article class="workflow-step">
-                                <span class="mini-label">Launch</span>
-                                <p>Translate the design into responsive front-end work with consistent spacing and behavior.</p>
-                            </article>
-                        </div>
-                    </div>
+                    </article>
                 </div>
-                
+
                 <div class="toolbelt-panel">
                     <div class="toolbelt-copy">
-                        <span class="mini-label">Tools &amp; Outputs</span>
-                        <h3>What I usually deliver in a design-led project</h3>
-                        <p>Wireframes, interface concepts, component thinking, responsive layouts, Figma-based visuals, and production-ready front-end details.</p>
+                        <span class="mini-label">Stack</span>
+                        <h3>The usual tools</h3>
+                        <p>Figma &middot; HTML &amp; CSS &middot; JavaScript &middot; TypeScript &middot; React &middot; Next.js &middot; Three.js &middot; Node.js &middot; Python &middot; Supabase &middot; Vercel &middot; Git</p>
                     </div>
                     <div class="capabilities-grid designer-grid">
                         <div class="capability-item">
                             <i data-feather="pen-tool"></i>
-                            <span>Figma Concepts</span>
-                        </div>
-                        <div class="capability-item">
-                            <i data-feather="grid"></i>
-                            <span>Layout Systems</span>
-                        </div>
-                        <div class="capability-item">
-                            <i data-feather="smartphone"></i>
-                            <span>Mobile UX</span>
-                        </div>
-                        <div class="capability-item">
-                            <i data-feather="shopping-bag"></i>
-                            <span>E-commerce UI</span>
-                        </div>
-                        <div class="capability-item">
-                            <i data-feather="pen-tool"></i>
-                            <span>Visual Direction</span>
+                            <span>Figma Design</span>
                         </div>
                         <div class="capability-item">
                             <i data-feather="code"></i>
                             <span>Front-end Build</span>
                         </div>
+                        <div class="capability-item">
+                            <i data-feather="cpu"></i>
+                            <span>Creative Coding</span>
+                        </div>
+                        <div class="capability-item">
+                            <i data-feather="smartphone"></i>
+                            <span>Mobile Apps</span>
+                        </div>
+                        <div class="capability-item">
+                            <i data-feather="globe"></i>
+                            <span>World-building</span>
+                        </div>
+                        <div class="capability-item">
+                            <i data-feather="zap"></i>
+                            <span>Automation</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
+        <!-- ================================================
+             PROJECTS
+        ================================================ -->
         <section id="projects" class="projects-section">
             <div class="container">
                 <div class="section-header">
                     <span class="section-tag">Selected Work</span>
-                    <h2 class="section-title">Projects that show<br>interface thinking</h2>
-                    <p class="section-description">These projects show how I work across interfaces, visual systems, campaigns, and archive pieces, with older work grouped into clearer collections so the portfolio stays easy to read.</p>
+                    <h2 class="section-title">Things I&apos;ve built<br>that I&apos;m proud of</h2>
+                    <p class="section-description">A curated selection. I&apos;ve removed anything that doesn&apos;t hold up &mdash; what&apos;s left is the work that has a clear reason to be here.</p>
                 </div>
-                
+
                 <div class="project-filters">
-                    <button class="filter-btn active" data-filter="all">All Projects</button>
-                    <button class="filter-btn" data-filter="uiux">UI / UX</button>
-                    <button class="filter-btn" data-filter="campaign">Campaign</button>
-                    <button class="filter-btn" data-filter="editorial">Editorial</button>
-                    <button class="filter-btn" data-filter="print">Print</button>
-                    <button class="filter-btn" data-filter="motion">Motion</button>
-                    <button class="filter-btn" data-filter="photo">Photo</button>
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="interactive">Interactive</button>
+                    <button class="filter-btn" data-filter="design">Design</button>
+                    <button class="filter-btn" data-filter="build">Build</button>
                 </div>
-                
+
                 <div class="projects-grid">
-                    <!-- Featured Project 1 -->
-                    <div class="project-card featured" data-category="uiux motion">
+
+                    <!-- ── URBAN UNLEASHED – Featured ── -->
+                    <div class="project-card featured" data-category="interactive build">
                         <div class="project-image">
                             <picture>
                                 <source
@@ -326,7 +307,7 @@
                                     src="media/urban-unleashed-cover-768.jpg"
                                     srcset="media/urban-unleashed-cover-480.jpg 480w, media/urban-unleashed-cover-768.jpg 768w, media/urban-unleashed-cover-1200.jpg 1200w"
                                     sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px"
-                                    alt="Urban Unleashed - Interactive Homescreen Interface"
+                                    alt="Urban Unleashed - Immersive landing page with Three.js and WebGL"
                                     width="1800"
                                     height="854"
                                     loading="lazy"
@@ -346,118 +327,47 @@
                             </div>
                         </div>
                         <div class="project-content">
-                            <p class="project-kicker">Interactive website concept</p>
+                            <p class="project-kicker">Immersive landing experience</p>
                             <div class="project-header">
                                 <h3>Urban Unleashed</h3>
                                 <div class="project-status">
                                     <span class="status-badge featured">Featured</span>
                                 </div>
                             </div>
-                            <p>An immersive landing experience where the interface acts as part of the brand. The concept combines bold visuals, intuitive controls, and a strong first-screen composition.</p>
+                            <p>A landing page where the interface is the brand. Bold visuals, WebGL motion, and a strong first-screen composition that holds up across every screen size.</p>
                             <div class="project-tags">
                                 <span class="tag">Next.js</span>
                                 <span class="tag">Three.js</span>
                                 <span class="tag">WebGL</span>
                                 <span class="tag">Generative Art</span>
                             </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <i data-feather="eye"></i>
-                                    <span>2.5k views</span>
-                                </div>
-                                <div class="stat">
-                                    <i data-feather="star"></i>
-                                    <span>4.8/5 rating</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
-                    
-                    <!-- Figma Design Project -->
-                    <div class="project-card figma-project" data-category="uiux">
+
+                    <!-- ── MVXWORLD – Featured, NEW ── -->
+                    <div class="project-card featured code-preview-card" data-category="interactive design build" style="--preview-bg:#0a0a09; --preview-accent:#c8ff00;">
                         <div class="project-image">
-                            <div class="figma-preview">
-                                <div class="figma-icon">
-                                    <svg width="60" height="60" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="#1ABCFE"/>
-                                        <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#0ACF83"/>
-                                        <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FF7262"/>
-                                        <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="#F24E1E"/>
-                                        <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="#A259FF"/>
-                                    </svg>
+                            <div class="code-preview" aria-hidden="true">
+                                <div class="code-preview-inner">
+                                    <div class="code-preview-sigil">MVX</div>
+                                    <div class="code-preview-meta">
+                                        <span class="code-preview-label">personal universe</span>
+                                        <span class="code-preview-url">mvxworld.art</span>
+                                    </div>
+                                    <div class="code-preview-lines">
+                                        <div class="cpl"><span class="cpl-k">building</span> <span class="cpl-v">the room</span></div>
+                                        <div class="cpl"><span class="cpl-k">transmission</span> <span class="cpl-v">002 / live</span></div>
+                                        <div class="cpl"><span class="cpl-k">status</span> <span class="cpl-v cpl-active">expanding ▸</span></div>
+                                    </div>
                                 </div>
-                                <p class="figma-label">Figma Design</p>
                             </div>
                             <div class="project-overlay">
                                 <div class="project-actions">
-                                    <button class="btn btn-primary figma-view" data-figma-url="https://www.figma.com/design/URqiY9oVCADc202Wqxb33c/opdracht-10?node-id=8-1346n" data-title="Opdracht 10 - Design Project">
-                                        <i data-feather="pen-tool"></i>
-                                        View in Figma
-                                    </button>
-                                    <button class="btn btn-secondary figma-embed" data-figma-embed="https://embed.figma.com/design/URqiY9oVCADc202Wqxb33c/opdracht-10?node-id=8-1346&embed-host=share" data-title="Opdracht 10 - Design Project">
-                                        <i data-feather="eye"></i>
-                                        Preview
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <p class="project-kicker">Figma case study</p>
-                            <div class="project-header">
-                                <h3>E-commerce UI Concept</h3>
-                                <div class="project-status">
-                                    <span class="status-badge design">Figma</span>
-                                </div>
-                            </div>
-                            <p>A focused UI/UX concept for an e-commerce experience with reusable components, clearer hierarchy, and prototype-driven exploration in Figma.</p>
-                            <div class="project-tags">
-                                <span class="tag">Figma</span>
-                                <span class="tag">UI/UX</span>
-                                <span class="tag">Design</span>
-                                <span class="tag">Prototype</span>
-                            </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <i data-feather="layers"></i>
-                                    <span>Design System</span>
-                                </div>
-                                <div class="stat">
-                                    <i data-feather="pen-tool"></i>
-                                    <span>Design System</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Project 2 -->
-                    <div class="project-card" data-category="uiux">
-                        <div class="project-image">
-                            <picture>
-                                <source
-                                    type="image/avif"
-                                    srcset="media/Webshop-480.avif 480w, media/Webshop-768.avif 768w, media/Webshop-1000.avif 1000w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
-                                <source
-                                    type="image/webp"
-                                    srcset="media/Webshop-480.webp 480w, media/Webshop-768.webp 768w, media/Webshop-1000.webp 1000w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
-                                <img
-                                    src="media/Webshop-768.webp"
-                                    srcset="media/Webshop-480.webp 480w, media/Webshop-768.webp 768w, media/Webshop-1000.webp 1000w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px"
-                                    alt="Modern E-commerce Platform"
-                                    width="1000"
-                                    height="510"
-                                    loading="lazy"
-                                    decoding="async">
-                            </picture>
-                            <div class="project-overlay">
-                                <div class="project-actions">
-                                    <button class="btn btn-primary live-demo" data-url="https://trijbs.eu/Webshop/" data-title="E-commerce Platform">
+                                    <button class="btn btn-primary live-demo" data-url="https://mvxworld.art" data-title="mvxworld.art">
                                         <i data-feather="external-link"></i>
-                                        Live Demo
+                                        Visit Site
                                     </button>
-                                    <button class="btn btn-secondary view-details" data-project="webshop">
+                                    <button class="btn btn-secondary view-details" data-project="mvxworld">
                                         <i data-feather="info"></i>
                                         Details
                                     </button>
@@ -465,183 +375,25 @@
                             </div>
                         </div>
                         <div class="project-content">
-                            <p class="project-kicker">Conversion-focused webshop design</p>
+                            <p class="project-kicker">Personal identity hub &amp; living archive</p>
                             <div class="project-header">
-                                <h3>E-commerce Platform</h3>
-                            </div>
-                            <p>A webshop concept built around product visibility, CTA hierarchy, and a smoother shopping flow. The design balances usability, trust, and visual consistency.</p>
-                            <div class="project-tags">
-                                <span class="tag">React</span>
-                                <span class="tag">Node.js</span>
-                                <span class="tag">MongoDB</span>
-                                <span class="tag">Stripe API</span>
-                            </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <i data-feather="shopping-cart"></i>
-                                    <span>E-commerce</span>
-                                </div>
-                                <div class="stat">
-                                    <i data-feather="users"></i>
-                                    <span>Multi-user</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Animated Infographic Video Project -->
-                    <div class="project-card video-project" data-category="motion campaign">
-                        <div class="project-image">
-                            <div class="video-preview">
-                                <span class="video-badge">Video</span>
-                                <picture>
-                                    <source
-                                        type="image/avif"
-                                        srcset="media/archive/infographic-poster-480.avif 480w, media/archive/infographic-poster-768.avif 768w, media/archive/infographic-poster-1200.avif 1200w"
-                                        sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
-                                    <source
-                                        type="image/webp"
-                                        srcset="media/archive/infographic-poster-480.webp 480w, media/archive/infographic-poster-768.webp 768w, media/archive/infographic-poster-1200.webp 1200w"
-                                        sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
-                                    <img
-                                        src="media/archive/infographic-poster-768.png"
-                                        srcset="media/archive/infographic-poster-480.png 480w, media/archive/infographic-poster-768.png 768w, media/archive/infographic-poster-1200.png 1200w"
-                                        sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px"
-                                        alt="Animated infographic preview"
-                                        width="1200"
-                                        height="675"
-                                        loading="lazy"
-                                        decoding="async">
-                                </picture>
-
-                                <div class="video-play-overlay">
-                                    <div class="play-icon">
-                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M8 5v14l11-7z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="project-overlay">
-                                <div class="project-actions">
-                                    <button class="btn btn-primary video-play" data-video="videos/archive/infographic.mp4" data-title="Animated Infographic">
-                                        <i data-feather="play-circle"></i>
-                                        Play Video
-                                    </button>
-                                    <button class="btn btn-secondary view-details" data-project="motion-design-studies">
-                                        <i data-feather="layers"></i>
-                                        View Collection
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="project-content">
-                            <p class="project-kicker">Motion and information design</p>
-                            <div class="project-header">
-                                <h3>Animated Infographic</h3>
+                                <h3>mvxworld.art</h3>
                                 <div class="project-status">
-                                    <span class="status-badge video">Video</span>
+                                    <span class="status-badge new">Live</span>
                                 </div>
                             </div>
-                            <p>A motion-led design piece that turns complex information into a visual narrative, with pacing, contrast, and composition driving readability.</p>
+                            <p>A personal universe built as a multi-page dark archive. Each page is a room discovered, not a section bolted on. Custom design system, transmissions engine, and lore &mdash; all in vanilla HTML, CSS, and JS.</p>
                             <div class="project-tags">
-                                <span class="tag">Motion Design</span>
-                                <span class="tag">Infographic</span>
-                                <span class="tag">Animation</span>
-                                <span class="tag">Video</span>
-                            </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <i data-feather="film"></i>
-                                    <span>MP4 Video</span>
-                                </div>
-                                <div class="stat">
-                                    <i data-feather="clock"></i>
-                                    <span>HD Quality</span>
-                                </div>
+                                <span class="tag">World-building</span>
+                                <span class="tag">Vanilla HTML/CSS</span>
+                                <span class="tag">Design System</span>
+                                <span class="tag">Identity</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="project-card video-project" data-category="motion">
-                        <div class="project-image">
-                            <div class="video-preview">
-                                <span class="video-badge">Video</span>
-                                <picture>
-                                    <source
-                                        type="image/avif"
-                                        srcset="media/archive/video-namaak-editen-poster-480.avif 480w, media/archive/video-namaak-editen-poster-768.avif 768w, media/archive/video-namaak-editen-poster-1200.avif 1200w"
-                                        sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
-                                    <source
-                                        type="image/webp"
-                                        srcset="media/archive/video-namaak-editen-poster-480.webp 480w, media/archive/video-namaak-editen-poster-768.webp 768w, media/archive/video-namaak-editen-poster-1200.webp 1200w"
-                                        sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
-                                    <img
-                                        src="media/archive/video-namaak-editen-poster-768.png"
-                                        srcset="media/archive/video-namaak-editen-poster-480.png 480w, media/archive/video-namaak-editen-poster-768.png 768w, media/archive/video-namaak-editen-poster-1200.png 1200w"
-                                        sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px"
-                                        alt="Video editing remake preview"
-                                        width="1600"
-                                        height="720"
-                                        loading="lazy"
-                                        decoding="async">
-                                </picture>
-
-                                <div class="video-play-overlay">
-                                    <div class="play-icon">
-                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M8 5v14l11-7z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="project-overlay">
-                                <div class="project-actions">
-                                    <button class="btn btn-primary video-play" data-video="videos/archive/video-namaak-editen.mp4" data-title="Video Editing Remake">
-                                        <i data-feather="play-circle"></i>
-                                        Play Video
-                                    </button>
-                                    <button class="btn btn-secondary view-details" data-project="video-editing-remake">
-                                        <i data-feather="film"></i>
-                                        Details
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="project-content">
-                            <p class="project-kicker">Editing remake</p>
-                            <div class="project-header">
-                                <h3>Video Editing Remake</h3>
-                                <div class="project-status">
-                                    <span class="status-badge video">Video</span>
-                                </div>
-                            </div>
-                            <p>A split-screen remake focused on timing, pacing, and cleaner transitions.</p>
-                            <div class="project-tags">
-                                <span class="tag">Video Editing</span>
-                                <span class="tag">Pacing</span>
-                                <span class="tag">Transitions</span>
-                                <span class="tag">Motion Study</span>
-                            </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <i data-feather="clock"></i>
-                                    <span>50.9 second edit</span>
-                                </div>
-                                <div class="stat">
-                                    <i data-feather="sliders"></i>
-                                    <span>Side-by-side remake</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 3 -->
-                    <div class="project-card popfusion-card" data-category="uiux motion">
+                    <!-- ── POPFUSION – Featured ── -->
+                    <div class="project-card featured popfusion-card" data-category="interactive build">
                         <div class="project-image">
                             <picture>
                                 <source
@@ -656,7 +408,7 @@
                                     src="media/popfusion-cover-768.jpg"
                                     srcset="media/popfusion-cover-480.jpg 480w, media/popfusion-cover-768.jpg 768w, media/popfusion-cover-1200.jpg 1200w"
                                     sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px"
-                                    alt="PopFusion - Music Visualizer"
+                                    alt="PopFusion - Audio-reactive music visualizer"
                                     width="1800"
                                     height="1125"
                                     loading="lazy"
@@ -676,38 +428,174 @@
                             </div>
                         </div>
                         <div class="project-content">
-                            <p class="project-kicker">Experimental interface</p>
+                            <p class="project-kicker">Audio-reactive web experience</p>
                             <div class="project-header">
                                 <h3>PopFusion</h3>
                                 <div class="project-status">
-                                    <span class="status-badge new">New</span>
+                                    <span class="status-badge featured">Featured</span>
                                 </div>
                             </div>
-                            <p>An audio-reactive web experience focused on atmosphere, motion, and expressive interface behavior. Designed to feel playful without losing clarity.</p>
+                            <p>Sound made visual. An audio-reactive interface where motion and atmosphere respond to music in real time. Expressive without losing clarity &mdash; that was the entire design problem.</p>
                             <div class="project-tags">
-                                <span class="tag">React</span>
                                 <span class="tag">Web Audio API</span>
                                 <span class="tag">Canvas</span>
-                                <span class="tag">Music</span>
-                            </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <i data-feather="eye"></i>
-                                    <span>1.8k views</span>
-                                </div>
-                                <div class="stat">
-                                    <i data-feather="heart"></i>
-                                    <span>156 likes</span>
-                                </div>
+                                <span class="tag">React</span>
+                                <span class="tag">Creative Coding</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="projects-group-divider" aria-hidden="true">
-                        <span class="divider-label">Archived Collections</span>
+                    <!-- ── KAAR – NEW ── -->
+                    <div class="project-card code-preview-card" data-category="build interactive" style="--preview-bg:#0f0a1a; --preview-accent:#fa709a;">
+                        <div class="project-image">
+                            <div class="code-preview" aria-hidden="true">
+                                <div class="code-preview-inner">
+                                    <div class="code-preview-sigil" style="font-size:2.2rem; letter-spacing:0.15em;">KAAR</div>
+                                    <div class="code-preview-meta">
+                                        <span class="code-preview-label">multiplayer touch arena</span>
+                                        <span class="code-preview-url">React Native / Expo</span>
+                                    </div>
+                                    <div class="code-preview-lines">
+                                        <div class="cpl"><span class="cpl-k">players</span> <span class="cpl-v">1 &rarr; 8 fingers</span></div>
+                                        <div class="cpl"><span class="cpl-k">modes</span> <span class="cpl-v">winner · teams · chaos</span></div>
+                                        <div class="cpl"><span class="cpl-k">reveal</span> <span class="cpl-v cpl-active">suspense first ▸</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <button class="btn btn-primary live-demo" data-url="https://github.com/Trijbs/KAAR" data-title="KAAR">
+                                        <i data-feather="github"></i>
+                                        View on GitHub
+                                    </button>
+                                    <button class="btn btn-secondary view-details" data-project="kaar">
+                                        <i data-feather="info"></i>
+                                        Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-kicker">Mobile party app &mdash; React Native</p>
+                            <div class="project-header">
+                                <h3>KAAR</h3>
+                                <div class="project-status">
+                                    <span class="status-badge new">New</span>
+                                </div>
+                            </div>
+                            <p>A multi-touch party app where everyone places a finger, the room locks in, and a dramatic reveal picks the outcome. Built in Expo React Native with a full theme system, haptics, and game logic designed from scratch.</p>
+                            <div class="project-tags">
+                                <span class="tag">React Native</span>
+                                <span class="tag">Expo</span>
+                                <span class="tag">TypeScript</span>
+                                <span class="tag">Product Design</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="project-card archive-card" data-category="campaign editorial print">
+                    <!-- ── WEEKPLANNER APP – NEW ── -->
+                    <div class="project-card code-preview-card" data-category="build" style="--preview-bg:#0d1117; --preview-accent:#4facfe;">
+                        <div class="project-image">
+                            <div class="code-preview" aria-hidden="true">
+                                <div class="code-preview-inner">
+                                    <div class="code-preview-sigil" style="font-size:1.1rem; letter-spacing:0.05em; font-family:var(--font-body,sans-serif); font-weight:700;">week<br>planner</div>
+                                    <div class="code-preview-meta">
+                                        <span class="code-preview-label">full-stack planning app</span>
+                                        <span class="code-preview-url">weekplanner.trijbsworld.nl</span>
+                                    </div>
+                                    <div class="code-preview-lines">
+                                        <div class="cpl"><span class="cpl-k">stack</span> <span class="cpl-v">Next.js + Supabase</span></div>
+                                        <div class="cpl"><span class="cpl-k">features</span> <span class="cpl-v">blocks · threads · sync</span></div>
+                                        <div class="cpl"><span class="cpl-k">status</span> <span class="cpl-v cpl-active">live ▸</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <button class="btn btn-primary live-demo" data-url="https://weekplanner.trijbsworld.nl" data-title="WeekPlanner App">
+                                        <i data-feather="external-link"></i>
+                                        Live App
+                                    </button>
+                                    <button class="btn btn-secondary view-details" data-project="weekplanner">
+                                        <i data-feather="info"></i>
+                                        Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-kicker">Full-stack productivity app</p>
+                            <div class="project-header">
+                                <h3>WeekPlanner</h3>
+                                <div class="project-status">
+                                    <span class="status-badge new">Live</span>
+                                </div>
+                            </div>
+                            <p>A structured week planner with hourly time blocks, assignees, thought threads, and real-time sync. Built with Next.js, TypeScript, and Supabase &mdash; including automated hourly cron syncing and a PWA setup.</p>
+                            <div class="project-tags">
+                                <span class="tag">Next.js</span>
+                                <span class="tag">TypeScript</span>
+                                <span class="tag">Supabase</span>
+                                <span class="tag">PWA</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ── TAINMENT / BOT ECOSYSTEM – NEW ── -->
+                    <div class="project-card code-preview-card" data-category="build" style="--preview-bg:#0a1a0a; --preview-accent:#43e97b;">
+                        <div class="project-image">
+                            <div class="code-preview" aria-hidden="true">
+                                <div class="code-preview-inner">
+                                    <div class="code-preview-sigil" style="font-size:1.4rem; letter-spacing:0.1em;">tainment</div>
+                                    <div class="code-preview-meta">
+                                        <span class="code-preview-label">discord bot ecosystem</span>
+                                        <span class="code-preview-url">Python &amp; Node.js</span>
+                                    </div>
+                                    <div class="code-preview-lines">
+                                        <div class="cpl"><span class="cpl-k">features</span> <span class="cpl-v">casino · fishing · trivia</span></div>
+                                        <div class="cpl"><span class="cpl-k">stack</span> <span class="cpl-v">Python / discord.py</span></div>
+                                        <div class="cpl"><span class="cpl-k">status</span> <span class="cpl-v cpl-active">running ▸</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <button class="btn btn-primary live-demo" data-url="https://github.com/Tribsy/tainment" data-title="Tainment Bot">
+                                        <i data-feather="github"></i>
+                                        View on GitHub
+                                    </button>
+                                    <button class="btn btn-secondary view-details" data-project="tainment">
+                                        <i data-feather="info"></i>
+                                        Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-kicker">Automation &amp; community tooling</p>
+                            <div class="project-header">
+                                <h3>Tainment</h3>
+                                <div class="project-status">
+                                    <span class="status-badge build">Build</span>
+                                </div>
+                            </div>
+                            <p>A Discord bot ecosystem with casino mechanics, fishing games, trivia, leaderboards, and subscription management. Built across two repos (Python and Node.js) &mdash; the kind of project you build because you want it to exist.</p>
+                            <div class="project-tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">Node.js</span>
+                                <span class="tag">Discord API</span>
+                                <span class="tag">Automation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ── ARCHIVE DIVIDER ── -->
+                    <div class="projects-group-divider" aria-hidden="true">
+                        <span class="divider-label">Design Archive</span>
+                    </div>
+
+                    <!-- ── IRIS VAN HERPEN ── -->
+                    <div class="project-card archive-card" data-category="design">
                         <div class="project-image">
                             <picture>
                                 <source
@@ -722,7 +610,7 @@
                                     src="media/archive/iris-van-herpen/01_Artists_Impression_Expositie-768.jpg"
                                     srcset="media/archive/iris-van-herpen/01_Artists_Impression_Expositie-480.jpg 480w, media/archive/iris-van-herpen/01_Artists_Impression_Expositie-768.jpg 768w, media/archive/iris-van-herpen/01_Artists_Impression_Expositie-1200.jpg 1200w"
                                     sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px"
-                                    alt="Iris van Herpen exhibition concept render"
+                                    alt="Iris van Herpen Metamorfose exhibition identity"
                                     width="1312"
                                     height="736"
                                     loading="lazy"
@@ -738,96 +626,63 @@
                             </div>
                         </div>
                         <div class="project-content">
-                            <p class="project-kicker">Exhibition identity</p>
+                            <p class="project-kicker">Exhibition identity system</p>
                             <div class="project-header">
                                 <h3>Iris van Herpen Exhibition</h3>
                                 <div class="project-status">
                                     <span class="status-badge archive">Archive</span>
                                 </div>
                             </div>
-                            <p>A museum concept built around one fashion-led visual system, from posters and flyers to social formats.</p>
+                            <p>A museum identity concept for <em>Metamorfose</em> &mdash; one visual language across posters, flyers, editorial ads, and social formats. Three distinct poster directions, one consistent world.</p>
                             <div class="project-tags">
                                 <span class="tag">Exhibition Design</span>
                                 <span class="tag">Poster Series</span>
-                                <span class="tag">Social Assets</span>
                                 <span class="tag">Art Direction</span>
-                            </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <i data-feather="image"></i>
-                                    <span>9-piece campaign set</span>
-                                </div>
-                                <div class="stat">
-                                    <i data-feather="briefcase"></i>
-                                    <span>Museum concept</span>
-                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="project-card archive-card" data-category="editorial print">
+                    <!-- ── HIDDEN REALMS FEST ── -->
+                    <div class="project-card archive-card" data-category="design interactive">
                         <div class="project-image">
                             <picture>
-                                <source
-                                    type="image/avif"
-                                    srcset="media/archive/spread-week-3/spread-week-3-01-360.avif 360w, media/archive/spread-week-3/spread-week-3-01-640.avif 640w, media/archive/spread-week-3/spread-week-3-01-960.avif 960w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
-                                <source
-                                    type="image/webp"
-                                    srcset="media/archive/spread-week-3/spread-week-3-01-360.webp 360w, media/archive/spread-week-3/spread-week-3-01-640.webp 640w, media/archive/spread-week-3/spread-week-3-01-960.webp 960w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
+                                <source type="image/webp" srcset="media/archive/festival-identity/moodboard-480.webp 480w, media/archive/festival-identity/moodboard-768.webp 768w" sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
                                 <img
-                                    src="media/archive/spread-week-3/spread-week-3-01-640.png"
-                                    srcset="media/archive/spread-week-3/spread-week-3-01-360.png 360w, media/archive/spread-week-3/spread-week-3-01-640.png 640w, media/archive/spread-week-3/spread-week-3-01-960.png 960w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px"
-                                    alt="Figurative photo editorial spread cover"
-                                    width="1275"
-                                    height="1768"
+                                    src="media/archive/festival-identity/moodboard.jpg"
+                                    alt="Hidden Realms Fest identity moodboard"
+                                    width="1800"
+                                    height="1273"
                                     loading="lazy"
                                     decoding="async">
                             </picture>
                             <div class="project-overlay">
                                 <div class="project-actions">
-                                    <button class="btn btn-primary view-details" data-project="figurative-photo-spread">
-                                        <i data-feather="book-open"></i>
-                                        Open Spread
+                                    <button class="btn btn-primary view-details" data-project="hidden-realms-fest">
+                                        <i data-feather="layers"></i>
+                                        View Collection
                                     </button>
-                                    <a href="files/spread-week-3.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-                                        <i data-feather="file-text"></i>
-                                        Open PDF
-                                    </a>
                                 </div>
                             </div>
                         </div>
                         <div class="project-content">
-                            <p class="project-kicker">Editorial spread study</p>
+                            <p class="project-kicker">Festival identity &amp; motion</p>
                             <div class="project-header">
-                                <h3>Figurative Photo Spread</h3>
+                                <h3>Hidden Realms Fest</h3>
                                 <div class="project-status">
                                     <span class="status-badge archive">Archive</span>
                                 </div>
                             </div>
-                            <p>A four-page editorial layout that pairs photography theory with a tighter image-led spread system.</p>
+                            <p>Identity planning, social launch assets, and motion teasers for a festival brand. The moodboard and style sheet define the world before the launch assets extend it into motion and social formats.</p>
                             <div class="project-tags">
-                                <span class="tag">Editorial Design</span>
-                                <span class="tag">Typography</span>
-                                <span class="tag">Spread Layout</span>
-                                <span class="tag">Print Study</span>
-                            </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <i data-feather="book-open"></i>
-                                    <span>4-page sequence</span>
-                                </div>
-                                <div class="stat">
-                                    <i data-feather="grid"></i>
-                                    <span>Layout + image study</span>
-                                </div>
+                                <span class="tag">Festival Branding</span>
+                                <span class="tag">Motion</span>
+                                <span class="tag">Social Campaign</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="project-card archive-card" data-category="uiux campaign">
+                    <!-- ── NORTH FACE CAMPAIGN ── -->
+                    <div class="project-card archive-card" data-category="design">
                         <div class="project-image">
                             <picture>
                                 <source
@@ -842,7 +697,7 @@
                                     src="media/archive/northface/mobile-01-480.jpg"
                                     srcset="media/archive/northface/mobile-01-360.jpg 360w, media/archive/northface/mobile-01-480.jpg 480w, media/archive/northface/mobile-01-615.jpg 615w"
                                     sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px"
-                                    alt="The North Face campaign homescreen concept"
+                                    alt="The North Face digital campaign mobile screens"
                                     width="615"
                                     height="1600"
                                     loading="lazy"
@@ -858,543 +713,43 @@
                             </div>
                         </div>
                         <div class="project-content">
-                            <p class="project-kicker">Retail interface campaign</p>
+                            <p class="project-kicker">Retail UI campaign</p>
                             <div class="project-header">
                                 <h3>The North Face Digital Campaign</h3>
                                 <div class="project-status">
                                     <span class="status-badge archive">Archive</span>
                                 </div>
                             </div>
-                            <p>A focused campaign set built around mobile product screens and a matching CRM email layout, with the strongest work centered on retail hierarchy and campaign clarity.</p>
+                            <p>Mobile-first campaign screens and a CRM email layout built around retail hierarchy, product promotion, and campaign clarity. Six mobile screens, one consistent brand direction.</p>
                             <div class="project-tags">
-                                <span class="tag">UI Design</span>
-                                <span class="tag">Mobile Screens</span>
-                                <span class="tag">CRM Email</span>
-                                <span class="tag">Campaign Layout</span>
-                            </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <i data-feather="layers"></i>
-                                    <span>Mobile-first campaign</span>
-                                </div>
-                                <div class="stat">
-                                    <i data-feather="smartphone"></i>
-                                    <span>Retail UI screens</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card archive-card" data-category="campaign print">
-                        <div class="project-image">
-                            <picture>
-                                <source
-                                    type="image/avif"
-                                    srcset="media/archive/sire-diabetes/sire-diabetes-01-480.avif 480w, media/archive/sire-diabetes/sire-diabetes-01-768.avif 768w, media/archive/sire-diabetes/sire-diabetes-01-1200.avif 1200w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
-                                <source
-                                    type="image/webp"
-                                    srcset="media/archive/sire-diabetes/sire-diabetes-01-480.webp 480w, media/archive/sire-diabetes/sire-diabetes-01-768.webp 768w, media/archive/sire-diabetes/sire-diabetes-01-1200.webp 1200w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
-                                <img
-                                    src="media/archive/sire-diabetes/sire-diabetes-01-768.png"
-                                    srcset="media/archive/sire-diabetes/sire-diabetes-01-480.png 480w, media/archive/sire-diabetes/sire-diabetes-01-768.png 768w, media/archive/sire-diabetes/sire-diabetes-01-1200.png 1200w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px"
-                                    alt="SIRE diabetes awareness campaign spread"
-                                    width="1275"
-                                    height="924"
-                                    loading="lazy"
-                                    decoding="async">
-                            </picture>
-                            <div class="project-overlay">
-                                <div class="project-actions">
-                                    <button class="btn btn-primary view-details" data-project="sire-diabetes-campaign">
-                                        <i data-feather="layers"></i>
-                                        View Project
-                                    </button>
-                                    <a href="files/sire-diabetes.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-                                        <i data-feather="file-text"></i>
-                                        Open PDF
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <p class="project-kicker">Awareness campaign</p>
-                            <div class="project-header">
-                                <h3>SIRE Diabetes Campaign</h3>
-                                <div class="project-status">
-                                    <span class="status-badge archive">Archive</span>
-                                </div>
-                            </div>
-                            <p>A three-page print campaign that turns sugar and diabetes into a sharper public message.</p>
-                            <div class="project-tags">
+                                <span class="tag">Mobile UI</span>
                                 <span class="tag">Campaign Design</span>
-                                <span class="tag">Health Awareness</span>
-                                <span class="tag">Print Layout</span>
-                                <span class="tag">Typography</span>
-                            </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <i data-feather="file-text"></i>
-                                    <span>3-page campaign</span>
-                                </div>
-                                <div class="stat">
-                                    <i data-feather="activity"></i>
-                                    <span>Public call to action</span>
-                                </div>
+                                <span class="tag">CRM Email</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="project-card archive-card" data-category="editorial print">
-                        <div class="project-image">
-                            <picture>
-                                <source
-                                    type="image/avif"
-                                    srcset="media/archive/editorial-trends/trends-01-360.avif 360w, media/archive/editorial-trends/trends-01-640.avif 640w, media/archive/editorial-trends/trends-01-960.avif 960w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
-                                <source
-                                    type="image/webp"
-                                    srcset="media/archive/editorial-trends/trends-01-360.webp 360w, media/archive/editorial-trends/trends-01-640.webp 640w, media/archive/editorial-trends/trends-01-960.webp 960w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
-                                <img
-                                    src="media/archive/editorial-trends/trends-01-640.jpg"
-                                    srcset="media/archive/editorial-trends/trends-01-360.jpg 360w, media/archive/editorial-trends/trends-01-640.jpg 640w, media/archive/editorial-trends/trends-01-960.jpg 960w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px"
-                                    alt="10 trends of graphic design editorial booklet"
-                                    width="1184"
-                                    height="1600"
-                                    loading="lazy"
-                                    decoding="async">
-                            </picture>
-                            <div class="project-overlay">
-                                <div class="project-actions">
-                                    <button class="btn btn-primary view-details" data-project="editorial-booklets">
-                                        <i data-feather="book-open"></i>
-                                        Open Booklets
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <p class="project-kicker">Editorial sequence</p>
-                            <div class="project-header">
-                                <h3>Editorial Layout Collection</h3>
-                                <div class="project-status">
-                                    <span class="status-badge archive">Archive</span>
-                                </div>
-                            </div>
-                            <p>A grouped collection of spreads and booklet layouts, focused on pacing, hierarchy, and longer-form editorial structure.</p>
-                            <div class="project-tags">
-                                <span class="tag">Booklet Design</span>
-                                <span class="tag">Spreads</span>
-                                <span class="tag">Editorial Layout</span>
-                                <span class="tag">Typography</span>
-                            </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <i data-feather="book-open"></i>
-                                    <span>Multi-page design</span>
-                                </div>
-                                <div class="stat">
-                                    <i data-feather="align-left"></i>
-                                    <span>Layout studies</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card archive-card" data-category="campaign editorial motion">
-                        <div class="project-image">
-                            <picture>
-                                <source
-                                    type="image/avif"
-                                    srcset="media/archive/northface-home-320.avif 320w, media/archive/northface-home-360.avif 360w, media/archive/northface-home-375.avif 375w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
-                                <source
-                                    type="image/webp"
-                                    srcset="media/archive/northface-home-320.webp 320w, media/archive/northface-home-360.webp 360w, media/archive/northface-home-375.webp 375w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
-                                <img
-                                    src="media/archive/northface-home-360.png"
-                                    srcset="media/archive/northface-home-320.png 320w, media/archive/northface-home-360.png 360w, media/archive/northface-home-375.png 375w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px"
-                                    alt="Hidden Realms Fest social launch preview"
-                                    width="375"
-                                    height="812"
-                                    loading="lazy"
-                                    decoding="async">
-                            </picture>
-                            <div class="project-overlay">
-                                <div class="project-actions">
-                                    <button class="btn btn-primary view-details" data-project="hidden-realms-fest">
-                                        <i data-feather="layers"></i>
-                                        View Collection
-                                    </button>
-                                    <button class="btn btn-secondary video-play" data-video="videos/archive/northface-teaser.mp4" data-title="Hidden Realms Fest Teaser">
-                                        <i data-feather="play-circle"></i>
-                                        Play Teaser
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <p class="project-kicker">Festival brand rollout</p>
-                            <div class="project-header">
-                                <h3>Hidden Realms Fest</h3>
-                                <div class="project-status">
-                                    <span class="status-badge archive">Archive</span>
-                                </div>
-                            </div>
-                            <p>A separate festival project that combines identity boards, social launch assets, and motion teasers into one consistent event-world campaign.</p>
-                            <div class="project-tags">
-                                <span class="tag">Moodboard</span>
-                                <span class="tag">Social Campaign</span>
-                                <span class="tag">Motion Teasers</span>
-                                <span class="tag">Event Identity</span>
-                            </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <i data-feather="image"></i>
-                                    <span>Identity + launch</span>
-                                </div>
-                                <div class="stat">
-                                    <i data-feather="play-circle"></i>
-                                    <span>Motion + social assets</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card archive-card" data-category="campaign print">
-                        <div class="project-image">
-                            <picture>
-                                <source
-                                    type="image/avif"
-                                    srcset="media/archive/event-kit/flyer-01-360.avif 360w, media/archive/event-kit/flyer-01-640.avif 640w, media/archive/event-kit/flyer-01-960.avif 960w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
-                                <source
-                                    type="image/webp"
-                                    srcset="media/archive/event-kit/flyer-01-360.webp 360w, media/archive/event-kit/flyer-01-640.webp 640w, media/archive/event-kit/flyer-01-960.webp 960w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
-                                <img
-                                    src="media/archive/event-kit/flyer-01-640.jpg"
-                                    srcset="media/archive/event-kit/flyer-01-360.jpg 360w, media/archive/event-kit/flyer-01-640.jpg 640w, media/archive/event-kit/flyer-01-960.jpg 960w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px"
-                                    alt="Event promotion flyer and ticket design"
-                                    width="1127"
-                                    height="1600"
-                                    loading="lazy"
-                                    decoding="async">
-                            </picture>
-                            <div class="project-overlay">
-                                <div class="project-actions">
-                                    <button class="btn btn-primary view-details" data-project="event-promo-pack">
-                                        <i data-feather="layers"></i>
-                                        View Collection
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <p class="project-kicker">Print rollout</p>
-                            <div class="project-header">
-                                <h3>Event Identity Kit</h3>
-                                <div class="project-status">
-                                    <span class="status-badge archive">Archive</span>
-                                </div>
-                            </div>
-                            <p>A set of promotional assets that bundles flyers, tickets, and supporting print pieces into one event identity across announcement and attendance touchpoints.</p>
-                            <div class="project-tags">
-                                <span class="tag">Flyers</span>
-                                <span class="tag">Tickets</span>
-                                <span class="tag">Event Design</span>
-                                <span class="tag">Promo Assets</span>
-                            </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <i data-feather="tag"></i>
-                                    <span>Entry materials</span>
-                                </div>
-                                <div class="stat">
-                                    <i data-feather="flag"></i>
-                                    <span>Campaign support</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card archive-card" data-category="print">
-                        <div class="project-image">
-                            <picture>
-                                <source
-                                    type="image/avif"
-                                    srcset="media/archive/posters/poster-bowie-360.avif 360w, media/archive/posters/poster-bowie-640.avif 640w, media/archive/posters/poster-bowie-960.avif 960w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
-                                <source
-                                    type="image/webp"
-                                    srcset="media/archive/posters/poster-bowie-360.webp 360w, media/archive/posters/poster-bowie-640.webp 640w, media/archive/posters/poster-bowie-960.webp 960w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
-                                <img
-                                    src="media/archive/posters/poster-bowie-640.jpg"
-                                    srcset="media/archive/posters/poster-bowie-360.jpg 360w, media/archive/posters/poster-bowie-640.jpg 640w, media/archive/posters/poster-bowie-960.jpg 960w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px"
-                                    alt="Poster experiments and promotional print design"
-                                    width="1261"
-                                    height="1800"
-                                    loading="lazy"
-                                    decoding="async">
-                            </picture>
-                            <div class="project-overlay">
-                                <div class="project-actions">
-                                    <button class="btn btn-primary view-details" data-project="poster-series">
-                                        <i data-feather="layers"></i>
-                                        View Collection
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <p class="project-kicker">Poster studies</p>
-                            <div class="project-header">
-                                <h3>Poster Collection</h3>
-                                <div class="project-status">
-                                    <span class="status-badge archive">Archive</span>
-                                </div>
-                            </div>
-                            <p>A poster-led collection covering music, event, and image-treatment experiments, built around composition, contrast, and graphic impact.</p>
-                            <div class="project-tags">
-                                <span class="tag">Poster Design</span>
-                                <span class="tag">Image Editing</span>
-                                <span class="tag">Typography</span>
-                                <span class="tag">Print Visuals</span>
-                            </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <i data-feather="layout"></i>
-                                    <span>Promotional formats</span>
-                                </div>
-                                <div class="stat">
-                                    <i data-feather="droplet"></i>
-                                    <span>Color explorations</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card archive-card" data-category="editorial print">
-                        <div class="project-image">
-                            <picture>
-                                <source
-                                    type="image/avif"
-                                    srcset="media/archive/menu-system/menu-03-480.avif 480w, media/archive/menu-system/menu-03-768.avif 768w, media/archive/menu-system/menu-03-1200.avif 1200w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
-                                <source
-                                    type="image/webp"
-                                    srcset="media/archive/menu-system/menu-03-480.webp 480w, media/archive/menu-system/menu-03-768.webp 768w, media/archive/menu-system/menu-03-1200.webp 1200w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
-                                <img
-                                    src="media/archive/menu-system/menu-03-768.jpg"
-                                    srcset="media/archive/menu-system/menu-03-480.jpg 480w, media/archive/menu-system/menu-03-768.jpg 768w, media/archive/menu-system/menu-03-1200.jpg 1200w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px"
-                                    alt="Hospitality menu feature spread"
-                                    width="1600"
-                                    height="1135"
-                                    loading="lazy"
-                                    decoding="async">
-                            </picture>
-                            <div class="project-overlay">
-                                <div class="project-actions">
-                                    <button class="btn btn-primary view-details" data-project="menu-design-system">
-                                        <i data-feather="layers"></i>
-                                        View Collection
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <p class="project-kicker">Information design</p>
-                            <div class="project-header">
-                                <h3>Hospitality Menu System</h3>
-                                <div class="project-status">
-                                    <span class="status-badge archive">Archive</span>
-                                </div>
-                            </div>
-                            <p>A hospitality-focused layout collection centered on readability, pricing hierarchy, and visual consistency across multiple menu pages.</p>
-                            <div class="project-tags">
-                                <span class="tag">Menu Design</span>
-                                <span class="tag">Print Layout</span>
-                                <span class="tag">Hospitality</span>
-                                <span class="tag">Information Design</span>
-                            </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <i data-feather="file-text"></i>
-                                    <span>Multi-page menu</span>
-                                </div>
-                                <div class="stat">
-                                    <i data-feather="list"></i>
-                                    <span>Readable structure</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card archive-card" data-category="campaign editorial print">
-                        <div class="project-image">
-                            <picture>
-                                <source
-                                    type="image/avif"
-                                    srcset="media/archive/research-boards/alternative-typo-360.avif 360w, media/archive/research-boards/alternative-typo-640.avif 640w, media/archive/research-boards/alternative-typo-960.avif 960w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
-                                <source
-                                    type="image/webp"
-                                    srcset="media/archive/research-boards/alternative-typo-360.webp 360w, media/archive/research-boards/alternative-typo-640.webp 640w, media/archive/research-boards/alternative-typo-960.webp 960w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
-                                <img
-                                    src="media/archive/research-boards/alternative-typo-640.jpg"
-                                    srcset="media/archive/research-boards/alternative-typo-360.jpg 360w, media/archive/research-boards/alternative-typo-640.jpg 640w, media/archive/research-boards/alternative-typo-960.jpg 960w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px"
-                                    alt="Alternative typography concept board"
-                                    width="1200"
-                                    height="1600"
-                                    loading="lazy"
-                                    decoding="async">
-                            </picture>
-                            <div class="project-overlay">
-                                <div class="project-actions">
-                                    <button class="btn btn-primary view-details" data-project="research-concept-boards">
-                                        <i data-feather="layers"></i>
-                                        View Collection
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <p class="project-kicker">Process and concept</p>
-                            <div class="project-header">
-                                <h3>Research &amp; Concept Boards</h3>
-                                <div class="project-status">
-                                    <span class="status-badge archive">Archive</span>
-                                </div>
-                            </div>
-                            <p>A collection of research boards, collage explorations, and reference-led studies used to shape stronger visual directions before final execution.</p>
-                            <div class="project-tags">
-                                <span class="tag">Research</span>
-                                <span class="tag">Collage</span>
-                                <span class="tag">Concept Boards</span>
-                                <span class="tag">Visual References</span>
-                            </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <i data-feather="search"></i>
-                                    <span>Direction setting</span>
-                                </div>
-                                <div class="stat">
-                                    <i data-feather="copy"></i>
-                                    <span>Reference grouping</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card archive-card" data-category="photo">
-                        <div class="project-image">
-                            <picture>
-                                <source
-                                    type="image/avif"
-                                    srcset="media/archive/photo-series/photo-collage-360.avif 360w, media/archive/photo-series/photo-collage-640.avif 640w, media/archive/photo-series/photo-collage-960.avif 960w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
-                                <source
-                                    type="image/webp"
-                                    srcset="media/archive/photo-series/photo-collage-360.webp 360w, media/archive/photo-series/photo-collage-640.webp 640w, media/archive/photo-series/photo-collage-960.webp 960w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px">
-                                <img
-                                    src="media/archive/photo-series/photo-collage-640.jpg"
-                                    srcset="media/archive/photo-series/photo-collage-360.jpg 360w, media/archive/photo-series/photo-collage-640.jpg 640w, media/archive/photo-series/photo-collage-960.jpg 960w"
-                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 360px"
-                                    alt="Photography collage overview"
-                                    width="1273"
-                                    height="1800"
-                                    loading="lazy"
-                                    decoding="async">
-                            </picture>
-                            <div class="project-overlay">
-                                <div class="project-actions">
-                                    <button class="btn btn-primary view-details" data-project="photography-studies">
-                                        <i data-feather="layers"></i>
-                                        View Collection
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <p class="project-kicker">Image study</p>
-                            <div class="project-header">
-                                <h3>Product Styling Photo Series</h3>
-                                <div class="project-status">
-                                    <span class="status-badge archive">Archive</span>
-                                </div>
-                            </div>
-                            <p>A visual study series built from styled product photography, composition experiments, and collage-based presentation around one object set.</p>
-                            <div class="project-tags">
-                                <span class="tag">Photography</span>
-                                <span class="tag">Styling</span>
-                                <span class="tag">Collage</span>
-                                <span class="tag">Art Direction</span>
-                            </div>
-                            <div class="project-stats">
-                                <div class="stat">
-                                    <i data-feather="camera"></i>
-                                    <span>Object studies</span>
-                                </div>
-                                <div class="stat">
-                                    <i data-feather="grid"></i>
-                                    <span>Collage presentation</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Add more projects placeholder -->
-                   <!-- <div class="project-card coming-soon" data-category="web">
-                        <div class="project-image">
-                            <div class="coming-soon-content">
-                                <i data-feather="plus-circle"></i>
-                                <h4>More Projects Coming Soon</h4>
-                                <p>I'm always working on new and exciting projects</p>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3>Stay Tuned</h3>
-                            <p>Follow my journey as I continue to build amazing digital experiences.</p>
-                            <a href="https://github.com/trijbs" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-                                <i data-feather="github"></i>
-                                Follow on GitHub
-                            </a>
-                        </div>
-                    </div> > -->
-                    
-                </div>
+                </div><!-- /projects-grid -->
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <!-- ================================================
+             CONTACT
+        ================================================ -->
         <section id="contact" class="contact-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag">Let&apos;s Build Something Better</span>
-                    <h2 class="section-title">Need a designer who can shape<br>the look and the experience?</h2>
-                    <p class="section-description">I&apos;m available for portfolio sites, landing pages, design concepts, creative web experiences, and interface refreshes that need a stronger visual direction.</p>
+                    <span class="section-tag">Get in Touch</span>
+                    <h2 class="section-title">Have something interesting<br>you want to build?</h2>
+                    <p class="section-description">I&apos;m available for interface design, interactive web experiences, brand identities, and builds where design and code need to work together from the start.</p>
                 </div>
-                
+
                 <div class="contact-container">
                     <div class="contact-info">
                         <div class="contact-card">
-                            <h3>Start a Design-Led Project</h3>
-                            <p>If you need a website or interface that should feel sharper, clearer, and more intentional, send me the idea and I can help shape the direction.</p>
-                            
+                            <h3>Let&apos;s make something worth making</h3>
+                            <p>If you have a project that needs a designer who can also build it &mdash; or an idea you want to develop from a blank page &mdash; send me what you have in mind.</p>
+
                             <div class="contact-methods">
                                 <div class="contact-method">
                                     <div class="method-icon">
@@ -1403,10 +758,10 @@
                                     <div class="method-info">
                                         <h4>Email</h4>
                                         <a href="mailto:rbdegroot@gmail.com">rbdegroot@gmail.com</a>
-                                        <span class="response-time">Best for project inquiries and freelance work</span>
+                                        <span class="response-time">Best for project inquiries</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="contact-method">
                                     <div class="method-icon">
                                         <i data-feather="github"></i>
@@ -1414,10 +769,10 @@
                                     <div class="method-info">
                                         <h4>GitHub</h4>
                                         <a href="https://github.com/trijbs" target="_blank" rel="noopener noreferrer">@trijbs</a>
-                                        <span class="response-time">See how design ideas translate into build quality</span>
+                                        <span class="response-time">See the code behind the work</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="contact-method">
                                     <div class="method-icon">
                                         <i data-feather="instagram"></i>
@@ -1425,23 +780,23 @@
                                     <div class="method-info">
                                         <h4>Instagram</h4>
                                         <a href="https://www.instagram.com/trijbsworld/" target="_blank" rel="noopener noreferrer">@trijbsworld</a>
-                                        <span class="response-time">Creative direction and visual inspiration</span>
+                                        <span class="response-time">Process and visual work</span>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="availability-status">
                                 <div class="status-indicator available"></div>
-                                <span>Available for new UI/UX and web design projects</span>
+                                <span>Available for new projects</span>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="contact-form">
                         <div class="form-card">
-                            <h3>Tell Me What You Want the Site to Feel Like</h3>
-                            <p>Share the goal, audience, and style you have in mind. I&apos;ll reply with how I would approach the design and build.</p>
-                            
+                            <h3>Start a conversation</h3>
+                            <p>Share the goal and context. I&apos;ll reply with how I&apos;d approach it.</p>
+
                             <form id="contactForm" class="contact-form-inner">
                                 <div class="form-row">
                                     <div class="form-group">
@@ -1454,27 +809,27 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="subject">Subject *</label>
+                                    <label for="subject">Type of project</label>
                                     <select id="subject" name="subject">
-                                        <option value="">Select a subject</option>
-                                        <option value="landing-page">Landing Page Design</option>
-                                        <option value="portfolio">Portfolio Website</option>
-                                        <option value="ecommerce">E-commerce UI</option>
-                                        <option value="redesign">Website Redesign</option>
-                                        <option value="other">Other</option>
+                                        <option value="">Select a type</option>
+                                        <option value="interactive">Interactive / Web Experience</option>
+                                        <option value="interface">Interface Design</option>
+                                        <option value="brand">Brand &amp; Identity</option>
+                                        <option value="fullstack">Full-stack Build</option>
+                                        <option value="other">Other / Not sure yet</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="message">Message</label>
-                                    <textarea id="message" name="message" rows="6" placeholder="Tell me about your project or inquiry..." required></textarea>
+                                    <label for="message">Message *</label>
+                                    <textarea id="message" name="message" rows="6" placeholder="Tell me about the project, the goal, or even just the feeling you&apos;re going for..." required></textarea>
                                 </div>
-                                
+
                                 <button type="submit" class="btn btn-primary submit-btn">
                                     <i data-feather="send"></i>
                                     Send Message
                                 </button>
                                 <p class="form-note">
-                                    I&apos;ll get back to you within 24 hours. If you already have references or a moodboard, include them in your message.
+                                    I reply within 24 hours. If you have references or a moodboard, include them in your message.
                                 </p>
                             </form>
                         </div>
@@ -1489,140 +844,103 @@
             <div class="footer-content">
                 <div class="footer-top">
                     <div class="footer-column">
-                        <h4>Navigation</h4>
+                        <h4>Navigate</h4>
                         <div class="footer-links">
                             <a href="#about">About</a>
-                            <a href="#skills">Skills</a>
-                            <a href="#projects">Projects</a>
+                            <a href="#skills">Practice</a>
+                            <a href="#projects">Work</a>
                             <a href="#contact">Contact</a>
                         </div>
                     </div>
                     <div class="footer-column">
-                        <h4>Projects</h4>
+                        <h4>Worlds</h4>
                         <div class="footer-links">
-                            <a href="#projects">UI/UX Design</a>
-                            <a href="#projects">Web Design</a>
-                            <a href="#projects">Creative Concepts</a>
+                            <a href="https://mvxworld.art" target="_blank" rel="noopener noreferrer">mvxworld.art</a>
+                            <a href="https://github.com/Trijbs" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            <a href="/info.html">Info</a>
                         </div>
                     </div>
                     <div class="footer-column">
                         <h4>Connect</h4>
                         <div class="footer-links">
-                            <a href="mailto:trjbs@icloud.com">Email</a>
-                            <a href="https://github.com/trijbs" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            <a href="mailto:rbdegroot@gmail.com">Email</a>
                             <a href="https://www.instagram.com/trijbsworld/" target="_blank" rel="noopener noreferrer">Instagram</a>
                             <a href="https://nl.pinterest.com/closesz/" target="_blank" rel="noopener noreferrer">Pinterest</a>
-                            <a href="#contact">Contact Form</a>
                         </div>
                     </div>
-                    <div class="footer-column footer-newsletter">
-                        <h4>Design Updates</h4>
-                        <p>Subscribe for new projects, design experiments, and portfolio updates.</p>
-                        <form class="newsletter-form">
-                            <input type="email" placeholder="Your email address" required>
-                            <button type="submit">
-                                <i data-feather="send"></i>
-                            </button>
-                        </form>
+                    <div class="footer-column">
+                        <h4>Also</h4>
+                        <div class="footer-links">
+                            <a href="https://mvxworld.art" target="_blank" rel="noopener noreferrer">Personal Universe</a>
+                            <a href="https://weekplanner.trijbsworld.nl" target="_blank" rel="noopener noreferrer">WeekPlanner App</a>
+                        </div>
                     </div>
                 </div>
-                
+
                 <div class="footer-bottom">
                     <div class="copyright">
-                        <p>&copy; 2026 Trijbs | UI/UX &amp; Web Designer</p>
+                        <p>&copy; 2026 Ruben Trijbels &mdash; <a href="https://mvxworld.art" target="_blank" rel="noopener noreferrer">mvxworld.art</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Project Modal -->
-    <div class="modal" id="projectModal">
-        <div class="modal-content">
-            <button class="close-modal" aria-label="Close modal">
+    <!-- Project Detail Modal -->
+    <div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-label="Project details">
+        <div class="modal-container">
+            <button class="close-modal" aria-label="Close project details">
                 <i data-feather="x"></i>
             </button>
-            <div class="modal-body">
-                <!-- Content will be dynamically inserted here -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Project Details Modal -->
-    <div class="modal project-details-modal" id="projectDetailsModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="projectDetailsTitle">Project Details</h3>
-                <div class="modal-actions">
-                    <button class="close-modal" aria-label="Close modal">
-                        <i data-feather="x"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="modal-body" id="projectDetailsBody">
-                <!-- Content will be dynamically inserted here -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Live Demo Modal -->
-    <div class="modal live-demo-modal" id="liveDemoModal">
-        <div class="modal-content live-demo-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="liveDemoTitle">Live Demo</h3>
-                <div class="modal-actions">
-                    <button class="btn btn-outline open-external" id="openExternal" title="Open in new tab">
-                        <i data-feather="external-link"></i>
-                        Open External
-                    </button>
-                    <button class="close-modal" aria-label="Close modal">
-                        <i data-feather="x"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="modal-body iframe-container">
-                <iframe id="liveDemoFrame" src="" frameborder="0" allowfullscreen 
-                        sandbox="allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
-                        loading="lazy"></iframe>
-                <div class="loading-spinner">
-                    <div class="spinner"></div>
-                    <p>Loading demo...</p>
-                </div>
-            </div>
+            <div class="modal-body"></div>
         </div>
     </div>
 
     <!-- Video Modal -->
-    <div class="modal video-modal" id="videoModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="videoModalTitle">Video</h3>
-                <div class="modal-actions">
-                    <button class="close-modal" aria-label="Close modal">
-                        <i data-feather="x"></i>
-                    </button>
-                </div>
-            </div>
+    <div class="modal video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Video player">
+        <div class="modal-container">
+            <button class="close-modal" aria-label="Close video" id="closeVideoModal">
+                <i data-feather="x"></i>
+            </button>
             <div class="modal-body">
-                <div class="video-container">
-                    <video id="modalVideo" controls preload="metadata" playsinline>
-                        Your browser does not support the video tag.
+                <div class="video-modal-title" id="videoModalTitle"></div>
+                <div class="video-wrapper">
+                    <video id="modalVideo" controls playsinline>
+                        <source id="modalVideoSource" src="" type="video/mp4">
+                        Your browser does not support HTML5 video.
                     </video>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal image-zoom-modal" id="imageZoomModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="imageZoomTitle">Image Preview</h3>
-                <div class="modal-actions">
-                    <button class="close-modal" aria-label="Close image preview">
+    <!-- Demo Modal -->
+    <div class="modal demo-modal" id="demoModal" role="dialog" aria-modal="true" aria-label="Live demo">
+        <div class="modal-container demo-modal-container">
+            <div class="demo-modal-header">
+                <h3 id="demoModalTitle">Live Demo</h3>
+                <div class="demo-modal-actions">
+                    <a href="#" id="demoModalExternalLink" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                        <i data-feather="external-link"></i>
+                        Open in Tab
+                    </a>
+                    <button class="close-modal" id="closeDemoModal" aria-label="Close demo">
                         <i data-feather="x"></i>
                     </button>
                 </div>
             </div>
+            <div class="demo-iframe-wrapper">
+                <iframe id="demoFrame" src="" title="Live demo" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Zoom Modal -->
+    <div class="modal image-zoom-modal" id="imageZoomModal" role="dialog" aria-modal="true" aria-label="Zoomed image">
+        <div class="modal-container">
+            <button class="close-modal" aria-label="Close image zoom">
+                <i data-feather="x"></i>
+            </button>
             <div class="modal-body">
                 <div class="image-zoom-stage" id="imageZoomStage">
                     <button class="image-zoom-toggle" id="imageZoomToggle" type="button" aria-label="Zoom image">
@@ -1639,37 +957,25 @@
 
     <!-- Core Scripts -->
     <script src="js/vendor/feather.min.js?v=2.2.0"></script>
-    <script src="js/main.js?v=2.3.0"></script>
+    <script src="js/main.js?v=3.0.0"></script>
     <script src="js/easter-eggs.js?v=2.3.0"></script>
-    
-    <!-- Vercel Analytics -->
     <script src="js/vercel-analytics.js?v=2.2.0"></script>
-    
-    <!-- Privacy Controls & GDPR Compliance -->
     <script src="js/privacy-controls.js?v=2.2.0"></script>
-    
-    <!-- Enhanced Contact Form -->
     <script src="js/contact-form.js?v=2.2.0"></script>
-    
+
     <script>
-      // Initialize Feather icons and wire up modal behavior
       document.addEventListener('DOMContentLoaded', () => {
-        if (window.feather) {
-          feather.replace();
-        }
-        
-        // Mobile menu toggle
+        if (window.feather) feather.replace();
+
+        // Mobile menu
         const bodyEl = document.body;
         const nav = document.getElementById('primary-nav');
         const menuBtn = document.querySelector('.mobile-menu-toggle');
-        
         function setMenuState(open) {
           bodyEl.classList.toggle('nav-open', open);
-          document.body.classList.toggle('nav-open', open);
           document.body.style.overflow = open ? 'hidden' : '';
           menuBtn.setAttribute('aria-expanded', String(open));
           menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-          
           const iconMenu = menuBtn.querySelector('.icon-menu');
           const iconClose = menuBtn.querySelector('.icon-close');
           if (iconMenu && iconClose) {
@@ -1677,48 +983,29 @@
             iconClose.style.display = open ? '' : 'none';
           }
         }
-        
-        menuBtn.addEventListener('click', () => {
-          setMenuState(!bodyEl.classList.contains('nav-open'));
-        });
-        
-        // Close when clicking a nav link
-        nav.querySelectorAll('a[href^="#"]').forEach(a => {
-          a.addEventListener('click', () => setMenuState(false));
-        });
-        
-        // Reset on resize to desktop
+        menuBtn.addEventListener('click', () => setMenuState(!bodyEl.classList.contains('nav-open')));
+        nav.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', () => setMenuState(false)));
         window.addEventListener('resize', () => {
-          if (window.innerWidth >= 1024 && bodyEl.classList.contains('nav-open')) {
-            setMenuState(false);
-          }
+          if (window.innerWidth >= 1024 && bodyEl.classList.contains('nav-open')) setMenuState(false);
         });
 
-        // Project Modal functionality
+        // Project modal
         const modal = document.getElementById('projectModal');
-        const modalBody = modal.querySelector('.modal-body');
-        const closeBtn = modal.querySelector('.close-modal');
-
-        function openModalWithContent(html) {
-          modalBody.innerHTML = html;
-          modal.classList.add('open');
-          document.body.style.overflow = 'hidden';
-        }
-
+        const modalBody = modal ? modal.querySelector('.modal-body') : null;
+        const closeBtn = modal ? modal.querySelector('.close-modal') : null;
         function closeModal() {
+          if (!modal) return;
           modal.classList.remove('open');
-          modalBody.innerHTML = '';
+          if (modalBody) modalBody.innerHTML = '';
           document.body.style.overflow = '';
         }
-
-        // Close interactions
-        closeBtn.addEventListener('click', closeModal);
-        modal.addEventListener('click', (e) => {
-          if (e.target === modal) closeModal();
-        });
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
-        });
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        if (modal) {
+          modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+          document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+          });
+        }
       });
     </script>
 </body>
