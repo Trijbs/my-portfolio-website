@@ -6429,3 +6429,62 @@ section {
   .currently-block { font-size: 0.72rem; }
   .about-signal-chip { font-size: 0.8rem; }
 }
+
+
+/* ================================================================
+   v3.2 — MARQUEE FULL-WIDTH FIX + ENHANCEMENTS
+   ================================================================ */
+
+/* ── Marquee: break out of container to full viewport width ── */
+.tools-marquee-wrap {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  overflow: hidden;
+  padding: 1.1rem 0;
+  margin-top: var(--spacing-lg);
+  border-top: 1px solid var(--bg-tertiary);
+  border-bottom: 1px solid var(--bg-tertiary);
+}
+
+/* Wider fade masks now that it's truly full-width */
+.tools-marquee-wrap::before,
+.tools-marquee-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 8rem;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.tools-marquee-wrap::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-primary) 20%, transparent);
+}
+
+.tools-marquee-wrap::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-primary) 20%, transparent);
+}
+
+/* ── OG card image ── */
+.og-card-img {
+  display: none;
+}
+
+/* ── Lab nav link: subtle, lowercase mono ── */
+.main-nav a[href="/lab.html"] {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  opacity: 0.55;
+  letter-spacing: 0.04em;
+}
+
+.main-nav a[href="/lab.html"]:hover {
+  opacity: 1;
+}

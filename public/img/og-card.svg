@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&amp;family=IBM+Plex+Mono:wght@400&amp;display=swap');
+    </style>
+    <!-- Grain texture -->
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feBlend in="SourceGraphic" mode="multiply" result="blend"/>
+      <feComposite in="blend" in2="SourceGraphic" operator="in"/>
+    </filter>
+    <radialGradient id="glow" cx="30%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#ff4d6d" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="80%" cy="30%" r="40%">
+      <stop offset="0%" stop-color="#1e90ff" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+
+  <!-- Glows -->
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+
+  <!-- Grain overlay -->
+  <rect width="1200" height="630" fill="#111" filter="url(#grain)" opacity="0.035"/>
+
+  <!-- Top accent line -->
+  <rect x="60" y="60" width="80" height="2" fill="#ff4d6d" rx="1"/>
+
+  <!-- Wordmark -->
+  <text x="60" y="220" font-family="'Space Grotesk', 'Helvetica Neue', sans-serif" font-weight="700" font-size="110" fill="#ffffff" letter-spacing="-3">trijbs</text>
+
+  <!-- Tagline -->
+  <text x="62" y="275" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="18" fill="#6a6a6a" letter-spacing="2">Designer · Developer · Builder</text>
+
+  <!-- Divider -->
+  <rect x="60" y="310" width="1080" height="1" fill="#222"/>
+
+  <!-- Disciplines row -->
+  <text x="62" y="370" font-family="'Space Grotesk', 'Helvetica Neue', sans-serif" font-weight="500" font-size="22" fill="#393939">Interface Design</text>
+  <text x="62" y="400" font-family="'Space Grotesk', 'Helvetica Neue', sans-serif" font-weight="500" font-size="22" fill="#393939">Creative Coding</text>
+  <text x="62" y="430" font-family="'Space Grotesk', 'Helvetica Neue', sans-serif" font-weight="500" font-size="22" fill="#393939">World-building</text>
+
+  <!-- Right column: stack -->
+  <text x="500" y="370" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="16" fill="#4a4a4a">Three.js · WebGL · React</text>
+  <text x="500" y="400" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="16" fill="#4a4a4a">Next.js · Node.js · Supabase</text>
+  <text x="500" y="430" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="16" fill="#4a4a4a">Python · Adobe XD · Expo</text>
+
+  <!-- URL -->
+  <text x="62" y="550" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="16" fill="#444" letter-spacing="1">trijbsworld.nl</text>
+
+  <!-- Accent dot -->
+  <circle cx="1140" cy="570" r="30" fill="#ff4d6d" opacity="0.15"/>
+  <circle cx="1140" cy="570" r="8" fill="#ff4d6d" opacity="0.6"/>
+
+  <!-- Bottom accent line -->
+  <rect x="1060" y="567" width="80" height="1" fill="#ff4d6d" opacity="0.3" rx="1"/>
+</svg>
