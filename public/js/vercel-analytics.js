@@ -49,7 +49,6 @@
         const script = document.createElement('script');
         script.src = 'https://va.vercel-scripts.com/v1/script.js';
         script.defer = true;
-        script.setAttribute('data-website-id', 'auto');
         script.addEventListener('load', flushQueuedVercelEvents);
         document.head.appendChild(script);
         vercelScriptLoaded = true;
@@ -112,10 +111,14 @@
     }
 
     function getDeviceInfo() {
+        // navigator.platform is deprecated; prefer userAgentData when available
+        const platform = (navigator.userAgentData && navigator.userAgentData.platform)
+            || navigator.platform
+            || '';
         return {
             userAgent: navigator.userAgent,
             language: navigator.language,
-            platform: navigator.platform,
+            platform,
             screenWidth: window.screen.width,
             screenHeight: window.screen.height,
             windowWidth: window.innerWidth,

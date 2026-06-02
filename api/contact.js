@@ -5,6 +5,17 @@ const rateLimitStore = new Map();
 const RATE_LIMIT_WINDOW = 15 * 60 * 1000; // 15 minutes
 const RATE_LIMIT_MAX_REQUESTS = 3; // Max 3 requests per window
 
+// Escape HTML special characters to prevent injection in email templates
+const escapeHtml = (str) => {
+    if (typeof str !== 'string') return '';
+    return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#x27;');
+};
+
 // Check rate limit for IP
 const checkRateLimit = (ip) => {
     const now = Date.now();
@@ -54,13 +65,20 @@ const createTransporter = () => {
         tls: {
             rejectUnauthorized: false
         },
-        debug: true, // Enable debug logging
-        logger: true // Enable logger
+        debug: process.env.NODE_ENV !== 'production',
+        logger: process.env.NODE_ENV !== 'production'
     });
 };
 
 // Create email templates
 const createEmailTemplate = (data) => {
+    // Escape all user-supplied values before inserting into HTML
+    const safeName = escapeHtml(data.name);
+    const safeEmail = escapeHtml(data.email);
+    const safeSubject = escapeHtml(data.subject);
+    const safeMessage = escapeHtml(data.message);
+    const safeIp = escapeHtml(data.ip);
+
     return {
         // Notification email to you
         notification: {
@@ -74,35 +92,35 @@ const createEmailTemplate = (data) => {
                         <h1 style="color: white; margin: 0; font-size: 24px;">New Contact Form Submission</h1>
                         <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">From your portfolio website</p>
                     </div>
-                    
+
                     <div style="background: white; padding: 30px; border-radius: 0 0 10px 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                         <div style="margin-bottom: 20px;">
                             <h3 style="color: #333; margin: 0 0 10px 0; border-bottom: 2px solid #ff4d6d; padding-bottom: 5px;">Contact Details</h3>
-                            <p style="margin: 5px 0; color: #666;"><strong>Name:</strong> ${data.name}</p>
-                            <p style="margin: 5px 0; color: #666;"><strong>Email:</strong> <a href="mailto:${data.email}" style="color: #1e90ff;">${data.email}</a></p>
-                            <p style="margin: 5px 0; color: #666;"><strong>Subject:</strong> ${data.subject}</p>
+                            <p style="margin: 5px 0; color: #666;"><strong>Name:</strong> ${safeName}</p>
+                            <p style="margin: 5px 0; color: #666;"><strong>Email:</strong> <a href="mailto:${safeEmail}" style="color: #1e90ff;">${safeEmail}</a></p>
+                            <p style="margin: 5px 0; color: #666;"><strong>Subject:</strong> ${safeSubject}</p>
                             <p style="margin: 5px 0; color: #666;"><strong>Date:</strong> ${new Date(data.timestamp).toLocaleString()}</p>
-                            <p style="margin: 5px 0; color: #666;"><strong>IP:</strong> ${data.ip}</p>
+                            <p style="margin: 5px 0; color: #666;"><strong>IP:</strong> ${safeIp}</p>
                         </div>
-                        
+
                         <div style="margin-bottom: 20px;">
                             <h3 style="color: #333; margin: 0 0 10px 0; border-bottom: 2px solid #ff4d6d; padding-bottom: 5px;">Message</h3>
                             <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #1e90ff;">
-                                <p style="margin: 0; color: #333; line-height: 1.6; white-space: pre-wrap;">${data.message}</p>
+                                <p style="margin: 0; color: #333; line-height: 1.6; white-space: pre-wrap;">${safeMessage}</p>
                             </div>
                         </div>
-                        
+
                         <div style="text-align: center; margin-top: 30px;">
-                            <a href="mailto:${data.email}?subject=Re: ${data.subject}" 
+                            <a href="mailto:${safeEmail}?subject=Re: ${safeSubject}"
                                style="background: linear-gradient(135deg, #ff4d6d, #1e90ff); color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
-                                Reply to ${data.name}
+                                Reply to ${safeName}
                             </a>
                         </div>
                     </div>
                 </div>
             `
         },
-        
+
         // Confirmation email to sender
         confirmation: {
             from: `"Ruben Trijbs" <${process.env.EMAIL_USER}>`,
@@ -114,13 +132,13 @@ const createEmailTemplate = (data) => {
                         <h1 style="color: #111; margin: 0; font-size: 24px;">Thanks for reaching out!</h1>
                         <p style="color: #333; margin: 10px 0 0 0;">I've received your message and will get back to you soon</p>
                     </div>
-                    
+
                     <div style="background: white; padding: 30px; border-radius: 0 0 10px 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                        <p style="color: #333; font-size: 16px; line-height: 1.6;">Hi ${data.name},</p>
-                        
+                        <p style="color: #333; font-size: 16px; line-height: 1.6;">Hi ${safeName},</p>
+
                         <p style="color: #333; line-height: 1.6;">
-                            Thank you for contacting me! I've received your message about 
-                            <strong>"${data.subject || 'your inquiry'}"</strong> and I appreciate you taking the time to reach out.
+                            Thank you for contacting me! I've received your message about
+                            <strong>"${safeSubject || 'your inquiry'}"</strong> and I appreciate you taking the time to reach out.
                         </p>
                         
                         <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #00ff88;">
@@ -174,8 +192,9 @@ export default async function handler(req, res) {
     try {
         const { name, email, subject, message } = req.body;
 
-        // Get client IP for rate limiting
-        const clientIP = req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || 'unknown';
+        // Get client IP for rate limiting — x-forwarded-for may be a comma-separated list
+        const clientIP = String(req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || 'unknown')
+            .split(',')[0].trim();
 
         console.log('Contact form submission:', {
             name: name?.substring(0, 20) + '...',

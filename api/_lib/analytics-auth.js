@@ -56,7 +56,11 @@ export function isAnalyticsAuthConfigured() {
 
 export function validateAnalyticsPassword(password) {
     const configuredPassword = getPassword();
-    return Boolean(configuredPassword && password && configuredPassword === password);
+    if (!configuredPassword || !password) {
+        return false;
+    }
+    // Use timing-safe comparison to prevent timing attacks
+    return safeTokenEqual(buildToken(password), buildToken(configuredPassword));
 }
 
 export function isAnalyticsAuthorized(req) {
