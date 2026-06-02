@@ -497,6 +497,10 @@ function updateCarouselState(track, prevButton, nextButton, progressElement) {
 }
 
 function initializeCollectionCarousels(container) {
+    // Return an AbortController so the caller can clean up all listeners on modal close
+    const controller = new AbortController();
+    const { signal } = controller;
+
     const carousels = container.querySelectorAll('[data-carousel]');
     carousels.forEach(carousel => {
         const track = carousel.querySelector('[data-carousel-track]');
@@ -515,15 +519,17 @@ function initializeCollectionCarousels(container) {
             });
         };
 
-        prevButton.addEventListener('click', () => scrollByStep(-1));
-        nextButton.addEventListener('click', () => scrollByStep(1));
+        prevButton.addEventListener('click', () => scrollByStep(-1), { signal });
+        nextButton.addEventListener('click', () => scrollByStep(1), { signal });
 
         const syncState = () => updateCarouselState(track, prevButton, nextButton, progressElement);
 
-        track.addEventListener('scroll', syncState, { passive: true });
-        window.addEventListener('resize', syncState);
+        track.addEventListener('scroll', syncState, { passive: true, signal });
+        window.addEventListener('resize', syncState, { signal });
         syncState();
     });
+
+    return controller;
 }
 
 function pauseProjectDetailsMedia(modal) {
@@ -779,7 +785,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     card.style.display = 'block';
                     setTimeout(() => card.classList.add('visible'), 10);
                 } else {
-                    const categories = card.getAttribute('data-category').split(' ');
+                    const categories = (card.getAttribute('data-category') || '').split(' ');
                     if (categories.includes(filter)) {
                         card.style.display = 'block';
                         setTimeout(() => card.classList.add('visible'), 10);
@@ -847,6 +853,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const imageZoomHint = document.getElementById('imageZoomHint');
     
     let currentDemoUrl = '';
+    let carouselController = null; // tracks carousel listeners so they can be cleaned up on modal close
     let currentZoomMeta = {
         naturalWidth: 0,
         naturalHeight: 0
@@ -1345,7 +1352,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
 
-            initializeCollectionCarousels(bodyElement);
+            if (carouselController) carouselController.abort();
+            carouselController = initializeCollectionCarousels(bodyElement);
             resetProjectDetailsScroll(modal, bodyElement);
             requestAnimationFrame(() => resetProjectDetailsScroll(modal, bodyElement));
             replaceFeatherIcons();
@@ -1379,6 +1387,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const modal = document.getElementById('projectDetailsModal');
         if (modal) {
             projectDetailsRequestId += 1;
+            if (carouselController) {
+                carouselController.abort();
+                carouselController = null;
+            }
             closeImageZoomModal();
             pauseProjectDetailsMedia(modal);
             modal.classList.remove('open');
@@ -1417,13 +1429,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!videoModal || !modalVideo) {
             console.error('Video modal elements not found');
-            alert('Video modal niet gevonden. Probeer de pagina te verversen.');
+            alert('Video player not found. Please refresh the page and try again.');
             return;
         }
 
         if (!safeVideoUrl) {
             console.error('Blocked unsafe video URL:', videoUrl);
-            alert('Video kon niet veilig geladen worden.');
+            alert('This video could not be loaded safely.');
             return;
         }
         
@@ -1506,7 +1518,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('header');
     
     window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
+        const currentScroll = window.scrollY;
         
         if (currentScroll > 100) {
             header?.classList.add('scrolled');

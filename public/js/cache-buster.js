@@ -56,7 +56,7 @@
     
     function forceReload() {
         console.log('🔄 New version detected, forcing reload...');
-        window.location.reload(true);
+        window.location.reload();
     }
     
     function checkVersion() {

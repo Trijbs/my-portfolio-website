@@ -84,11 +84,7 @@ function toSourceRelativePath(assetPath) {
     return null;
   }
 
-  return normalizedSlashes(normalizedPath.slice(4));
-}
-
-function normalizedSlashes(value) {
-  return normalizeSlashes(value);
+  return normalizeSlashes(normalizedPath.slice(4));
 }
 
 function mergeRequirementMaps(...maps) {
