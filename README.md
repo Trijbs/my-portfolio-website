@@ -1,30 +1,28 @@
-# Ruben Trijbs Portfolio
+# Trijbs Portfolio
 
-Design-led portfolio website for UI/UX, web design, and interactive front-end work.
+Design-led portfolio for UI/UX, creative coding, and interactive front-end work.
 
-Live site: [https://www.trijbsworld.nl](https://www.trijbsworld.nl)
+Live site: [trijbsworld.nl](https://www.trijbsworld.nl)
 
 ## Overview
 
-This project is a Vercel-hosted portfolio with:
+Vercel-hosted portfolio with:
 
-- a custom static front end in `public/`
+- custom static front end in `public/`
 - serverless contact and analytics endpoints in `api/`
-- privacy-gated analytics tracking
-- responsive project media generated into `public/media/`
-- a dedicated analytics admin page at `/analytics`
-
-The current site is positioned around UI/UX and web design work rather than a generic developer portfolio.
+- privacy-gated analytics with optional Supabase persistence
+- responsive project media pipeline (`public/img/` → `public/media/`)
+- analytics admin page at `/analytics`
 
 ## Stack
 
 - HTML, CSS, vanilla JavaScript
-- Vercel serverless functions
-- Nodemailer for the contact form
-- Supabase for optional persistent analytics storage
+- Vercel serverless functions (Node.js 18+)
+- Nodemailer — contact form via Gmail SMTP
+- Supabase — optional persistent analytics storage
+- Sharp — responsive image generation (avif, webp, jpg)
 - Feather icons
-- Local font files in `public/fonts`
-- Sharp for responsive media generation
+- Local font files in `public/fonts/`
 
 ## Local Development
 
@@ -32,7 +30,6 @@ The current site is positioned around UI/UX and web design work rather than a ge
 
 - Node.js 18+
 - npm
-- Vercel CLI access for local function emulation
 
 ### Install
 
@@ -45,22 +42,21 @@ npm install
 Create a `.env` file in the project root:
 
 ```env
+# Required — contact form
 EMAIL_USER=your-email@gmail.com
 EMAIL_PASS=your-gmail-app-password
 
+# Required — analytics admin page
 ANALYTICS_ADMIN_PASSWORD=choose-a-strong-password
 ANALYTICS_AUTH_SALT=optional-custom-salt
 
+# Optional — persistent analytics storage
 SUPABASE_URL=https://your-project.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 SUPABASE_ANALYTICS_TABLE=analytics_events
 ```
 
-Notes:
-
-- `EMAIL_USER` and `EMAIL_PASS` are required for the contact form.
-- `ANALYTICS_ADMIN_PASSWORD` is required only if you want to use the `/analytics` admin page.
-- Supabase variables are optional. Without them, analytics falls back to in-memory storage for the current runtime.
+Without Supabase variables, analytics falls back to in-memory storage per serverless runtime instance.
 
 ### Run locally
 
@@ -68,57 +64,44 @@ Notes:
 npm run dev
 ```
 
-That starts `vercel dev`, which is the recommended way to run both the static site and the serverless endpoints locally.
+Starts `vercel dev`, which emulates both the static site and serverless endpoints.
+Default URL: `http://localhost:3000`
 
-Default local URL:
+## Commands
 
-```text
-http://localhost:3000
-```
-
-## Useful Commands
-
-```bash
-npm run dev
-npm run deploy
-npm run test:email
-npm run build:media
-npm run check:media
-```
-
-What they do:
-
-- `npm run dev`: runs the Vercel local dev server
-- `npm run deploy`: deploys to Vercel production
-- `npm run test:email`: validates local email config
-- `npm run build:media`: generates responsive image assets into `public/media`
-- `npm run check:media`: verifies generated media output
+| Command | What it does |
+|---|---|
+| `npm run dev` | Local dev server via Vercel CLI |
+| `npm run deploy` | Deploy to Vercel production |
+| `npm run test:email` | Validate local email config |
+| `npm run build:media` | Generate responsive image variants into `public/media/` |
+| `npm run check:media` | Verify all expected media variants exist |
 
 ## Project Structure
 
-```text
+```
 .
 ├── api/
 │   ├── _lib/
-│   │   ├── analytics-auth.js
-│   │   └── analytics-store.js
-│   ├── analytics-auth.js
-│   ├── analytics.js
-│   ├── contact.js
-│   └── test-email.js
+│   │   ├── analytics-auth.js   — cookie auth with timing-safe comparison
+│   │   └── analytics-store.js  — Supabase or in-memory event storage
+│   ├── analytics-auth.js       — login / logout endpoint
+│   ├── analytics.js            — event ingestion + admin reads
+│   ├── contact.js              — contact form handler
+│   └── test-email.js           — SMTP test endpoint
 ├── config/
 │   ├── CNAME
-│   └── supabase-analytics.sql
+│   └── supabase-analytics.sql  — table schema for persistent analytics
 ├── public/
 │   ├── analytics/
-│   │   └── index.html
+│   │   └── index.html          — analytics admin UI
 │   ├── css/
 │   │   └── styles.css
 │   ├── data/
-│   │   └── project-details.json
-│   ├── files/
+│   │   ├── project-details.json
+│   │   └── status.json         — drives the "currently" hero block
 │   ├── fonts/
-│   ├── img/
+│   ├── img/                    — source images (input for build:media)
 │   ├── js/
 │   │   ├── analytics-dashboard.js
 │   │   ├── cache-buster.js
@@ -126,7 +109,7 @@ What they do:
 │   │   ├── main.js
 │   │   ├── privacy-controls.js
 │   │   └── vercel-analytics.js
-│   ├── media/
+│   ├── media/                  — generated responsive variants (git-ignored)
 │   ├── index.html
 │   └── info.html
 ├── scripts/
@@ -137,142 +120,83 @@ What they do:
 └── README.md
 ```
 
-## Front-End Notes
+## Media Pipeline
 
-Main entry points:
+Source images live in `public/img/`. The build script generates avif, webp, and jpg variants at multiple widths into `public/media/`.
 
-- `public/index.html`: main portfolio page
-- `public/info.html`: secondary info page
-- `public/analytics/index.html`: analytics admin UI
+```bash
+npm run build:media   # generate
+npm run check:media   # verify
+```
 
-Main front-end files:
+Run after adding or replacing any cover image, then redeploy.
 
-- `public/css/styles.css`: full site styling
-- `public/js/main.js`: navigation, modals, filtering, UI interactions
-- `public/js/contact-form.js`: contact form logic
-- `public/js/privacy-controls.js`: privacy banner and consent state
-- `public/js/vercel-analytics.js`: consent-aware analytics bridge
-
-Recent UI changes include:
-
-- stronger hero card hover interactions
-- wider section-title line lengths
-- tighter project-card spacing
+**To add a cover image for a new project:**
+1. Drop a JPG or PNG (≥1400×900px) into `public/img/` — e.g. `kaar-cover.jpg`
+2. Run `npm run build:media`
+3. Update the project card in `public/index.html` to use a `<picture>` element pointing at the generated variants (`media/kaar-cover-480.*`, `media/kaar-cover-768.*`, `media/kaar-cover-1200.*`)
 
 ## Analytics
 
-There are two analytics layers in this project:
+Two layers:
 
-1. Vercel Web Analytics
-2. Custom event tracking to `/api/analytics`
+1. **Vercel Web Analytics** — loaded only after the visitor grants consent
+2. **Custom event tracking** — posts to `/api/analytics`, gated by the same consent check
 
-Custom analytics behavior:
+The admin dashboard at `/analytics` requires `ANALYTICS_ADMIN_PASSWORD`. Auth uses an HTTP-only cookie with a scrypt-derived token compared via `crypto.timingSafeEqual`.
 
-- events are sent only after the user grants analytics consent
-- the public site posts to `/api/analytics`
-- the admin dashboard reads from `/analytics`
-- `/analytics` authentication is handled through `api/analytics-auth.js`
+### Persistent storage with Supabase
 
-### Persistent analytics with Supabase
+1. Create a Supabase project
+2. Run `config/supabase-analytics.sql`
+3. Set `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` in Vercel environment variables
 
-If you want persistent analytics storage:
-
-1. Create a Supabase project.
-2. Run `config/supabase-analytics.sql`.
-3. Set `SUPABASE_URL`.
-4. Set `SUPABASE_SERVICE_ROLE_KEY`.
-5. Optionally set `SUPABASE_ANALYTICS_TABLE`.
-
-If Supabase is not configured, analytics uses in-memory storage for the current runtime.
+Without these, analytics runs in-memory per serverless instance and resets on cold starts.
 
 ## Contact Form
 
-The contact form posts to `api/contact.js`.
+Posts to `api/contact.js`. Includes:
 
-It includes:
+- per-IP rate limiting (3 requests per 15 minutes)
+- input validation (name, email, message length)
+- HTML-escaped email templates (prevents injection)
+- Gmail SMTP via Nodemailer (debug logging disabled in production)
+- confirmation email to the sender
 
-- rate limiting
-- input validation
-- email sending through Gmail SMTP via Nodemailer
-- confirmation email handling
-
-For production, set `EMAIL_USER` and `EMAIL_PASS` in Vercel environment variables.
-
-## Media Pipeline
-
-Source images live in `public/img`.
-
-Responsive output is generated into `public/media` by:
-
-```bash
-npm run build:media
-```
-
-Run this after replacing cover images, portrait images, or other major portfolio assets.
+Use a [Gmail App Password](https://myaccount.google.com/apppasswords) for `EMAIL_PASS`, not your account password.
 
 ## Deployment
-
-This project is intended for Vercel deployment.
-
-Key deployment behavior is defined in `vercel.json`:
-
-- clean URLs
-- security headers
-- CSP
-- cache-control headers for CSS, JS, fonts, images, media, and files
-- API CORS headers
-- HTTP to HTTPS redirect
-
-Deploy with:
 
 ```bash
 npm run deploy
 ```
 
+`vercel.json` configures:
+
+- clean URLs
+- security headers (HSTS, CSP, X-Frame-Options, Referrer-Policy, etc.)
+- cache-control per asset type (CSS/JS: 1h revalidate; images/fonts/media: 1y immutable)
+- CORS for API routes (`GET, POST, DELETE, OPTIONS`)
+- HTTP → HTTPS redirect
+
 ## Troubleshooting
 
-### Contact form returns 500
+**Contact form returns 500** — check `EMAIL_USER` and `EMAIL_PASS` are set in Vercel dashboard. `EMAIL_PASS` must be a Gmail App Password.
 
-Check:
+**`/analytics` is locked** — set `ANALYTICS_ADMIN_PASSWORD` in Vercel dashboard.
 
-- `EMAIL_USER`
-- `EMAIL_PASS`
+**`/api/analytics` fails in production** — check `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, and that the table was created from `config/supabase-analytics.sql`. Remove both Supabase variables to fall back to in-memory mode.
 
-### `/analytics` is locked
+**Media looks outdated after deploy** — run `npm run build:media` and redeploy.
 
-Set:
-
-- `ANALYTICS_ADMIN_PASSWORD`
-
-### `/api/analytics` fails in production
-
-Check:
-
-- `SUPABASE_URL`
-- `SUPABASE_SERVICE_ROLE_KEY`
-- the table created from `config/supabase-analytics.sql`
-
-If you do not want persistent storage, remove the Supabase variables so the function can use in-memory mode instead.
-
-### Media looks outdated after deploy
-
-Run:
-
-```bash
-npm run build:media
-```
-
-Then redeploy.
-
-### Browser still shows old CSS or JS
-
-Static assets are cacheable and versioned with query strings in the HTML. Hard-refresh the page after deployment if the browser keeps old files.
+**Browser shows old CSS or JS** — assets use query-string versioning. Hard-refresh after deploy (`Cmd+Shift+R` / `Ctrl+Shift+R`).
 
 ## Notes
 
-- The repository currently uses local font files, not Google Fonts.
-- The core stylesheet is `public/css/styles.css`.
-- Live demo embeds open inside a sandboxed iframe and also provide an "Open External" fallback.
+- Fonts are local — no Google Fonts requests.
+- Theme system uses `data-theme` on `<html>` (`poster` / `dark` / `proof`), stored in `localStorage`.
+- The "currently building" hero block is driven by `public/data/status.json`.
+- Live demo embeds open in a sandboxed iframe with an "Open in New Tab" fallback for sites that block embedding.
 
 ## License
 
