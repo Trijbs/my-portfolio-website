@@ -346,8 +346,8 @@
           {
             "type": "image",
             "src": "img/archive/northface/mobile-01.jpg",
-            "alt": "North Face mobile concept 1",
-            "caption": "Mobile concept 01",
+            "alt": "The North Face campaign homescreen",
+            "caption": "Campaign homescreen",
             "frame": "portrait",
             "width": 615,
             "height": 1600
@@ -355,8 +355,8 @@
           {
             "type": "image",
             "src": "img/archive/northface/mobile-02.jpg",
-            "alt": "North Face mobile concept 2",
-            "caption": "Mobile concept 02",
+            "alt": "The North Face product overview screen",
+            "caption": "Product overview",
             "frame": "portrait",
             "width": 615,
             "height": 1600
@@ -364,8 +364,8 @@
           {
             "type": "image",
             "src": "img/archive/northface/mobile-03.jpg",
-            "alt": "North Face mobile concept 3",
-            "caption": "Mobile concept 03",
+            "alt": "The North Face campaign detail screen",
+            "caption": "Campaign detail",
             "frame": "portrait",
             "width": 615,
             "height": 1600
@@ -373,29 +373,11 @@
           {
             "type": "image",
             "src": "img/archive/northface/mobile-04.jpg",
-            "alt": "North Face mobile concept 4",
-            "caption": "Mobile concept 04",
+            "alt": "The North Face utility support screen",
+            "caption": "Supporting screen",
             "frame": "portrait",
             "width": 615,
             "height": 1600
-          },
-          {
-            "type": "image",
-            "src": "img/archive/northface/mobile-05.png",
-            "alt": "North Face mobile concept 5",
-            "caption": "Mobile concept 05",
-            "frame": "portrait",
-            "width": 390,
-            "height": 1578
-          },
-          {
-            "type": "image",
-            "src": "img/archive/northface/mobile-06.png",
-            "alt": "North Face mobile concept 6",
-            "caption": "Mobile concept 06",
-            "frame": "portrait",
-            "width": 390,
-            "height": 1151
           }
         ]
       },
@@ -430,12 +412,12 @@
     "media": [
       {
         "type": "image",
-        "src": "img/archive/northface-mobile-1.png",
-        "alt": "Hidden Realms Fest mobile concept preview",
-        "caption": "Festival landing concept",
-        "frame": "portrait",
-        "width": 390,
-        "height": 1578
+        "src": "img/archive/festival-identity/moodboard.jpg",
+        "alt": "Hidden Realms Fest identity moodboard",
+        "caption": "Festival moodboard",
+        "frame": "wide",
+        "width": 1800,
+        "height": 1273
       }
     ],
     "collections": [
@@ -469,30 +451,21 @@
         "media": [
           {
             "type": "image",
-            "src": "img/archive/northface-mobile-1.png",
-            "alt": "Hidden Realms Fest landing page concept",
-            "caption": "Festival landing concept",
+            "src": "img/archive/northface/mobile-05.png",
+            "alt": "Hidden Realms Fest festival landing page concept",
+            "caption": "Festival landing screen",
             "frame": "portrait",
             "width": 390,
             "height": 1578
           },
           {
             "type": "image",
-            "src": "img/archive/northface-home.png",
-            "alt": "Hidden Realms Fest TikTok announcement screen",
-            "caption": "TikTok announcement screen",
+            "src": "img/archive/northface/mobile-06.png",
+            "alt": "Hidden Realms Fest announcement screen",
+            "caption": "Festival announcement screen",
             "frame": "portrait",
-            "width": 375,
-            "height": 812
-          },
-          {
-            "type": "image",
-            "src": "img/archive/northface/instagram.jpg",
-            "alt": "Hidden Realms Fest Instagram campaign post",
-            "caption": "Instagram line-up post",
-            "frame": "portrait",
-            "width": 831,
-            "height": 1800
+            "width": 390,
+            "height": 1151
           }
         ]
       },
