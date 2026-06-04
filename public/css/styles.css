@@ -219,8 +219,7 @@ a:hover {
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--shadow-color);
   z-index: var(--z-fixed);
-  transition: all var(--transition-normal);
-  position: relative;
+  transition: background var(--transition-normal), border-color var(--transition-normal);
 }
 
 .header::before {
@@ -235,11 +234,11 @@ a:hover {
   z-index: -1;
 }
 
-.theme-dark .header {
+[data-theme="dark"] .header {
   background: rgba(10, 10, 10, 0.95);
 }
 
-.theme-dark .header::before {
+[data-theme="dark"] .header::before {
   opacity: 0.05;
 }
 
@@ -5709,14 +5708,12 @@ section {
 }
 
 /* ── Dark theme code preview adjustments ── */
-[data-theme="dark"] .practice-card,
-.theme-dark .practice-card {
+[data-theme="dark"] .practice-card {
   background: var(--bg-secondary);
   border-color: var(--bg-tertiary);
 }
 
-[data-theme="dark"] .practice-tags span,
-.theme-dark .practice-tags span {
+[data-theme="dark"] .practice-tags span {
   background: var(--bg-tertiary);
 }
 

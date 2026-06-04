@@ -610,9 +610,19 @@
                     <!-- Hidden Realms -->
                     <div class="project-card archive-card" data-category="design interactive">
                         <div class="project-image">
-                            <img src="media/archive/festival-identity/moodboard.jpg"
-                                alt="Hidden Realms Fest identity moodboard"
-                                width="1800" height="1273" loading="lazy" decoding="async">
+                            <picture>
+                                <source type="image/avif"
+                                    srcset="media/archive/festival-identity/moodboard-480.avif 480w, media/archive/festival-identity/moodboard-768.avif 768w, media/archive/festival-identity/moodboard-1200.avif 1200w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
+                                <source type="image/webp"
+                                    srcset="media/archive/festival-identity/moodboard-480.webp 480w, media/archive/festival-identity/moodboard-768.webp 768w, media/archive/festival-identity/moodboard-1200.webp 1200w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px">
+                                <img src="media/archive/festival-identity/moodboard-768.jpg"
+                                    srcset="media/archive/festival-identity/moodboard-480.jpg 480w, media/archive/festival-identity/moodboard-768.jpg 768w, media/archive/festival-identity/moodboard-1200.jpg 1200w"
+                                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(50vw - 3rem), 560px"
+                                    alt="Hidden Realms Fest identity moodboard"
+                                    width="1800" height="1273" loading="lazy" decoding="async">
+                            </picture>
                             <div class="project-overlay">
                                 <div class="project-actions">
                                     <button class="btn btn-primary view-details" data-project="hidden-realms-fest">
@@ -897,6 +907,13 @@
     <script>
         // Live "currently" block driven by /data/status.json
         (function () {
+            function esc(str) {
+                return String(str)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;');
+            }
             fetch('/data/status.json', { credentials: 'same-origin' })
                 .then(function (r) { return r.ok ? r.json() : null; })
                 .then(function (s) {
@@ -906,12 +923,12 @@
                     var parts = [];
                     if (s.building) {
                         var link = s.buildingUrl
-                            ? '<a href="' + s.buildingUrl + '" target="_blank" rel="noopener noreferrer"><strong>' + s.building + '</strong></a>'
-                            : '<strong>' + s.building + '</strong>';
+                            ? '<a href="' + esc(s.buildingUrl) + '" target="_blank" rel="noopener noreferrer"><strong>' + esc(s.building) + '</strong></a>'
+                            : '<strong>' + esc(s.building) + '</strong>';
                         parts.push('building ' + link);
                     }
-                    if (s.shipping) parts.push('shipping <strong>' + s.shipping + '</strong>');
-                    if (s.thinking) parts.push('thinking about <strong>' + s.thinking + '</strong>');
+                    if (s.shipping) parts.push('shipping <strong>' + esc(s.shipping) + '</strong>');
+                    if (s.thinking) parts.push('thinking about <strong>' + esc(s.thinking) + '</strong>');
                     if (parts.length) {
                         block.innerHTML = '<span class="currently-label">currently</span> ' + parts.join(' &middot; ');
                     }
