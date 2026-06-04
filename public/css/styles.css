@@ -3692,22 +3692,6 @@ section {
   aspect-ratio: 4 / 3;
 }
 
-.popfusion-card .project-image {
-  background: #111a31;
-}
-
-.popfusion-card .project-image picture,
-.popfusion-card .project-image img {
-  width: 100%;
-  height: 100%;
-}
-
-.popfusion-card .project-image picture img {
-  object-fit: contain;
-  object-position: center center;
-  background: #111a31;
-}
-
 .project-overlay {
   padding: 1rem;
 }
@@ -6605,16 +6589,6 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-/* popfusion custom dark bg */
-.popfusion-card .project-image {
-  background: #111a31;
-}
-
-.popfusion-card .project-image img {
-  object-fit: contain;
-  background: #111a31;
 }
 
 /* ── Hover overlay ── */
