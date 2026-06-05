@@ -4,3 +4,4 @@ node_modules/
 public/files/trijbs-brand-style-guide.pdf
 public/files/trijbs-brand-style-guide.png
 scripts/generate_brand_style_guide.py
+.agents/skills/systematic-debugging
