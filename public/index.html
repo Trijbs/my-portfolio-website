@@ -22,9 +22,10 @@
     <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/ibm-plex-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" as="image"
-        href="/media/profile-hero-640.jpg"
-        imagesrcset="/media/profile-hero-320.jpg 320w, /media/profile-hero-480.jpg 480w, /media/profile-hero-640.jpg 640w"
-        imagesizes="(max-width: 767px) calc(100vw - 2rem), 160px">
+        href="/media/profile-hero-640.avif"
+        imagesrcset="/media/profile-hero-320.avif 320w, /media/profile-hero-480.avif 480w, /media/profile-hero-640.avif 640w"
+        imagesizes="(max-width: 767px) calc(100vw - 2rem), 160px"
+        type="image/avif">
     <link rel="stylesheet" href="css/styles.css?v=3.1.0">
     <script type="application/ld+json">
     {
@@ -84,6 +85,15 @@
         </div>
     </header>
 
+    <!-- Sticky floating CTA -->
+    <div class="sticky-cta" id="stickyCta">
+        <div class="sticky-cta-inner">
+            <span class="sticky-cta-status"></span>
+            <span class="sticky-cta-text">Available for new projects</span>
+            <a href="#contact" class="btn btn-primary btn-sm">Get in Touch</a>
+        </div>
+    </div>
+
     <main>
 
         <!-- ══════════════════════════════════════
@@ -98,7 +108,7 @@
                         <p class="hero-lead">I work at the intersection of design and code, building interfaces, interactive experiments, and digital worlds from scratch. Based in the Netherlands.</p>
                         <div class="hero-actions">
                             <a href="#projects" class="btn btn-primary">Selected Work</a>
-                            <a href="#about" class="btn btn-secondary">How I think</a>
+                            <a href="#contact" class="btn btn-secondary">Get in Touch</a>
                         </div>
                         <div class="currently-block" id="currentlyBlock">
                             <span class="currently-label">currently</span>
@@ -188,6 +198,70 @@
                     <div class="strip-item">Originality is the point.</div>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════
+             HOW I WORK
+        ══════════════════════════════════════ -->
+        <section id="process" class="skills-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Process</span>
+                    <h2 class="section-title">How I work<br>with clients</h2>
+                    <p class="section-description">Every project follows the same path from first conversation to deployed result. No handoffs, no gaps.</p>
+                </div>
+
+                <div class="practice-grid">
+                    <article class="practice-card">
+                        <span class="practice-number">01</span>
+                        <h3>Discovery</h3>
+                        <p>We start with a conversation about your goals, audience, and constraints. I ask questions until the brief is clear. No assumptions.</p>
+                        <div class="practice-tags">
+                            <span>Brief</span>
+                            <span>Goals</span>
+                            <span>Constraints</span>
+                        </div>
+                    </article>
+                    <article class="practice-card">
+                        <span class="practice-number">02</span>
+                        <h3>Design</h3>
+                        <p>Visual systems, layouts, and interactions designed in Adobe XD. You see the direction before any code is written. Iteration until it's right.</p>
+                        <div class="practice-tags">
+                            <span>Adobe XD</span>
+                            <span>Prototyping</span>
+                            <span>Feedback</span>
+                        </div>
+                    </article>
+                    <article class="practice-card">
+                        <span class="practice-number">03</span>
+                        <h3>Build</h3>
+                        <p>Design becomes code. I build in the browser with the same tools I design with. No handoff gap. Weekly updates on progress.</p>
+                        <div class="practice-tags">
+                            <span>Development</span>
+                            <span>Testing</span>
+                            <span>Updates</span>
+                        </div>
+                    </article>
+                    <article class="practice-card">
+                        <span class="practice-number">04</span>
+                        <h3>Ship</h3>
+                        <p>Deployed, tested, and live. I handle the technical setup and make sure everything works across devices. Post-launch support included.</p>
+                        <div class="practice-tags">
+                            <span>Deployment</span>
+                            <span>Testing</span>
+                            <span>Support</span>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="about-principles-strip">
+                    <div class="strip-item">Typical projects run 2-6 weeks.</div>
+                    <div class="strip-divider" aria-hidden="true"></div>
+                    <div class="strip-item">Weekly progress updates.</div>
+                    <div class="strip-divider" aria-hidden="true"></div>
+                    <div class="strip-item">One point of contact throughout.</div>
+                </div>
             </div>
         </section>
 
@@ -335,7 +409,7 @@
                             <p class="project-kicker">Immersive landing experience</p>
                             <div class="project-header">
                                 <h3>Urban Unleashed</h3>
-                                <span class="status-badge featured">'Fictional'</span>
+                                <span class="status-badge featured">Concept</span>
                             </div>
                             <p>A landing page where the interface is the brand. Bold visuals, WebGL motion, and a strong first-screen composition.</p>
                             <div class="project-tags">
@@ -470,7 +544,7 @@
                                 <span class="status-badge new">Live</span>
                             </div>
                             <p>A structured week planner with hourly time blocks, assignees, thought threads, and real-time sync. Built with Next.js, TypeScript, and Supabase with automated cron sync and a PWA setup.</p>
-                            <p>Still a made in progress</p>
+                            <p>Still in active development</p>
                             <div class="project-tags">
                                 <span class="tag">Next.js</span>
                                 <span class="tag">TypeScript</span>
@@ -885,6 +959,26 @@
                 });
             }
         });
+    </script>
+    <script>
+        // Sticky floating CTA - show after hero scrolls out of view
+        (function() {
+            const stickyCta = document.getElementById('stickyCta');
+            const hero = document.getElementById('hero');
+            if (!stickyCta || !hero) return;
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        stickyCta.classList.remove('visible');
+                    } else {
+                        stickyCta.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            observer.observe(hero);
+        })();
     </script>
 </body>
 </html>

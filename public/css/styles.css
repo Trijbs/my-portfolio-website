@@ -6746,3 +6746,70 @@ section {
 }
 
 /* ── End of project card authoritative block ── */
+
+/* ── Sticky Floating CTA ── */
+
+.sticky-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--bg-secondary, #1a1a1a);
+  border-top: 1px solid var(--border-color, rgba(255,255,255,0.1));
+  padding: 0.75rem 0;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.sticky-cta.visible {
+  transform: translateY(0);
+}
+
+.sticky-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.sticky-cta-status {
+  width: 8px;
+  height: 8px;
+  background: #4ade80;
+  border-radius: 50%;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+.sticky-cta-text {
+  font-family: var(--font-body, sans-serif);
+  font-size: 0.875rem;
+  color: var(--text-secondary, #a0a0a0);
+}
+
+.sticky-cta .btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@media (max-width: 600px) {
+  .sticky-cta-inner {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0 1rem;
+  }
+  
+  .sticky-cta-status {
+    display: none;
+  }
+}
