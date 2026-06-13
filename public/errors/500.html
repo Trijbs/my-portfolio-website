@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500 — Internal Server Error | Trijbs</title>
+    <meta name="description" content="Something went wrong on our end. Please try again later.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <style>
+        @font-face {
+            font-family: 'Manrope';
+            src: url('/fonts/manrope-latin.woff2') format('woff2');
+            font-style: normal;
+            font-weight: 400 800;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Space Grotesk';
+            src: url('/fonts/space-grotesk-latin.woff2') format('woff2');
+            font-style: normal;
+            font-weight: 500 700;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'IBM Plex Mono';
+            src: url('/fonts/ibm-plex-mono-400-latin.woff2') format('woff2');
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        
+        .error-container {
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        .error-code {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(6rem, 20vw, 12rem);
+            font-weight: 700;
+            line-height: 1;
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+        
+        .error-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+        
+        .error-message {
+            font-size: 1.1rem;
+            color: #999999;
+            margin-bottom: 2rem;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: #0a0a0a;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(67, 233, 123, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #cccccc;
+            border: 1px solid #333333;
+        }
+        
+        .btn-secondary:hover {
+            border-color: #666666;
+            color: #ffffff;
+        }
+        
+        .currently-block {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            color: #666666;
+            padding: 1rem;
+            border-top: 1px solid #1a1a1a;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .currently-label {
+            color: #4ade80;
+            margin-right: 0.25rem;
+        }
+        
+        .logo {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+        }
+        
+        .logo a {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        
+        @media (max-width: 600px) {
+            .error-code {
+                font-size: 5rem;
+            }
+            
+            .error-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <a href="/">trijbs</a>
+    </div>
+    
+    <div class="error-container">
+        <div class="error-code">500</div>
+        <h1 class="error-title">Something broke</h1>
+        <p class="error-message">Something went wrong on our end. I'm probably already fixing it. Try again in a moment.</p>
+        
+        <div class="error-actions">
+            <a href="/" class="btn btn-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                Back to Home
+            </a>
+            <a href="/#contact" class="btn btn-secondary">Report Issue</a>
+        </div>
+        
+        <div class="currently-block">
+            <span class="currently-label">currently</span> building mvxworld.art · shipping KAAR · thinking about worlds
+        </div>
+    </div>
+</body>
+</html>
